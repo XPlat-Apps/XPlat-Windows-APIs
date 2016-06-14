@@ -84,24 +84,36 @@ namespace XamKit.Core.Storage
                                 setting = SharedPreferences.GetBoolean(key, Helpers.SafeParseBool(value));
                                 break;
                             case TypeCode.Int32:
+                                setting = SharedPreferences.GetInt(key, Helpers.SafeParseInt(value));
                                 break;
                             case TypeCode.Int64:
+                                setting = SharedPreferences.GetLong(key, Helpers.SafeParseInt64(value));
                                 break;
                             case TypeCode.Single:
+                                setting = SharedPreferences.GetFloat(key, Helpers.SafeParseFloat(value));
                                 break;
                             case TypeCode.Double:
+                                // Not supported
                                 break;
                             case TypeCode.Decimal:
                                 // Not supported
                                 break;
                             case TypeCode.DateTime:
+                                var dateTimeTicks = SharedPreferences.GetLong(key, 0);
+                                setting = new DateTime(dateTimeTicks, DateTimeKind.Utc);
                                 break;
                             case TypeCode.String:
+                                setting = SharedPreferences.GetString(key, Helpers.SafeParseString(value));
                                 break;
                             default:
                                 if (value is Guid)
                                 {
-
+                                    setting = Guid.Empty;
+                                    var val = SharedPreferences.GetString(key, Guid.Empty.ToString());
+                                    if (!string.IsNullOrWhiteSpace(val))
+                                    {
+                                        setting = Helpers.SafeParseGuid(val);
+                                    }
                                 }
                                 else
                                 {
@@ -110,6 +122,8 @@ namespace XamKit.Core.Storage
                                 break;
                         }
                     }
+
+                    value = (T)setting;
                 }
             }
 
@@ -129,10 +143,57 @@ namespace XamKit.Core.Storage
         {
             lock (this.obj)
             {
+                var type = value.GetType();
+                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+                {
+                    type = Nullable.GetUnderlyingType(type);
+                }
+
+                var code = Type.GetTypeCode(type);
+
                 using (SharedPreferences)
                 {
                     using (var editor = SharedPreferences.Edit())
                     {
+                        switch (code)
+                        {
+                            case TypeCode.Boolean:
+                                editor.PutBoolean(key, Helpers.SafeParseBool(value));
+                                break;
+                            case TypeCode.Int32:
+                                editor.PutInt(key, Helpers.SafeParseInt(value));
+                                break;
+                            case TypeCode.Int64:
+                                editor.PutLong(key, Helpers.SafeParseInt64(value));
+                                break;
+                            case TypeCode.Single:
+                                editor.PutFloat(key, Helpers.SafeParseFloat(value));
+                                break;
+                            case TypeCode.Double:
+                                // Not supported
+                                break;
+                            case TypeCode.Decimal:
+                                // Not supported
+                                break;
+                            case TypeCode.DateTime:
+                                editor.PutLong(key, Helpers.SafeParseDateTime(value).ToUniversalTime().Ticks);
+                                break;
+                            case TypeCode.String:
+                                editor.PutString(key, Helpers.SafeParseString(value));
+                                break;
+                            default:
+                                if (value is Guid)
+                                {
+                                    editor.PutString(key, Helpers.SafeParseGuid(value).ToString());
+                                }
+                                else
+                                {
+                                    throw new ArgumentException("The provided value is not a supported type.");
+                                }
+                                break;
+                        }
+
+                        editor.Commit();
                     }
                 }
             }
