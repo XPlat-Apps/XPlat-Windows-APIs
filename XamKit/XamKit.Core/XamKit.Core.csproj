@@ -35,6 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\XamKit.Common\XamKit.Common.csproj">
+      <Project>{67c82173-a3ae-4a61-a17b-86cba412a918}</Project>
+      <Name>XamKit.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamKit.Core.Common\XamKit.Core.Common.csproj">
       <Project>{9f3ae615-97c0-4e68-81d4-473eb2108bee}</Project>
       <Name>XamKit.Core.Common</Name>
