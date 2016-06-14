@@ -3,7 +3,6 @@
     using System;
     using System.Threading;
 
-    using XamKit.Core.Common;
     using XamKit.Core.Common.Storage;
 
     /// <summary>
@@ -38,7 +37,11 @@
 
         static IAppData CreateAppData()
         {
+#if PORTABLE
+            return null;
+#else
             return new AppData();
+#endif
         }
     }
 }

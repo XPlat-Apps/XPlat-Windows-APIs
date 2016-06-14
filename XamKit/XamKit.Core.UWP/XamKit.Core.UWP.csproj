@@ -107,11 +107,14 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\XamKit.Core\Storage\AppData.cs">
+      <Link>Storage\AppData.cs</Link>
+    </Compile>
     <Compile Include="..\XamKit.Core\Storage\ApplicationStorage.cs">
       <Link>Storage\ApplicationStorage.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Storage\AppData.cs" />
+    <Compile Include="Storage\AppSettings.cs" />
     <EmbeddedResource Include="Properties\XamKit.Core.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>

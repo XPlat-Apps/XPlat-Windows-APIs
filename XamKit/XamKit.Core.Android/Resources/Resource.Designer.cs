@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("XamKit.Core.Android.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("XamKit.Core.Resource", IsApplication=false)]
 
-namespace XamKit.Core.Android
+namespace XamKit.Core
 {
 	
 	
