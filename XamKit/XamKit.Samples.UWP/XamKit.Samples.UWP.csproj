@@ -139,10 +139,6 @@
       <Project>{b8e42a6b-3169-47c8-8d99-0c6c4c5420bf}</Project>
       <Name>XamKit.Core.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XamKit.Core\XamKit.Core.csproj">
-      <Project>{092aeb8a-3ef2-4eae-bff5-29a273622ab6}</Project>
-      <Name>XamKit.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

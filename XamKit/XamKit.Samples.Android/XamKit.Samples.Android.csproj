@@ -83,10 +83,6 @@
       <Project>{9f3ae615-97c0-4e68-81d4-473eb2108bee}</Project>
       <Name>XamKit.Core.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XamKit.Core\XamKit.Core.csproj">
-      <Project>{092aeb8a-3ef2-4eae-bff5-29a273622ab6}</Project>
-      <Name>XamKit.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

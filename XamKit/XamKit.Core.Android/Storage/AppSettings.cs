@@ -66,15 +66,10 @@ namespace XamKit.Core.Storage
             {
                 if (this.ContainsKey(key))
                 {
-                    Type type = typeof(T);
-                    if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-                    {
-                        type = Nullable.GetUnderlyingType(type);
-                    }
-
-                    object setting = null;
-
+                    var type = value.GetType();
                     var code = Type.GetTypeCode(type);
+
+                    object setting;
 
                     using (SharedPreferences)
                     {
@@ -93,10 +88,12 @@ namespace XamKit.Core.Storage
                                 setting = SharedPreferences.GetFloat(key, Helpers.SafeParseFloat(value));
                                 break;
                             case TypeCode.Double:
-                                // Not supported
+                                var dbl = SharedPreferences.GetString(key, "0");
+                                setting = Helpers.SafeParseDouble(dbl);
                                 break;
                             case TypeCode.Decimal:
-                                // Not supported
+                                var dcml = SharedPreferences.GetString(key, "0");
+                                setting = Helpers.SafeParseDecimal(dcml);
                                 break;
                             case TypeCode.DateTime:
                                 var dateTimeTicks = SharedPreferences.GetLong(key, 0);
@@ -144,11 +141,6 @@ namespace XamKit.Core.Storage
             lock (this.obj)
             {
                 var type = value.GetType();
-                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-                {
-                    type = Nullable.GetUnderlyingType(type);
-                }
-
                 var code = Type.GetTypeCode(type);
 
                 using (SharedPreferences)
@@ -170,10 +162,10 @@ namespace XamKit.Core.Storage
                                 editor.PutFloat(key, Helpers.SafeParseFloat(value));
                                 break;
                             case TypeCode.Double:
-                                // Not supported
+                                editor.PutString(key, Helpers.SafeParseString(value));
                                 break;
                             case TypeCode.Decimal:
-                                // Not supported
+                                editor.PutString(key, Helpers.SafeParseString(value));
                                 break;
                             case TypeCode.DateTime:
                                 editor.PutLong(key, Helpers.SafeParseDateTime(value).ToUniversalTime().Ticks);

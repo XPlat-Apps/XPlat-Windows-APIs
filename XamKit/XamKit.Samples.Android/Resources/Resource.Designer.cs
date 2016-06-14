@@ -28,8 +28,6 @@ namespace XamKit.Samples.Android
 		{
 			global::XamKit.Core.Resource.String.ApplicationName = global::XamKit.Samples.Android.Resource.String.ApplicationName;
 			global::XamKit.Core.Resource.String.Hello = global::XamKit.Samples.Android.Resource.String.Hello;
-			global::XamKit.Core.Resource.String.ApplicationName = global::XamKit.Samples.Android.Resource.String.ApplicationName;
-			global::XamKit.Core.Resource.String.Hello = global::XamKit.Samples.Android.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

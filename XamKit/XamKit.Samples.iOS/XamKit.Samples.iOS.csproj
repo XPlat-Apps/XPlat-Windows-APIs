@@ -113,10 +113,6 @@
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
-    <ProjectReference Include="..\XamKit.Core\XamKit.Core.csproj">
-      <Project>{092aeb8a-3ef2-4eae-bff5-29a273622ab6}</Project>
-      <Name>XamKit.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -61,15 +61,11 @@
             {
                 if (this.ContainsKey(key))
                 {
-                    Type type = typeof(T);
-                    if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-                    {
-                        type = Nullable.GetUnderlyingType(type);
-                    }
-
-                    object setting = null;
-
+                    var type = typeof(T);
                     var code = Type.GetTypeCode(type);
+
+                    object setting;
+
                     switch (code)
                     {
                         case TypeCode.Boolean:
@@ -137,12 +133,8 @@
             lock (this.obj)
             {
                 var type = value.GetType();
-                if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-                {
-                    type = Nullable.GetUnderlyingType(type);
-                }
-
                 var code = Type.GetTypeCode(type);
+
                 switch (code)
                 {
                     case TypeCode.Boolean:
