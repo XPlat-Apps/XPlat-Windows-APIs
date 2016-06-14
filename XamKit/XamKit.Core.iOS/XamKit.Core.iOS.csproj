@@ -40,7 +40,11 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\XamKit.Core\Storage\ApplicationStorage.cs">
+      <Link>Storage\ApplicationStorage.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\AppData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamKit.Core.Common\XamKit.Core.Common.csproj">
