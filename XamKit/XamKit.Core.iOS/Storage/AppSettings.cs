@@ -4,7 +4,7 @@
 
     using Foundation;
 
-    using XamKit.Common.Helpers;
+    using XamKit.Common;
     using XamKit.Core.Common.Storage;
 
     public class AppSettings : IAppSettings

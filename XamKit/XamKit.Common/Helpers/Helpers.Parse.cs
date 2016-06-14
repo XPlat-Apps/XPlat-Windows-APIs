@@ -1,4 +1,4 @@
-﻿namespace XamKit.Common.Helpers
+﻿namespace XamKit.Common
 {
     using System;
 
