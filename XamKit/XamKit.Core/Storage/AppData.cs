@@ -14,6 +14,10 @@
             CreateAppSettings,
             LazyThreadSafetyMode.PublicationOnly);
 
+        private readonly Lazy<IAppFileStore> rootFolder = new Lazy<IAppFileStore>(
+          CreateAppRootFolder,
+          LazyThreadSafetyMode.PublicationOnly);
+
         /// <summary>
         /// Gets the application settings.
         /// </summary>
@@ -24,9 +28,22 @@
                 var s = this.settings.Value;
                 if (s == null)
                 {
-                    throw new NotImplementedException("The library you're calling AppData from is not support.");
+                    throw new NotImplementedException("The library you're calling AppData from is not supported.");
                 }
                 return s;
+            }
+        }
+
+        public IAppFileStore RootFolder
+        {
+            get
+            {
+                var f = this.rootFolder.Value;
+                if (f == null)
+                {
+                    throw new NotImplementedException("The library you're calling AppData from is not supported.");
+                }
+                return f;
             }
         }
 
@@ -36,6 +53,15 @@
             return null;
 #else
             return new AppSettings();
+#endif
+        }
+
+        private static IAppFileStore CreateAppRootFolder()
+        {
+#if PORTABLE
+            return null;
+#else
+            return new AppRootFolder();
 #endif
         }
     }

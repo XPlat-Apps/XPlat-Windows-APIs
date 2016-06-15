@@ -17,6 +17,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace XamKit.Samples.UWP
 {
+    using Windows.Storage;
+
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
@@ -77,6 +79,8 @@ namespace XamKit.Samples.UWP
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+
+            ApplicationData.Current.LocalFolder.
         }
 
         /// <summary>

@@ -114,6 +114,7 @@
       <Link>Storage\ApplicationStorage.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\AppRootFolder.cs" />
     <Compile Include="Storage\AppSettings.cs" />
     <EmbeddedResource Include="Properties\XamKit.Core.UWP.rd.xml" />
   </ItemGroup>
