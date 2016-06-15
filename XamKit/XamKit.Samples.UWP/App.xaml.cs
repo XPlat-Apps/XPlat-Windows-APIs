@@ -79,8 +79,6 @@ namespace XamKit.Samples.UWP
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
-
-            ApplicationData.Current.LocalFolder.
         }
 
         /// <summary>

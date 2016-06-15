@@ -13,7 +13,13 @@ namespace XamKit.Core.Storage
         /// <summary>
         /// Gets the path to the file store.
         /// </summary>
-        public string Path { get; }
+        public string Path
+        {
+            get
+            {
+                return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            }
+        }
 
         /// <summary>
         /// Creates a file within the file store with the specified file name.
@@ -27,7 +33,7 @@ namespace XamKit.Core.Storage
         /// <returns>
         /// Returns the created file.
         /// </returns>
-        public Task<object> CreateFileAsync(
+        public Task<IAppFile> CreateFileAsync(
             string fileName,
             FileStoreCreationOption creationOption = FileStoreCreationOption.ThrowExceptionIfExists)
         {

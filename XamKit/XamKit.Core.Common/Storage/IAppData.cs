@@ -9,5 +9,10 @@
         /// Gets the application settings.
         /// </summary>
         IAppSettings Settings { get; }
+
+        /// <summary>
+        /// Gets the root folder.
+        /// </summary>
+        IAppFileStore RootFolder { get; }
     }
 }

@@ -24,7 +24,7 @@
         /// <returns>
         /// Returns the created file.
         /// </returns>
-        Task<object> CreateFileAsync(
+        Task<IAppFile> CreateFileAsync(
             string fileName,
             FileStoreCreationOption creationOption = FileStoreCreationOption.ThrowExceptionIfExists);
     }

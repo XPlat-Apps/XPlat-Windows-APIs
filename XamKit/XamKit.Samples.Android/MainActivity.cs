@@ -4,6 +4,8 @@ using Android.Widget;
 
 namespace XamKit.Samples.Android
 {
+    using XamKit.Core.Storage;
+
     [Activity(Label = "XamKit.Samples.Android", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
