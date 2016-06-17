@@ -29,7 +29,7 @@
         /// <summary>
         /// Gets the user-friendly name of the current folder.
         /// </summary>
-        public string DisplayName
+        public string Name
         {
             get
             {

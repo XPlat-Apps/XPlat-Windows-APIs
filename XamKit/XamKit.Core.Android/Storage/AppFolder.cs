@@ -10,7 +10,12 @@ namespace XamKit.Core.Storage
     /// </summary>
     public class AppFolder : IAppFolder
     {
-        public string DisplayName { get; }
+        public AppFolder(string path)
+        {
+            this.Path = path;
+        }
+
+        public string Name { get; }
 
         public string Path { get; }
 

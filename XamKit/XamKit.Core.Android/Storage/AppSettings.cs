@@ -9,6 +9,8 @@ namespace XamKit.Core.Storage
     using XamKit.Common;
     using XamKit.Core.Common.Storage;
 
+    using Helpers = XamKit.Helpers.Helpers;
+
     public class AppSettings : IAppSettings
     {
         private readonly object obj = new object();

@@ -1,4 +1,4 @@
-﻿namespace XamKit.Common
+﻿namespace XamKit
 {
     using System;
 

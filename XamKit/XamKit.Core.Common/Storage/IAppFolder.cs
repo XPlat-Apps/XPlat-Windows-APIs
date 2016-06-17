@@ -5,18 +5,8 @@
     /// <summary>
     /// Defines an interface for an application folder.
     /// </summary>
-    public interface IAppFolder
+    public interface IAppFolder : IAppFileStoreItem
     {
-        /// <summary>
-        /// Gets the user-friendly name of the current folder.
-        /// </summary>
-        string DisplayName { get; }
-
-        /// <summary>
-        /// Gets the full path of the current folder in the file system.
-        /// </summary>
-        string Path { get; }
-
         /// <summary>
         /// Creates a new file with the specified name in the current folder.
         /// </summary>

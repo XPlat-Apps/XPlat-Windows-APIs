@@ -1,6 +1,7 @@
 ﻿namespace XamKit.Core.Storage
 {
     using System;
+    using System.IO;
     using System.Threading;
 
     using XamKit.Core.Common.Storage;
@@ -80,18 +81,16 @@
 #elif WINDOWS_UWP
             return new AppFolder(Windows.Storage.ApplicationData.Current.LocalFolder);
 #else
-            return new AppFolder();
+            return new AppFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 #endif
         }
 
         private static IAppFolder CreateAppRoamingFolder()
         {
-#if PORTABLE
-            return null;
-#elif WINDOWS_UWP
+#if WINDOWS_UWP
             return new AppFolder(Windows.Storage.ApplicationData.Current.RoamingFolder);
 #else
-            return new AppFolder();
+            return null;
 #endif
         }
     }
