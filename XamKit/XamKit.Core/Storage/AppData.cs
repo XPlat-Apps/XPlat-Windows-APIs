@@ -14,14 +14,18 @@
             CreateAppSettings,
             LazyThreadSafetyMode.PublicationOnly);
 
-        private readonly Lazy<IAppFileStore> rootFolder = new Lazy<IAppFileStore>(
-          CreateAppRootFolder,
-          LazyThreadSafetyMode.PublicationOnly);
+        private readonly Lazy<IAppFolder> localFolder = new Lazy<IAppFolder>(
+            CreateAppLocalFolder,
+            LazyThreadSafetyMode.PublicationOnly);
+
+        private readonly Lazy<IAppFolder> roamingFolder = new Lazy<IAppFolder>(
+            CreateAppRoamingFolder,
+            LazyThreadSafetyMode.PublicationOnly);
 
         /// <summary>
         /// Gets the application settings.
         /// </summary>
-        public IAppSettings Settings
+        public IAppSettings LocalSettings
         {
             get
             {
@@ -34,11 +38,24 @@
             }
         }
 
-        public IAppFileStore RootFolder
+        public IAppFolder LocalFolder
         {
             get
             {
-                var f = this.rootFolder.Value;
+                var f = this.localFolder.Value;
+                if (f == null)
+                {
+                    throw new NotImplementedException("The library you're calling AppData from is not supported.");
+                }
+                return f;
+            }
+        }
+
+        public IAppFolder RoamingFolder
+        {
+            get
+            {
+                var f = this.roamingFolder.Value;
                 if (f == null)
                 {
                     throw new NotImplementedException("The library you're calling AppData from is not supported.");
@@ -56,12 +73,25 @@
 #endif
         }
 
-        private static IAppFileStore CreateAppRootFolder()
+        private static IAppFolder CreateAppLocalFolder()
         {
 #if PORTABLE
             return null;
+#elif WINDOWS_UWP
+            return new AppFolder(Windows.Storage.ApplicationData.Current.LocalFolder);
 #else
-            return new AppRootFolder();
+            return new AppFolder();
+#endif
+        }
+
+        private static IAppFolder CreateAppRoamingFolder()
+        {
+#if PORTABLE
+            return null;
+#elif WINDOWS_UWP
+            return new AppFolder(Windows.Storage.ApplicationData.Current.RoamingFolder);
+#else
+            return new AppFolder();
 #endif
         }
     }

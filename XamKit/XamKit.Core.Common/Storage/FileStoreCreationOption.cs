@@ -16,6 +16,11 @@
         ReplaceIfExists,
 
         /// <summary>
+        /// Opens the file if it already exists.
+        /// </summary>
+        OpenIfExists,
+
+        /// <summary>
         /// Creates the file with a unique identifier.
         /// </summary>
         GenerateUniqueIdentifier
