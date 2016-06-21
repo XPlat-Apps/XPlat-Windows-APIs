@@ -16,7 +16,7 @@
     {
         private readonly IStorageFolder folder;
 
-        public AppFolder(IStorageFolder folder)
+        public AppFolder(IAppFolder parentFolder, IStorageFolder folder)
         {
             if (folder == null)
             {
@@ -24,7 +24,13 @@
             }
 
             this.folder = folder;
+            this.ParentFolder = parentFolder;
         }
+
+        /// <summary>
+        /// Gets the parent folder.
+        /// </summary>
+        public IAppFolder ParentFolder { get; }
 
         /// <summary>
         /// Gets the user-friendly name of the current folder.
@@ -45,6 +51,17 @@
             get
             {
                 return this.folder.Path;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the file store item exists.
+        /// </summary>
+        public bool Exists
+        {
+            get
+            {
+                return this.folder != null;
             }
         }
 
@@ -70,7 +87,7 @@
             }
 
             var containedFile = await this.folder.CreateFileAsync(fileName, creationOption.ToCreationCollisionOption());
-            return new AppFile(containedFile);
+            return new AppFile(this, containedFile);
         }
 
         /// <summary>
@@ -96,7 +113,7 @@
 
             var containedFolder =
                 await this.folder.CreateFolderAsync(folderName, creationOption.ToCreationCollisionOption());
-            return new AppFolder(containedFolder);
+            return new AppFolder(this, containedFolder);
         }
 
         /// <summary>
@@ -137,7 +154,7 @@
                 return await this.CreateFileAsync(fileName, FileStoreCreationOption.OpenIfExists);
             }
 
-            return new AppFile(containedFile);
+            return new AppFile(this, containedFile);
         }
 
         /// <summary>
@@ -178,7 +195,7 @@
                 return await this.CreateFolderAsync(folderName, FileStoreCreationOption.OpenIfExists);
             }
 
-            return new AppFolder(containedFolder);
+            return new AppFolder(this, containedFolder);
         }
     }
 }

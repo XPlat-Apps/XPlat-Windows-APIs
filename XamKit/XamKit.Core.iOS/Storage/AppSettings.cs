@@ -1,13 +1,8 @@
 ﻿namespace XamKit.Core.Storage
 {
     using System;
-
     using Foundation;
-
-    using XamKit.Common;
     using XamKit.Core.Common.Storage;
-
-    using Helpers = XamKit.Helpers.Helpers;
 
     public class AppSettings : IAppSettings
     {

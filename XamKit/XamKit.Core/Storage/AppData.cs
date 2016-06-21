@@ -79,16 +79,16 @@
 #if PORTABLE
             return null;
 #elif WINDOWS_UWP
-            return new AppFolder(Windows.Storage.ApplicationData.Current.LocalFolder);
+            return new AppFolder(null, Windows.Storage.ApplicationData.Current.LocalFolder);
 #else
-            return new AppFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            return new AppFolder(null, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 #endif
         }
 
         private static IAppFolder CreateAppRoamingFolder()
         {
 #if WINDOWS_UWP
-            return new AppFolder(Windows.Storage.ApplicationData.Current.RoamingFolder);
+            return new AppFolder(null, Windows.Storage.ApplicationData.Current.RoamingFolder);
 #else
             return null;
 #endif

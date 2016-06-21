@@ -13,12 +13,19 @@
     {
         private readonly IStorageFile file;
 
-        public AppFile(IStorageFile file)
+        public AppFile(IAppFolder folder, IStorageFile file)
         {
             if (file == null)
             {
                 throw new ArgumentNullException(nameof(file));
             }
+
+            if (folder == null)
+            {
+                throw new ArgumentNullException(nameof(folder));
+            }
+
+            this.ParentFolder = folder;
         }
 
         /// <summary>
@@ -42,6 +49,22 @@
                 return this.file.Path;
             }
         }
+
+        /// <summary>
+        /// Gets a value indicating whether the file store item exists.
+        /// </summary>
+        public bool Exists
+        {
+            get
+            {
+                return this.file != null;
+            }
+        }
+
+        /// <summary>
+        /// Gets the parent folder.
+        /// </summary>
+        public IAppFolder ParentFolder { get; private set; }
 
         /// <summary>
         /// Opens a stream containing the file's data.
@@ -99,6 +122,8 @@
             {
                 await this.file.MoveAsync(folder, newName, option.ToNameCollisionOption());
             }
+
+            this.ParentFolder = destinationFolder;
         }
 
         /// <summary>
