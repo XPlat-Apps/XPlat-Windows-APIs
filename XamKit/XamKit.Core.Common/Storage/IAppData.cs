@@ -6,13 +6,18 @@
     public interface IAppData
     {
         /// <summary>
-        /// Gets the application settings.
+        /// Gets the application settings container in the local app data store.
         /// </summary>
-        IAppSettings Settings { get; }
+        IAppSettings LocalSettings { get; }
 
         /// <summary>
-        /// Gets the root folder.
+        /// Gets the root folder in the local app data store.
         /// </summary>
-        IAppFileStore RootFolder { get; }
+        IAppFolder LocalFolder { get; }
+
+        /// <summary>
+        /// Gets the root folder in the roaming app data store.
+        /// </summary>
+        IAppFolder RoamingFolder { get; }
     }
 }

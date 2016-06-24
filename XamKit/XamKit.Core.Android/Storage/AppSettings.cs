@@ -6,7 +6,6 @@ namespace XamKit.Core.Storage
     using Android.Content;
     using Android.Preferences;
 
-    using XamKit.Common;
     using XamKit.Core.Common.Storage;
 
     public class AppSettings : IAppSettings

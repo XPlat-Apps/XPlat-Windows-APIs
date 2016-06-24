@@ -47,7 +47,8 @@
       <Link>Storage\ApplicationStorage.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Storage\AppRootFolder.cs" />
+    <Compile Include="Storage\AppFile.cs" />
+    <Compile Include="Storage\AppFolder.cs" />
     <Compile Include="Storage\AppSettings.cs" />
   </ItemGroup>
   <ItemGroup>
