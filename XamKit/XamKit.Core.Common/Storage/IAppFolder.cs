@@ -2,6 +2,8 @@
 {
     using System.Threading.Tasks;
 
+    using XamKit.Core.Common.Serialization;
+
     /// <summary>
     /// Defines an interface for an application folder.
     /// </summary>
@@ -66,5 +68,28 @@
         /// Returns an IAppFolder representing the folder.
         /// </returns>
         Task<IAppFolder> GetFolderAsync(string folderName, bool createIfNotExisting = false);
+
+        /// <summary>
+        /// Saves an object to file with the specified name in the current folder.
+        /// </summary>
+        /// <param name="dataToSerialize">
+        /// The data to serialize.
+        /// </param>
+        /// <param name="fileName">
+        /// The file name.
+        /// </param>
+        /// <param name="serializationService">
+        /// The serialization service.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of object to save.
+        /// </typeparam>
+        /// <returns>
+        /// Returns an IAppFile represneting the saved file.
+        /// </returns>
+        Task<IAppFile> SaveToFileAsync<T>(
+            T dataToSerialize,
+            string fileName,
+            ISerializationService serializationService);
     }
 }

@@ -19,14 +19,14 @@ namespace XamKit.Core.Serialization
     /// </summary>
     public class SerializationService
     {
-        private readonly Lazy<ISerializationService> json =
+        private static readonly Lazy<ISerializationService> json =
             new Lazy<ISerializationService>(CreateJsonSerializationService, LazyThreadSafetyMode.PublicationOnly);
 
-        public ISerializationService Json
+        public static ISerializationService Json
         {
             get
             {
-                var s = this.json.Value;
+                var s = json.Value;
                 if (s == null)
                 {
                     throw new NotImplementedException(

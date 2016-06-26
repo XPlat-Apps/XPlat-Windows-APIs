@@ -60,5 +60,24 @@
         /// Returns an await-able task.
         /// </returns>
         Task DeleteAsync();
+
+        /// <summary>
+        /// Writes text to the file.
+        /// </summary>
+        /// <param name="text">
+        /// The text to write out.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        Task WriteTextAsync(string text);
+
+        /// <summary>
+        /// Reads text from the file.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        Task<string> ReadTextAsync();
     }
 }

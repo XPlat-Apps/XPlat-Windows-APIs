@@ -133,5 +133,29 @@
 
             File.Delete(this.Path);
         }
+
+        public async Task WriteTextAsync(string text)
+        {
+            using (var stream = await this.OpenAsync(FileAccessOption.ReadAndWrite))
+            {
+                stream.SetLength(0);
+                using (var writer = new StreamWriter(stream))
+                {
+                    await writer.WriteAsync(text);
+                }
+            }
+        }
+
+        public async Task<string> ReadTextAsync()
+        {
+            using (var stream = await this.OpenAsync())
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    var text = await reader.ReadToEndAsync();
+                    return text;
+                }
+            }
+        }
     }
 }

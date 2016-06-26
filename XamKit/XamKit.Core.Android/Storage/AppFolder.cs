@@ -4,7 +4,9 @@ namespace XamKit.Core.Storage
     using System.IO;
     using System.Threading.Tasks;
 
+    using XamKit.Core.Common.Serialization;
     using XamKit.Core.Common.Storage;
+    using XamKit.Core.Serialization;
 
     /// <summary>
     /// Defines the app's root folder for an iOS application.
@@ -172,6 +174,47 @@ namespace XamKit.Core.Storage
             }
 
             return new AppFolder(this, folderPath);
+        }
+
+        /// <summary>
+        /// Saves an object to file with the specified name in the current folder.
+        /// </summary>
+        /// <param name="dataToSerialize">
+        /// The data to serialize.
+        /// </param>
+        /// <param name="fileName">
+        /// The file name.
+        /// </param>
+        /// <param name="serializationService">
+        /// The serialization service.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of object to save.
+        /// </typeparam>
+        /// <returns>
+        /// Returns an IAppFile represneting the saved file.
+        /// </returns>
+        public async Task<IAppFile> SaveToFileAsync<T>(
+            T dataToSerialize,
+            string fileName,
+            ISerializationService serializationService)
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                throw new ArgumentNullException(nameof(fileName));
+            }
+
+            if (serializationService == null)
+            {
+                serializationService = SerializationService.Json;
+            }
+
+            var serializedData = serializationService.Serialize(dataToSerialize);
+
+            var file = await this.CreateFileAsync(fileName, FileStoreCreationOption.ReplaceIfExists);
+            await file.WriteTextAsync(serializedData);
+
+            return file;
         }
 
         private static void CreateFile(string filePath)

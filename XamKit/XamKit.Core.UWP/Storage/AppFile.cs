@@ -160,5 +160,16 @@
         {
             await this.file.DeleteAsync();
         }
+
+        public async Task WriteTextAsync(string text)
+        {
+            await FileIO.WriteTextAsync(this.file, text);
+        }
+
+        public async Task<string> ReadTextAsync()
+        {
+            var text = await FileIO.ReadTextAsync(this.file);
+            return text;
+        }
     }
 }
