@@ -2,7 +2,6 @@
 {
     using System;
 
-    using Windows.Storage;
     using Windows.UI.Xaml.Navigation;
 
     using XamKit.Core.Common.Storage;
