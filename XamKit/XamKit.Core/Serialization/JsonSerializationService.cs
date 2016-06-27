@@ -10,7 +10,6 @@
 namespace XamKit.Core.Serialization
 {
     using System;
-    using System.Runtime.Serialization.Formatters;
 
     using Newtonsoft.Json;
 
@@ -33,7 +32,7 @@ namespace XamKit.Core.Serialization
         }
 
         /// <summary>
-        /// Gets the JSON serializer's settings.
+        /// Gets the JSON serializers settings.
         /// </summary>
         public JsonSerializerSettings Settings { get; }
 
