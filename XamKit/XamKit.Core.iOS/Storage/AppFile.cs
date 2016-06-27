@@ -151,7 +151,7 @@
         /// <returns>
         /// Returns an await-able task.
         /// </returns>
-        public async Task SaveDataToFile<T>(T dataToSerialize, ISerializationService serializationService)
+        public async Task SaveDataToFileAsync<T>(T dataToSerialize, ISerializationService serializationService)
         {
             if (!this.Exists)
             {
@@ -180,7 +180,7 @@
         /// <returns>
         /// Returns the deserialized data.
         /// </returns>
-        public async Task<T> LoadDataFromFile<T>(ISerializationService serializationService)
+        public async Task<T> LoadDataFromFileAsync<T>(ISerializationService serializationService)
         {
             if (!this.Exists)
             {

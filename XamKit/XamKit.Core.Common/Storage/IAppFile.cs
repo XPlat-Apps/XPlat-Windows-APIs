@@ -78,7 +78,7 @@
         /// <returns>
         /// Returns an await-able task.
         /// </returns>
-        Task SaveDataToFile<T>(T dataToSerialize, ISerializationService serializationService);
+        Task SaveDataToFileAsync<T>(T dataToSerialize, ISerializationService serializationService);
 
         /// <summary>
         /// Deserializes an object from the file.
@@ -92,7 +92,7 @@
         /// <returns>
         /// Returns the deserialized data.
         /// </returns>
-        Task<T> LoadDataFromFile<T>(ISerializationService serializationService);
+        Task<T> LoadDataFromFileAsync<T>(ISerializationService serializationService);
 
         /// <summary>
         /// Writes text to the file.
