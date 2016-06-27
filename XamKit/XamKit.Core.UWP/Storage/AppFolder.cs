@@ -1,7 +1,9 @@
 ﻿namespace XamKit.Core.Storage
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Windows.Storage;
@@ -184,6 +186,24 @@
         }
 
         /// <summary>
+        /// Gets the files from the current folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of IAppFiles.
+        /// </returns>
+        public async Task<IEnumerable<IAppFile>> GetFilesAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get files from a folder that does not exist.");
+            }
+
+            var files = await this.folder.GetFilesAsync();
+
+            return files.Select(storageFile => new AppFile(this, storageFile));
+        }
+
+        /// <summary>
         /// Gets the folder with the specified name from the current folder.
         /// </summary>
         /// <param name="folderName">
@@ -227,6 +247,24 @@
             }
 
             return new AppFolder(this, containedFolder);
+        }
+
+        /// <summary>
+        /// Gets the folders from the current folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of IAppFolders.
+        /// </returns>
+        public async Task<IEnumerable<IAppFolder>> GetFoldersAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get folders from a folder that does not exist.");
+            }
+
+            var folders = await this.folder.GetFoldersAsync();
+
+            return folders.Select(storageFolder => new AppFolder(this, storageFolder));
         }
 
         /// <summary>

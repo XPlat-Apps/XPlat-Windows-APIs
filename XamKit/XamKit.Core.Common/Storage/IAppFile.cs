@@ -56,14 +56,6 @@
         Task RenameAsync(string fileName, FileNameCreationOption option = FileNameCreationOption.ThrowExceptionIfExists);
 
         /// <summary>
-        /// Deletes the file.
-        /// </summary>
-        /// <returns>
-        /// Returns an await-able task.
-        /// </returns>
-        Task DeleteAsync();
-
-        /// <summary>
         /// Serializes an object to the file as a string. Will overwrite any data already stored in the file.
         /// </summary>
         /// <param name="dataToSerialize">

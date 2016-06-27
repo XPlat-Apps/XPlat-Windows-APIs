@@ -30,10 +30,12 @@
 
             await tempFile.SaveDataToFileAsync(tempData, SerializationService.Json);
 
-            await tempFolder.DeleteAsync();
+            var folders = await ApplicationStorage.Current.LocalFolder.GetFoldersAsync();
 
-            var tempFolderExists = tempFolder.Exists;
-            var tempFileExists = tempFile.Exists;
+            foreach (var folder in folders)
+            {
+                await folder.CreateFolderAsync("AnotherFolder", FileStoreCreationOption.OpenIfExists);
+            }
         }
     }
 }

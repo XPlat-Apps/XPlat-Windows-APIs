@@ -1,6 +1,7 @@
 ﻿namespace XamKit.Core.Common.Storage
 {
     using System;
+    using System.Threading.Tasks;
 
     public interface IAppFileStoreItem
     {
@@ -28,5 +29,13 @@
         /// Gets the date the file store item was created.
         /// </summary>
         DateTime DateCreated { get; }
+
+        /// <summary>
+        /// Deletes the file store item.
+        /// </summary>
+        /// <returns>
+        /// Returns an await-able task.
+        /// </returns>
+        Task DeleteAsync();
     }
 }

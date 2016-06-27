@@ -1,5 +1,6 @@
 ﻿namespace XamKit.Core.Common.Storage
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -54,6 +55,14 @@
         Task<IAppFile> GetFileAsync(string fileName, bool createIfNotExisting = false);
 
         /// <summary>
+        /// Gets the files from the current folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of IAppFiles.
+        /// </returns>
+        Task<IEnumerable<IAppFile>> GetFilesAsync();
+ 
+        /// <summary>
         /// Gets the folder with the specified name from the current folder.
         /// </summary>
         /// <param name="folderName">
@@ -68,11 +77,11 @@
         Task<IAppFolder> GetFolderAsync(string folderName, bool createIfNotExisting = false);
 
         /// <summary>
-        /// Deletes the folder and contents.
+        /// Gets the folders from the current folder.
         /// </summary>
         /// <returns>
-        /// Returns an await-able task.
+        /// Returns a collection of IAppFolders.
         /// </returns>
-        Task DeleteAsync();
+        Task<IEnumerable<IAppFolder>> GetFoldersAsync();
     }
 }
