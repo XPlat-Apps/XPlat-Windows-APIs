@@ -27,7 +27,6 @@ namespace XamKit.Core.Serialization
                                 {
                                     Formatting = Formatting.None,
                                     TypeNameHandling = TypeNameHandling.Auto,
-                                    TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
                                     PreserveReferencesHandling = PreserveReferencesHandling.All,
                                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                                 };
