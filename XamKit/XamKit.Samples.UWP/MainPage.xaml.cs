@@ -20,15 +20,20 @@
         {
             base.OnNavigatedTo(e);
 
-            var file = await ApplicationStorage.Current.LocalFolder.CreateFileAsync(
-                "test.json",
-                FileStoreCreationOption.ReplaceIfExists);
+            var tempFolder =
+                await
+                ApplicationStorage.Current.LocalFolder.CreateFolderAsync("Temp", FileStoreCreationOption.OpenIfExists);
 
-            var data = new TestContainer { Id = Guid.NewGuid(), Name = "Hello, World" };
+            var tempFile = await tempFolder.CreateFileAsync("TempFile.json", FileStoreCreationOption.ReplaceIfExists);
 
-            await file.SaveDataToFileAsync(data, SerializationService.Json);
+            var tempData = new TestContainer { Id = Guid.NewGuid(), Name = "Hello, World!" };
 
-            var info = await file.LoadDataFromFileAsync<TestContainer>(SerializationService.Json);
+            await tempFile.SaveDataToFileAsync(tempData, SerializationService.Json);
+
+            await tempFolder.DeleteAsync();
+
+            var tempFolderExists = tempFolder.Exists;
+            var tempFileExists = tempFile.Exists;
         }
     }
 }

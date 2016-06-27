@@ -43,6 +43,17 @@
             }
         }
 
+        /// <summary>
+        /// Gets the date the file store item was created.
+        /// </summary>
+        public DateTime DateCreated
+        {
+            get
+            {
+                return File.GetCreationTime(this.Path);
+            }
+        }
+
         public IAppFolder ParentFolder { get; private set; }
 
         /// <summary>
@@ -56,6 +67,11 @@
         /// </returns>
         public async Task<Stream> OpenAsync(FileAccessOption option = FileAccessOption.ReadOnly)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot open a file that does not exist.");
+            }
+
             await Helpers.CreateNewTaskSchedulerAwaiter();
 
             switch (option)
@@ -74,6 +90,11 @@
             string newName = "",
             FileNameCreationOption option = FileNameCreationOption.ReplaceIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot move a file that does not exist.");
+            }
+
             if (destinationFolder == null)
             {
                 throw new ArgumentNullException(nameof(destinationFolder));
@@ -81,13 +102,14 @@
 
             if (!destinationFolder.Exists)
             {
-                throw new DirectoryNotFoundException(
+                throw new NotSupportedException(
                     "The directory for the specified destination folder does not exist.");
             }
 
             await Helpers.CreateNewTaskSchedulerAwaiter();
 
-            var filePath = System.IO.Path.Combine(destinationFolder.Path, newName);
+            var fileName = string.IsNullOrWhiteSpace(newName) ? this.Name : newName;
+            var filePath = System.IO.Path.Combine(destinationFolder.Path, fileName);
 
             if (File.Exists(filePath))
             {
@@ -95,13 +117,13 @@
                 {
                     case FileNameCreationOption.ThrowExceptionIfExists:
                         throw new IOException(
-                            $"A file with the name '{newName}' already exists in '{destinationFolder.Path}'.");
+                            $"A file with the name '{fileName}' already exists in '{destinationFolder.Path}'.");
                     case FileNameCreationOption.ReplaceIfExists:
                         File.Delete(filePath);
                         break;
                     case FileNameCreationOption.GenerateUniqueIdentifier:
-                        newName = $"{Guid.NewGuid()}-{newName}";
-                        filePath = System.IO.Path.Combine(destinationFolder.Path, newName);
+                        fileName = $"{Guid.NewGuid()}-{fileName}";
+                        filePath = System.IO.Path.Combine(destinationFolder.Path, fileName);
                         break;
                 }
             }
@@ -116,6 +138,11 @@
             string fileName,
             FileNameCreationOption option = FileNameCreationOption.ThrowExceptionIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot rename a file that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 throw new ArgumentNullException(nameof(fileName));
@@ -126,6 +153,11 @@
 
         public async Task DeleteAsync()
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot delete a file that does not exist.");
+            }
+
             await Helpers.CreateNewTaskSchedulerAwaiter();
 
             if (!this.Exists)
@@ -200,6 +232,11 @@
 
         public async Task WriteTextAsync(string text)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot write text to a file that does not exist.");
+            }
+
             using (var stream = await this.OpenAsync(FileAccessOption.ReadAndWrite))
             {
                 stream.SetLength(0);
@@ -212,6 +249,11 @@
 
         public async Task<string> ReadTextAsync()
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot read text from a file that does not exist.");
+            }
+
             using (var stream = await this.OpenAsync())
             {
                 using (var reader = new StreamReader(stream))

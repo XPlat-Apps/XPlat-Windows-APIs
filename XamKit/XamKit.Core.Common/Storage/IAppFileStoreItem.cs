@@ -1,5 +1,7 @@
 ﻿namespace XamKit.Core.Common.Storage
 {
+    using System;
+
     public interface IAppFileStoreItem
     {
         /// <summary>
@@ -21,5 +23,10 @@
         /// Gets a value indicating whether the file store item exists.
         /// </summary>
         bool Exists { get; }
+
+        /// <summary>
+        /// Gets the date the file store item was created.
+        /// </summary>
+        DateTime DateCreated { get; }
     }
 }

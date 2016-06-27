@@ -60,7 +60,18 @@
         {
             get
             {
-                return this.file != null;
+                return this.file != null && File.Exists(this.Path);
+            }
+        }
+
+        /// <summary>
+        /// Gets the date the file store item was created.
+        /// </summary>
+        public DateTime DateCreated
+        {
+            get
+            {
+                return this.file.DateCreated.DateTime;
             }
         }
 
@@ -80,6 +91,11 @@
         /// </returns>
         public async Task<Stream> OpenAsync(FileAccessOption option = FileAccessOption.ReadOnly)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot open a file that does not exist.");
+            }
+
             var iras = await this.file.OpenAsync(option.ToFileAccessMode());
             return iras.AsStream();
         }
@@ -104,27 +120,27 @@
             string newName = "",
             FileNameCreationOption option = FileNameCreationOption.ReplaceIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot move a file that does not exist.");
+            }
+
             if (destinationFolder == null)
             {
                 throw new ArgumentNullException(nameof(destinationFolder));
             }
 
-            if (string.IsNullOrWhiteSpace(destinationFolder.Path))
+            if (!destinationFolder.Exists)
             {
-                throw new ArgumentException("The provided destination folder doesn't have a file path.");
+                throw new NotSupportedException(
+                    "The directory for the specified destination folder does not exist.");
             }
 
             var folder =
                 await StorageFolder.GetFolderFromPathAsync(System.IO.Path.GetDirectoryName(destinationFolder.Path));
 
-            if (string.IsNullOrWhiteSpace(newName))
-            {
-                await this.file.MoveAsync(folder, this.file.Name, option.ToNameCollisionOption());
-            }
-            else
-            {
-                await this.file.MoveAsync(folder, newName, option.ToNameCollisionOption());
-            }
+            var fileName = string.IsNullOrWhiteSpace(newName) ? this.Name : newName;
+            await this.file.MoveAsync(folder, fileName, option.ToNameCollisionOption());
 
             this.ParentFolder = destinationFolder;
         }
@@ -145,6 +161,11 @@
             string fileName,
             FileNameCreationOption option = FileNameCreationOption.ThrowExceptionIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot rename a file that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 throw new ArgumentNullException(nameof(fileName));
@@ -161,6 +182,11 @@
         /// </returns>
         public async Task DeleteAsync()
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot delete a file that does not exist.");
+            }
+
             await this.file.DeleteAsync();
         }
 
@@ -237,6 +263,11 @@
         /// </returns>
         public async Task WriteTextAsync(string text)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot write text to a file that does not exist.");
+            }
+
             await FileIO.WriteTextAsync(this.file, text);
         }
 
@@ -248,6 +279,11 @@
         /// </returns>
         public async Task<string> ReadTextAsync()
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot read text from a file that does not exist.");
+            }
+
             var text = await FileIO.ReadTextAsync(this.file);
             return text;
         }

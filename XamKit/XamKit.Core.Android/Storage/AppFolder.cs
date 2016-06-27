@@ -4,9 +4,7 @@ namespace XamKit.Core.Storage
     using System.IO;
     using System.Threading.Tasks;
 
-    using XamKit.Core.Common.Serialization;
     using XamKit.Core.Common.Storage;
-    using XamKit.Core.Serialization;
 
     /// <summary>
     /// Defines the app's root folder for an iOS application.
@@ -19,6 +17,9 @@ namespace XamKit.Core.Storage
             this.Path = path;
         }
 
+        /// <summary>
+        /// Gets the parent folder.
+        /// </summary>
         public IAppFolder ParentFolder { get; }
 
         /// <summary>
@@ -37,6 +38,9 @@ namespace XamKit.Core.Storage
         /// </summary>
         public string Path { get; }
 
+        /// <summary>
+        /// Gets a value indicating whether the file store item exists.
+        /// </summary>
         public bool Exists
         {
             get
@@ -45,18 +49,41 @@ namespace XamKit.Core.Storage
             }
         }
 
+        /// <summary>
+        /// Gets the date the file store item was created.
+        /// </summary>
+        public DateTime DateCreated
+        {
+            get
+            {
+                return Directory.GetCreationTime(this.Path);
+            }
+        }
+
+        /// <summary>
+        /// Creates a new file with the specified name in the current folder.
+        /// </summary>
+        /// <param name="fileName">
+        /// The file name.
+        /// </param>
+        /// <param name="creationOption">
+        /// An optional option which determines how to create the file if the specified name already exists in the current folder.
+        /// </param>
+        /// <returns>
+        /// Returns an IAppFile representing the created file.
+        /// </returns>
         public async Task<IAppFile> CreateFileAsync(
             string fileName,
             FileStoreCreationOption creationOption = FileStoreCreationOption.ThrowExceptionIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot create a file in a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 throw new ArgumentNullException(nameof(fileName));
-            }
-
-            if (!this.Exists)
-            {
-                throw new IOException("The folder attempting to create a file in does not exist.");
             }
 
             await Helpers.CreateNewTaskSchedulerAwaiter();
@@ -87,18 +114,30 @@ namespace XamKit.Core.Storage
             return new AppFile(this, filePath);
         }
 
+        /// <summary>
+        /// Creates a new subfolder with the specified name in the current folder.
+        /// </summary>
+        /// <param name="folderName">
+        /// The folder name.
+        /// </param>
+        /// <param name="creationOption">
+        /// An optional option which determines how to create the folder if the specified name already exists in the current folder.
+        /// </param>
+        /// <returns>
+        /// Returns an IAppFolder representing the created folder.
+        /// </returns>
         public async Task<IAppFolder> CreateFolderAsync(
             string folderName,
             FileStoreCreationOption creationOption = FileStoreCreationOption.ThrowExceptionIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot create a folder in a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(folderName))
             {
                 throw new ArgumentNullException(nameof(folderName));
-            }
-
-            if (!this.Exists)
-            {
-                throw new IOException("The folder attempting to create a folder in does not exist.");
             }
 
             await Helpers.CreateNewTaskSchedulerAwaiter();
@@ -129,8 +168,25 @@ namespace XamKit.Core.Storage
             return new AppFolder(this, folderPath);
         }
 
+        /// <summary>
+        /// Gets the file with the specified name from the current folder.
+        /// </summary>
+        /// <param name="fileName">
+        /// The file name.
+        /// </param>
+        /// <param name="createIfNotExisting">
+        /// An optional value indicating whether to create the file if it does not exist.
+        /// </param>
+        /// <returns>
+        /// Returns an IAppFile representing the file.
+        /// </returns>
         public async Task<IAppFile> GetFileAsync(string fileName, bool createIfNotExisting = false)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get a file from a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 throw new ArgumentNullException(nameof(fileName));
@@ -152,8 +208,25 @@ namespace XamKit.Core.Storage
             return new AppFile(this, filePath);
         }
 
+        /// <summary>
+        /// Gets the folder with the specified name from the current folder.
+        /// </summary>
+        /// <param name="folderName">
+        /// The folder name.
+        /// </param>
+        /// <param name="createIfNotExisting">
+        /// An optional value indicating whether to create the file if it does not exist.
+        /// </param>
+        /// <returns>
+        /// Returns an IAppFolder representing the folder.
+        /// </returns>
         public async Task<IAppFolder> GetFolderAsync(string folderName, bool createIfNotExisting = false)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get a folder from a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(folderName))
             {
                 throw new ArgumentNullException(nameof(folderName));
@@ -174,6 +247,24 @@ namespace XamKit.Core.Storage
             }
 
             return new AppFolder(this, folderPath);
+        }
+
+        /// <summary>
+        /// Deletes the folder and contents.
+        /// </summary>
+        /// <returns>
+        /// Returns an await-able task.
+        /// </returns>
+        public async Task DeleteAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot delete a folder that does not exist.");
+            }
+
+            await Helpers.CreateNewTaskSchedulerAwaiter();
+
+            Directory.Delete(this.Path, true);
         }
 
         private static void CreateFile(string filePath)

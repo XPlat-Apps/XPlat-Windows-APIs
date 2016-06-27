@@ -2,8 +2,6 @@
 {
     using System.Threading.Tasks;
 
-    using XamKit.Core.Common.Serialization;
-
     /// <summary>
     /// Defines an interface for an application folder.
     /// </summary>
@@ -68,5 +66,13 @@
         /// Returns an IAppFolder representing the folder.
         /// </returns>
         Task<IAppFolder> GetFolderAsync(string folderName, bool createIfNotExisting = false);
+
+        /// <summary>
+        /// Deletes the folder and contents.
+        /// </summary>
+        /// <returns>
+        /// Returns an await-able task.
+        /// </returns>
+        Task DeleteAsync();
     }
 }

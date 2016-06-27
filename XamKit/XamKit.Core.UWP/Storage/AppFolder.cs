@@ -5,12 +5,9 @@
     using System.Threading.Tasks;
 
     using Windows.Storage;
-    using Windows.UI.Xaml.Controls;
 
-    using XamKit.Core.Common.Serialization;
     using XamKit.Core.Common.Storage;
     using XamKit.Core.Extensions;
-    using XamKit.Core.Serialization;
 
     /// <summary>
     /// Defines the app's root folder for a UWP application.
@@ -64,7 +61,18 @@
         {
             get
             {
-                return this.folder != null;
+                return this.folder != null && Directory.Exists(this.folder.Path);
+            }
+        }
+
+        /// <summary>
+        /// Gets the date the file store item was created.
+        /// </summary>
+        public DateTime DateCreated
+        {
+            get
+            {
+                return this.folder.DateCreated.DateTime;
             }
         }
 
@@ -84,6 +92,11 @@
             string fileName,
             FileStoreCreationOption creationOption = FileStoreCreationOption.ThrowExceptionIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot create a file in a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 throw new ArgumentNullException(nameof(fileName));
@@ -109,6 +122,11 @@
             string folderName,
             FileStoreCreationOption creationOption = FileStoreCreationOption.ThrowExceptionIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot create a folder in a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(folderName))
             {
                 throw new ArgumentNullException(nameof(folderName));
@@ -133,6 +151,11 @@
         /// </returns>
         public async Task<IAppFile> GetFileAsync(string fileName, bool createIfNotExisting = false)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get a file from a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 throw new ArgumentNullException(nameof(fileName));
@@ -174,6 +197,11 @@
         /// </returns>
         public async Task<IAppFolder> GetFolderAsync(string folderName, bool createIfNotExisting = false)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get a folder from a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(folderName))
             {
                 throw new ArgumentNullException(nameof(folderName));
@@ -199,6 +227,22 @@
             }
 
             return new AppFolder(this, containedFolder);
+        }
+
+        /// <summary>
+        /// Deletes the folder and contents.
+        /// </summary>
+        /// <returns>
+        /// Returns an await-able task.
+        /// </returns>
+        public async Task DeleteAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot delete a folder that does not exist.");
+            }
+
+            await this.folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
         }
     }
 }

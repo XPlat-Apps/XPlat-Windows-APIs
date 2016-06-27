@@ -45,18 +45,29 @@
             }
         }
 
+        /// <summary>
+        /// Gets the date the file store item was created.
+        /// </summary>
+        public DateTime DateCreated
+        {
+            get
+            {
+                return Directory.GetCreationTime(this.Path);
+            }
+        }
+
         public async Task<IAppFile> CreateFileAsync(
             string fileName,
             FileStoreCreationOption creationOption = FileStoreCreationOption.ThrowExceptionIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot create a file in a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 throw new ArgumentNullException(nameof(fileName));
-            }
-
-            if (!this.Exists)
-            {
-                throw new IOException("The folder attempting to create a file in does not exist.");
             }
 
             await Helpers.CreateNewTaskSchedulerAwaiter();
@@ -91,14 +102,14 @@
             string folderName,
             FileStoreCreationOption creationOption = FileStoreCreationOption.ThrowExceptionIfExists)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot create a folder in a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(folderName))
             {
                 throw new ArgumentNullException(nameof(folderName));
-            }
-
-            if (!this.Exists)
-            {
-                throw new IOException("The folder attempting to create a folder in does not exist.");
             }
 
             await Helpers.CreateNewTaskSchedulerAwaiter();
@@ -131,6 +142,11 @@
 
         public async Task<IAppFile> GetFileAsync(string fileName, bool createIfNotExisting = false)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get a file from a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 throw new ArgumentNullException(nameof(fileName));
@@ -154,6 +170,11 @@
 
         public async Task<IAppFolder> GetFolderAsync(string folderName, bool createIfNotExisting = false)
         {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get a folder from a folder that does not exist.");
+            }
+
             if (string.IsNullOrWhiteSpace(folderName))
             {
                 throw new ArgumentNullException(nameof(folderName));
@@ -174,6 +195,24 @@
             }
 
             return new AppFolder(this, folderPath);
+        }
+
+        /// <summary>
+        /// Deletes the folder and contents.
+        /// </summary>
+        /// <returns>
+        /// Returns an await-able task.
+        /// </returns>
+        public async Task DeleteAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot delete a folder that does not exist.");
+            }
+
+            await Helpers.CreateNewTaskSchedulerAwaiter();
+
+            Directory.Delete(this.Path, true);
         }
 
         private static void CreateFile(string filePath)
