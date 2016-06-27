@@ -14,8 +14,8 @@
   <mp:PhoneIdentity PhoneProductId="f9fd55fa-b9d9-49c5-88a6-06b052f05928" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>XamKit.Samples.UWP</Name>
-    <PublisherDisplayName>jmcro</PublisherName>
+    <DisplayName>XamKit.Samples.UWP</DisplayName>
+    <PublisherDisplayName>jmcro</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

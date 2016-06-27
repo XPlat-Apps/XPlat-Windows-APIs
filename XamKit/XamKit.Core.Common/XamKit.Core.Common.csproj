@@ -41,6 +41,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Serialization\ISerializationService.cs" />
     <Compile Include="Storage\FileAccessOption.cs" />
     <Compile Include="Storage\FileNameCreationOption.cs" />
     <Compile Include="Storage\FileStoreCreationOption.cs" />

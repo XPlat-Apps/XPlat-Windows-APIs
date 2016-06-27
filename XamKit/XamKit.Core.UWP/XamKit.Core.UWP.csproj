@@ -107,6 +107,15 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\XamKit.Core\Serialization\JsonSerializationService.cs">
+      <Link>Serialization\JsonSerializationService.cs</Link>
+    </Compile>
+    <Compile Include="..\XamKit.Core\Serialization\SerializationContainer.cs">
+      <Link>Serialization\SerializationContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\XamKit.Core\Serialization\SerializationService.cs">
+      <Link>Serialization\SerializationService.cs</Link>
+    </Compile>
     <Compile Include="..\XamKit.Core\Storage\AppData.cs">
       <Link>Storage\AppData.cs</Link>
     </Compile>

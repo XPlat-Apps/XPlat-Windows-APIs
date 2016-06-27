@@ -6,8 +6,10 @@
 
     using Windows.Storage;
 
+    using XamKit.Core.Common.Serialization;
     using XamKit.Core.Common.Storage;
     using XamKit.Core.Extensions;
+    using XamKit.Core.Serialization;
 
     public class AppFile : IAppFile
     {
@@ -159,6 +161,94 @@
         public async Task DeleteAsync()
         {
             await this.file.DeleteAsync();
+        }
+
+        /// <summary>
+        /// Serializes an object to the file as a string. Will overwrite any data already stored in the file.
+        /// </summary>
+        /// <param name="dataToSerialize">
+        /// The data to serialize.
+        /// </param>
+        /// <param name="serializationService">
+        /// The service for serialization. If null, will use JSON.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of object to save.
+        /// </typeparam>
+        /// <returns>
+        /// Returns an await-able task.
+        /// </returns>
+        public async Task SaveDataToFile<T>(T dataToSerialize, ISerializationService serializationService)
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot save data to a file that does not exist.");
+            }
+
+            if (serializationService == null)
+            {
+                serializationService = SerializationService.Json;
+            }
+
+            var serializedData = serializationService.Serialize(dataToSerialize);
+
+            await this.WriteTextAsync(serializedData);
+        }
+
+        /// <summary>
+        /// Deserializes an object from the file.
+        /// </summary>
+        /// <param name="serializationService">
+        /// The service for seialization. If null, will use JSON.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of object to load.
+        /// </typeparam>
+        /// <returns>
+        /// Returns the deserialized data.
+        /// </returns>
+        public async Task<T> LoadDataFromFile<T>(ISerializationService serializationService)
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot read data from a file that does not exist.");
+            }
+
+            if (serializationService == null)
+            {
+                serializationService = SerializationService.Json;
+            }
+
+            var serializedData = await this.ReadTextAsync();
+
+            var deserializedData = serializationService.Deserialize<T>(serializedData);
+            return deserializedData;
+        }
+
+        /// <summary>
+        /// Writes text to the file.
+        /// </summary>
+        /// <param name="text">
+        /// The text to write out.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        public async Task WriteTextAsync(string text)
+        {
+            await FileIO.WriteTextAsync(this.file, text);
+        }
+
+        /// <summary>
+        /// Reads text from the file.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        public async Task<string> ReadTextAsync()
+        {
+            var text = await FileIO.ReadTextAsync(this.file);
+            return text;
         }
     }
 }

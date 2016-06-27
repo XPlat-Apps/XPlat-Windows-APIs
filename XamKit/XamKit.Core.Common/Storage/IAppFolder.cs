@@ -2,6 +2,8 @@
 {
     using System.Threading.Tasks;
 
+    using XamKit.Core.Common.Serialization;
+
     /// <summary>
     /// Defines an interface for an application folder.
     /// </summary>

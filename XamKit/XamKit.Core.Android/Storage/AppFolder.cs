@@ -4,7 +4,9 @@ namespace XamKit.Core.Storage
     using System.IO;
     using System.Threading.Tasks;
 
+    using XamKit.Core.Common.Serialization;
     using XamKit.Core.Common.Storage;
+    using XamKit.Core.Serialization;
 
     /// <summary>
     /// Defines the app's root folder for an iOS application.
