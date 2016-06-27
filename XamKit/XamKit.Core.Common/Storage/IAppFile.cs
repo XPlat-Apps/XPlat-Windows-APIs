@@ -3,6 +3,8 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using XamKit.Core.Common.Serialization;
+
     /// <summary>
     /// Defines an interface for an application file.
     /// </summary>
@@ -60,6 +62,37 @@
         /// Returns an await-able task.
         /// </returns>
         Task DeleteAsync();
+
+        /// <summary>
+        /// Serializes an object to the file as a string. Will overwrite any data already stored in the file.
+        /// </summary>
+        /// <param name="dataToSerialize">
+        /// The data to serialize.
+        /// </param>
+        /// <param name="serializationService">
+        /// The service for serialization. If null, will use JSON.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of object to save.
+        /// </typeparam>
+        /// <returns>
+        /// Returns an await-able task.
+        /// </returns>
+        Task SaveDataToFile<T>(T dataToSerialize, ISerializationService serializationService);
+
+        /// <summary>
+        /// Deserializes an object from the file.
+        /// </summary>
+        /// <param name="serializationService">
+        /// The service for seialization. If null, will use JSON.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of object to load.
+        /// </typeparam>
+        /// <returns>
+        /// Returns the deserialized data.
+        /// </returns>
+        Task<T> LoadDataFromFile<T>(ISerializationService serializationService);
 
         /// <summary>
         /// Writes text to the file.
