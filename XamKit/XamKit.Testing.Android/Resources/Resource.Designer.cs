@@ -48,6 +48,8 @@ namespace XamKit.Testing.Android
 			global::Xamarin.Android.NUnitLite.Resource.Layout.results = global::XamKit.Testing.Android.Resource.Layout.results;
 			global::Xamarin.Android.NUnitLite.Resource.Layout.test_result = global::XamKit.Testing.Android.Resource.Layout.test_result;
 			global::Xamarin.Android.NUnitLite.Resource.Layout.test_suite = global::XamKit.Testing.Android.Resource.Layout.test_suite;
+			global::XamKit.Core.Resource.String.ApplicationName = global::XamKit.Testing.Android.Resource.String.ApplicationName;
+			global::XamKit.Core.Resource.String.Hello = global::XamKit.Testing.Android.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

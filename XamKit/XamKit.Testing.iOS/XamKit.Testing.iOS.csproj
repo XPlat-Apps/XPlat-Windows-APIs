@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Tests\Core\Tests.Storage.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Entitlements.plist" />
@@ -105,6 +106,18 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XamKit.Core.Common\XamKit.Core.Common.csproj">
+      <Project>{9f3ae615-97c0-4e68-81d4-473eb2108bee}</Project>
+      <Name>XamKit.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XamKit.Core.iOS\XamKit.Core.iOS.csproj">
+      <Project>{f925d0f9-a634-4a02-9e9e-5976e8776a8b}</Project>
+      <Name>XamKit.Core.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
