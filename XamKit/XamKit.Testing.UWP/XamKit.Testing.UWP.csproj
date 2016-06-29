@@ -100,6 +100,7 @@
       <DependentUpon>UnitTestApp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tests\Core\Tests.Storage.cs" />
+    <Compile Include="UnitTestFramework\AssertAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="UnitTestApp.xaml">
