@@ -61,7 +61,7 @@
         /// Returns a collection of IAppFiles.
         /// </returns>
         Task<IEnumerable<IAppFile>> GetFilesAsync();
- 
+
         /// <summary>
         /// Gets the folder with the specified name from the current folder.
         /// </summary>

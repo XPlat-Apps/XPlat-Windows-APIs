@@ -1,7 +1,9 @@
 ﻿namespace XamKit.Core.Storage
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Windows.Storage;
@@ -188,6 +190,31 @@
             }
 
             await this.file.DeleteAsync();
+        }
+
+        /// <summary>
+        /// Gets the properties of the file store item.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of file store properties.
+        /// </returns>
+        public async Task<IEnumerable<FileStoreProperty>> GetPropertiesAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get properties from a file that does not exist.");
+            }
+
+            var properties = new List<FileStoreProperty>();
+
+            var storageFile = this.file as StorageFile;
+            if (storageFile != null)
+            {
+                var fileProps = await storageFile.Properties.RetrievePropertiesAsync(null);
+                properties.AddRange(fileProps.Select(prop => new FileStoreProperty(prop.Key, prop.Value)));
+            }
+
+            return properties;
         }
 
         /// <summary>

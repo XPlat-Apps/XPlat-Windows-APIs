@@ -45,6 +45,7 @@
     <Compile Include="Storage\FileAccessOption.cs" />
     <Compile Include="Storage\FileNameCreationOption.cs" />
     <Compile Include="Storage\FileStoreCreationOption.cs" />
+    <Compile Include="Storage\FileStoreProperty.cs" />
     <Compile Include="Storage\IAppData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\IAppFile.cs" />

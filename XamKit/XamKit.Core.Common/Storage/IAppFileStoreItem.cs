@@ -1,6 +1,7 @@
 ﻿namespace XamKit.Core.Common.Storage
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public interface IAppFileStoreItem
@@ -37,5 +38,13 @@
         /// Returns an await-able task.
         /// </returns>
         Task DeleteAsync();
+
+        /// <summary>
+        /// Gets the properties of the file store item.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of file store properties.
+        /// </returns>
+        Task<IEnumerable<FileStoreProperty>> GetPropertiesAsync();
     }
 }

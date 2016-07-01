@@ -295,6 +295,28 @@ namespace XamKit.Core.Storage
             Directory.Delete(this.Path, true);
         }
 
+        public async Task<IEnumerable<FileStoreProperty>> GetPropertiesAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get properties from a folder that does not exist.");
+            }
+
+
+            await Helpers.CreateNewTaskSchedulerAwaiter();
+
+            var properties = new List<FileStoreProperty>();
+
+            var folder = ShellObject.FromParsingName(this.Path);
+
+            if (folder != null)
+            {
+                properties.AddRange(folder.Properties.DefaultPropertyCollection.Select(property => new FileStoreProperty(property.PropertyKey.ToString(), property.ValueAsObject)));
+            }
+
+            return properties;
+        }
+
         private static void CreateFile(string filePath)
         {
             using (File.Create(filePath))

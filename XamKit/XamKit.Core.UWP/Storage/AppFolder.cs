@@ -282,5 +282,30 @@
 
             await this.folder.DeleteAsync(StorageDeleteOption.PermanentDelete);
         }
+
+        /// <summary>
+        /// Gets the properties of the file store item.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of file store properties.
+        /// </returns>
+        public async Task<IEnumerable<FileStoreProperty>> GetPropertiesAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new NotSupportedException("Cannot get properties from a folder that does not exist.");
+            }
+
+            var properties = new List<FileStoreProperty>();
+
+            var storageFolder = this.folder as StorageFolder;
+            if (storageFolder != null)
+            {
+                var folderProps = await storageFolder.Properties.RetrievePropertiesAsync(null);
+                properties.AddRange(folderProps.Select(prop => new FileStoreProperty(prop.Key, prop.Value)));
+            }
+
+            return properties;
+        }
     }
 }
