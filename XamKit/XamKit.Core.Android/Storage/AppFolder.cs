@@ -6,8 +6,6 @@ namespace XamKit.Core.Storage
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Microsoft.WindowsAPICodePack.Shell;
-
     using XamKit.Core.Common.Storage;
 
     /// <summary>
@@ -299,24 +297,25 @@ namespace XamKit.Core.Storage
 
         public async Task<IEnumerable<FileStoreProperty>> GetPropertiesAsync()
         {
-            if (!this.Exists)
-            {
-                throw new NotSupportedException("Cannot get properties from a folder that does not exist.");
-            }
+            throw new NotImplementedException("GetPropertiesAsync is not currently implemented.");
 
+            //if (!this.Exists)
+            //{
+            //    throw new NotSupportedException("Cannot get properties from a folder that does not exist.");
+            //}
 
-            await Helpers.CreateNewTaskSchedulerAwaiter();
+            //await Helpers.CreateNewTaskSchedulerAwaiter();
 
-            var properties = new List<FileStoreProperty>();
+            //var properties = new List<FileStoreProperty>();
 
-            var folder = ShellObject.FromParsingName(this.Path);
+            //var folder = ShellObject.FromParsingName(this.Path);
 
-            if (folder != null)
-            {
-                properties.AddRange(folder.Properties.DefaultPropertyCollection.Select(property => new FileStoreProperty(property.PropertyKey.ToString(), property.ValueAsObject)));
-            }
+            //if (folder != null)
+            //{
+            //    properties.AddRange(folder.Properties.DefaultPropertyCollection.Select(property => new FileStoreProperty(property.PropertyKey.ToString(), property.ValueAsObject)));
+            //}
 
-            return properties;
+            //return properties;
         }
 
         private static void CreateFile(string filePath)

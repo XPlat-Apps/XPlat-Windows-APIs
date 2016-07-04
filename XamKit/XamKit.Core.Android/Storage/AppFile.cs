@@ -3,10 +3,7 @@ namespace XamKit.Core.Storage
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
     using System.Threading.Tasks;
-
-    using Microsoft.WindowsAPICodePack.Shell;
 
     using XamKit.Core.Common.Serialization;
     using XamKit.Core.Common.Storage;
@@ -169,23 +166,25 @@ namespace XamKit.Core.Storage
 
         public async Task<IEnumerable<FileStoreProperty>> GetPropertiesAsync()
         {
-            if (!this.Exists)
-            {
-                throw new NotSupportedException("Cannot get properties from a file that does not exist.");
-            }
+            throw new NotImplementedException("GetPropertiesAsync is not currently implemented.");
 
-            await Helpers.CreateNewTaskSchedulerAwaiter();
+            //if (!this.Exists)
+            //{
+            //    throw new NotSupportedException("Cannot get properties from a file that does not exist.");
+            //}
 
-            var properties = new List<FileStoreProperty>();
+            //await Helpers.CreateNewTaskSchedulerAwaiter();
 
-            var file = ShellObject.FromParsingName(this.Path);
+            //var properties = new List<FileStoreProperty>();
 
-            if (file != null)
-            {
-                properties.AddRange(file.Properties.DefaultPropertyCollection.Select(property => new FileStoreProperty(property.PropertyKey.ToString(), property.ValueAsObject)));
-            }
+            //var file = ShellObject.FromParsingName(this.Path);
 
-            return properties;
+            //if (file != null)
+            //{
+            //    properties.AddRange(file.Properties.DefaultPropertyCollection.Select(property => new FileStoreProperty(property.PropertyKey.ToString(), property.ValueAsObject)));
+            //}
+
+            //return properties;
         }
 
         /// <summary>
