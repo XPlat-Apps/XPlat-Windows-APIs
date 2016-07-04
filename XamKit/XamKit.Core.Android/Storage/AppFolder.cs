@@ -6,6 +6,8 @@ namespace XamKit.Core.Storage
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.WindowsAPICodePack.Shell;
+
     using XamKit.Core.Common.Storage;
 
     /// <summary>
