@@ -129,7 +129,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot rename a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot rename a file that does not exist.");
             }
 
             if (string.IsNullOrWhiteSpace(desiredNewName))
@@ -153,7 +153,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot delete a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot delete a file that does not exist.");
             }
 
             await this.file.DeleteAsync();
@@ -169,7 +169,9 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot get properties for a file that does not exist.");
+                throw new AppStorageItemNotFoundException(
+                          this.Name,
+                          "Cannot get properties for a file that does not exist.");
             }
 
             var storageFile = this.file as StorageFile;
@@ -203,7 +205,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot open a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot open a file that does not exist.");
             }
 
             var s = await this.file.OpenAsync(accessMode.ToFileAccessMode());
@@ -263,7 +265,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot copy a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot copy a file that does not exist.");
             }
 
             if (destinationFolder == null)
@@ -273,7 +275,9 @@
 
             if (!destinationFolder.Exists)
             {
-                throw new FileNotFoundException("Cannot copy a file to a folder that does not exist.");
+                throw new AppStorageItemNotFoundException(
+                          destinationFolder.Name,
+                          "Cannot copy a file to a folder that does not exist.");
             }
 
             if (string.IsNullOrWhiteSpace(desiredNewName))
@@ -304,7 +308,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot copy a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot copy a file that does not exist.");
             }
 
             if (fileToReplace == null)
@@ -314,7 +318,9 @@
 
             if (!fileToReplace.Exists)
             {
-                throw new FileNotFoundException("Cannot copy to and replace a file that does not exist.");
+                throw new AppStorageItemNotFoundException(
+                          fileToReplace.Name,
+                          "Cannot copy to and replace a file that does not exist.");
             }
 
             var storageFile = await StorageFile.GetFileFromPathAsync(fileToReplace.Path);
@@ -375,7 +381,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot move a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot move a file that does not exist.");
             }
 
             if (destinationFolder == null)
@@ -385,7 +391,9 @@
 
             if (!destinationFolder.Exists)
             {
-                throw new FileNotFoundException("Cannot move a file to a folder that does not exist.");
+                throw new AppStorageItemNotFoundException(
+                          destinationFolder.Name,
+                          "Cannot move a file to a folder that does not exist.");
             }
 
             if (string.IsNullOrWhiteSpace(desiredNewName))
@@ -414,7 +422,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot move a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot move a file that does not exist.");
             }
 
             if (fileToReplace == null)
@@ -424,7 +432,9 @@
 
             if (!fileToReplace.Exists)
             {
-                throw new FileNotFoundException("Cannot move to and replace a file that does not exist.");
+                throw new AppStorageItemNotFoundException(
+                          fileToReplace.Name,
+                          "Cannot move to and replace a file that does not exist.");
             }
 
             var storageFile = await StorageFile.GetFileFromPathAsync(fileToReplace.Path);
@@ -447,7 +457,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot write to a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot write to a file that does not exist.");
             }
 
             await FileIO.WriteTextAsync(this.file, text);
@@ -463,7 +473,7 @@
         {
             if (!this.Exists)
             {
-                throw new FileNotFoundException("Cannot read from a file that does not exist.");
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot read from a file that does not exist.");
             }
 
             var text = await FileIO.ReadTextAsync(this.file);

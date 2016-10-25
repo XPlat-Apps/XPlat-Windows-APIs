@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\AppStorageItemCreationException.cs" />
     <Compile Include="Storage\FileAccessOption.cs" />
+    <Compile Include="Storage\AppStorageItemNotFoundException.cs" />
     <Compile Include="Storage\FileStoreCreationOption.cs" />
     <Compile Include="Storage\FileStoreItemTypes.cs" />
     <Compile Include="Storage\FileStoreNameCollisionOption.cs" />
