@@ -118,7 +118,10 @@
     <Compile Include="..\XamarinApiToolkit\Storage\AppData.cs">
       <Link>Storage\AppData.cs</Link>
     </Compile>
+    <Compile Include="Extensions\Extensions.Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\AppFile.cs" />
+    <Compile Include="Storage\AppFolder.cs" />
     <EmbeddedResource Include="Properties\XamarinApiToolkit.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup />

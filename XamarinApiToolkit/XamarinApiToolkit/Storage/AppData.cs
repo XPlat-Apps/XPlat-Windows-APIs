@@ -93,20 +93,33 @@
 
         private static IAppFolder CreateLocalFolder()
         {
-            // ToDo
+#if PORTABLE
             return null;
+#elif WINDOWS_UWP
+            return new AppFolder(null, Windows.Storage.ApplicationData.Current.LocalFolder);
+#else
+            return null;
+#endif
         }
 
         private static IAppFolder CreateRoamingFolder()
         {
-            // ToDo
+#if WINDOWS_UWP
+            return new AppFolder(null, Windows.Storage.ApplicationData.Current.RoamingFolder);
+#else
             return null;
+#endif
         }
 
         private static IAppFolder CreateTemporaryFolder()
         {
-            // ToDo
+#if PORTABLE
             return null;
+#elif WINDOWS_UWP
+            return new AppFolder(null, Windows.Storage.ApplicationData.Current.TemporaryFolder);
+#else
+            return null;
+#endif
         }
     }
 }

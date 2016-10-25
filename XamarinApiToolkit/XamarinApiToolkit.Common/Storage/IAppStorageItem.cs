@@ -1,6 +1,7 @@
 ﻿namespace XamarinApiToolkit.Storage
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using XamarinApiToolkit.Storage.FileProperties;
@@ -77,7 +78,7 @@
         /// <returns>
         /// Returns the properties.
         /// </returns>
-        Task<FileStoreProperties> GetPropertiesAsync();
+        Task<IDictionary<string, object>> GetPropertiesAsync();
 
         /// <summary>
         /// Checks whether the item is of a known type.
