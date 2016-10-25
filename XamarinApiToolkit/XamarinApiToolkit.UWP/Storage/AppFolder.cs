@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Windows.Storage;
@@ -124,14 +125,40 @@
             await this.folder.RenameAsync(desiredNewName, option.ToNameCollisionOption());
         }
 
-        public Task DeleteAsync()
+        /// <summary>
+        /// Deletes the item.
+        /// </summary>
+        /// <remarks>
+        /// If the item is a folder, it will delete all contents.
+        /// </remarks>
+        /// <returns>
+        /// Returns a task.
+        /// </returns>
+        public async Task DeleteAsync()
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot delete a folder that does not exist.");
+            }
+
+            await this.folder.DeleteAsync();
         }
 
-        public Task<IDictionary<string, object>> GetPropertiesAsync()
+        /// <summary>
+        /// Gets the properties of the item.
+        /// </summary>
+        /// <returns>
+        /// Returns the properties.
+        /// </returns>
+        public async Task<IDictionary<string, object>> GetPropertiesAsync()
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot get properties for a folder that does not exist.");
+            }
+
+            var storageFolder = this.folder as StorageFolder;
+            return storageFolder != null ? await storageFolder.Properties.RetrievePropertiesAsync(null) : null;
         }
 
         /// <summary>
@@ -148,64 +175,332 @@
             return type == FileStoreItemTypes.Folder;
         }
 
+        /// <summary>
+        /// Creates a new file with the desired name in this folder.
+        /// </summary>
+        /// <param name="desiredName">
+        /// The desired file name.
+        /// </param>
+        /// <returns>
+        /// Returns the created file.
+        /// </returns>
         public Task<IAppFile> CreateFileAsync(string desiredName)
         {
-            throw new NotImplementedException();
+            return this.CreateFileAsync(desiredName, FileStoreCreationOption.FailIfExists);
         }
 
-        public Task<IAppFile> CreateFileAsync(string desiredName, FileStoreCreationOption options)
+        /// <summary>
+        /// Creates a new file with the desired name with creation options in this folder.
+        /// </summary>
+        /// <param name="desiredName">
+        /// The desired file name.
+        /// </param>
+        /// <param name="options">
+        /// The creation options.
+        /// </param>
+        /// <returns>
+        /// Returns the created file.
+        /// </returns>
+        public async Task<IAppFile> CreateFileAsync(string desiredName, FileStoreCreationOption options)
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot create a file in a folder that does not exist.");
+            }
+
+            if (string.IsNullOrWhiteSpace(desiredName))
+            {
+                throw new ArgumentNullException(nameof(desiredName));
+            }
+
+            var storageFile = await this.folder.CreateFileAsync(desiredName, options.ToCreationCollisionOption());
+            return new AppFile(this, storageFile);
         }
 
+        /// <summary>
+        /// Creates a new folder with the desired name in this folder.
+        /// </summary>
+        /// <param name="desiredName">
+        /// The desired folder name.
+        /// </param>
+        /// <returns>
+        /// Returns the created folder.
+        /// </returns>
         public Task<IAppFolder> CreateFolderAsync(string desiredName)
         {
-            throw new NotImplementedException();
+            return this.CreateFolderAsync(desiredName, FileStoreCreationOption.FailIfExists);
         }
 
-        public Task<IAppFolder> CreateFolderAsync(string desiredName, FileStoreCreationOption options)
+        /// <summary>
+        /// Creates a new folder with the desired name with creation options in this folder.
+        /// </summary>
+        /// <param name="desiredName">
+        /// The desired folder name.
+        /// </param>
+        /// <param name="options">
+        /// The creation options.
+        /// </param>
+        /// <returns>
+        /// Returns the created folder.
+        /// </returns>
+        public async Task<IAppFolder> CreateFolderAsync(string desiredName, FileStoreCreationOption options)
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot create a folder in a folder that does not exist.");
+            }
+
+            if (string.IsNullOrWhiteSpace(desiredName))
+            {
+                throw new ArgumentNullException(nameof(desiredName));
+            }
+
+            var storageFolder = await this.folder.CreateFolderAsync(desiredName, options.ToCreationCollisionOption());
+            return new AppFolder(this, storageFolder);
         }
 
+        /// <summary>
+        /// Gets a file with the specified name from this folder.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the file to get.
+        /// </param>
+        /// <returns>
+        /// Returns the file.
+        /// </returns>
         public Task<IAppFile> GetFileAsync(string name)
         {
-            throw new NotImplementedException();
+            return this.GetFileAsync(name, false);
         }
 
-        public Task<IAppFile> GetFileAsync(string name, bool createIfNotExists)
+        /// <summary>
+        /// Gets a file with the specified name from this folder.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the file to get.
+        /// </param>
+        /// <param name="createIfNotExists">
+        /// A value indicating whether to create the file if it does not exist.
+        /// </param>
+        /// <returns>
+        /// Returns the file.
+        /// </returns>
+        public async Task<IAppFile> GetFileAsync(string name, bool createIfNotExists)
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot get a file from a folder that does not exist.");
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            StorageFile storageFile = null;
+
+            try
+            {
+                storageFile = await this.folder.GetFileAsync(name);
+            }
+            catch (Exception)
+            {
+                if (!createIfNotExists)
+                {
+                    throw;
+                }
+            }
+
+            if (createIfNotExists && storageFile == null)
+            {
+                return await this.CreateFileAsync(name, FileStoreCreationOption.OpenIfExists);
+            }
+
+            return new AppFile(this, storageFile);
         }
 
+        /// <summary>
+        /// Gets a folder with the specified name from this folder.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the folder to get.
+        /// </param>
+        /// <returns>
+        /// Returns the folder.
+        /// </returns>
         public Task<IAppFolder> GetFolderAsync(string name)
         {
-            throw new NotImplementedException();
+            return this.GetFolderAsync(name, false);
         }
 
-        public Task<IAppFolder> GetFolderAsync(string name, bool createIfNotExists)
+        /// <summary>
+        /// Gets a folder with the specified name from this folder.
+        /// </summary>
+        /// <param name="name">
+        /// The name of the folder to get.
+        /// </param>
+        /// <param name="createIfNotExists">
+        /// A value indicating whether to create the folder if it does not exist.
+        /// </param>
+        /// <returns>
+        /// Returns the folder.
+        /// </returns>
+        public async Task<IAppFolder> GetFolderAsync(string name, bool createIfNotExists)
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot get a folder from a folder that does not exist.");
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            StorageFolder storageFolder = null;
+
+            try
+            {
+                storageFolder = await this.folder.GetFolderAsync(name);
+            }
+            catch (Exception)
+            {
+                if (!createIfNotExists)
+                {
+                    throw;
+                }
+            }
+
+            if (createIfNotExists && storageFolder == null)
+            {
+                return await this.CreateFolderAsync(name, FileStoreCreationOption.OpenIfExists);
+            }
+
+            return new AppFolder(this, storageFolder);
         }
 
-        public Task<IAppStorageItem> GetItemAsync(string name)
+        /// <summary>
+        /// Gets a storage item with the specified name from this folder.
+        /// </summary>
+        /// <remarks>
+        /// A storage item can be a file or folder.
+        /// </remarks>
+        /// <param name="name">
+        /// The name of the item to get.
+        /// </param>
+        /// <returns>
+        /// Returns the file or folder.
+        /// </returns>
+        public async Task<IAppStorageItem> GetItemAsync(string name)
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot get an item from a folder that does not exist.");
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            var storageItem = await this.folder.GetItemAsync(name);
+
+            if (storageItem == null)
+            {
+                throw new FileNotFoundException("The item could not be found in the folder.");
+            }
+
+            if (storageItem.IsOfType(StorageItemTypes.None))
+            {
+                throw new InvalidOperationException("The item is not a valid storage type.");
+            }
+
+            if (storageItem.IsOfType(StorageItemTypes.File))
+            {
+                var storageFile = storageItem as StorageFile;
+                return new AppFile(this, storageFile);
+            }
+
+            if (storageItem.IsOfType(StorageItemTypes.Folder))
+            {
+                var storageFolder = storageItem as StorageFolder;
+                return new AppFolder(this, storageFolder);
+            }
+
+            return null;
         }
 
-        public Task<IReadOnlyList<IAppFile>> GetFilesAsync()
+        /// <summary>
+        /// Gets all of the files from this folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of files.
+        /// </returns>
+        public async Task<IReadOnlyList<IAppFile>> GetFilesAsync()
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot get files from a folder that does not exist.");
+            }
+
+            var storageFiles = await this.folder.GetFilesAsync();
+            return storageFiles.Select(storageFile => new AppFile(this, storageFile)).ToList();
         }
 
-        public Task<IReadOnlyList<IAppFolder>> GetFoldersAsync()
+        /// <summary>
+        /// Gets all of the folders from this folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of folders.
+        /// </returns>
+        public async Task<IReadOnlyList<IAppFolder>> GetFoldersAsync()
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot get folders from a folder that does not exist.");
+            }
+
+            var storageFolders = await this.folder.GetFoldersAsync();
+            return storageFolders.Select(storageFolder => new AppFolder(this, storageFolder)).ToList();
         }
 
-        public Task<IReadOnlyList<IAppStorageItem>> GetItemsAsync()
+        /// <summary>
+        /// Gets all of the items from this folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of folders and files.
+        /// </returns>
+        public async Task<IReadOnlyList<IAppStorageItem>> GetItemsAsync()
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new FileNotFoundException("Cannot get folders from a folder that does not exist.");
+            }
+
+            var storageItems = await this.folder.GetItemsAsync();
+
+            var result = new List<IAppStorageItem>();
+
+            foreach (var storageItem in storageItems)
+            {
+                if (storageItem == null || storageItem.IsOfType(StorageItemTypes.None))
+                {
+                    continue;
+                }
+
+                if (storageItem.IsOfType(StorageItemTypes.File))
+                {
+                    var storageFile = storageItem as StorageFile;
+                    result.Add(new AppFile(this, storageFile));
+                }
+                else if (storageItem.IsOfType(StorageItemTypes.Folder))
+                {
+                    var storageFolder = storageItem as StorageFolder;
+                    result.Add(new AppFolder(this, storageFolder));
+                }
+            }
+
+            return result;
         }
     }
 }

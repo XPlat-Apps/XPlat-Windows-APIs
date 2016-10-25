@@ -1,5 +1,7 @@
 ﻿namespace XamarinApiToolkit
 {
+    using System;
+
     using Windows.Storage;
 
     using XamarinApiToolkit.Storage;
@@ -27,6 +29,21 @@
                     return FileAccessMode.ReadWrite;
                 default:
                     return FileAccessMode.Read;
+            }
+        }
+
+        public static CreationCollisionOption ToCreationCollisionOption(this FileStoreCreationOption option)
+        {
+            switch (option)
+            {
+                case FileStoreCreationOption.GenerateUniqueName:
+                    return CreationCollisionOption.GenerateUniqueName;
+                case FileStoreCreationOption.ReplaceExisting:
+                    return CreationCollisionOption.ReplaceExisting;
+                case FileStoreCreationOption.OpenIfExists:
+                    return CreationCollisionOption.OpenIfExists;
+                default:
+                    return CreationCollisionOption.FailIfExists;
             }
         }
     }
