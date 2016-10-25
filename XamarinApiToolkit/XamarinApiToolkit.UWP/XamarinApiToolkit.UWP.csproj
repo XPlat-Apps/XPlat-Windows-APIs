@@ -115,12 +115,13 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\XamarinApiToolkit\Storage\AppData.cs">
+      <Link>Storage\AppData.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\XamarinApiToolkit.UWP.rd.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Storage\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\XamarinApiToolkit.Common\XamarinApiToolkit.Common.csproj">
       <Project>{184b7424-b553-4477-a5a4-03b23ac41c74}</Project>

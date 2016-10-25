@@ -48,9 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Storage\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\XamarinApiToolkit\Storage\AppData.cs">
+      <Link>Storage\AppData.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
