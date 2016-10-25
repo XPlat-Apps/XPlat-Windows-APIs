@@ -121,6 +121,12 @@
   <ItemGroup>
     <Folder Include="Storage\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XamarinApiToolkit.Common\XamarinApiToolkit.Common.csproj">
+      <Project>{184b7424-b553-4477-a5a4-03b23ac41c74}</Project>
+      <Name>XamarinApiToolkit.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
