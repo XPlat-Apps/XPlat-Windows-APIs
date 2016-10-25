@@ -20,8 +20,6 @@
                                                             CreateLocalFolder,
                                                             LazyThreadSafetyMode.PublicationOnly);
 
-
-
         private readonly Lazy<IAppFolder> roamingFolder = new Lazy<IAppFolder>(
                                                               CreateRoamingFolder,
                                                               LazyThreadSafetyMode.PublicationOnly);
@@ -87,8 +85,11 @@
 
         private static IAppSettingsContainer CreateSettings()
         {
-            // ToDo
+#if PORTABLE
             return null;
+#else
+            return new AppSettingsContainer();
+#endif
         }
 
         private static IAppFolder CreateLocalFolder()

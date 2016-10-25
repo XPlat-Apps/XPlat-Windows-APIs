@@ -4,8 +4,6 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using XamarinApiToolkit.Storage.FileProperties;
-
     /// <summary>
     /// Defines an interface for an application storage item.
     /// </summary>

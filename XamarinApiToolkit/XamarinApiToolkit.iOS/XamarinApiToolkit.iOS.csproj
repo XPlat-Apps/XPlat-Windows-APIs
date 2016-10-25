@@ -54,6 +54,7 @@
       <Link>Storage\AppData.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\AppSettingsContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
