@@ -3,12 +3,25 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using WinUX.Threading.Tasks;
 
+    /// <summary>
+    /// Defines an application folder.
+    /// </summary>
     public sealed class AppFolder : IAppFolder
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AppFolder"/> class.
+        /// </summary>
+        /// <param name="parentFolder">
+        /// The parent folder.
+        /// </param>
+        /// <param name="path">
+        /// The path to the folder.
+        /// </param>
         public AppFolder(IAppFolder parentFolder, string path)
         {
             this.Parent = parentFolder;
@@ -84,9 +97,60 @@
         /// <returns>
         /// Returns a task.
         /// </returns>
-        public Task RenameAsync(string desiredNewName, FileStoreNameCollisionOption option)
+        public async Task RenameAsync(string desiredNewName, FileStoreNameCollisionOption option)
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new AppStorageItemNotFoundException(this.Name, "Cannot rename a folder that does not exist.");
+            }
+
+            if (string.IsNullOrWhiteSpace(desiredNewName))
+            {
+                throw new ArgumentNullException(nameof(desiredNewName));
+            }
+
+            if (desiredNewName.Equals(this.Name, StringComparison.CurrentCultureIgnoreCase))
+            {
+                throw new ArgumentException("The desired new name is the same as the current name.");
+            }
+
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            var directoryInfo = new DirectoryInfo(this.Path);
+            if (directoryInfo.Parent == null)
+            {
+                throw new InvalidOperationException("This folder cannot be renamed.");
+            }
+
+            string newPath = System.IO.Path.Combine(directoryInfo.Parent.FullName, desiredNewName);
+
+            switch (option)
+            {
+                case FileStoreNameCollisionOption.GenerateUniqueName:
+                    newPath = System.IO.Path.Combine(
+                        directoryInfo.Parent.FullName,
+                        string.Format("{0}-{1}", desiredNewName, Guid.NewGuid()));
+                    directoryInfo.MoveTo(newPath);
+                    break;
+                case FileStoreNameCollisionOption.ReplaceExisting:
+                    if (Directory.Exists(newPath))
+                    {
+                        Directory.Delete(newPath, true);
+                    }
+
+                    directoryInfo.MoveTo(newPath);
+                    break;
+                default:
+                    if (Directory.Exists(newPath))
+                    {
+                        throw new AppStorageItemCreationException(
+                                  desiredNewName,
+                                  "A folder with the same name already exists.");
+                    }
+
+                    directoryInfo.MoveTo(newPath);
+                    break;
+            }
         }
 
         /// <summary>
@@ -198,13 +262,21 @@
                         CreateFile(filePath);
                         break;
                     case FileStoreCreationOption.ReplaceExisting:
-                        File.Delete(filePath);
+                        if (File.Exists(filePath))
+                        {
+                            File.Delete(filePath);
+                        }
                         CreateFile(filePath);
                         break;
                     case FileStoreCreationOption.FailIfExists:
-                        throw new AppStorageItemCreationException(
-                                  desiredName,
-                                  "A file with the same name already exists.");
+                        if (File.Exists(filePath))
+                        {
+                            throw new AppStorageItemCreationException(
+                                      desiredName,
+                                      "A file with the same name already exists.");
+                        }
+                        CreateFile(filePath);
+                        break;
                 }
             }
             else
@@ -263,18 +335,26 @@
                 switch (options)
                 {
                     case FileStoreCreationOption.GenerateUniqueName:
-                        desiredName = string.Format("{0}-{1}", Guid.NewGuid(), desiredName);
+                        desiredName = string.Format("{0}-{1}", desiredName, Guid.NewGuid());
                         folderPath = System.IO.Path.Combine(this.Path, desiredName);
                         CreateFolder(folderPath);
                         break;
                     case FileStoreCreationOption.ReplaceExisting:
-                        Directory.Delete(folderPath);
+                        if (Directory.Exists(folderPath))
+                        {
+                            Directory.Delete(folderPath);
+                        }
                         CreateFolder(folderPath);
                         break;
                     case FileStoreCreationOption.FailIfExists:
-                        throw new AppStorageItemCreationException(
-                                  desiredName,
-                                  "A folder with the same name already exists.");
+                        if (Directory.Exists(folderPath))
+                        {
+                            throw new AppStorageItemCreationException(
+                                      desiredName,
+                                      "A folder with the same name already exists.");
+                        }
+                        CreateFolder(folderPath);
+                        break;
                 }
             }
             else
@@ -397,24 +477,131 @@
             return new AppFolder(this, folderPath);
         }
 
-        public Task<IAppStorageItem> GetItemAsync(string name)
+        /// <summary>
+        /// Gets a storage item with the specified name from this folder.
+        /// </summary>
+        /// <remarks>
+        /// A storage item can be a file or folder.
+        /// </remarks>
+        /// <param name="name">
+        /// The name of the item to get.
+        /// </param>
+        /// <returns>
+        /// Returns the file or folder.
+        /// </returns>
+        public async Task<IAppStorageItem> GetItemAsync(string name)
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new AppStorageItemNotFoundException(
+                          this.Name,
+                          "Cannot get an item from a folder that does not exist.");
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            IAppStorageItem storageItem = null;
+
+            try
+            {
+                storageItem = await this.GetFileAsync(name);
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+#endif
+            }
+
+            try
+            {
+                storageItem = await this.GetFolderAsync(name);
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+#endif
+            }
+
+            if (storageItem == null || !storageItem.Exists)
+            {
+                throw new AppStorageItemNotFoundException(name, "The item could not be found in the folder.");
+            }
+
+            return storageItem;
         }
 
-        public Task<IReadOnlyList<IAppFile>> GetFilesAsync()
+        /// <summary>
+        /// Gets all of the files from this folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of files.
+        /// </returns>
+        public async Task<IReadOnlyList<IAppFile>> GetFilesAsync()
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new AppStorageItemNotFoundException(
+                          this.Name,
+                          "Cannot get files from a folder that does not exist.");
+            }
+
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            return Directory.GetFiles(this.Path).Select(filePath => new AppFile(this, filePath)).ToList();
         }
 
-        public Task<IReadOnlyList<IAppFolder>> GetFoldersAsync()
+        /// <summary>
+        /// Gets all of the folders from this folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of folders.
+        /// </returns>
+        public async Task<IReadOnlyList<IAppFolder>> GetFoldersAsync()
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new AppStorageItemNotFoundException(
+                          this.Name,
+                          "Cannot get folders from a folder that does not exist.");
+            }
+
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            return Directory.GetDirectories(this.Path).Select(folderPath => new AppFolder(this, folderPath)).ToList();
         }
 
-        public Task<IReadOnlyList<IAppStorageItem>> GetItemsAsync()
+        /// <summary>
+        /// Gets all of the items from this folder.
+        /// </summary>
+        /// <returns>
+        /// Returns a collection of folders and files.
+        /// </returns>
+        public async Task<IReadOnlyList<IAppStorageItem>> GetItemsAsync()
         {
-            throw new NotImplementedException();
+            if (!this.Exists)
+            {
+                throw new AppStorageItemNotFoundException(
+                          this.Name,
+                          "Cannot get items from a folder that does not exist.");
+            }
+
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            var files = await this.GetFilesAsync();
+            var folders = await this.GetFoldersAsync();
+
+            var items = new List<IAppStorageItem>();
+            items.AddRange(files);
+            items.AddRange(folders);
+
+            return items;
         }
 
         private static void CreateFile(string filePath)

@@ -53,6 +53,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\XamarinApiToolkit.iOS\Storage\AppFile.cs">
+      <Link>Storage\AppFile.cs</Link>
+    </Compile>
+    <Compile Include="..\XamarinApiToolkit.iOS\Storage\AppFolder.cs">
+      <Link>Storage\AppFolder.cs</Link>
+    </Compile>
     <Compile Include="..\XamarinApiToolkit\Storage\AppData.cs">
       <Link>Storage\AppData.cs</Link>
     </Compile>

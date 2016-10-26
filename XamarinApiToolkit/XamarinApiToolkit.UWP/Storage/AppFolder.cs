@@ -492,7 +492,7 @@
             {
                 throw new AppStorageItemNotFoundException(
                           this.Name,
-                          "Cannot get folders from a folder that does not exist.");
+                          "Cannot get items from a folder that does not exist.");
             }
 
             var storageItems = await this.folder.GetItemsAsync();
