@@ -2,20 +2,16 @@
 {
     using System;
 
-    public sealed class AppStorageItemNotFoundException : Exception
+    public sealed class AppStorageItemNotFoundException : AppStorageItemException
     {
         public AppStorageItemNotFoundException(string storageItemName, string message)
-            : base(message)
+            : base(storageItemName, message)
         {
-            this.StorageItemName = storageItemName;
         }
 
         public AppStorageItemNotFoundException(string storageItemName, string message, Exception innerException)
-            : base(message, innerException)
+            : base(storageItemName, message, innerException)
         {
-            this.StorageItemName = storageItemName;
         }
-
-        public string StorageItemName { get; }
     }
 }

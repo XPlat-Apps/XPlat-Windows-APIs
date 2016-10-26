@@ -85,19 +85,22 @@
 
         private static IAppSettingsContainer CreateSettings()
         {
-#if PORTABLE
-            return null;
-#else
+#if WINDOWS_UWP || ANDROID || IOS
             return new AppSettingsContainer();
+#else
+            return null;
 #endif
         }
 
         private static IAppFolder CreateLocalFolder()
         {
-#if PORTABLE
-            return null;
-#elif WINDOWS_UWP
+#if WINDOWS_UWP
             return new AppFolder(null, Windows.Storage.ApplicationData.Current.LocalFolder);
+#elif ANDROID
+            return new AppFolder(null, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+#elif IOS
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            return new AppFolder(null, System.IO.Path.Combine(documentsPath, "..", "Library"));
 #else
             return null;
 #endif
@@ -114,9 +117,7 @@
 
         private static IAppFolder CreateTemporaryFolder()
         {
-#if PORTABLE
-            return null;
-#elif WINDOWS_UWP
+#if WINDOWS_UWP
             return new AppFolder(null, Windows.Storage.ApplicationData.Current.TemporaryFolder);
 #else
             return null;

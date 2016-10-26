@@ -22,7 +22,7 @@
         /// <param name="path">
         /// The path to the folder.
         /// </param>
-        public AppFolder(IAppFolder parentFolder, string path)
+        internal AppFolder(IAppFolder parentFolder, string path)
         {
             this.Parent = parentFolder;
             this.Path = path;
@@ -69,7 +69,7 @@
         /// <summary>
         /// Gets the parent folder for the item.
         /// </summary>
-        public IAppFolder Parent { get; private set; }
+        public IAppFolder Parent { get; }
 
         /// <summary>
         /// Renames the item with the specified new name.
@@ -151,6 +151,8 @@
                     directoryInfo.MoveTo(newPath);
                     break;
             }
+
+            this.Path = newPath;
         }
 
         /// <summary>
@@ -602,6 +604,43 @@
             items.AddRange(folders);
 
             return items;
+        }
+
+        /// <summary>
+        /// Gets the folder that has the specified absolute path in the file system.
+        /// </summary>
+        /// <param name="path">
+        /// The absolute path in the file system (not the Uri) of the folder to get.
+        /// </param>
+        /// <returns>
+        /// Returns an <see cref="AppFolder"/> for the path.
+        /// </returns>
+        public static async Task<AppFolder> GetFolderFromPathAsync(string path)
+        {
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            AppFolder resultParentFolder;
+
+            if (Directory.Exists(path))
+            {
+                var directoryInfo = new DirectoryInfo(path);
+                if (directoryInfo.Parent != null && directoryInfo.Parent.Exists)
+                {
+                    resultParentFolder = await GetFolderFromPathAsync(directoryInfo.Parent.FullName);
+                }
+                else
+                {
+                    resultParentFolder = null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+            var resultFolder = new AppFolder(resultParentFolder, path);
+
+            return resultFolder;
         }
 
         private static void CreateFile(string filePath)

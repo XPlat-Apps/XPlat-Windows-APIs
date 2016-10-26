@@ -441,7 +441,7 @@
 
             await this.file.MoveAndReplaceAsync(storageFile);
 
-            // ToDo, update parent folder.
+            this.Parent = fileToReplace.Parent;
         }
 
         /// <summary>
@@ -478,6 +478,59 @@
 
             var text = await FileIO.ReadTextAsync(this.file);
             return text;
+        }
+
+        /// <summary>
+        /// Gets an AppFile object to represent the file at the specified path
+        /// </summary>
+        /// <param name="path">
+        /// The path of the file to get a StorageFile to represent.
+        /// </param>
+        /// <returns>
+        /// Returns an <see cref="AppFile"/> for the path.
+        /// </returns>
+        public static async Task<AppFile> GetFileFromPathAsync(string path)
+        {
+            StorageFile pathFile;
+            StorageFolder pathFileParentFolder;
+
+            AppFolder resultFileParentFolder;
+
+            try
+            {
+                pathFile = await StorageFile.GetFileFromPathAsync(path);
+            }
+            catch (Exception)
+            {
+                pathFile = null;
+            }
+
+            if (pathFile == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                pathFileParentFolder = await pathFile.GetParentAsync();
+            }
+            catch (Exception)
+            {
+                pathFileParentFolder = null;
+            }
+
+            if (pathFileParentFolder != null)
+            {
+                resultFileParentFolder = await AppFolder.GetFolderFromPathAsync(pathFileParentFolder.Path);
+            }
+            else
+            {
+                resultFileParentFolder = null;
+            }
+
+            var resultFile = new AppFile(resultFileParentFolder, pathFile);
+
+            return resultFile;
         }
     }
 }

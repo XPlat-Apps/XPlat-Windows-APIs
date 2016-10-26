@@ -520,5 +520,58 @@
 
             return result;
         }
+
+        /// <summary>
+        /// Gets the folder that has the specified absolute path in the file system.
+        /// </summary>
+        /// <param name="path">
+        /// The absolute path in the file system (not the Uri) of the folder to get.
+        /// </param>
+        /// <returns>
+        /// Returns an <see cref="AppFolder"/> for the path.
+        /// </returns>
+        public static async Task<AppFolder> GetFolderFromPathAsync(string path)
+        {
+            StorageFolder pathFolder;
+            StorageFolder parentPathFolder;
+
+            AppFolder resultParentFolder;
+
+            try
+            {
+                pathFolder = await StorageFolder.GetFolderFromPathAsync(path);
+            }
+            catch (Exception)
+            {
+                pathFolder = null;
+            }
+
+            if (pathFolder == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                parentPathFolder = await pathFolder.GetParentAsync();
+            }
+            catch (Exception)
+            {
+                parentPathFolder = null;
+            }
+
+            if (parentPathFolder != null)
+            {
+                resultParentFolder = await GetFolderFromPathAsync(parentPathFolder.Path);
+            }
+            else
+            {
+                resultParentFolder = null;
+            }
+
+            var resultFolder = new AppFolder(resultParentFolder, pathFolder);
+
+            return resultFolder;
+        }
     }
 }
