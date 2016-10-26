@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>XamarinApiToolkit</id>
+    <version>1.0.0.0</version>
+    <title>XamarinApiToolkit</title>
+    <authors>James Croft</authors>
+    <owners>James Croft</owners>
+    <licenseUrl>https://github.com/jamesmcroft/Xamarin-API-Toolkit/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jamesmcroft/Xamarin-API-Toolkit</projectUrl>
+    <iconUrl>http://jamescroft.co.uk/wp-content/uploads/2014/12/icon1.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This library contains a collection of cross platform helpers and extensions for Xamarin apps built by the community.</description>
+    <releaseNotes>Initial push. Also contains bug fixes.</releaseNotes>
+    <copyright>Copyright (c) James Croft. All rights reserved.</copyright>
+    <tags>Xamarin UWP iOS Android Toolkit API Extensions Components</tags>
+    <dependencies>
+      <dependency id="WinUX.Common" version="2.0.16271.3" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.UWP.dll" target="lib\netcore50\XamarinApiToolkit.UWP.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.UWP.xml" target="lib\netcore50\XamarinApiToolkit.UWP.xml" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.UWP.pri" target="lib\netcore50\XamarinApiToolkit.UWP.pri" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.Common.dll" target="lib\netcore50\XamarinApiToolkit.Common.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.Common.xml" target="lib\netcore50\XamarinApiToolkit.Common.xml" />
+
+    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Android.dll" target="lib\monoandroid\XamarinApiToolkit.Android.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Android.xml" target="lib\monoandroid\XamarinApiToolkit.Android.xml" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Common.dll" target="lib\monoandroid\XamarinApiToolkit.Common.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Common.xml" target="lib\monoandroid\XamarinApiToolkit.Common.xml" />
+
+    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.iOS.dll" target="lib\portable-Xamarin.iOS+Xamarin.Mac\XamarinApiToolkit.iOS.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.iOS.xml" target="lib\portable-Xamarin.iOS+Xamarin.Mac\XamarinApiToolkit.iOS.xml" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.Common.dll" target="lib\portable-Xamarin.iOS+Xamarin.Mac\XamarinApiToolkit.Common.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.Common.xml" target="lib\portable-Xamarin.iOS+Xamarin.Mac\XamarinApiToolkit.Common.xml" />
+  </files>
+</package>
