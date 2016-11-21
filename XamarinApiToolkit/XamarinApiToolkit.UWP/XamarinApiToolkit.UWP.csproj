@@ -123,6 +123,7 @@
     <Compile Include="Storage\AppFile.cs" />
     <Compile Include="Storage\AppFolder.cs" />
     <Compile Include="Storage\AppSettingsContainer.cs" />
+    <Compile Include="UI\Popups\MessageDialog.cs" />
     <EmbeddedResource Include="Properties\XamarinApiToolkit.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup />
