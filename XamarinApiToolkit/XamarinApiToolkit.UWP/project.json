@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-    "WinUX.Common": "2.0.16271.3"
+    "WinUX.Common": "2.2.16306.1"
   },
   "frameworks": {
     "uap10.0": {}

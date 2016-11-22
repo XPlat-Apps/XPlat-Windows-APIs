@@ -1,17 +1,10 @@
 ﻿namespace XamarinApiToolkit.UITesting.UWP.Tests
 {
-    using System;
-
-    using System.Globalization;
-    using System.Threading;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using OpenQA.Selenium.Appium;
+    using OpenQA.Selenium;
 
-    using OpenQA.Selenium.Appium.iOS; // Temporary placeholder until Windows namespace exists
-
-    using OpenQA.Selenium.Remote;
+    using XamarinApiToolkit.Tests.Common.TestHelpers;
 
     [TestClass]
     public class MessageDialog_Tests
@@ -29,11 +22,47 @@
         }
 
         [TestMethod]
-        public void AppLaunch_Test()
+        public void MessageDialog_ShowBasicDialogWithContent_Test()
         {
-            Thread.Sleep(6000);
+            // Navigate into message dialog tests.
+            var messageDialogBtn = UWPAppHelper.AppSession.FindElementByAccessibilityId("MessageDialogBtn");
+            Assert.IsNotNull(messageDialogBtn, "Expected to find the 'MessageDialogBtn'.");
+            messageDialogBtn.Click();
 
-            Assert.IsTrue(true);
+            // Launch a basic content dialog.
+            var basicContentDialogBtn = UWPAppHelper.AppSession.FindElementByAccessibilityId("BasicContentDialogBtn");
+            Assert.IsNotNull(basicContentDialogBtn, "Expected to find the 'BasicContentDialogBtn'.");
+            basicContentDialogBtn.Click();
+
+            var desktopApp = UWPAppHelper.DesktopSession.FindElementByName("XamarinApiToolkit.UWP.App");
+            var popup = desktopApp.FindElementByAccessibilityId("Popup");
+            if (popup != null)
+            {
+                var dialogString = popup.FindElementByAccessibilityId("Content_String");
+                if (dialogString != null)
+                {
+                    // Assures we have the right dialog.
+                    Assert.AreEqual(dialogString.Text, MessageDialogHelpers.BasicContent);
+                }
+                else
+                {
+                    Assert.Fail("Expected to find a content string for the popup.");
+                }
+
+                var toolbar = popup.FindElementByAccessibilityId("ButtonBar");
+                if (toolbar != null)
+                {
+                    // ToDo, check if we have the correct button (close)
+                }
+                else
+                {
+                    Assert.Fail("Expected to find a button bar for the popup.");
+                }
+            }
+            else
+            {
+                Assert.Fail("Expected to find a popup.");
+            }
         }
     }
 }

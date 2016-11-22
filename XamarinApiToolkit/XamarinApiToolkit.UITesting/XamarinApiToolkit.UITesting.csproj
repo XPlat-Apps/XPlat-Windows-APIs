@@ -78,6 +78,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XamarinApiToolkit.Tests.Common\XamarinApiToolkit.Tests.Common.csproj">
+      <Project>{8F4543F5-D2A9-4D3F-B0E5-C7D4115FEEB8}</Project>
+      <Name>XamarinApiToolkit.Tests.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
