@@ -31,7 +31,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;ANDROID</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\XamarinApiToolkit.Android.XML</DocumentationFile>
@@ -47,8 +47,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="WinUX.Common, Version=2.2.16306.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WinUX.Common.2.2.16306.1\lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\WinUX.Common.dll</HintPath>
+    <Reference Include="WinUX.Common, Version=2.4.17005.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinUX.Common.2.4.17005.1\lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\WinUX.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

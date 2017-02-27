@@ -10,12 +10,13 @@
     <projectUrl>https://github.com/jamesmcroft/XMob-Apis</projectUrl>
     <iconUrl>http://jamescroft.co.uk/wp-content/uploads/2014/12/icon1.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>This library contains a collection of cross-platform helpers and extensions for Xamarin apps built by the community.</description>
-    <releaseNotes>Initial push. Also contains bug fixes.</releaseNotes>
+    <description>This library contains a collection of cross-platform helpers and extensions for Xamarin apps designed in a similar way to Microsoft's Windows APIs built by the community.</description>
+    <releaseNotes>Initial release containing AppData storage functions.</releaseNotes>
     <copyright>Copyright (c) James Croft. All rights reserved.</copyright>
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components</tags>
     <dependencies>
-      <dependency id="WinUX.Common" version="2.0.16271.3" />
+      <dependency id="WinUX.Common" version="2.4.17005.1" />
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
     </dependencies>
   </metadata>
   <files>
@@ -25,14 +26,14 @@
     <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.Common.dll" target="lib\netcore50\XamarinApiToolkit.Common.dll" />
     <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.Common.xml" target="lib\netcore50\XamarinApiToolkit.Common.xml" />
 
-    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Android.dll" target="lib\monoandroid\XamarinApiToolkit.Android.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Android.xml" target="lib\monoandroid\XamarinApiToolkit.Android.xml" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Common.dll" target="lib\monoandroid\XamarinApiToolkit.Common.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Common.xml" target="lib\monoandroid\XamarinApiToolkit.Common.xml" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Android.dll" target="lib\MonoAndroid10\XamarinApiToolkit.Android.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Android.xml" target="lib\MonoAndroid10\XamarinApiToolkit.Android.xml" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Common.dll" target="lib\MonoAndroid10\XamarinApiToolkit.Common.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Common.xml" target="lib\MonoAndroid10\XamarinApiToolkit.Common.xml" />
 
-    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.iOS.dll" target="lib\portable-Xamarin.iOS+Xamarin.Mac\XamarinApiToolkit.iOS.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.iOS.xml" target="lib\portable-Xamarin.iOS+Xamarin.Mac\XamarinApiToolkit.iOS.xml" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.Common.dll" target="lib\portable-Xamarin.iOS+Xamarin.Mac\XamarinApiToolkit.Common.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.Common.xml" target="lib\portable-Xamarin.iOS+Xamarin.Mac\XamarinApiToolkit.Common.xml" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.iOS.dll" target="lib\Xamarin.iOS10\XamarinApiToolkit.iOS.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.iOS.xml" target="lib\Xamarin.iOS10\XamarinApiToolkit.iOS.xml" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.Common.dll" target="lib\Xamarin.iOS10\XamarinApiToolkit.Common.dll" />
+    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.Common.xml" target="lib\Xamarin.iOS10\XamarinApiToolkit.Common.xml" />
   </files>
 </package>
