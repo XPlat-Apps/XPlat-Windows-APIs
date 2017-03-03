@@ -450,7 +450,7 @@
         {
             await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
 
-            AppFolder resultFileParentFolder;
+            IAppFolder resultFileParentFolder;
 
             if (File.Exists(path))
             {
