@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines the interface for application data.
     /// </summary>
-    public interface IAppData
+    public interface IApplicationData
     {
         /// <summary>
         /// Gets the root folder for the application in the local data store.

@@ -1,12 +1,12 @@
 ﻿namespace XPlat.API.Storage
 {
+    using Windows.Storage;
+
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-
-    using Windows.Storage;
 
     /// <summary>
     /// Defines an application folder.

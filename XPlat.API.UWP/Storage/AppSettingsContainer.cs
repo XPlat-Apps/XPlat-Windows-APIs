@@ -24,7 +24,7 @@
 
             lock (this.obj)
             {
-                containsKey = ApplicationData.Current.LocalSettings.Values.ContainsKey(key);
+                containsKey = Windows.Storage.ApplicationData.Current.LocalSettings.Values.ContainsKey(key);
             }
 
             return containsKey;
@@ -50,7 +50,7 @@
 
             lock (this.obj)
             {
-                var setting = ApplicationData.Current.LocalSettings.Values[key];
+                var setting = Windows.Storage.ApplicationData.Current.LocalSettings.Values[key];
                 if (setting is T)
                 {
                     value = (T)setting;
@@ -73,7 +73,7 @@
         {
             lock (this.obj)
             {
-                ApplicationData.Current.LocalSettings.Values[key] = value;
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values[key] = value;
             }
         }
 
@@ -89,7 +89,7 @@
 
             lock (this.obj)
             {
-                ApplicationData.Current.LocalSettings.Values.Remove(key);
+                Windows.Storage.ApplicationData.Current.LocalSettings.Values.Remove(key);
             }
         }
     }

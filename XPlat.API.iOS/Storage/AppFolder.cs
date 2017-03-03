@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
 
     using WinUX.Threading.Tasks;
-
+    
     /// <summary>
     /// Defines an application folder.
     /// </summary>

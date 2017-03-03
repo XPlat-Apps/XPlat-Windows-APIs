@@ -59,12 +59,17 @@
     <Compile Include="..\XPlat.API.iOS\Storage\AppFolder.cs">
       <Link>Storage\AppFolder.cs</Link>
     </Compile>
+    <Compile Include="..\XPlat.API\Device\Power\PowerManager.cs">
+      <Link>Device\Power\PowerManager.cs</Link>
+    </Compile>
     <Compile Include="..\XPlat.API\Storage\AppData.cs">
       <Link>Storage\AppData.cs</Link>
     </Compile>
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\AppSettingsContainer.cs" />
+    <Compile Include="Device\Power\PowerManager.Android.cs" />
+    <Compile Include="Device\Power\PowerReceiver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

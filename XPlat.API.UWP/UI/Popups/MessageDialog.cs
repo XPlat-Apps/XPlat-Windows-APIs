@@ -1,13 +1,13 @@
 ﻿namespace XPlat.API.UI.Popups
 {
+    using Windows.ApplicationModel.Core;
+    using Windows.UI.Core;
+    using Windows.UI.Popups;
+
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-
-    using Windows.ApplicationModel.Core;
-    using Windows.UI.Core;
-    using Windows.UI.Popups;
 
     public sealed class MessageDialog : IMessageDialog
     {

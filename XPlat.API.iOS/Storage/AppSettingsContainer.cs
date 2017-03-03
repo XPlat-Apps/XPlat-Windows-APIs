@@ -1,8 +1,8 @@
 ﻿namespace XPlat.API.Storage
 {
-    using System;
-
     using Foundation;
+
+    using System;
 
     using WinUX.Common;
 

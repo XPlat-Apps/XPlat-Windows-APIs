@@ -6,10 +6,10 @@
     /// <summary>
     /// Defines the application data layer.
     /// </summary>
-    public sealed class AppData : IAppData
+    public sealed class ApplicationData : IApplicationData
     {
-        private static readonly Lazy<AppData> CurrentAppData = new Lazy<AppData>(
-                                                                   () => new AppData(),
+        private static readonly Lazy<ApplicationData> CurrentAppData = new Lazy<ApplicationData>(
+                                                                   () => new ApplicationData(),
                                                                    LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IAppSettingsContainer> settings = new Lazy<IAppSettingsContainer>(
@@ -29,9 +29,9 @@
                                                                 LazyThreadSafetyMode.PublicationOnly);
 
         /// <summary>
-        /// Gets the current instance of the <see cref="AppData"/>.
+        /// Gets the current instance of the <see cref="ApplicationData"/>.
         /// </summary>
-        public static AppData Current
+        public static ApplicationData Current
         {
             get
             {

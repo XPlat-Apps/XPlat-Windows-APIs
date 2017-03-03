@@ -51,6 +51,9 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\XPlat.API\Device\Power\PowerManager.cs">
+      <Link>Device\Power\PowerManager.cs</Link>
+    </Compile>
     <Compile Include="..\XPlat.API\Storage\AppData.cs">
       <Link>Storage\AppData.cs</Link>
     </Compile>
@@ -58,6 +61,8 @@
     <Compile Include="Storage\AppFile.cs" />
     <Compile Include="Storage\AppFolder.cs" />
     <Compile Include="Storage\AppSettingsContainer.cs" />
+    <Compile Include="Device\Power\PowerManager.iOS.cs" />
+    <Compile Include="UI\Core\MainDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
