@@ -27,9 +27,7 @@
             this.Path = path;
         }
 
-        /// <summary>
-        /// Gets the date the item was created.
-        /// </summary>
+        /// <inheritdoc />
         public DateTime DateCreated
         {
             get
@@ -38,9 +36,7 @@
             }
         }
 
-        /// <summary>
-        /// Gets the name of the item.
-        /// </summary>
+        /// <inheritdoc />
         public string Name
         {
             get
@@ -49,14 +45,10 @@
             }
         }
 
-        /// <summary>
-        /// Gets the full path to the item.
-        /// </summary>
+        /// <inheritdoc />
         public string Path { get; private set; }
 
-        /// <summary>
-        /// Gets a value indicating whether the item exists.
-        /// </summary>
+        /// <inheritdoc />
         public bool Exists
         {
             get
@@ -65,50 +57,29 @@
             }
         }
 
-        /// <summary>
-        /// Gets the parent folder for the item.
-        /// </summary>
+        /// <inheritdoc />
         public IAppFolder Parent { get; private set; }
 
-        /// <summary>
-        /// Renames the item with the specified new name.
-        /// </summary>
-        /// <param name="desiredNewName">
-        /// The desired new name.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
-        public Task RenameAsync(string desiredNewName)
+        /// <inheritdoc />
+        public Task RenameAsync(string desiredName)
         {
-            return this.RenameAsync(desiredNewName, FileStoreNameCollisionOption.FailIfExists);
+            return this.RenameAsync(desiredName, FileStoreNameCollisionOption.FailIfExists);
         }
 
-        /// <summary>
-        /// Renames the item with the specified new name.
-        /// </summary>
-        /// <param name="desiredNewName">
-        /// The desired new name.
-        /// </param>
-        /// <param name="option">
-        /// The item name collision option.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
-        public async Task RenameAsync(string desiredNewName, FileStoreNameCollisionOption option)
+        /// <inheritdoc />
+        public async Task RenameAsync(string desiredName, FileStoreNameCollisionOption option)
         {
             if (!this.Exists)
             {
                 throw new AppStorageItemNotFoundException(this.Name, "Cannot rename a file that does not exist.");
             }
 
-            if (string.IsNullOrWhiteSpace(desiredNewName))
+            if (string.IsNullOrWhiteSpace(desiredName))
             {
-                throw new ArgumentNullException(nameof(desiredNewName));
+                throw new ArgumentNullException(nameof(desiredName));
             }
 
-            if (desiredNewName.Equals(this.Name, StringComparison.CurrentCultureIgnoreCase))
+            if (desiredName.Equals(this.Name, StringComparison.CurrentCultureIgnoreCase))
             {
                 throw new ArgumentException("The desired new name is the same as the current name.");
             }
@@ -121,14 +92,14 @@
                 throw new InvalidOperationException("This file cannot be renamed.");
             }
 
-            string newPath = System.IO.Path.Combine(fileInfo.Directory.FullName, desiredNewName);
+            string newPath = System.IO.Path.Combine(fileInfo.Directory.FullName, desiredName);
 
             switch (option)
             {
                 case FileStoreNameCollisionOption.GenerateUniqueName:
                     newPath = System.IO.Path.Combine(
                         fileInfo.Directory.FullName,
-                        string.Format("{0}-{1}", desiredNewName, Guid.NewGuid()));
+                        string.Format("{0}-{1}", desiredName, Guid.NewGuid()));
                     fileInfo.MoveTo(newPath);
                     break;
                 case FileStoreNameCollisionOption.ReplaceExisting:
@@ -143,8 +114,8 @@
                     if (File.Exists(newPath))
                     {
                         throw new AppStorageItemCreationException(
-                                  desiredNewName,
-                                  "A file with the same name already exists.");
+                            desiredName,
+                            "A file with the same name already exists.");
                     }
 
                     fileInfo.MoveTo(newPath);
@@ -154,15 +125,7 @@
             this.Path = newPath;
         }
 
-        /// <summary>
-        /// Deletes the item.
-        /// </summary>
-        /// <remarks>
-        /// If the item is a folder, it will delete all contents.
-        /// </remarks>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
+        /// <inheritdoc />
         public async Task DeleteAsync()
         {
             if (!this.Exists)
@@ -175,19 +138,14 @@
             File.Delete(this.Path);
         }
 
-        /// <summary>
-        /// Gets the properties of the item.
-        /// </summary>
-        /// <returns>
-        /// Returns the properties.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IDictionary<string, object>> GetPropertiesAsync()
         {
             if (!this.Exists)
             {
                 throw new AppStorageItemNotFoundException(
-                          this.Name,
-                          "Cannot get properties for a file that does not exist.");
+                    this.Name,
+                    "Cannot get properties for a file that does not exist.");
             }
 
             await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
@@ -196,23 +154,13 @@
             return new Dictionary<string, object>();
         }
 
-        /// <summary>
-        /// Checks whether the item is of a known type.
-        /// </summary>
-        /// <param name="type">
-        /// The item type to check.
-        /// </param>
-        /// <returns>
-        /// Returns true if matches; else false.
-        /// </returns>
+        /// <inheritdoc />
         public bool IsOfType(FileStoreItemTypes type)
         {
             return type == FileStoreItemTypes.File;
         }
 
-        /// <summary>
-        /// Gets the file type.
-        /// </summary>
+        /// <inheritdoc />
         public string FileType
         {
             get
@@ -221,15 +169,7 @@
             }
         }
 
-        /// <summary>
-        /// Opens a stream containing the file's contents.
-        /// </summary>
-        /// <param name="accessMode">
-        /// The access mode for the file.
-        /// </param>
-        /// <returns>
-        /// Returns the file stream.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<Stream> OpenAsync(FileAccessOption accessMode)
         {
             if (!this.Exists)
@@ -250,52 +190,19 @@
             }
         }
 
-        /// <summary>
-        /// Copies the file to a specified destination folder.
-        /// </summary>
-        /// <param name="destinationFolder">
-        /// The destination folder.
-        /// </param>
-        /// <returns>
-        /// Returns the copied file.
-        /// </returns>
+        /// <inheritdoc />
         public Task<IAppFile> CopyAsync(IAppFolder destinationFolder)
         {
             return this.CopyAsync(destinationFolder, this.Name);
         }
 
-        /// <summary>
-        /// Copies the file to a specified destination folder with a specified new name.
-        /// </summary>
-        /// <param name="destinationFolder">
-        /// The destination folder.
-        /// </param>
-        /// <param name="desiredNewName">
-        /// The desired new name.
-        /// </param>
-        /// <returns>
-        /// Returns the copied file.
-        /// </returns>
+        /// <inheritdoc />
         public Task<IAppFile> CopyAsync(IAppFolder destinationFolder, string desiredNewName)
         {
             return this.CopyAsync(destinationFolder, desiredNewName, FileStoreNameCollisionOption.FailIfExists);
         }
 
-        /// <summary>
-        /// Copies the file to a specified destination folder with a specified new name.
-        /// </summary>
-        /// <param name="destinationFolder">
-        /// The destination folder.
-        /// </param>
-        /// <param name="desiredNewName">
-        /// The desired new name.
-        /// </param>
-        /// <param name="option">
-        /// The file name collision option.
-        /// </param>
-        /// <returns>
-        /// Returns the copied file.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IAppFile> CopyAsync(
             IAppFolder destinationFolder,
             string desiredNewName,
@@ -314,8 +221,8 @@
             if (!destinationFolder.Exists)
             {
                 throw new AppStorageItemNotFoundException(
-                          destinationFolder.Name,
-                          "Cannot copy a file to a folder that does not exist.");
+                    destinationFolder.Name,
+                    "Cannot copy a file to a folder that does not exist.");
             }
 
             if (string.IsNullOrWhiteSpace(desiredNewName))
@@ -348,8 +255,8 @@
                     if (File.Exists(newPath))
                     {
                         throw new AppStorageItemCreationException(
-                                  desiredNewName,
-                                  "A file with the same name already exists.");
+                            desiredNewName,
+                            "A file with the same name already exists.");
                     }
 
                     File.Copy(this.Path, newPath);
@@ -359,15 +266,7 @@
             return new AppFile(destinationFolder, newPath);
         }
 
-        /// <summary>
-        /// Copies and replaces the file to the specified file.
-        /// </summary>
-        /// <param name="fileToReplace">
-        /// The file to replace.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
+        /// <inheritdoc />
         public async Task CopyAndReplaceAsync(IAppFile fileToReplace)
         {
             if (!this.Exists)
@@ -383,8 +282,8 @@
             if (!fileToReplace.Exists)
             {
                 throw new AppStorageItemNotFoundException(
-                          fileToReplace.Name,
-                          "Cannot copy to and replace a file that does not exist.");
+                    fileToReplace.Name,
+                    "Cannot copy to and replace a file that does not exist.");
             }
 
             await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
@@ -392,52 +291,19 @@
             File.Copy(this.Path, fileToReplace.Path, true);
         }
 
-        /// <summary>
-        /// Moves the file to the specified destination folder.
-        /// </summary>
-        /// <param name="destinationFolder">
-        /// The destination folder.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
+        /// <inheritdoc />
         public Task MoveAsync(IAppFolder destinationFolder)
         {
             return this.MoveAsync(destinationFolder, this.Name);
         }
 
-        /// <summary>
-        /// Moves the file to the specified destination folder with a specified new name.
-        /// </summary>
-        /// <param name="destinationFolder">
-        /// The destination folder.
-        /// </param>
-        /// <param name="desiredNewName">
-        /// The desired new name.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
+        /// <inheritdoc />
         public Task MoveAsync(IAppFolder destinationFolder, string desiredNewName)
         {
             return this.MoveAsync(destinationFolder, desiredNewName, FileStoreNameCollisionOption.ReplaceExisting);
         }
 
-        /// <summary>
-        /// Moves the file to the specified destination folder with a specified new name.
-        /// </summary>
-        /// <param name="destinationFolder">
-        /// The destination folder.
-        /// </param>
-        /// <param name="desiredNewName">
-        /// The desired new name.
-        /// </param>
-        /// <param name="option">
-        /// The file name collision option.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
+        /// <inheritdoc />
         public async Task MoveAsync(
             IAppFolder destinationFolder,
             string desiredNewName,
@@ -456,8 +322,8 @@
             if (!destinationFolder.Exists)
             {
                 throw new AppStorageItemNotFoundException(
-                          destinationFolder.Name,
-                          "Cannot move a file to a folder that does not exist.");
+                    destinationFolder.Name,
+                    "Cannot move a file to a folder that does not exist.");
             }
 
             if (string.IsNullOrWhiteSpace(desiredNewName))
@@ -490,8 +356,8 @@
                     if (File.Exists(newPath))
                     {
                         throw new AppStorageItemCreationException(
-                                  desiredNewName,
-                                  "A file with the same name already exists.");
+                            desiredNewName,
+                            "A file with the same name already exists.");
                     }
 
                     File.Move(this.Path, newPath);
@@ -501,15 +367,7 @@
             this.Path = newPath;
         }
 
-        /// <summary>
-        /// Moves and replaces the specified file.
-        /// </summary>
-        /// <param name="fileToReplace">
-        /// The file to replace.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
+        /// <inheritdoc />
         public async Task MoveAndReplaceAsync(IAppFile fileToReplace)
         {
             if (!this.Exists)
@@ -525,8 +383,8 @@
             if (!fileToReplace.Exists)
             {
                 throw new AppStorageItemNotFoundException(
-                          fileToReplace.Name,
-                          "Cannot move to and replace a file that does not exist.");
+                    fileToReplace.Name,
+                    "Cannot move to and replace a file that does not exist.");
             }
 
             await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
@@ -540,15 +398,7 @@
             this.Parent = fileToReplace.Parent;
         }
 
-        /// <summary>
-        /// Writes a string to the content of the file.
-        /// </summary>
-        /// <param name="text">
-        /// The text to store.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
+        /// <inheritdoc />
         public async Task WriteTextAsync(string text)
         {
             if (!this.Exists)
@@ -566,12 +416,7 @@
             }
         }
 
-        /// <summary>
-        /// Reads the content of the file as a string.
-        /// </summary>
-        /// <returns>
-        /// Returns the content.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<string> ReadTextAsync()
         {
             if (!this.Exists)
@@ -593,15 +438,15 @@
         }
 
         /// <summary>
-        /// Gets an AppFile object to represent the file at the specified path
+        /// Gets an IAppFile object to represent the file at the specified path.
         /// </summary>
         /// <param name="path">
-        /// The path of the file to get a StorageFile to represent.
+        /// The path of the file to get an IAppFile to represent. 
         /// </param>
         /// <returns>
-        /// Returns an <see cref="AppFile"/> for the path.
+        /// When this method completes, it returns the file as an IAppFile.
         /// </returns>
-        public static async Task<AppFile> GetFileFromPathAsync(string path)
+        public static async Task<IAppFile> GetFileFromPathAsync(string path)
         {
             await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
 

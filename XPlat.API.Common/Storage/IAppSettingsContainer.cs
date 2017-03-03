@@ -6,46 +6,46 @@
     public interface IAppSettingsContainer
     {
         /// <summary>
-        /// Checks whether the settings container contains the specified key.
+        /// Checks whether the current container contains the specified key.
         /// </summary>
         /// <param name="key">
-        /// The key.
+        /// The key of the setting to check.
         /// </param>
         /// <returns>
-        /// Returns true if exists; else false.
+        /// When this method completes successfully, it returns true if the key exists; else false.
         /// </returns>
         bool ContainsKey(string key);
 
         /// <summary>
-        /// Gets the value from the settings container for the specified key.
+        /// Gets a value for the specified key from the current container.
         /// </summary>
         /// <param name="key">
-        /// The key.
+        /// The key to retrieve.
         /// </param>
         /// <typeparam name="T">
         /// The type for the stored value.
         /// </typeparam>
         /// <returns>
-        /// Returns the stored value.
+        /// When this method completes successfully, it returns an object of type T.
         /// </returns>
         T Get<T>(string key);
 
         /// <summary>
-        /// Adds or updates a key in the settings container with the specified value.
+        /// Adds or updates the specified key with the specified value in the current container.
         /// </summary>
         /// <param name="key">
-        /// The key.
+        /// The key to add or update.
         /// </param>
         /// <param name="value">
-        /// The value.
+        /// The value to update.
         /// </param>
         void AddOrUpdate(string key, object value);
 
         /// <summary>
-        /// Removes the specified key's value from the settings container.
+        /// Removes the specified key from the current container.
         /// </summary>
         /// <param name="key">
-        /// The key.
+        /// The key to remove.
         /// </param>
         void Remove(string key);
     }

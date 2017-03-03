@@ -9,140 +9,137 @@
     public interface IAppFolder : IAppStorageItem
     {
         /// <summary>
-        /// Creates a new file with the desired name in this folder.
+        /// Creates a new file in the current folder.
         /// </summary>
         /// <param name="desiredName">
-        /// The desired file name.
+        /// The desired name of the file to create.
         /// </param>
         /// <returns>
-        /// Returns the created file.
+        /// When this method completes, it returns the new file as an IAppFile.
         /// </returns>
         Task<IAppFile> CreateFileAsync(string desiredName);
 
         /// <summary>
-        /// Creates a new file with the desired name with creation options in this folder.
+        /// Creates a new file in the current folder, and specifies what to do if a file with the same name already exists in the current folder.
         /// </summary>
         /// <param name="desiredName">
-        /// The desired file name.
+        /// The desired name of the file to create. If there is an existing file in the current folder that already has the specified desiredName, the specified FileStoreCreationOption determines how the API responds to the conflict.
         /// </param>
         /// <param name="options">
-        /// The creation options.
+        /// The enum value that determines how the API responds if the desiredName is the same as the name of an existing file in the current folder.
         /// </param>
         /// <returns>
-        /// Returns the created file.
+        /// When this method completes, it returns the new file as an IAppFile.
         /// </returns>
         Task<IAppFile> CreateFileAsync(string desiredName, FileStoreCreationOption options);
 
         /// <summary>
-        /// Creates a new folder with the desired name in this folder.
+        /// Creates a new folder in the current folder.
         /// </summary>
         /// <param name="desiredName">
-        /// The desired folder name.
+        /// The desired name of the folder to create.
         /// </param>
         /// <returns>
-        /// Returns the created folder.
+        /// When this method completes, it returns the new folder as an IAppFolder.
         /// </returns>
         Task<IAppFolder> CreateFolderAsync(string desiredName);
 
         /// <summary>
-        /// Creates a new folder with the desired name with creation options in this folder.
+        /// Creates a new folder in the current folder, and specifies what to do if a folder with the same name already exists in the current folder.
         /// </summary>
         /// <param name="desiredName">
-        /// The desired folder name.
+        /// The desired name of the folder to create. If there is an existing folder in the current folder that already has the specified desiredName, the specified FileStoreCreationOption determines how the API responds to the conflict.
         /// </param>
         /// <param name="options">
-        /// The creation options.
+        /// The enum value that determines how Windows responds if the desiredName is the same as the name of an existing folder in the current folder.
         /// </param>
         /// <returns>
-        /// Returns the created folder.
+        /// When this method completes, it returns the new folder as an IAppFolder.
         /// </returns>
         Task<IAppFolder> CreateFolderAsync(string desiredName, FileStoreCreationOption options);
 
         /// <summary>
-        /// Gets a file with the specified name from this folder.
+        /// Gets the specified file from the current folder.
         /// </summary>
         /// <param name="name">
-        /// The name of the file to get.
+        /// The name of the file to retrieve.
         /// </param>
         /// <returns>
-        /// Returns the file.
+        /// When this method completes successfully, it returns an IAppFile that represents the file.
         /// </returns>
         Task<IAppFile> GetFileAsync(string name);
 
         /// <summary>
-        /// Gets a file with the specified name from this folder.
+        /// Gets the specified file from the current folder.
         /// </summary>
         /// <param name="name">
-        /// The name of the file to get.
+        /// The name of the file to retrieve. If the file does not exist in the current folder, the createIfNotExists flag will allow the API to create the file if set to true.
         /// </param>
         /// <param name="createIfNotExists">
         /// A value indicating whether to create the file if it does not exist.
         /// </param>
         /// <returns>
-        /// Returns the file.
+        /// When this method completes successfully, it returns an IAppFile that represents the file.
         /// </returns>
         Task<IAppFile> GetFileAsync(string name, bool createIfNotExists);
 
         /// <summary>
-        /// Gets a folder with the specified name from this folder.
+        /// Gets the specified folder from the current folder.
         /// </summary>
         /// <param name="name">
-        /// The name of the folder to get.
+        /// The name of the child folder to retrieve.
         /// </param>
         /// <returns>
-        /// Returns the folder.
+        /// When this method completes successfully, it returns an IAppFolder that represents the child folder.
         /// </returns>
         Task<IAppFolder> GetFolderAsync(string name);
 
         /// <summary>
-        /// Gets a folder with the specified name from this folder.
+        /// Gets the specified folder from the current folder.
         /// </summary>
         /// <param name="name">
-        /// The name of the folder to get.
+        /// The name of the child folder to retrieve. If the child folder does not exist in the current folder, the createIfNotExists flag will allow the API to create the folder if set to true.
         /// </param>
         /// <param name="createIfNotExists">
-        /// A value indicating whether to create the folder if it does not exist.
+        /// A value indicating whether to create the child folder if it does not exist.
         /// </param>
         /// <returns>
-        /// Returns the folder.
+        /// When this method completes successfully, it returns an IAppFolder that represents the child folder.
         /// </returns>
         Task<IAppFolder> GetFolderAsync(string name, bool createIfNotExists);
 
         /// <summary>
-        /// Gets a storage item with the specified name from this folder.
+        /// Gets the specified item from the current folder.
         /// </summary>
-        /// <remarks>
-        /// A storage item can be a file or folder.
-        /// </remarks>
         /// <param name="name">
-        /// The name of the item to get.
+        /// The name of the item to retrieve.
         /// </param>
         /// <returns>
-        /// Returns the file or folder.
+        /// When this method completes successfully, it returns the file or folder (type IAppStorageItem).
         /// </returns>
         Task<IAppStorageItem> GetItemAsync(string name);
 
         /// <summary>
-        /// Gets all of the files from this folder.
+        /// Gets the files from the current folder.
         /// </summary>
         /// <returns>
-        /// Returns a collection of files.
+        /// When this method completes successfully, it returns a list of the files in the folder. Each file in the list is represented by an IAppFile.
         /// </returns>
         Task<IReadOnlyList<IAppFile>> GetFilesAsync();
 
         /// <summary>
-        /// Gets all of the folders from this folder.
+        /// Gets the folders in the current folder.
         /// </summary>
         /// <returns>
-        /// Returns a collection of folders.
+        /// When this method completes successfully, it returns a list of the child folders in the folder. Each folder in the list is represented by an IAppFolder.
         /// </returns>
         Task<IReadOnlyList<IAppFolder>> GetFoldersAsync();
 
         /// <summary>
-        /// Gets all of the items from this folder.
+        /// Gets the items from the current folder.
         /// </summary>
         /// <returns>
-        /// Returns a collection of folders and files.
+        /// When this method completes successfully, it returns a list of the files and folders. The files and folders in the list are represented by objects of type IAppStorageItem.
         /// </returns>
         Task<IReadOnlyList<IAppStorageItem>> GetItemsAsync();
     }

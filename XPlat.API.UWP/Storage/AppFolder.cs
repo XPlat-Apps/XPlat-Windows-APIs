@@ -35,9 +35,7 @@
             this.Parent = parentFolder;
         }
 
-        /// <summary>
-        /// Gets the date the item was created.
-        /// </summary>
+        /// <inheritdoc />
         public DateTime DateCreated
         {
             get
@@ -46,9 +44,7 @@
             }
         }
 
-        /// <summary>
-        /// Gets the name of the item.
-        /// </summary>
+        /// <inheritdoc />
         public string Name
         {
             get
@@ -57,9 +53,7 @@
             }
         }
 
-        /// <summary>
-        /// Gets the full path to the item.
-        /// </summary>
+        /// <inheritdoc />
         public string Path
         {
             get
@@ -68,9 +62,7 @@
             }
         }
 
-        /// <summary>
-        /// Gets a value indicating whether the item exists.
-        /// </summary>
+        /// <inheritdoc />
         public bool Exists
         {
             get
@@ -79,61 +71,32 @@
             }
         }
 
-        /// <summary>
-        /// Gets the parent folder for the item.
-        /// </summary>
+        /// <inheritdoc />
         public IAppFolder Parent { get; private set; }
 
-        /// <summary>
-        /// Renames the item with the specified new name.
-        /// </summary>
-        /// <param name="desiredNewName">
-        /// The desired new name.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
-        public Task RenameAsync(string desiredNewName)
+        /// <inheritdoc />
+        public Task RenameAsync(string desiredName)
         {
-            return this.RenameAsync(desiredNewName, FileStoreNameCollisionOption.FailIfExists);
+            return this.RenameAsync(desiredName, FileStoreNameCollisionOption.FailIfExists);
         }
 
-        /// <summary>
-        /// Renames the item with the specified new name.
-        /// </summary>
-        /// <param name="desiredNewName">
-        /// The desired new name.
-        /// </param>
-        /// <param name="option">
-        /// The item name collision option.
-        /// </param>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
-        public async Task RenameAsync(string desiredNewName, FileStoreNameCollisionOption option)
+        /// <inheritdoc />
+        public async Task RenameAsync(string desiredName, FileStoreNameCollisionOption option)
         {
             if (!this.Exists)
             {
                 throw new AppStorageItemNotFoundException(this.Name, "Cannot rename a folder that does not exist.");
             }
 
-            if (string.IsNullOrWhiteSpace(desiredNewName))
+            if (string.IsNullOrWhiteSpace(desiredName))
             {
-                throw new ArgumentNullException(nameof(desiredNewName));
+                throw new ArgumentNullException(nameof(desiredName));
             }
 
-            await this.folder.RenameAsync(desiredNewName, option.ToNameCollisionOption());
+            await this.folder.RenameAsync(desiredName, option.ToNameCollisionOption());
         }
 
-        /// <summary>
-        /// Deletes the item.
-        /// </summary>
-        /// <remarks>
-        /// If the item is a folder, it will delete all contents.
-        /// </remarks>
-        /// <returns>
-        /// Returns a task.
-        /// </returns>
+        /// <inheritdoc />
         public async Task DeleteAsync()
         {
             if (!this.Exists)
@@ -144,12 +107,7 @@
             await this.folder.DeleteAsync();
         }
 
-        /// <summary>
-        /// Gets the properties of the item.
-        /// </summary>
-        /// <returns>
-        /// Returns the properties.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IDictionary<string, object>> GetPropertiesAsync()
         {
             if (!this.Exists)
@@ -163,46 +121,19 @@
             return storageFolder != null ? await storageFolder.Properties.RetrievePropertiesAsync(null) : null;
         }
 
-        /// <summary>
-        /// Checks whether the item is of a known type.
-        /// </summary>
-        /// <param name="type">
-        /// The item type to check.
-        /// </param>
-        /// <returns>
-        /// Returns true if matches; else false.
-        /// </returns>
+        /// <inheritdoc />
         public bool IsOfType(FileStoreItemTypes type)
         {
             return type == FileStoreItemTypes.Folder;
         }
 
-        /// <summary>
-        /// Creates a new file with the desired name in this folder.
-        /// </summary>
-        /// <param name="desiredName">
-        /// The desired file name.
-        /// </param>
-        /// <returns>
-        /// Returns the created file.
-        /// </returns>
+        /// <inheritdoc />
         public Task<IAppFile> CreateFileAsync(string desiredName)
         {
             return this.CreateFileAsync(desiredName, FileStoreCreationOption.FailIfExists);
         }
 
-        /// <summary>
-        /// Creates a new file with the desired name with creation options in this folder.
-        /// </summary>
-        /// <param name="desiredName">
-        /// The desired file name.
-        /// </param>
-        /// <param name="options">
-        /// The creation options.
-        /// </param>
-        /// <returns>
-        /// Returns the created file.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IAppFile> CreateFileAsync(string desiredName, FileStoreCreationOption options)
         {
             if (!this.Exists)
@@ -221,32 +152,13 @@
             return new AppFile(this, storageFile);
         }
 
-        /// <summary>
-        /// Creates a new folder with the desired name in this folder.
-        /// </summary>
-        /// <param name="desiredName">
-        /// The desired folder name.
-        /// </param>
-        /// <returns>
-        /// Returns the created folder.
-        /// </returns>
+        /// <inheritdoc />
         public Task<IAppFolder> CreateFolderAsync(string desiredName)
         {
             return this.CreateFolderAsync(desiredName, FileStoreCreationOption.FailIfExists);
         }
 
-        /// <summary>
-        /// Creates a new folder with the desired name with creation options in this folder.
-        /// </summary>
-        /// <param name="desiredName">
-        /// The desired folder name.
-        /// </param>
-        /// <param name="options">
-        /// The creation options.
-        /// </param>
-        /// <returns>
-        /// Returns the created folder.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IAppFolder> CreateFolderAsync(string desiredName, FileStoreCreationOption options)
         {
             if (!this.Exists)
@@ -265,32 +177,13 @@
             return new AppFolder(this, storageFolder);
         }
 
-        /// <summary>
-        /// Gets a file with the specified name from this folder.
-        /// </summary>
-        /// <param name="name">
-        /// The name of the file to get.
-        /// </param>
-        /// <returns>
-        /// Returns the file.
-        /// </returns>
+        /// <inheritdoc />
         public Task<IAppFile> GetFileAsync(string name)
         {
             return this.GetFileAsync(name, false);
         }
 
-        /// <summary>
-        /// Gets a file with the specified name from this folder.
-        /// </summary>
-        /// <param name="name">
-        /// The name of the file to get.
-        /// </param>
-        /// <param name="createIfNotExists">
-        /// A value indicating whether to create the file if it does not exist.
-        /// </param>
-        /// <returns>
-        /// Returns the file.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IAppFile> GetFileAsync(string name, bool createIfNotExists)
         {
             if (!this.Exists)
@@ -327,32 +220,13 @@
             return new AppFile(this, storageFile);
         }
 
-        /// <summary>
-        /// Gets a folder with the specified name from this folder.
-        /// </summary>
-        /// <param name="name">
-        /// The name of the folder to get.
-        /// </param>
-        /// <returns>
-        /// Returns the folder.
-        /// </returns>
+        /// <inheritdoc />
         public Task<IAppFolder> GetFolderAsync(string name)
         {
             return this.GetFolderAsync(name, false);
         }
 
-        /// <summary>
-        /// Gets a folder with the specified name from this folder.
-        /// </summary>
-        /// <param name="name">
-        /// The name of the folder to get.
-        /// </param>
-        /// <param name="createIfNotExists">
-        /// A value indicating whether to create the folder if it does not exist.
-        /// </param>
-        /// <returns>
-        /// Returns the folder.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IAppFolder> GetFolderAsync(string name, bool createIfNotExists)
         {
             if (!this.Exists)
@@ -389,18 +263,7 @@
             return new AppFolder(this, storageFolder);
         }
 
-        /// <summary>
-        /// Gets a storage item with the specified name from this folder.
-        /// </summary>
-        /// <remarks>
-        /// A storage item can be a file or folder.
-        /// </remarks>
-        /// <param name="name">
-        /// The name of the item to get.
-        /// </param>
-        /// <returns>
-        /// Returns the file or folder.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IAppStorageItem> GetItemAsync(string name)
         {
             if (!this.Exists)
@@ -442,12 +305,7 @@
             return null;
         }
 
-        /// <summary>
-        /// Gets all of the files from this folder.
-        /// </summary>
-        /// <returns>
-        /// Returns a collection of files.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IReadOnlyList<IAppFile>> GetFilesAsync()
         {
             if (!this.Exists)
@@ -461,12 +319,7 @@
             return storageFiles.Select(storageFile => new AppFile(this, storageFile)).ToList();
         }
 
-        /// <summary>
-        /// Gets all of the folders from this folder.
-        /// </summary>
-        /// <returns>
-        /// Returns a collection of folders.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IReadOnlyList<IAppFolder>> GetFoldersAsync()
         {
             if (!this.Exists)
@@ -480,12 +333,7 @@
             return storageFolders.Select(storageFolder => new AppFolder(this, storageFolder)).ToList();
         }
 
-        /// <summary>
-        /// Gets all of the items from this folder.
-        /// </summary>
-        /// <returns>
-        /// Returns a collection of folders and files.
-        /// </returns>
+        /// <inheritdoc />
         public async Task<IReadOnlyList<IAppStorageItem>> GetItemsAsync()
         {
             if (!this.Exists)
@@ -528,7 +376,7 @@
         /// The absolute path in the file system (not the Uri) of the folder to get.
         /// </param>
         /// <returns>
-        /// Returns an <see cref="AppFolder"/> for the path.
+        /// When this method completes successfully, it returns an IAppFolder that represents the specified folder.
         /// </returns>
         public static async Task<AppFolder> GetFolderFromPathAsync(string path)
         {

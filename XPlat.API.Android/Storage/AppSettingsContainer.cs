@@ -23,15 +23,7 @@ namespace XPlat.API.Storage
             }
         }
 
-        /// <summary>
-        /// Checks whether the settings container contains the specified key.
-        /// </summary>
-        /// <param name="key">
-        /// The key.
-        /// </param>
-        /// <returns>
-        /// Returns true if exists; else false.
-        /// </returns>
+        /// <inheritdoc />
         public bool ContainsKey(string key)
         {
             bool containsKey;
@@ -47,18 +39,7 @@ namespace XPlat.API.Storage
             return containsKey;
         }
 
-        /// <summary>
-        /// Gets the value from the settings container for the specified key.
-        /// </summary>
-        /// <param name="key">
-        /// The key.
-        /// </param>
-        /// <typeparam name="T">
-        /// The type for the stored value.
-        /// </typeparam>
-        /// <returns>
-        /// Returns the stored value.
-        /// </returns>
+        /// <inheritdoc />
         public T Get<T>(string key)
         {
             var value = default(T);
@@ -127,15 +108,7 @@ namespace XPlat.API.Storage
             return value;
         }
 
-        /// <summary>
-        /// Adds or updates a key in the settings container with the specified value.
-        /// </summary>
-        /// <param name="key">
-        /// The key.
-        /// </param>
-        /// <param name="value">
-        /// The value.
-        /// </param>
+        /// <inheritdoc />
         public void AddOrUpdate(string key, object value)
         {
             lock (this.obj)
@@ -191,12 +164,7 @@ namespace XPlat.API.Storage
             }
         }
 
-        /// <summary>
-        /// Removes the specified key's value from the settings container.
-        /// </summary>
-        /// <param name="key">
-        /// The key.
-        /// </param>
+        /// <inheritdoc />
         public void Remove(string key)
         {
             if (!this.ContainsKey(key)) return;
