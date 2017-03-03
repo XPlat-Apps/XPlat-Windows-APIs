@@ -8,32 +8,34 @@
     <owners>James Croft</owners>
     <licenseUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</projectUrl>
-    <iconUrl>http://jamescroft.co.uk/wp-content/uploads/2014/12/icon1.png</iconUrl>
+    <iconUrl>http://jamescroft.co.uk/wp-content/uploads/2017/03/XApiLog.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>This library contains a collection of cross-platform helpers and extensions for Xamarin apps designed in a similar way to Microsoft's Windows APIs built by the community.</description>
-    <releaseNotes>Initial release containing AppData storage functions.</releaseNotes>
+    <description>This library contains a collection of cross-platform helpers and extensions for Xamarin apps designed to Microsoft's Windows APIs built by the community.</description>
+    <releaseNotes>Added PowerManager API.</releaseNotes>
     <copyright>Copyright (c) James Croft. All rights reserved.</copyright>
-    <tags>Xamarin UWP iOS Android Toolkit API Extensions Components</tags>
+    <tags>Xamarin UWP iOS Android Toolkit API Extensions Components PowerManager ApplicationData Storage Power WinUX</tags>
     <dependencies>
       <dependency id="WinUX.Common" version="2.4.17005.1" />
       <dependency id="Newtonsoft.Json" version="9.0.1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.UWP.dll" target="lib\netcore50\XamarinApiToolkit.UWP.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.UWP.xml" target="lib\netcore50\XamarinApiToolkit.UWP.xml" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.UWP.pri" target="lib\netcore50\XamarinApiToolkit.UWP.pri" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.Common.dll" target="lib\netcore50\XamarinApiToolkit.Common.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.UWP\bin\Release\XamarinApiToolkit.Common.xml" target="lib\netcore50\XamarinApiToolkit.Common.xml" />
+    <file src="..\XPlat.API.UWP\bin\Release\XPlat.API.UWP.dll" target="lib\uap10.0\XPlat.API.UWP.dll" />
+    <file src="..\XPlat.API.UWP\bin\Release\XPlat.API.UWP.xml" target="lib\uap10.0\XPlat.API.UWP.xml" />
+    <file src="..\XPlat.API.UWP\bin\Release\XPlat.API.UWP.pri" target="lib\uap10.0\XPlat.API.UWP.pri" />
+    <file src="..\XPlat.API.UWP\bin\Release\XPlat.API.Common.dll" target="lib\uap10.0\XPlat.API.Common.dll" />
+    <file src="..\XPlat.API.UWP\bin\Release\XPlat.API.Common.xml" target="lib\uap10.0\XPlat.API.Common.xml" />
 
-    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Android.dll" target="lib\MonoAndroid10\XamarinApiToolkit.Android.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Android.xml" target="lib\MonoAndroid10\XamarinApiToolkit.Android.xml" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Common.dll" target="lib\MonoAndroid10\XamarinApiToolkit.Common.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.Android\bin\Release\XamarinApiToolkit.Common.xml" target="lib\MonoAndroid10\XamarinApiToolkit.Common.xml" />
+    <file src="..\XPlat.API.Android\bin\Release\XPlat.API.Android.dll" target="lib\MonoAndroid10\XPlat.API.Android.dll" />
+    <file src="..\XPlat.API.Android\bin\Release\XPlat.API.Android.xml" target="lib\MonoAndroid10\XPlat.API.Android.xml" />
+    <file src="..\XPlat.API.Android\bin\Release\XPlat.API.Common.dll" target="lib\MonoAndroid10\XPlat.API.Common.dll" />
+    <file src="..\XPlat.API.Android\bin\Release\XPlat.API.Common.xml" target="lib\MonoAndroid10\XPlat.API.Common.xml" />
 
-    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.iOS.dll" target="lib\Xamarin.iOS10\XamarinApiToolkit.iOS.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.iOS.xml" target="lib\Xamarin.iOS10\XamarinApiToolkit.iOS.xml" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.Common.dll" target="lib\Xamarin.iOS10\XamarinApiToolkit.Common.dll" />
-    <file src="XamarinApiToolkit\XamarinApiToolkit.iOS\bin\Release\XamarinApiToolkit.Common.xml" target="lib\Xamarin.iOS10\XamarinApiToolkit.Common.xml" />
+    <file src="..\XPlat.API.iOS\bin\Release\XPlat.API.iOS.dll" target="lib\Xamarin.iOS10\XPlat.API.iOS.dll" />
+    <file src="..\XPlat.API.iOS\bin\Release\XPlat.API.iOS.dll.mdb" target="lib\Xamarin.iOS10\XPlat.API.iOS.dll.mdb" />
+    <file src="..\XPlat.API.iOS\bin\Release\XPlat.API.iOS.xml" target="lib\Xamarin.iOS10\XPlat.API.iOS.xml" />
+    <file src="..\XPlat.API.iOS\bin\Release\XPlat.API.Common.dll" target="lib\Xamarin.iOS10\XPlat.API.Common.dll" />
+    <file src="..\XPlat.API.iOS\bin\Release\XPlat.API.Common.dll.mdb" target="lib\Xamarin.iOS10\XPlat.API.Common.dll.mdb" />
+    <file src="..\XPlat.API.iOS\bin\Release\XPlat.API.Common.xml" target="lib\Xamarin.iOS10\XPlat.API.Common.xml" />
   </files>
 </package>
