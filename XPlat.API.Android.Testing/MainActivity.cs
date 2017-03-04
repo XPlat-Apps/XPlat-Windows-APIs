@@ -16,7 +16,7 @@
             var request = new DisplayRequest(this.Window);
             request.RequestActive();
 
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.txt", FileStoreCreationOption.OpenIfExists);
+            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.txt", CreationCollisionOption.OpenIfExists);
 
             await file.WriteTextAsync("Hello from the Android app!");
 

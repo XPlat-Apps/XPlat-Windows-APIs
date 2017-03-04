@@ -4,44 +4,48 @@
 
     using XPlat.API.Storage;
 
+    using CreationCollisionOption = XPlat.API.Storage.CreationCollisionOption;
+    using FileAccessMode = XPlat.API.Storage.FileAccessMode;
+    using NameCollisionOption = XPlat.API.Storage.NameCollisionOption;
+
     public static partial class Extensions
     {
-        public static NameCollisionOption ToNameCollisionOption(this FileStoreNameCollisionOption option)
+        public static Windows.Storage.NameCollisionOption ToNameCollisionOption(this NameCollisionOption option)
         {
             switch (option)
             {
-                case FileStoreNameCollisionOption.ReplaceExisting:
-                    return NameCollisionOption.ReplaceExisting;
-                case FileStoreNameCollisionOption.GenerateUniqueName:
-                    return NameCollisionOption.GenerateUniqueName;
+                case NameCollisionOption.ReplaceExisting:
+                    return Windows.Storage.NameCollisionOption.ReplaceExisting;
+                case NameCollisionOption.GenerateUniqueName:
+                    return Windows.Storage.NameCollisionOption.GenerateUniqueName;
                 default:
-                    return NameCollisionOption.FailIfExists;
+                    return Windows.Storage.NameCollisionOption.FailIfExists;
             }
         }
 
-        public static FileAccessMode ToFileAccessMode(this FileAccessOption accessMode)
+        public static Windows.Storage.FileAccessMode ToFileAccessMode(this FileAccessMode accessMode)
         {
             switch (accessMode)
             {
-                case FileAccessOption.ReadWrite:
-                    return FileAccessMode.ReadWrite;
+                case FileAccessMode.ReadWrite:
+                    return Windows.Storage.FileAccessMode.ReadWrite;
                 default:
-                    return FileAccessMode.Read;
+                    return Windows.Storage.FileAccessMode.Read;
             }
         }
 
-        public static CreationCollisionOption ToCreationCollisionOption(this FileStoreCreationOption option)
+        public static Windows.Storage.CreationCollisionOption ToCreationCollisionOption(this CreationCollisionOption option)
         {
             switch (option)
             {
-                case FileStoreCreationOption.GenerateUniqueName:
-                    return CreationCollisionOption.GenerateUniqueName;
-                case FileStoreCreationOption.ReplaceExisting:
-                    return CreationCollisionOption.ReplaceExisting;
-                case FileStoreCreationOption.OpenIfExists:
-                    return CreationCollisionOption.OpenIfExists;
+                case CreationCollisionOption.GenerateUniqueName:
+                    return Windows.Storage.CreationCollisionOption.GenerateUniqueName;
+                case CreationCollisionOption.ReplaceExisting:
+                    return Windows.Storage.CreationCollisionOption.ReplaceExisting;
+                case CreationCollisionOption.OpenIfExists:
+                    return Windows.Storage.CreationCollisionOption.OpenIfExists;
                 default:
-                    return CreationCollisionOption.FailIfExists;
+                    return Windows.Storage.CreationCollisionOption.FailIfExists;
             }
         }
     }

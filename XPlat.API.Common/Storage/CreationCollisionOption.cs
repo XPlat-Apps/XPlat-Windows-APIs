@@ -1,6 +1,6 @@
 ﻿namespace XPlat.API.Storage
 {
-    public enum FileStoreCreationOption
+    public enum CreationCollisionOption
     {
         GenerateUniqueName,
 

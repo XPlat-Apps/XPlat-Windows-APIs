@@ -1,6 +1,6 @@
 ﻿namespace XPlat.API.Storage
 {
-    public enum FileAccessOption
+    public enum FileAccessMode
     {
         Read,
 

@@ -8,7 +8,7 @@
         /// <summary>
         /// Gets the root folder for the application in the local data store.
         /// </summary>
-        IAppFolder LocalFolder { get; }
+        IStorageFolder LocalFolder { get; }
 
         /// <summary>
         /// Gets the settings container for the application in the local data store.
@@ -18,11 +18,11 @@
         /// <summary>
         /// Gets the root folder for the application in the roaming data store.
         /// </summary>
-        IAppFolder RoamingFolder { get; }
+        IStorageFolder RoamingFolder { get; }
 
         /// <summary>
         /// Gets the root folder for the application in the temporary data store.
         /// </summary>
-        IAppFolder TemporaryFolder { get; }
+        IStorageFolder TemporaryFolder { get; }
     }
 }

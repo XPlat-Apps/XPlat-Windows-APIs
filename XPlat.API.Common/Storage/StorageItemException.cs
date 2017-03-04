@@ -2,15 +2,15 @@
 {
     using System;
 
-    public class AppStorageItemException : Exception
+    public class StorageItemException : Exception
     {
-        public AppStorageItemException(string storageItemName, string message)
+        public StorageItemException(string storageItemName, string message)
             : base(message)
         {
             this.StorageItemName = storageItemName;
         }
 
-        public AppStorageItemException(string storageItemName, string message, Exception innerException)
+        public StorageItemException(string storageItemName, string message, Exception innerException)
             : base(message, innerException)
         {
             this.StorageItemName = storageItemName;

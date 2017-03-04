@@ -3,7 +3,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
-    public interface IAppFile : IAppStorageItem
+    public interface IStorageFile : IStorageItem
     {
         /// <summary>
         /// Gets the type (file name extension) of the file.
@@ -19,7 +19,7 @@
         /// <returns>
         /// When this method completes, it returns the stream.
         /// </returns>
-        Task<Stream> OpenAsync(FileAccessOption accessMode);
+        Task<Stream> OpenAsync(FileAccessMode accessMode);
 
         /// <summary>
         /// Creates a copy of the file in the specified folder.
@@ -28,9 +28,9 @@
         /// The destination folder where the copy is created.
         /// </param>
         /// <returns>
-        /// When this method completes, it returns an IAppFile that represents the copy.
+        /// When this method completes, it returns an IStorageFile that represents the copy.
         /// </returns>
-        Task<IAppFile> CopyAsync(IAppFolder destinationFolder);
+        Task<IStorageFile> CopyAsync(IStorageFolder destinationFolder);
 
         /// <summary>
         /// Creates a copy of the file in the specified folder, using the desired name.
@@ -42,9 +42,9 @@
         /// The desired name of the copy. If there is an existing file in the destination folder that already has the specified desiredNewName, this method will throw an exception.
         /// </param>
         /// <returns>
-        /// When this method completes, it returns an IAppFile that represents the copy.
+        /// When this method completes, it returns an IStorageFile that represents the copy.
         /// </returns>
-        Task<IAppFile> CopyAsync(IAppFolder destinationFolder, string desiredNewName);
+        Task<IStorageFile> CopyAsync(IStorageFolder destinationFolder, string desiredNewName);
 
         /// <summary>
         /// Creates a copy of the file in the specified folder, using the desired name. This method also specifies what to do if an existing file in the specified folder has the same name.
@@ -53,18 +53,18 @@
         /// The destination folder where the copy is created.
         /// </param>
         /// <param name="desiredNewName">
-        /// The desired name of the copy. If there is an existing file in the destination folder that already has the specified desiredNewName, the specified FileStoreNameCollisionOption determines how the API responds to the conflict.
+        /// The desired name of the copy. If there is an existing file in the destination folder that already has the specified desiredNewName, the specified NameCollisionOption determines how the API responds to the conflict.
         /// </param>
         /// <param name="option">
         /// An enum value that determines how the API responds if the desiredNewName is the same as the name of an existing file in the destination folder.
         /// </param>
         /// <returns>
-        /// When this method completes, it returns an IAppFile that represents the copy.
+        /// When this method completes, it returns an IStorageFile that represents the copy.
         /// </returns>
-        Task<IAppFile> CopyAsync(
-            IAppFolder destinationFolder,
+        Task<IStorageFile> CopyAsync(
+            IStorageFolder destinationFolder,
             string desiredNewName,
-            FileStoreNameCollisionOption option);
+            NameCollisionOption option);
 
         /// <summary>
         /// Replaces the specified file with a copy of the current file.
@@ -75,7 +75,7 @@
         /// <returns>
         /// An object that is used to manage the asynchronous operation.
         /// </returns>
-        Task CopyAndReplaceAsync(IAppFile fileToReplace);
+        Task CopyAndReplaceAsync(IStorageFile fileToReplace);
 
         /// <summary>
         /// Moves the current file to the specified folder.
@@ -86,7 +86,7 @@
         /// <returns>
         /// An object that is used to manage the asynchronous operation.
         /// </returns>
-        Task MoveAsync(IAppFolder destinationFolder);
+        Task MoveAsync(IStorageFolder destinationFolder);
 
         /// <summary>
         /// Moves the current file to the specified folder and renames the file according to the desired name.
@@ -100,7 +100,7 @@
         /// <returns>
         /// An object that is used to manage the asynchronous operation.
         /// </returns>
-        Task MoveAsync(IAppFolder destinationFolder, string desiredNewName);
+        Task MoveAsync(IStorageFolder destinationFolder, string desiredNewName);
 
         /// <summary>
         /// Moves the current file to the specified folder and renames the file according to the desired name. This method also specifies what to do if a file with the same name already exists in the specified folder.
@@ -109,7 +109,7 @@
         /// The destination folder where the file is moved. This destination folder must be a physical location. Otherwise, this method fails and throws an exception.
         /// </param>
         /// <param name="desiredNewName">
-        /// The desired name of the file after it is moved. If there is an existing file in the destination folder that already has the specified desiredNewName, the specified FileStoreNameCollisionOption determines how the API responds to the conflict.
+        /// The desired name of the file after it is moved. If there is an existing file in the destination folder that already has the specified desiredNewName, the specified NameCollisionOption determines how the API responds to the conflict.
         /// </param>
         /// <param name="option">
         /// An enum value that determines how the API responds if the desiredNewName is the same as the name of an existing file in the destination folder.
@@ -117,7 +117,7 @@
         /// <returns>
         /// An object that is used to manage the asynchronous operation.
         /// </returns>
-        Task MoveAsync(IAppFolder destinationFolder, string desiredNewName, FileStoreNameCollisionOption option);
+        Task MoveAsync(IStorageFolder destinationFolder, string desiredNewName, NameCollisionOption option);
 
         /// <summary>
         /// Moves the current file to the location of the specified file and replaces the specified file in that location.
@@ -128,7 +128,7 @@
         /// <returns>
         /// An object that is used to manage the asynchronous operation.
         /// </returns>
-        Task MoveAndReplaceAsync(IAppFile fileToReplace);
+        Task MoveAndReplaceAsync(IStorageFile fileToReplace);
 
         /// <summary>
         /// Writes a string to the current file.

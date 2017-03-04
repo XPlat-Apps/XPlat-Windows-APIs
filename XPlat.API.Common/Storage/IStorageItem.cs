@@ -7,7 +7,7 @@
     /// <summary>
     /// Defines an interface for an application storage item.
     /// </summary>
-    public interface IAppStorageItem
+    public interface IStorageItem
     {
         /// <summary>
         /// Gets the date the item was created.
@@ -32,7 +32,7 @@
         /// <summary>
         /// Gets the parent folder for the item.
         /// </summary>
-        IAppFolder Parent { get; }
+        IStorageFolder Parent { get; }
 
         /// <summary>
         /// Renames the current item.
@@ -57,7 +57,7 @@
         /// <returns>
         /// An object that is used to manage the asynchronous operation.
         /// </returns>
-        Task RenameAsync(string desiredName, FileStoreNameCollisionOption option);
+        Task RenameAsync(string desiredName, NameCollisionOption option);
 
         /// <summary>
         /// Deletes the current item.
@@ -76,14 +76,14 @@
         Task<IDictionary<string, object>> GetPropertiesAsync();
 
         /// <summary>
-        /// Determines whether the current IAppStorageItem matches the specified FileStoreItemTypes value.
+        /// Determines whether the current IStorageItem matches the specified StorageItemTypes value.
         /// </summary>
         /// <param name="type">
         /// The value to match against.
         /// </param>
         /// <returns>
-        /// True if the IAppStorageItem matches the specified value; otherwise false.
+        /// True if the IStorageItem matches the specified value; otherwise false.
         /// </returns>
-        bool IsOfType(FileStoreItemTypes type);
+        bool IsOfType(StorageItemTypes type);
     }
 }

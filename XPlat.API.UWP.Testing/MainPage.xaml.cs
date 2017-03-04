@@ -17,7 +17,7 @@
         {
             base.OnNavigatedTo(e);
 
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.txt", FileStoreCreationOption.OpenIfExists);
+            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.txt", CreationCollisionOption.OpenIfExists);
 
             var batteryStatus = PowerManager.Current.BatteryStatus;
             var remainingPercentage = PowerManager.Current.RemainingChargePercent;

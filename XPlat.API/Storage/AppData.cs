@@ -16,15 +16,15 @@
                                                                     CreateSettings,
                                                                     LazyThreadSafetyMode.PublicationOnly);
 
-        private readonly Lazy<IAppFolder> localFolder = new Lazy<IAppFolder>(
+        private readonly Lazy<IStorageFolder> localFolder = new Lazy<IStorageFolder>(
                                                             CreateLocalFolder,
                                                             LazyThreadSafetyMode.PublicationOnly);
 
-        private readonly Lazy<IAppFolder> roamingFolder = new Lazy<IAppFolder>(
+        private readonly Lazy<IStorageFolder> roamingFolder = new Lazy<IStorageFolder>(
                                                               CreateRoamingFolder,
                                                               LazyThreadSafetyMode.PublicationOnly);
 
-        private readonly Lazy<IAppFolder> temporaryFolder = new Lazy<IAppFolder>(
+        private readonly Lazy<IStorageFolder> temporaryFolder = new Lazy<IStorageFolder>(
                                                                 CreateTemporaryFolder,
                                                                 LazyThreadSafetyMode.PublicationOnly);
 
@@ -42,7 +42,7 @@
         /// <summary>
         /// Gets the root folder for the application in the local data store.
         /// </summary>
-        public IAppFolder LocalFolder
+        public IStorageFolder LocalFolder
         {
             get
             {
@@ -64,7 +64,7 @@
         /// <summary>
         /// Gets the root folder for the application in the roaming data store.
         /// </summary>
-        public IAppFolder RoamingFolder
+        public IStorageFolder RoamingFolder
         {
             get
             {
@@ -75,7 +75,7 @@
         /// <summary>
         /// Gets the root folder for the application in the temporary data store.
         /// </summary>
-        public IAppFolder TemporaryFolder
+        public IStorageFolder TemporaryFolder
         {
             get
             {
@@ -92,33 +92,33 @@
 #endif
         }
 
-        private static IAppFolder CreateLocalFolder()
+        private static IStorageFolder CreateLocalFolder()
         {
 #if WINDOWS_UWP
-            return new AppFolder(null, Windows.Storage.ApplicationData.Current.LocalFolder);
+            return new StorageFolder(null, Windows.Storage.ApplicationData.Current.LocalFolder);
 #elif ANDROID
-            return new AppFolder(null, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            return new StorageFolder(null, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 #elif IOS
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            return new AppFolder(null, System.IO.Path.Combine(documentsPath, "..", "Library"));
+            return new StorageFolder(null, System.IO.Path.Combine(documentsPath, "..", "Library"));
 #else
             return null;
 #endif
         }
 
-        private static IAppFolder CreateRoamingFolder()
+        private static IStorageFolder CreateRoamingFolder()
         {
 #if WINDOWS_UWP
-            return new AppFolder(null, Windows.Storage.ApplicationData.Current.RoamingFolder);
+            return new StorageFolder(null, Windows.Storage.ApplicationData.Current.RoamingFolder);
 #else
             return null;
 #endif
         }
 
-        private static IAppFolder CreateTemporaryFolder()
+        private static IStorageFolder CreateTemporaryFolder()
         {
 #if WINDOWS_UWP
-            return new AppFolder(null, Windows.Storage.ApplicationData.Current.TemporaryFolder);
+            return new StorageFolder(null, Windows.Storage.ApplicationData.Current.TemporaryFolder);
 #else
             return null;
 #endif
