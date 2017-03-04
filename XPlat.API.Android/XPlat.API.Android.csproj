@@ -36,6 +36,17 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\XPlat.API.Android.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Testing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Testing\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ANDROID</DefineConstants>
+    <DocumentationFile>bin\Debug\XPlat.API.Android.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
@@ -58,6 +69,9 @@
     </Compile>
     <Compile Include="..\XPlat.API.iOS\Storage\AppFolder.cs">
       <Link>Storage\AppFolder.cs</Link>
+    </Compile>
+    <Compile Include="..\XPlat.API\Device\Display\DisplayRequest.cs">
+      <Link>Device\Display\DisplayRequest.cs</Link>
     </Compile>
     <Compile Include="..\XPlat.API\Device\Power\PowerManager.cs">
       <Link>Device\Power\PowerManager.cs</Link>
