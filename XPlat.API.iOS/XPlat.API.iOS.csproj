@@ -59,7 +59,14 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Device\Geolocation\" />
+    <Folder Include="Device\Profile\" />
+    <Folder Include="Foundation\Metadata\" />
     <Folder Include="Resources\" />
+    <Folder Include="Security\Cryptography\Core\" />
+    <Folder Include="Security\Cryptography\DataProtection\" />
+    <Folder Include="Storage\FileProperties\" />
+    <Folder Include="Storage\Pickers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\XPlat.API\Device\Display\DisplayRequest.cs">

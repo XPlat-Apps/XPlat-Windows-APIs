@@ -92,7 +92,16 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Device\Geolocation\" />
+    <Folder Include="Device\Profile\" />
+    <Folder Include="Foundation\Metadata\" />
+    <Folder Include="Security\Cryptography\Core\" />
+    <Folder Include="Security\Cryptography\DataProtection\" />
+    <Folder Include="Storage\FileProperties\" />
+    <Folder Include="Storage\Pickers\" />
+    <Folder Include="UI\Core\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XPlat.API.Common\XPlat.API.Common.csproj">
       <Project>{184b7424-b553-4477-a5a4-03b23ac41c74}</Project>

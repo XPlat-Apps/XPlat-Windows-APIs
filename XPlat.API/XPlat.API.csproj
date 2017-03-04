@@ -71,7 +71,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Device\Geolocation\" />
+    <Folder Include="Device\Profile\" />
+    <Folder Include="Foundation\Metadata\" />
+    <Folder Include="Security\Cryptography\Core\" />
+    <Folder Include="Security\Cryptography\DataProtection\" />
+    <Folder Include="Storage\FileProperties\" />
+    <Folder Include="Storage\Pickers\" />
+    <Folder Include="UI\Core\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

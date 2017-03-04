@@ -47,6 +47,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <Folder Include="Device\Geolocation\" />
+    <Folder Include="Device\Profile\" />
+    <Folder Include="Foundation\Metadata\" />
+    <Folder Include="Security\Cryptography\Core\" />
+    <Folder Include="Security\Cryptography\DataProtection\" />
+    <Folder Include="Storage\FileProperties\" />
+    <Folder Include="Storage\Pickers\" />
+    <Folder Include="UI\Core\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Device\Display\IDisplayRequest.cs" />
