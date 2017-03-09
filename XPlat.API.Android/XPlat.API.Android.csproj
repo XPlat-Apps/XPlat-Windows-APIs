@@ -79,6 +79,7 @@
     <Compile Include="..\XPlat.API\Storage\AppData.cs">
       <Link>Storage\AppData.cs</Link>
     </Compile>
+    <Compile Include="Device\Geolocation\Geolocator.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\AppSettingsContainer.cs" />
@@ -93,7 +94,6 @@
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Device\Geolocation\" />
     <Folder Include="Device\Profile\" />
     <Folder Include="Foundation\Metadata\" />
     <Folder Include="Security\Cryptography\Core\" />
