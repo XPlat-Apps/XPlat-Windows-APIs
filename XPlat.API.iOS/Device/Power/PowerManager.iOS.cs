@@ -1,6 +1,6 @@
 ﻿namespace XPlat.API.Device.Power
 {
-    using Foundation;
+    using global::Foundation;
 
     using UIKit;
 

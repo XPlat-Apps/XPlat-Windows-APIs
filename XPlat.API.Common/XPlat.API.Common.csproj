@@ -47,7 +47,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Device\Geolocation\" />
     <Folder Include="Device\Profile\" />
     <Folder Include="Foundation\Metadata\" />
     <Folder Include="Security\Cryptography\Core\" />
@@ -58,7 +57,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Device\Display\IDisplayRequest.cs" />
+    <Compile Include="Device\Geolocation\Geocoordinate.cs" />
+    <Compile Include="Device\Geolocation\GeolocationAccessStatus.cs" />
+    <Compile Include="Device\Geolocation\GeolocatorException.cs" />
+    <Compile Include="Device\Geolocation\Geoposition.cs" />
+    <Compile Include="Device\Geolocation\IGeolocator.cs" />
+    <Compile Include="Device\Geolocation\PositionAccuracy.cs" />
+    <Compile Include="Device\Geolocation\PositionChangedEventArgs.cs" />
+    <Compile Include="Device\Geolocation\PositionStatus.cs" />
+    <Compile Include="Device\Geolocation\StatusChangedEventArgs.cs" />
     <Compile Include="Exceptions\AppPermissionInvalidException.cs" />
+    <Compile Include="Foundation\TypedEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\StorageFileIOException.cs" />
     <Compile Include="Storage\StorageItemCreationException.cs" />
@@ -76,6 +85,7 @@
     <Compile Include="Device\Power\BatteryStatus.cs" />
     <Compile Include="Device\Power\BatteryStatusChanged.cs" />
     <Compile Include="Device\Power\IPowerManager.cs" />
+    <Compile Include="Threading\Tasks\TimeoutTask.cs" />
     <Compile Include="UI\Popups\DialogCommand.cs" />
     <Compile Include="UI\Popups\IMessageDialog.cs" />
   </ItemGroup>

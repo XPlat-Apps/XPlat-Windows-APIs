@@ -1,8 +1,8 @@
 ﻿namespace XPlat.API.UI.Core
 {
-    using Foundation;
-
     using System;
+
+    using global::Foundation;
 
     public static class MainDispatcher
     {

@@ -3,11 +3,14 @@
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
 
+    using XPlat.API.Device.Geolocation;
     using XPlat.API.Device.Power;
     using XPlat.API.Storage;
 
     public sealed partial class MainPage : Page
     {
+        private Geolocator geolocator;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -21,6 +24,15 @@
 
             var batteryStatus = PowerManager.Current.BatteryStatus;
             var remainingPercentage = PowerManager.Current.RemainingChargePercent;
+
+            this.geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.High, MovementThreshold = 25 };
+            this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
+            var access = await this.geolocator.RequestAccessAsync();
+        }
+
+        private void Geolocator_PositionChanged(IGeolocator sender, PositionChangedEventArgs args)
+        {
+            var position = args.Position;
         }
     }
 }

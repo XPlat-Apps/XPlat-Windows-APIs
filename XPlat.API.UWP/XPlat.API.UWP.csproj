@@ -124,6 +124,8 @@
     <Compile Include="..\XPlat.API\Storage\AppData.cs">
       <Link>Storage\AppData.cs</Link>
     </Compile>
+    <Compile Include="Device\Geolocation\Geolocator.cs" />
+    <Compile Include="Extensions\Extensions.Geolocation.cs" />
     <Compile Include="Extensions\Extensions.Power.cs" />
     <Compile Include="Extensions\Extensions.Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,7 +143,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Device\Geolocation\" />
     <Folder Include="Device\Profile\" />
     <Folder Include="Foundation\Metadata\" />
     <Folder Include="Security\Cryptography\Core\" />
