@@ -7,7 +7,7 @@ The XPlat API Toolkit is a third-party toolkit designed to make it easier for de
 
 | Branch | Status |
 | ------ | ------ |
-| master | | master | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/4cfe114a-c08f-45a4-91ee-3260703e08dd/10/badge)](https://github.com/jamesmcroft/XMob-APIs/tree/master) | |
+| master | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/4cfe114a-c08f-45a4-91ee-3260703e08dd/10/badge)](https://github.com/jamesmcroft/XMob-APIs/tree/master) | 
 
 ## <a id="about">Why XPlat API Toolkit?</a>
 When taking your existing UWP applications cross platform with Xamarin, it isn't as easy to port code that is specific to the Windows platform. This toolkit is designed for UWP, iOS and Android applications built with Xamarin to make it easier to create applications across all platforms using a common API layer.
