@@ -52,7 +52,6 @@
     <Folder Include="Security\Cryptography\Core\" />
     <Folder Include="Security\Cryptography\DataProtection\" />
     <Folder Include="Storage\FileProperties\" />
-    <Folder Include="Storage\Pickers\" />
     <Folder Include="UI\Core\" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +69,7 @@
     <Compile Include="Foundation\TypedEventHandler.cs" />
     <Compile Include="Helpers\ParseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\Pickers\IFileOpenPicker.cs" />
     <Compile Include="Storage\StorageFileIOException.cs" />
     <Compile Include="Storage\StorageItemCreationException.cs" />
     <Compile Include="Storage\StorageItemException.cs" />

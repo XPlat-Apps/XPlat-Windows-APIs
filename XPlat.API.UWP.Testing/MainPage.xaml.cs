@@ -9,6 +9,7 @@
     using XPlat.API.Device.Geolocation;
     using XPlat.API.Device.Power;
     using XPlat.API.Storage;
+    using XPlat.API.Storage.Pickers;
 
     public sealed partial class MainPage : Page
     {
@@ -48,6 +49,14 @@
                     // ToDo
                 }
             }
+
+            var singleFilePick = new FileOpenPicker();
+            singleFilePick.FileTypeFilter.Add(".png");
+            var pickedFile = await singleFilePick.PickSingleFileAsync();
+
+            var multiFilePick = new FileOpenPicker();
+            multiFilePick.FileTypeFilter.Add(".png");
+            var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             request.RequestRelease();
         }

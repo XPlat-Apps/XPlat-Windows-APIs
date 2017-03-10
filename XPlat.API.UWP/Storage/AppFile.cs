@@ -25,11 +25,6 @@
         /// </param>
         internal StorageFile(IStorageFolder parentFolder, Windows.Storage.IStorageFile file)
         {
-            if (parentFolder == null)
-            {
-                throw new ArgumentNullException(nameof(parentFolder));
-            }
-
             if (file == null)
             {
                 throw new ArgumentNullException(nameof(file));

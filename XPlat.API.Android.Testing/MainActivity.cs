@@ -50,6 +50,15 @@
                 }
             }
 
+            var singleFilePick = new FileOpenPicker();
+            singleFilePick.FileTypeFilter.Add(".png");
+            var pickedFile = await singleFilePick.PickSingleFileAsync();
+
+            var multiFilePick = new FileOpenPicker();
+            multiFilePick.FileTypeFilter.Add(".png");
+            var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
+
+
             request.RequestRelease();
         }
 

@@ -133,6 +133,7 @@
     <Compile Include="Storage\AppFolder.cs" />
     <Compile Include="Storage\AppSettingsContainer.cs" />
     <Compile Include="Device\Power\PowerManager.Windows.cs" />
+    <Compile Include="Storage\Pickers\FileOpenPicker.cs" />
     <Compile Include="UI\Popups\MessageDialog.cs" />
     <EmbeddedResource Include="Properties\XPlat.API.UWP.rd.xml" />
   </ItemGroup>
@@ -148,7 +149,6 @@
     <Folder Include="Security\Cryptography\Core\" />
     <Folder Include="Security\Cryptography\DataProtection\" />
     <Folder Include="Storage\FileProperties\" />
-    <Folder Include="Storage\Pickers\" />
     <Folder Include="UI\Core\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

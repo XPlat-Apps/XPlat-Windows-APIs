@@ -89,6 +89,8 @@
     <Compile Include="Storage\AppSettingsContainer.cs" />
     <Compile Include="Device\Power\PowerManager.Android.cs" />
     <Compile Include="Device\Power\PowerReceiver.cs" />
+    <Compile Include="Storage\Pickers\FileOpenPicker.cs" />
+    <Compile Include="Storage\Pickers\FileOpenPickerActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -103,7 +105,6 @@
     <Folder Include="Security\Cryptography\Core\" />
     <Folder Include="Security\Cryptography\DataProtection\" />
     <Folder Include="Storage\FileProperties\" />
-    <Folder Include="Storage\Pickers\" />
     <Folder Include="UI\Core\" />
   </ItemGroup>
   <ItemGroup>
