@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.API", "XPlat.API\XPlat.API.csproj", "{C273353E-3E3A-4D04-99B0-90AD253C8623}"
 EndProject
@@ -409,6 +409,8 @@ Global
 		{5A9F162D-D161-47F6-A372-BF5F40E82042}.Testing|ARM.Deploy.0 = Testing|ARM
 		{5A9F162D-D161-47F6-A372-BF5F40E82042}.Testing|iPhone.ActiveCfg = Testing|x86
 		{5A9F162D-D161-47F6-A372-BF5F40E82042}.Testing|iPhoneSimulator.ActiveCfg = Testing|x86
+		{5A9F162D-D161-47F6-A372-BF5F40E82042}.Testing|iPhoneSimulator.Build.0 = Testing|x86
+		{5A9F162D-D161-47F6-A372-BF5F40E82042}.Testing|iPhoneSimulator.Deploy.0 = Testing|x86
 		{5A9F162D-D161-47F6-A372-BF5F40E82042}.Testing|x64.ActiveCfg = Testing|x64
 		{5A9F162D-D161-47F6-A372-BF5F40E82042}.Testing|x64.Deploy.0 = Testing|x64
 		{5A9F162D-D161-47F6-A372-BF5F40E82042}.Testing|x86.ActiveCfg = Testing|x86
@@ -512,6 +514,7 @@ Global
 		{97013BDF-59EF-4CFF-87B0-78CA28BF3462}.Testing|ARM.ActiveCfg = Testing|iPhone
 		{97013BDF-59EF-4CFF-87B0-78CA28BF3462}.Testing|iPhone.ActiveCfg = Testing|iPhone
 		{97013BDF-59EF-4CFF-87B0-78CA28BF3462}.Testing|iPhoneSimulator.ActiveCfg = Testing|iPhoneSimulator
+		{97013BDF-59EF-4CFF-87B0-78CA28BF3462}.Testing|iPhoneSimulator.Build.0 = Testing|iPhoneSimulator
 		{97013BDF-59EF-4CFF-87B0-78CA28BF3462}.Testing|x64.ActiveCfg = Testing|iPhone
 		{97013BDF-59EF-4CFF-87B0-78CA28BF3462}.Testing|x86.ActiveCfg = Testing|iPhone
 	EndGlobalSection
