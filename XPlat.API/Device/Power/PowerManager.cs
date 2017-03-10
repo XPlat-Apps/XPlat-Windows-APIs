@@ -41,6 +41,7 @@
             }
         }
 
+        /// <inheritdoc />
         public BatteryStatus BatteryStatus
         {
             get
@@ -53,6 +54,7 @@
             }
         }
 
+        /// <inheritdoc />
         public int RemainingChargePercent
         {
             get
@@ -65,6 +67,7 @@
             }
         }
 
+        /// <inheritdoc />
         public void Dispose()
         {
 #if !PORTABLE

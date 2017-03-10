@@ -1,8 +1,11 @@
 ﻿namespace XPlat.API.UWP.Testing
 {
+    using System;
+
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
 
+    using XPlat.API.Device.Display;
     using XPlat.API.Device.Geolocation;
     using XPlat.API.Device.Power;
     using XPlat.API.Storage;
@@ -20,14 +23,43 @@
         {
             base.OnNavigatedTo(e);
 
+            var request = new DisplayRequest();
+            request.RequestActive();
+
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.txt", CreationCollisionOption.OpenIfExists);
+            await file.WriteTextAsync("Hello from the UWP app!");
 
             var batteryStatus = PowerManager.Current.BatteryStatus;
             var remainingPercentage = PowerManager.Current.RemainingChargePercent;
 
-            this.geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.High, MovementThreshold = 25 };
+            PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
+            PowerManager.Current.RemainingChargePercentChanged += this.PowerManager_RemainingChargePercentChanged;
+
+            this.geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.Default, MovementThreshold = 25 };
             this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
             var access = await this.geolocator.RequestAccessAsync();
+
+            if (access == GeolocationAccessStatus.Allowed)
+            {
+                var currentLocation = await this.geolocator.GetGeopositionAsync(new TimeSpan(0, 0, 10), new TimeSpan(0, 0, 5));
+
+                if (currentLocation != null)
+                {
+                    // ToDo
+                }
+            }
+
+            request.RequestRelease();
+        }
+
+        private void PowerManager_RemainingChargePercentChanged(object sender, int e)
+        {
+            var percent = e;
+        }
+
+        private void PowerManager_BatteryStatusChanged(object sender, BatteryStatus e)
+        {
+            var status = e;
         }
 
         private void Geolocator_PositionChanged(IGeolocator sender, PositionChangedEventArgs args)

@@ -1,41 +1,34 @@
 ﻿namespace XPlat.API
 {
-    using System;
-
     using XPlat.API.Device.Geolocation;
 
     public partial class Extensions
     {
-        public static Geoposition ToLocalGeoposition(this Windows.Devices.Geolocation.Geoposition position)
+        internal static Geoposition ToLocalGeoposition(this Windows.Devices.Geolocation.Geoposition position)
         {
-            if (position == null)
-            {
-                return null;
-            }
-
-            return new Geoposition { Coordinate = position.Coordinate.ToLocalGeocoordinate() };
+            return position == null ? null : new Geoposition { Coordinate = position.Coordinate.ToLocalGeocoordinate() };
         }
 
-        public static Geocoordinate ToLocalGeocoordinate(this Windows.Devices.Geolocation.Geocoordinate coordinate)
+        internal static Geocoordinate ToLocalGeocoordinate(this Windows.Devices.Geolocation.Geocoordinate coordinate)
         {
-            if (coordinate == null)
-            {
-                return null;
-            }
-
-            return new Geocoordinate
-                       {
-                           Accuracy = coordinate.Accuracy,
-                           Altitude = coordinate.Point == null ? 0 : coordinate.Point.Position.Altitude,
-                           Heading = coordinate.Heading ?? 0,
-                           Latitude = coordinate.Point == null ? 0 : coordinate.Point.Position.Latitude,
-                           Longitude = coordinate.Point == null ? 0 : coordinate.Point.Position.Longitude,
-                           Speed = coordinate.Speed ?? 0,
-                           Timestamp = coordinate.Timestamp
-                       };
+            return coordinate == null
+                       ? null
+                       : new Geocoordinate
+                             {
+                                 Accuracy = coordinate.Accuracy,
+                                 Altitude =
+                                     coordinate.Point == null ? 0 : coordinate.Point.Position.Altitude,
+                                 Heading = coordinate.Heading ?? 0,
+                                 Latitude =
+                                     coordinate.Point == null ? 0 : coordinate.Point.Position.Latitude,
+                                 Longitude =
+                                     coordinate.Point == null ? 0 : coordinate.Point.Position.Longitude,
+                                 Speed = coordinate.Speed ?? 0,
+                                 Timestamp = coordinate.Timestamp
+                             };
         }
 
-        public static PositionStatus ToLocalPositionStatus(this Windows.Devices.Geolocation.PositionStatus status)
+        internal static PositionStatus ToLocalPositionStatus(this Windows.Devices.Geolocation.PositionStatus status)
         {
             switch (status)
             {
@@ -54,7 +47,7 @@
             return PositionStatus.NotAvailable;
         }
 
-        public static GeolocationAccessStatus ToLocalGeolocationAccessStatus(
+        internal static GeolocationAccessStatus ToLocalGeolocationAccessStatus(
             this Windows.Devices.Geolocation.GeolocationAccessStatus status)
         {
             switch (status)

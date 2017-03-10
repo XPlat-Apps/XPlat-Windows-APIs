@@ -21,6 +21,11 @@
         event TypedEventHandler<IGeolocator, StatusChangedEventArgs> StatusChanged;
 
         /// <summary>
+        /// Gets the the position last known by the Geolocator.
+        /// </summary>
+        Geoposition LastKnownPosition { get; }
+
+        /// <summary>
         /// Gets or sets the requested minimum time interval between location updates, in milliseconds.
         /// </summary>
         uint ReportInterval { get; set; }
@@ -46,7 +51,7 @@
         uint DesiredAccuracyInMeters { get; set; }
 
         /// <summary>
-        /// Requests permission to access location data.
+        /// Requests permission to access location data. This method MUST be called before attempting to access the Geolocator's position.
         /// </summary>
         /// <returns>
         /// An object that is used to manage the asynchronous operation.
@@ -64,12 +69,15 @@
         /// <summary>
         /// Retrieves the current location of the device.
         /// </summary>
+        /// <param name="maximumAge">
+        /// The maximum age to retrieve.
+        /// </param>
         /// <param name="timeout">
         /// The duration for a timeout.
         /// </param>
         /// <returns>
         /// An asynchronous operation that, upon completion, returns a Geoposition marking the found location.
         /// </returns>
-        Task<Geoposition> GetGeopositionAsync(TimeSpan timeout);
+        Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout);
     }
 }

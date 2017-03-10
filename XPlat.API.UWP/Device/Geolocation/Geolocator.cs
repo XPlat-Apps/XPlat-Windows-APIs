@@ -29,6 +29,9 @@
         public event Foundation.TypedEventHandler<IGeolocator, StatusChangedEventArgs> StatusChanged;
 
         /// <inheritdoc />
+        public Geoposition LastKnownPosition { get; private set; }
+
+        /// <inheritdoc />
         public uint ReportInterval
         {
             get
@@ -94,9 +97,12 @@
         }
 
         /// <inheritdoc />
-        public Task<Geoposition> GetGeopositionAsync(TimeSpan timeout)
+        public Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
-            var getPositionTask = this.Locator.GetGeopositionAsync(TimeSpan.Zero, TimeSpan.FromDays(365));
+            // Setting the timeout on the Windows API to a year as an exception is thrown when it times out. 
+            var getPositionTask = this.Locator.GetGeopositionAsync(maximumAge, TimeSpan.FromDays(365));
+
+            // Creating a specific timeout task to handle this in a nicer way.
             var timeoutTask = new TimeoutTask(timeout, getPositionTask.Cancel);
 
             var tcs = new TaskCompletionSource<Geoposition>();
@@ -111,7 +117,8 @@
                             tcs.SetCanceled();
                             break;
                         case AsyncStatus.Completed:
-                            tcs.SetResult(op.GetResults().ToLocalGeoposition());
+                            this.LastKnownPosition = op.GetResults().ToLocalGeoposition();
+                            tcs.SetResult(this.LastKnownPosition);
                             break;
                         case AsyncStatus.Error:
                             tcs.SetException(op.ErrorCode);

@@ -5,47 +5,42 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C6C3B369-EF49-4816-990D-2DAB89D6E277}</ProjectGuid>
+    <ProjectGuid>{2A3E7AE0-421E-474B-9C72-268DD6FA1072}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XPlat.API.Android.Testing</RootNamespace>
-    <AssemblyName>XPlat.API.Android.Testing</AssemblyName>
+    <RootNamespace>XPlat.API</RootNamespace>
+    <AssemblyName>XPlat.API.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
-    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ANDROID</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <AndroidLinkMode>None</AndroidLinkMode>
+    <DocumentationFile>bin\Debug\XPlat.API.Android.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;ANDROID</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <DocumentationFile>bin\Release\XPlat.API.Android.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Testing|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Testing\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;ANDROID</DefineConstants>
+    <DocumentationFile>bin\Debug\XPlat.API.Android.xml</DocumentationFile>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -69,35 +64,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="..\XPlat.API.iOS\Storage\AppFile.cs">
+      <Link>Storage\AppFile.cs</Link>
+    </Compile>
+    <Compile Include="..\XPlat.API.iOS\Storage\AppFolder.cs">
+      <Link>Storage\AppFolder.cs</Link>
+    </Compile>
+    <Compile Include="..\XPlat.API\Device\Display\DisplayRequest.cs">
+      <Link>Device\Display\DisplayRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\XPlat.API\Device\Power\PowerManager.cs">
+      <Link>Device\Power\PowerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\XPlat.API\Storage\AppData.cs">
+      <Link>Storage\AppData.cs</Link>
+    </Compile>
+    <Compile Include="Device\Geolocation\Geolocator.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\AppSettingsContainer.cs" />
+    <Compile Include="Device\Power\PowerManager.Android.cs" />
+    <Compile Include="Device\Power\PowerReceiver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
-    <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Main.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
+    <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <Folder Include="Device\Profile\" />
+    <Folder Include="Foundation\Metadata\" />
+    <Folder Include="Security\Cryptography\Core\" />
+    <Folder Include="Security\Cryptography\DataProtection\" />
+    <Folder Include="Storage\FileProperties\" />
+    <Folder Include="Storage\Pickers\" />
+    <Folder Include="UI\Core\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\XPlat.API.Android\XPlat.API.Android.csproj">
-      <Project>{2a3e7ae0-421e-474b-9c72-268dd6fa1072}</Project>
-      <Name>XPlat.API.Android</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XPlat.API.Common\XPlat.API.Common.csproj">
       <Project>{184b7424-b553-4477-a5a4-03b23ac41c74}</Project>
       <Name>XPlat.API.Common</Name>
@@ -105,10 +110,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-     Other similar extension points exist, see Microsoft.Common.targets.
-		<Target Name="BeforeBuild">
-		</Target>
-		<Target Name="AfterBuild">
-		</Target>
- -->
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>
