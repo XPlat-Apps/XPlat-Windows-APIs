@@ -30,13 +30,13 @@ namespace XPlat.API.Storage.Pickers
         /// <inheritdoc />
         public Task<IStorageFile> PickSingleFileAsync()
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(default(IStorageFile));
         }
 
         /// <inheritdoc />
         public Task<IReadOnlyList<IStorageFile>> PickMultipleFilesAsync()
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(default(IReadOnlyList<IStorageFile>));
         }
     }
 }

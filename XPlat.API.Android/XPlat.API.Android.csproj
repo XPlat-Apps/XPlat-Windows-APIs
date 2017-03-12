@@ -15,7 +15,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,6 +73,9 @@
     <Compile Include="..\XPlat.API.iOS\Storage\AppFolder.cs">
       <Link>Storage\AppFolder.cs</Link>
     </Compile>
+    <Compile Include="..\XPlat.API.iOS\Storage\StorageFileTagLibAbstraction.cs">
+      <Link>Storage\StorageFileTagLibAbstraction.cs</Link>
+    </Compile>
     <Compile Include="..\XPlat.API\Device\Display\DisplayRequest.cs">
       <Link>Device\Display\DisplayRequest.cs</Link>
     </Compile>
@@ -94,7 +97,6 @@
     <Compile Include="Device\Power\PowerReceiver.cs" />
     <Compile Include="Storage\Pickers\FileOpenPicker.cs" />
     <Compile Include="Storage\Pickers\FileOpenPickerActivity.cs" />
-    <Compile Include="Storage\StorageFileTagLibAbstraction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

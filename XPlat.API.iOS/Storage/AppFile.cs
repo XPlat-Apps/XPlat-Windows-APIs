@@ -162,8 +162,11 @@
             {
                 file = TagLib.File.Create(new StorageFileTagLibAbstraction(this.Path));
             }
-            catch (UnsupportedFormatException)
+            catch (UnsupportedFormatException ufe)
             {
+#if  DEBUG
+                System.Diagnostics.Debug.WriteLine(ufe.ToString());
+#endif
             }
 
             if (file != null)

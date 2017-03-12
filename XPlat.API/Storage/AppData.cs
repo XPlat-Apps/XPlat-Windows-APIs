@@ -2,31 +2,31 @@
 {
     using System;
     using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Defines the application data layer.
     /// </summary>
     public sealed class ApplicationData : IApplicationData
     {
-        private static readonly Lazy<ApplicationData> CurrentAppData = new Lazy<ApplicationData>(
-                                                                   () => new ApplicationData(),
-                                                                   LazyThreadSafetyMode.PublicationOnly);
+        private static readonly Lazy<ApplicationData> CurrentAppData =
+            new Lazy<ApplicationData>(() => new ApplicationData(), LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IAppSettingsContainer> settings = new Lazy<IAppSettingsContainer>(
-                                                                    CreateSettings,
-                                                                    LazyThreadSafetyMode.PublicationOnly);
+            CreateSettings,
+            LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IStorageFolder> localFolder = new Lazy<IStorageFolder>(
-                                                            CreateLocalFolder,
-                                                            LazyThreadSafetyMode.PublicationOnly);
+            CreateLocalFolder,
+            LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IStorageFolder> roamingFolder = new Lazy<IStorageFolder>(
-                                                              CreateRoamingFolder,
-                                                              LazyThreadSafetyMode.PublicationOnly);
+            CreateRoamingFolder,
+            LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IStorageFolder> temporaryFolder = new Lazy<IStorageFolder>(
-                                                                CreateTemporaryFolder,
-                                                                LazyThreadSafetyMode.PublicationOnly);
+            CreateTemporaryFolder,
+            LazyThreadSafetyMode.PublicationOnly);
 
         /// <summary>
         /// Gets the current instance of the <see cref="ApplicationData"/>.
@@ -119,6 +119,23 @@
         {
 #if WINDOWS_UWP
             return new StorageFolder(null, Windows.Storage.ApplicationData.Current.TemporaryFolder);
+#elif ANDROID
+            var localFolder = new StorageFolder(null, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+
+            var tempFolderTask = localFolder.CreateFolderAsync("Temp", CreationCollisionOption.OpenIfExists);
+
+            Task.WaitAll(tempFolderTask);
+
+            return tempFolderTask.Result;
+#elif IOS
+            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var localFolder = new StorageFolder(null, System.IO.Path.Combine(documentsPath, "..", "Library"));
+
+            var tempFolderTask = localFolder.CreateFolderAsync("Temp", CreationCollisionOption.OpenIfExists);
+
+            Task.WaitAll(tempFolderTask);
+
+            return tempFolderTask.Result;
 #else
             return null;
 #endif

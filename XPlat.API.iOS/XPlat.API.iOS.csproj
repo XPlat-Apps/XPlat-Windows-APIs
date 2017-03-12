@@ -86,6 +86,7 @@
     <Compile Include="Storage\AppFolder.cs" />
     <Compile Include="Storage\AppSettingsContainer.cs" />
     <Compile Include="Device\Power\PowerManager.iOS.cs" />
+    <Compile Include="Storage\StorageFileTagLibAbstraction.cs" />
     <Compile Include="UI\Core\MainDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>

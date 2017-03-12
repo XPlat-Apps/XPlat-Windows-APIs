@@ -1,6 +1,7 @@
 ﻿namespace XPlat.API.Android.Testing
 {
     using System;
+    using System.Linq;
 
     using global::Android.App;
     using global::Android.OS;
@@ -8,9 +9,7 @@
     using XPlat.API.Device.Display;
     using XPlat.API.Device.Geolocation;
     using XPlat.API.Storage;
-
-    using PowerManager = XPlat.API.Device.Power.PowerManager;
-    using BatteryStatus = XPlat.API.Device.Power.BatteryStatus;
+    using XPlat.API.Storage.Pickers;
 
     [Activity(Label = "XPlat.API.Android.Testing", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
@@ -24,17 +23,21 @@
             var request = new DisplayRequest(this.Window);
             request.RequestActive();
 
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(
+            var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
                            CreationCollisionOption.OpenIfExists);
 
             await file.WriteTextAsync("Hello from the Android app!");
 
-            var batteryStatus = PowerManager.Current.BatteryStatus;
-            var remainingPercentage = PowerManager.Current.RemainingChargePercent;
+            var anotherFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.mp3", CreationCollisionOption.OpenIfExists);
 
-            PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
-            PowerManager.Current.RemainingChargePercentChanged += this.PowerManager_RemainingChargePercentChanged;
+            var props = (await anotherFile.GetPropertiesAsync()).ToList();
+
+            var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
+            var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
+
+            Device.Power.PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
+            Device.Power.PowerManager.Current.RemainingChargePercentChanged += this.PowerManager_RemainingChargePercentChanged;
 
             this.geolocator = new Geolocator(this) { DesiredAccuracy = PositionAccuracy.Default, MovementThreshold = 25 };
             this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
@@ -50,14 +53,15 @@
                 }
             }
 
-            var singleFilePick = new FileOpenPicker();
+            var singleFilePick = new FileOpenPicker(this);
             singleFilePick.FileTypeFilter.Add(".png");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
 
-            var multiFilePick = new FileOpenPicker();
+            var multiFilePick = new FileOpenPicker(this);
             multiFilePick.FileTypeFilter.Add(".png");
             var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
+            var fileData = await file.ReadTextAsync();
 
             request.RequestRelease();
         }
@@ -67,7 +71,7 @@
             var percent = i;
         }
 
-        private void PowerManager_BatteryStatusChanged(object sender, BatteryStatus batteryStatus)
+        private void PowerManager_BatteryStatusChanged(object sender, Device.Power.BatteryStatus batteryStatus)
         {
             var status = batteryStatus;
         }
