@@ -1,6 +1,7 @@
 ﻿namespace XPlat.API.UWP.Testing
 {
     using System;
+    using System.Linq;
 
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
@@ -30,6 +31,8 @@
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.txt", CreationCollisionOption.OpenIfExists);
             await file.WriteTextAsync("Hello from the UWP app!");
 
+            var props = (await file.GetPropertiesAsync()).ToList();
+
             var batteryStatus = PowerManager.Current.BatteryStatus;
             var remainingPercentage = PowerManager.Current.RemainingChargePercent;
 
@@ -52,10 +55,21 @@
 
             var singleFilePick = new FileOpenPicker();
             singleFilePick.FileTypeFilter.Add(".png");
+            singleFilePick.FileTypeFilter.Add(".jpg");
+            singleFilePick.FileTypeFilter.Add(".mp3");
+            singleFilePick.FileTypeFilter.Add(".mp4");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
 
+            if (pickedFile != null)
+            {
+                var pickedFileProps = await pickedFile.GetPropertiesAsync();
+            }
+
             var multiFilePick = new FileOpenPicker();
-            multiFilePick.FileTypeFilter.Add(".png");
+            singleFilePick.FileTypeFilter.Add(".png");
+            singleFilePick.FileTypeFilter.Add(".jpg");
+            singleFilePick.FileTypeFilter.Add(".mp3");
+            singleFilePick.FileTypeFilter.Add(".mp4");
             var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             request.RequestRelease();

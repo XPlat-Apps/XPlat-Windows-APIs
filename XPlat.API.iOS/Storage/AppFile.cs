@@ -5,7 +5,11 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using TagLib;
+
     using WinUX.Threading.Tasks;
+
+    using File = System.IO.File;
 
     /// <summary>
     /// Defines an application file.
@@ -150,8 +154,24 @@
 
             await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
 
-            // ToDo, current not implemented. 
-            return new Dictionary<string, object>();
+            var props = new Dictionary<string, object>();
+
+            TagLib.File file = null;
+
+            try
+            {
+                file = TagLib.File.Create(new StorageFileTagLibAbstraction(this.Path));
+            }
+            catch (UnsupportedFormatException)
+            {
+            }
+
+            if (file != null)
+            {
+                
+            }
+
+            return props;
         }
 
         /// <inheritdoc />

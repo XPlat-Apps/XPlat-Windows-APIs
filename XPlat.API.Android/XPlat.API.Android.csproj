@@ -58,6 +58,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="TagLib.Portable, Version=2.2.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\TagLib.Portable.1.0.4\lib\portable-net45+win+wpa81+wp8+MonoAndroid10+xamarinios10+MonoTouch10\TagLib.Portable.dll</HintPath>
+    </Reference>
     <Reference Include="WinUX.Common, Version=2.4.17005.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WinUX.Common.2.4.17005.1\lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\WinUX.Common.dll</HintPath>
       <Private>True</Private>
@@ -91,6 +94,7 @@
     <Compile Include="Device\Power\PowerReceiver.cs" />
     <Compile Include="Storage\Pickers\FileOpenPicker.cs" />
     <Compile Include="Storage\Pickers\FileOpenPickerActivity.cs" />
+    <Compile Include="Storage\StorageFileTagLibAbstraction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
