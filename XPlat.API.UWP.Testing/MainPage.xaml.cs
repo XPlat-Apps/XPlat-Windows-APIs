@@ -66,10 +66,10 @@
             }
 
             var multiFilePick = new FileOpenPicker();
-            singleFilePick.FileTypeFilter.Add(".png");
-            singleFilePick.FileTypeFilter.Add(".jpg");
-            singleFilePick.FileTypeFilter.Add(".mp3");
-            singleFilePick.FileTypeFilter.Add(".mp4");
+            multiFilePick.FileTypeFilter.Add(".png");
+            multiFilePick.FileTypeFilter.Add(".jpg");
+            multiFilePick.FileTypeFilter.Add(".mp3");
+            multiFilePick.FileTypeFilter.Add(".mp4");
             var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             request.RequestRelease();

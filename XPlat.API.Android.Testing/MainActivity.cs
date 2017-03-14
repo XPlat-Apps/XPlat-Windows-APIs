@@ -29,9 +29,7 @@
 
             await file.WriteTextAsync("Hello from the Android app!");
 
-            var anotherFile = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.mp3", CreationCollisionOption.OpenIfExists);
-
-            var props = (await anotherFile.GetPropertiesAsync()).ToList();
+            //var props = (await file.GetPropertiesAsync()).ToList();
 
             var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
             var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
@@ -54,11 +52,11 @@
             }
 
             var singleFilePick = new FileOpenPicker(this);
-            singleFilePick.FileTypeFilter.Add(".png");
+            singleFilePick.FileTypeFilter.Add(".jpg");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
 
             var multiFilePick = new FileOpenPicker(this);
-            multiFilePick.FileTypeFilter.Add(".png");
+            singleFilePick.FileTypeFilter.Add(".jpg");
             var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             var fileData = await file.ReadTextAsync();
