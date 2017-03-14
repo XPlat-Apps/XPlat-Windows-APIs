@@ -29,8 +29,6 @@
 
             await file.WriteTextAsync("Hello from the Android app!");
 
-            //var props = (await file.GetPropertiesAsync()).ToList();
-
             var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
             var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
 
@@ -55,8 +53,9 @@
             singleFilePick.FileTypeFilter.Add(".jpg");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
 
+
             var multiFilePick = new FileOpenPicker(this);
-            singleFilePick.FileTypeFilter.Add(".jpg");
+            multiFilePick.FileTypeFilter.Add(".jpg");
             var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             var fileData = await file.ReadTextAsync();

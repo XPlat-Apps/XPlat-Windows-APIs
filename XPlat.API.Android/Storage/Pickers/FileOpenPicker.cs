@@ -64,14 +64,7 @@ namespace XPlat.API.Storage.Pickers
                         return;
                     }
 
-                    if (args.Cancel)
-                    {
-                        tcs.SetCanceled();
-                    }
-                    else
-                    {
-                        tcs.SetResult(args.Files?.FirstOrDefault());
-                    }
+                    tcs.SetResult(args.Cancel ? null : args.Files?.FirstOrDefault());
                 };
 
             FileOpenPickerActivity.FilesReceived += handler;
@@ -90,7 +83,7 @@ namespace XPlat.API.Storage.Pickers
                 throw new InvalidOperationException("Cannot activate multiple requests for files.");
             }
 
-            this.context.StartActivity(this.GenerateIntent(id, false));
+            this.context.StartActivity(this.GenerateIntent(id, true));
 
             TypedEventHandler<Activity, FileOpenPickerFilesReceived> handler = null;
             handler = (sender, args) =>
@@ -106,7 +99,7 @@ namespace XPlat.API.Storage.Pickers
 
                     if (args.Cancel)
                     {
-                        tcs.SetCanceled();
+                        tcs.SetResult(null);
                     }
                     else
                     {
