@@ -5,8 +5,6 @@
     using System.IO;
     using System.Threading.Tasks;
 
-    using TagLib;
-
     using WinUX.Threading.Tasks;
 
     using File = System.IO.File;
@@ -155,24 +153,6 @@
             await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
 
             var props = new Dictionary<string, object>();
-
-            TagLib.File file = null;
-
-            try
-            {
-                file = TagLib.File.Create(new StorageFileTagLibAbstraction(this.Path));
-            }
-            catch (Exception ex)
-            {
-#if  DEBUG
-                System.Diagnostics.Debug.WriteLine(ex.ToString());
-#endif
-            }
-
-            if (file != null)
-            {
-                
-            }
 
             return props;
         }
