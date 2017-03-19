@@ -28,16 +28,17 @@
             var request = new DisplayRequest();
             request.RequestActive();
 
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("HelloWorld.txt", CreationCollisionOption.OpenIfExists);
-            await file.WriteTextAsync("Hello from the UWP app!");
+            var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
+                           "HelloWorld.txt",
+                           CreationCollisionOption.OpenIfExists);
 
-            var props = (await file.GetPropertiesAsync()).ToList();
+            await file.WriteTextAsync("Hello from the Android app!");
 
-            var batteryStatus = PowerManager.Current.BatteryStatus;
-            var remainingPercentage = PowerManager.Current.RemainingChargePercent;
+            var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
+            var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
 
-            PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
-            PowerManager.Current.RemainingChargePercentChanged += this.PowerManager_RemainingChargePercentChanged;
+            Device.Power.PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
+            Device.Power.PowerManager.Current.RemainingChargePercentChanged += this.PowerManager_RemainingChargePercentChanged;
 
             this.geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.Default, MovementThreshold = 25 };
             this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
@@ -54,23 +55,15 @@
             }
 
             var singleFilePick = new FileOpenPicker();
-            singleFilePick.FileTypeFilter.Add(".png");
             singleFilePick.FileTypeFilter.Add(".jpg");
-            singleFilePick.FileTypeFilter.Add(".mp3");
-            singleFilePick.FileTypeFilter.Add(".mp4");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
 
-            if (pickedFile != null)
-            {
-                var pickedFileProps = await pickedFile.GetPropertiesAsync();
-            }
 
             var multiFilePick = new FileOpenPicker();
-            multiFilePick.FileTypeFilter.Add(".png");
             multiFilePick.FileTypeFilter.Add(".jpg");
-            multiFilePick.FileTypeFilter.Add(".mp3");
-            multiFilePick.FileTypeFilter.Add(".mp4");
             var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
+
+            var fileData = await file.ReadTextAsync();
 
             request.RequestRelease();
         }

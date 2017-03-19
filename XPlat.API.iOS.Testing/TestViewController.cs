@@ -11,6 +11,8 @@ namespace XPlat.API.iOS.Testing
 
     public partial class TestViewController : UIViewController
     {
+        private Geolocator geolocator;
+
         public TestViewController()
             : base("TestViewController", null)
         {
@@ -23,17 +25,45 @@ namespace XPlat.API.iOS.Testing
             var request = new DisplayRequest();
             request.RequestActive();
 
-            var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(
+            var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
                            CreationCollisionOption.OpenIfExists);
 
-            await file.WriteTextAsync("Hello from the iOS app!");
+            await file.WriteTextAsync("Hello from the Android app!");
 
             var batteryStatus = PowerManager.Current.BatteryStatus;
             var remainingPercentage = PowerManager.Current.RemainingChargePercent;
 
             PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
-            PowerManager.Current.RemainingChargePercentChanged += this.PowerManager_RemainingChargePercentChanged;
+            PowerManager.Current.RemainingChargePercentChanged +=
+                this.PowerManager_RemainingChargePercentChanged;
+
+            this.geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.Default, MovementThreshold = 25 };
+            this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
+            var access = await this.geolocator.RequestAccessAsync();
+
+            if (access == GeolocationAccessStatus.Allowed)
+            {
+                var currentLocation = await this.geolocator.GetGeopositionAsync(
+                                          new TimeSpan(0, 0, 10),
+                                          new TimeSpan(0, 0, 5));
+
+                if (currentLocation != null)
+                {
+                    // ToDo
+                }
+            }
+
+            //var singleFilePick = new FileOpenPicker();
+            //singleFilePick.FileTypeFilter.Add(".jpg");
+            //var pickedFile = await singleFilePick.PickSingleFileAsync();
+
+
+            //var multiFilePick = new FileOpenPicker();
+            //multiFilePick.FileTypeFilter.Add(".jpg");
+            //var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
+
+            var fileData = await file.ReadTextAsync();
 
             request.RequestRelease();
         }
@@ -52,6 +82,11 @@ namespace XPlat.API.iOS.Testing
         private void PowerManager_BatteryStatusChanged(object sender, BatteryStatus batteryStatus)
         {
             var status = batteryStatus;
+        }
+
+        private void Geolocator_PositionChanged(IGeolocator sender, PositionChangedEventArgs args)
+        {
+            var position = args.Position;
         }
     }
 }
