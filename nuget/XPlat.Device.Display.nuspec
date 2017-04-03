@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>XPlat.Device.Display</id>
-    <version>1.0.0</version>
+    <version>1.0.0.0</version>
     <title>XPlat - Power APIs</title>
     <authors>James Croft</authors>
     <owners>James Croft</owners>
@@ -16,7 +16,7 @@
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Display DisplayRequest</tags>
     <dependencies>
       <group targetFramework="MonoAndroid10">
-        <dependency id="XPlat.Core" version="1.0.0" />
+        <dependency id="XPlat.Core" version="1.0.0.0" />
       </group>
     </dependencies>
   </metadata>

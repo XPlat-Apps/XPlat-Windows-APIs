@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>XPlat.UI.Core</id>
-    <version>1.0.0</version>
+    <version>1.0.0.0</version>
     <title>XPlat - Storage APIs</title>
     <authors>James Croft</authors>
     <owners>James Croft</owners>
