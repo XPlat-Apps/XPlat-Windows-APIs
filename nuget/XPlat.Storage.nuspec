@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>XPlat.Storage</id>
-    <version>1.0.0.0</version>
+    <version>#{Build.BuildNumber}#</version>
     <title>XPlat - Storage APIs</title>
     <authors>James Croft</authors>
     <owners>James Croft</owners>
@@ -16,11 +16,11 @@
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Storage StorageFile StorageFolder ApplicationData FileOpenPicker</tags>
     <dependencies>
       <group targetFramework="MonoAndroid10">
-        <dependency id="XPlat.Core" version="1.0.0.0" />
+        <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
       </group>
 
       <group targetFramework="Xamarin.iOS10">
-        <dependency id="XPlat.Core" version="1.0.0.0" />
+        <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
       </group>
     </dependencies>
   </metadata>
