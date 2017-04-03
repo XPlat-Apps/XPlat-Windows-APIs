@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0D24ABCB-8A92-4D74-80D7-43B32064EA71}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XPlat.NuGet.Droid</RootNamespace>
+    <AssemblyName>XPlat.NuGet.Droid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>PdbOnly</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XPlat.Core, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Core.1.2.17093.8\lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.Device.Display.Common, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Display.1.2.17093.8\lib\MonoAndroid10\XPlat.Device.Display.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.Device.Display.Droid, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Display.1.2.17093.8\lib\MonoAndroid10\XPlat.Device.Display.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.Device.Geolocation.Common, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17093.8\lib\MonoAndroid10\XPlat.Device.Geolocation.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.Device.Geolocation.Droid, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17093.8\lib\MonoAndroid10\XPlat.Device.Geolocation.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.Device.Power.Common, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Power.1.2.17093.8\lib\MonoAndroid10\XPlat.Device.Power.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.Device.Power.Droid, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Power.1.2.17093.8\lib\MonoAndroid10\XPlat.Device.Power.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.Storage.Common, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Storage.1.2.17093.8\lib\MonoAndroid10\XPlat.Storage.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.Storage.Droid, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Storage.1.2.17093.8\lib\MonoAndroid10\XPlat.Storage.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.UI.Core.Common, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.UI.Core.1.2.17093.8\lib\MonoAndroid10\XPlat.UI.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.UI.Core.Droid, Version=1.2.17093.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.UI.Core.1.2.17093.8\lib\MonoAndroid10\XPlat.UI.Core.Droid.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GettingStarted.Xamarin" />
+    <None Include="packages.config" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+		<Target Name="BeforeBuild">
+		</Target>
+		<Target Name="AfterBuild">
+		</Target>
+ -->
+</Project>
