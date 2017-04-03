@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>XPlat.Device.Geolocation</id>
-    <version>1.0.0.0</version>
+    <version>#{Build.BuildNumber}#</version>
     <title>XPlat - Geolocation APIs</title>
     <authors>James Croft</authors>
     <owners>James Croft</owners>
@@ -15,7 +15,7 @@
     <copyright>Copyright (c) XPlat APIs. All rights reserved.</copyright>
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Geolocation Geolocator</tags>
     <dependencies>
-      <dependency id="XPlat.Core" version="1.0.0.0" />
+      <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
     </dependencies>
   </metadata>
   <files>
