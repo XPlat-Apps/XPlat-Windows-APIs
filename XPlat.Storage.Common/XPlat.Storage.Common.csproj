@@ -5,10 +5,10 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4586695B-7E5C-4977-9BCD-CD7144E21A97}</ProjectGuid>
+    <ProjectGuid>{3F0A5ECC-70F4-4118-8EBD-E513764448B1}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>XPlat</RootNamespace>
-    <AssemblyName>XPlat.Core</AssemblyName>
+    <RootNamespace>XPlat.Storage</RootNamespace>
+    <AssemblyName>XPlat.Storage.Common</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -31,19 +31,28 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\XPlat.Core.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\XPlat.Storage.Common.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\AppPermissionInvalidException.cs" />
-    <Compile Include="Extensions\Extensions.DateTime.cs" />
-    <Compile Include="Foundation\TypedEventHandler.cs" />
-    <Compile Include="Helpers\ParseHelper.cs" />
+    <Compile Include="CreationCollisionOption.cs" />
+    <Compile Include="FileAccessMode.cs" />
+    <Compile Include="IApplicationData.cs" />
+    <Compile Include="IAppSettingsContainer.cs" />
+    <Compile Include="IStorageFile.cs" />
+    <Compile Include="IStorageFolder.cs" />
+    <Compile Include="IStorageItem.cs" />
+    <Compile Include="NameCollisionOption.cs" />
+    <Compile Include="Pickers\IFileOpenPicker.cs" />
+    <Compile Include="Pickers\MimeTypeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Threading\Tasks\TaskSchedulerAwaiter.cs" />
-    <Compile Include="Threading\Tasks\TimeoutTask.cs" />
+    <Compile Include="StorageFileIOException.cs" />
+    <Compile Include="StorageItemCreationException.cs" />
+    <Compile Include="StorageItemException.cs" />
+    <Compile Include="StorageItemNotFoundException.cs" />
+    <Compile Include="StorageItemTypes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
