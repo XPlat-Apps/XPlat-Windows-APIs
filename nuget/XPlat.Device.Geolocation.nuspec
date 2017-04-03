@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>XPlat.Device.Geolocation</id>
+    <version>1.0.0</version>
+    <title>XPlat - Geolocation APIs</title>
+    <authors>James Croft</authors>
+    <owners>James Croft</owners>
+    <licenseUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</projectUrl>
+    <iconUrl>http://jamescroft.co.uk/wp-content/uploads/2017/03/XApiLog.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This library contains a collection of Windows.Device.Geolocation APIs built for UWP, iOS and Android built by the community on GitHub.</description>
+    <releaseNotes>Initial release of XPlat.Device.Geolocation.Geolocator and associated components.</releaseNotes>
+    <copyright>Copyright (c) XPlat APIs. All rights reserved.</copyright>
+    <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Geolocation Geolocator</tags>
+    <dependencies>
+      <dependency id="XPlat.Core" version="1.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.Common.dll" target="lib\uap10.0\XPlat.Device.Geolocation.Common.dll" />
+    <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.Common.xml" target="lib\uap10.0\XPlat.Device.Geolocation.Common.xml" />
+    <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.UWP.pri" target="lib\uap10.0\XPlat.Device.Geolocation.UWP.pri" />
+    <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.UWP.dll" target="lib\uap10.0\XPlat.Device.Geolocation.UWP.dll" />
+    <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.UWP.xml" target="lib\uap10.0\XPlat.Device.Geolocation.UWP.xml" />
+
+    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Common.dll" target="lib\MonoAndroid10\XPlat.Device.Geolocation.Common.dll" />
+    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Common.xml" target="lib\MonoAndroid10\XPlat.Device.Geolocation.Common.xml" />
+    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Droid.dll" target="lib\MonoAndroid10\XPlat.Device.Geolocation.Droid.dll" />
+    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Droid.xml" target="lib\MonoAndroid10\XPlat.Device.Geolocation.Droid.xml" />
+
+    <file src="..\XPlat.Device.Geolocation.iOS\bin\Release\XPlat.Device.Geolocation.Common.dll" target="lib\Xamarin.iOS10\XPlat.Device.Geolocation.Common.dll" />
+    <file src="..\XPlat.Device.Geolocation.iOS\bin\Release\XPlat.Device.Geolocation.Common.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Device.Geolocation.Common.dll.mdb" />
+    <file src="..\XPlat.Device.Geolocation.iOS\bin\Release\XPlat.Device.Geolocation.Common.xml" target="lib\Xamarin.iOS10\XPlat.Device.Geolocation.Common.xml" />
+    <file src="..\XPlat.Device.Geolocation.iOS\bin\Release\XPlat.Device.Geolocation.iOS.dll" target="lib\Xamarin.iOS10\XPlat.Device.Geolocation.iOS.dll" />
+    <file src="..\XPlat.Device.Geolocation.iOS\bin\Release\XPlat.Device.Geolocation.iOS.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Device.Geolocation.iOS.dll.mdb" />
+    <file src="..\XPlat.Device.Geolocation.iOS\bin\Release\XPlat.Device.Geolocation.iOS.xml" target="lib\Xamarin.iOS10\XPlat.Device.Geolocation.iOS.xml" />
+  </files>
+</package>
