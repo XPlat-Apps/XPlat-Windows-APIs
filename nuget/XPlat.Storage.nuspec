@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>XPlat.Storage</id>
+    <version>1.0.0</version>
+    <title>XPlat - Storage APIs</title>
+    <authors>James Croft</authors>
+    <owners>James Croft</owners>
+    <licenseUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</projectUrl>
+    <iconUrl>http://jamescroft.co.uk/wp-content/uploads/2017/03/XApiLog.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This library contains a collection of Windows.Storage APIs built for UWP, iOS and Android built by the community on GitHub.</description>
+    <releaseNotes>Initial release of XPlat.Storage and associated components.</releaseNotes>
+    <copyright>Copyright (c) XPlat APIs. All rights reserved.</copyright>
+    <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Storage StorageFile StorageFolder ApplicationData FileOpenPicker</tags>
+    <dependencies>
+      <group targetFramework="MonoAndroid10">
+        <dependency id="XPlat.Core" version="1.0.0" />
+      </group>
+
+      <group targetFramework="Xamarin.iOS10">
+        <dependency id="XPlat.Core" version="1.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.Common.dll" target="lib\uap10.0\XPlat.Storage.Common.dll" />
+    <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.Common.xml" target="lib\uap10.0\XPlat.Storage.Common.xml" />
+    <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.UWP.pri" target="lib\uap10.0\XPlat.Storage.UWP.pri" />
+    <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.UWP.dll" target="lib\uap10.0\XPlat.Storage.UWP.dll" />
+    <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.UWP.xml" target="lib\uap10.0\XPlat.Storage.UWP.xml" />
+
+    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Common.dll" target="lib\MonoAndroid10\XPlat.Storage.Common.dll" />
+    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Common.xml" target="lib\MonoAndroid10\XPlat.Storage.Common.xml" />
+    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Droid.dll" target="lib\MonoAndroid10\XPlat.Storage.Droid.dll" />
+    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Droid.xml" target="lib\MonoAndroid10\XPlat.Storage.Droid.xml" />
+
+    <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.Common.dll" target="lib\Xamarin.iOS10\XPlat.Storage.Common.dll" />
+    <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.Common.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Storage.Common.dll.mdb" />
+    <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.Common.xml" target="lib\Xamarin.iOS10\XPlat.Storage.Common.xml" />
+    <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.iOS.dll" target="lib\Xamarin.iOS10\XPlat.Storage.iOS.dll" />
+    <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.iOS.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Storage.iOS.dll.mdb" />
+    <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.iOS.xml" target="lib\Xamarin.iOS10\XPlat.Storage.iOS.xml" />
+  </files>
+</package>
