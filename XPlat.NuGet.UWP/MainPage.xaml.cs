@@ -31,13 +31,13 @@
                            "HelloWorld.txt",
                            CreationCollisionOption.OpenIfExists);
 
-            await file.WriteTextAsync("Hello from the Android app!");
+            await file.WriteTextAsync("Hello from the Windows app!");
 
-            var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
-            var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
+            var batteryStatus = PowerManager.Current.BatteryStatus;
+            var remainingPercentage = PowerManager.Current.RemainingChargePercent;
 
-            Device.Power.PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
-            Device.Power.PowerManager.Current.RemainingChargePercentChanged +=
+            PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
+            PowerManager.Current.RemainingChargePercentChanged +=
                 this.PowerManager_RemainingChargePercentChanged;
 
             this.geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.Default, MovementThreshold = 25 };
@@ -59,7 +59,6 @@
             var singleFilePick = new FileOpenPicker();
             singleFilePick.FileTypeFilter.Add(".jpg");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
-
 
             var multiFilePick = new FileOpenPicker();
             multiFilePick.FileTypeFilter.Add(".jpg");
