@@ -3,6 +3,8 @@
     using System;
     using System.Threading;
 
+    using Windows.UI.Core;
+
     public sealed partial class PowerManager : IPowerManager, IDisposable
     {
         private static readonly Lazy<PowerManager> CurrentPowerManager = new Lazy<PowerManager>(
