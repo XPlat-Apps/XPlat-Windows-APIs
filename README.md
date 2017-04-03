@@ -17,6 +17,20 @@ You can find all of the information about what comes as part of the XPlat API To
 
 The XPlat API Toolkit is an on-going project with new features added regularly so please accept my apologies if there is content missing from within the wiki pages. These will be kept up-to-date as soon as possible.
 
+## <a id="components">Get the components</a>
+Looking to get these components in your apps now? Well, you can easily get your hands on the core components (available on NuGet) for your Xamarin app needs.
+
+## NuGet packages
+
+| Package | Description | Version |
+| ------ | ------ | ------ |
+| XPlat.Core | This library contains a collection of core/common APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+| XPlat.UI.Core | This library contains a collection of Windows.UI.Core APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
+| XPlat.Storage | This library contains a collection of Windows.Storage APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) |
+| XPlat.Device.Display | This library contains a collection of Windows.System.Display APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) |
+| XPlat.Device.Geolocation | This library contains a collection of Windows.Device.Geolocation APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) |
+| XPlat.Device.Power | This library contains a collection of Windows.System.Power APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Power.svg)](https://www.nuget.org/packages/XPlat.Device.Power/) |
+
 ## <a id="contributing">Contributing</a>
 Everyone is welcome to contribute towards the XPlat API Toolkit. If you find an issue, please could you raise it in the [issues](https://github.com/jamesmcroft/XPlat-API-Toolkit/issues) section or it would be fantastic if you could have a look at rectifying the issue and submitting a pull request. 
 
