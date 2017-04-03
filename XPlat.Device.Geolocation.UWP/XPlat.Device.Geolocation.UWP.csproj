@@ -114,13 +114,13 @@
     <EmbeddedResource Include="Properties\XPlat.Device.Geolocation.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XPlat.Common\XPlat.Device.Geolocation.Common.csproj">
-      <Project>{1c7b8f43-de7e-4efa-b622-e3eed28c43a1}</Project>
-      <Name>XPlat.Device.Geolocation.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
       <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
       <Name>XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Geolocation.Common\XPlat.Device.Geolocation.Common.csproj">
+      <Project>{1c7b8f43-de7e-4efa-b622-e3eed28c43a1}</Project>
+      <Name>XPlat.Device.Geolocation.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
