@@ -1,6 +1,7 @@
 ﻿namespace XPlat.Storage
 {
     using System;
+    using System.Collections.Generic;
 
     using Android.App;
     using Android.Content;
@@ -16,6 +17,9 @@
         private readonly object obj = new object();
 
         private static ISharedPreferences SharedPreferences => PreferenceManager.GetDefaultSharedPreferences(Application.Context);
+
+        /// <inheritdoc />
+        public IDictionary<string, object> Values => SharedPreferences.All;
 
         /// <inheritdoc />
         public bool ContainsKey(string key)

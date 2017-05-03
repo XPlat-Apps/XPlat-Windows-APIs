@@ -1,11 +1,16 @@
 ﻿namespace XPlat.Storage
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Defines application settings.
     /// </summary>
     public sealed class AppSettingsContainer : IAppSettingsContainer
     {
         private readonly object obj = new object();
+
+        /// <inheritdoc />
+        public IDictionary<string, object> Values => ApplicationData.Current.LocalSettings.Values;
 
         /// <summary>
         /// Checks whether the settings container contains the specified key.
@@ -22,7 +27,7 @@
 
             lock (this.obj)
             {
-                containsKey = Windows.Storage.ApplicationData.Current.LocalSettings.Values.ContainsKey(key);
+                containsKey = this.Values.ContainsKey(key);
             }
 
             return containsKey;
@@ -48,7 +53,7 @@
 
             lock (this.obj)
             {
-                var setting = Windows.Storage.ApplicationData.Current.LocalSettings.Values[key];
+                var setting = this.Values[key];
                 if (setting is T)
                 {
                     value = (T)setting;
@@ -71,7 +76,7 @@
         {
             lock (this.obj)
             {
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values[key] = value;
+                this.Values[key] = value;
             }
         }
 
@@ -87,7 +92,7 @@
 
             lock (this.obj)
             {
-                Windows.Storage.ApplicationData.Current.LocalSettings.Values.Remove(key);
+                this.Values.Remove(key);
             }
         }
     }

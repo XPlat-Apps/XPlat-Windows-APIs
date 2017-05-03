@@ -1,6 +1,8 @@
 ﻿namespace XPlat.Storage
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     using global::Foundation;
 
@@ -14,6 +16,14 @@
         private readonly object obj = new object();
 
         private static NSUserDefaults StandardUserDefaults => NSUserDefaults.StandardUserDefaults;
+
+        public IDictionary<string, object> Values => GetAllValues();
+
+        private static IDictionary<string, object> GetAllValues()
+        {
+            var items = StandardUserDefaults.ToDictionary();
+            return items.ToDictionary<KeyValuePair<NSObject, NSObject>, string, object>(item => item.Key.ToString(), item => item.Value);
+        }
 
         /// <inheritdoc />
         public bool ContainsKey(string key)

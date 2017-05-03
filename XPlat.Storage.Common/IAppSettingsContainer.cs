@@ -1,10 +1,18 @@
 ﻿namespace XPlat.Storage
 {
+    using System.Collections;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Defines an interface for application settings.
     /// </summary>
     public interface IAppSettingsContainer
     {
+        /// <summary>
+        /// Gets all the values stored within the application settings.
+        /// </summary>
+        IDictionary<string, object> Values { get; }
+
         /// <summary>
         /// Checks whether the current container contains the specified key.
         /// </summary>
