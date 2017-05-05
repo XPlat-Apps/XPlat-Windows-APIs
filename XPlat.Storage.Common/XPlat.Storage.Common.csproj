@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="CreationCollisionOption.cs" />
     <Compile Include="FileAccessMode.cs" />
+    <Compile Include="FileProperties\IBasicProperties.cs" />
     <Compile Include="IApplicationData.cs" />
     <Compile Include="IAppSettingsContainer.cs" />
     <Compile Include="IStorageFile.cs" />

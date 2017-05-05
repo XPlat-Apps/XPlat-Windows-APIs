@@ -5,6 +5,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using XPlat.Storage.FileProperties;
     using XPlat.Threading.Tasks;
 
     using File = System.IO.File;
@@ -145,6 +146,21 @@
         public bool IsOfType(StorageItemTypes type)
         {
             return type == StorageItemTypes.File;
+        }
+
+        /// <inheritdoc />
+        public async Task<IBasicProperties> GetBasicPropertiesAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(
+                    this.Name,
+                    "Cannot get properties for a folder that does not exist.");
+            }
+
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            return new BasicProperties(this.Path);
         }
 
         /// <inheritdoc />

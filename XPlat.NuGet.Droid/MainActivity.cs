@@ -26,7 +26,7 @@
             var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
                            CreationCollisionOption.OpenIfExists);
-
+            
             await file.WriteTextAsync("Hello from the Android app!");
 
             var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;

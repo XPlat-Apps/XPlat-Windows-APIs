@@ -1,5 +1,7 @@
 ﻿namespace XPlat.Storage
 {
+    using XPlat.Storage.FileProperties;
+
     public static partial class Extensions
     {
         public static Windows.Storage.NameCollisionOption ToNameCollisionOption(this NameCollisionOption option)
@@ -39,6 +41,11 @@
                 default:
                     return Windows.Storage.CreationCollisionOption.FailIfExists;
             }
+        }
+
+        public static IBasicProperties ToBasicProperties(this Windows.Storage.FileProperties.BasicProperties properties)
+        {
+            return new BasicProperties(properties.DateModified.DateTime, properties.Size);
         }
     }
 }

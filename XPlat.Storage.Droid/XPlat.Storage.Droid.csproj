@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="ApplicationData.cs" />
     <Compile Include="AppSettingsContainer.cs" />
+    <Compile Include="FileProperties\BasicProperties.cs" />
     <Compile Include="Pickers\FileOpenPicker.cs" />
     <Compile Include="Pickers\FileOpenPickerActivity.cs" />
     <Compile Include="Pickers\FileOpenPickerFilesReceived.cs" />

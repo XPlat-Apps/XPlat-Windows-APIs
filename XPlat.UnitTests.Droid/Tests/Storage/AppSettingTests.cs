@@ -1,28 +1,27 @@
-﻿using System;
-using NUnit.Framework;
-
-
-namespace XPlat.UnitTests.Droid
+﻿namespace XPlat.UnitTests.Droid.Tests.Storage
 {
+    using NUnit.Framework;
+
     using XPlat.Storage;
 
     [TestFixture]
     public class AppSettingTests
     {
-
         [Test]
-        public void AppSettingsReturnsAllItems()
+        public void AppSettingsReturnsSettings()
         {
-            string settingKey = "Hello";
-            int settingValue = 100;
+            const string SettingKey = "Hello";
+            const int SettingValue = 100;
 
-            ApplicationData.Current.LocalSettings.AddOrUpdate(settingKey, settingValue);
+            ApplicationData.Current.LocalSettings.AddOrUpdate(SettingKey, SettingValue);
 
             var values = ApplicationData.Current.LocalSettings.Values;
 
-            Assert.IsTrue(values.ContainsKey(settingKey));
+            Assert.IsTrue(values.ContainsKey(SettingKey));
 
-            var storedValue = values[settingKey];
+            var storedValue = values[SettingKey];
+
+            Assert.AreEqual(SettingValue, storedValue);
         }
     }
 }

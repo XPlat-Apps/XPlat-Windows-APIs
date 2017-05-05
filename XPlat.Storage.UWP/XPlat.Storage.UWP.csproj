@@ -111,6 +111,7 @@
     <Compile Include="ApplicationData.cs" />
     <Compile Include="AppSettingsContainer.cs" />
     <Compile Include="Extensions\Extensions.Storage.cs" />
+    <Compile Include="FileProperties\BasicProperties.cs" />
     <Compile Include="Pickers\FileOpenPicker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageFile.cs" />

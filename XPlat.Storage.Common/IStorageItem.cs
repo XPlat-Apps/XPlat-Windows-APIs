@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
+    using XPlat.Storage.FileProperties;
+
     /// <summary>
     /// Defines an interface for an application storage item.
     /// </summary>
@@ -85,5 +87,13 @@
         /// True if the IStorageItem matches the specified value; otherwise false.
         /// </returns>
         bool IsOfType(StorageItemTypes type);
+
+        /// <summary>
+        /// Gets the basic properties of the current folder or file group.
+        /// </summary>
+        /// <returns>
+        /// When this method completes successfully, it returns the basic properties of the current folder or file group as an IBasicProperties object.
+        /// </returns>
+        Task<IBasicProperties> GetBasicPropertiesAsync();
     }
 }

@@ -7,13 +7,13 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using XPlat.Storage.FileProperties;
+
     /// <summary>
     /// Defines an application file.
     /// </summary>
     public sealed class StorageFile : IStorageFile
     {
-        private readonly Windows.Storage.IStorageFile file;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageFile"/> class.
         /// </summary>
@@ -30,54 +30,29 @@
                 throw new ArgumentNullException(nameof(file));
             }
 
-            this.file = file;
+            this.Originator = file;
             this.Parent = parentFolder;
         }
 
-        /// <inheritdoc />
-        public DateTime DateCreated
-        {
-            get
-            {
-                return this.file.DateCreated.DateTime;
-            }
-        }
+        /// <summary>
+        /// Gets the originating Windows storage file.
+        /// </summary>
+        public Windows.Storage.IStorageFile Originator { get; }
 
         /// <inheritdoc />
-        public string Name
-        {
-            get
-            {
-                return this.file.Name;
-            }
-        }
+        public DateTime DateCreated => this.Originator.DateCreated.DateTime;
 
         /// <inheritdoc />
-        public string Path
-        {
-            get
-            {
-                return this.file.Path;
-            }
-        }
+        public string Name => this.Originator.Name;
 
         /// <inheritdoc />
-        public bool Exists
-        {
-            get
-            {
-                return this.file != null && File.Exists(this.Path);
-            }
-        }
+        public string Path => this.Originator.Path;
 
         /// <inheritdoc />
-        public string FileType
-        {
-            get
-            {
-                return this.file.FileType;
-            }
-        }
+        public bool Exists => this.Originator != null && File.Exists(this.Path);
+
+        /// <inheritdoc />
+        public string FileType => this.Originator.FileType;
 
         /// <inheritdoc />
         public IStorageFolder Parent { get; private set; }
@@ -101,7 +76,7 @@
                 throw new ArgumentNullException(nameof(desiredName));
             }
 
-            await this.file.RenameAsync(desiredName, option.ToNameCollisionOption());
+            await this.Originator.RenameAsync(desiredName, option.ToNameCollisionOption());
         }
 
         /// <inheritdoc />
@@ -112,7 +87,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot delete a file that does not exist.");
             }
 
-            await this.file.DeleteAsync();
+            await this.Originator.DeleteAsync();
         }
 
         /// <inheritdoc />
@@ -125,7 +100,7 @@
                           "Cannot get properties for a file that does not exist.");
             }
 
-            var storageFile = this.file as Windows.Storage.StorageFile;
+            var storageFile = this.Originator as Windows.Storage.StorageFile;
             return storageFile != null ? await storageFile.Properties.RetrievePropertiesAsync(null) : null;
         }
 
@@ -136,6 +111,23 @@
         }
 
         /// <inheritdoc />
+        public async Task<IBasicProperties> GetBasicPropertiesAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(
+                    this.Name,
+                    "Cannot get properties for a folder that does not exist.");
+            }
+
+            var storageFolder = this.Originator as Windows.Storage.StorageFile;
+            if (storageFolder == null) return null;
+
+            var basicProperties = await storageFolder.GetBasicPropertiesAsync();
+            return basicProperties.ToBasicProperties();
+        }
+
+        /// <inheritdoc />
         public async Task<Stream> OpenAsync(FileAccessMode accessMode)
         {
             if (!this.Exists)
@@ -143,7 +135,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot open a file that does not exist.");
             }
 
-            var s = await this.file.OpenAsync(accessMode.ToFileAccessMode());
+            var s = await this.Originator.OpenAsync(accessMode.ToFileAccessMode());
             return s.AsStream();
         }
 
@@ -191,7 +183,7 @@
                 await Windows.Storage.StorageFolder.GetFolderFromPathAsync(System.IO.Path.GetDirectoryName(destinationFolder.Path));
 
             var copiedStorageFile =
-                await this.file.CopyAsync(storageFolder, desiredNewName, option.ToNameCollisionOption());
+                await this.Originator.CopyAsync(storageFolder, desiredNewName, option.ToNameCollisionOption());
 
             var copiedFile = new StorageFile(destinationFolder, copiedStorageFile);
             return copiedFile;
@@ -219,7 +211,7 @@
 
             var storageFile = await Windows.Storage.StorageFile.GetFileFromPathAsync(fileToReplace.Path);
 
-            await this.file.CopyAndReplaceAsync(storageFile);
+            await this.Originator.CopyAndReplaceAsync(storageFile);
         }
 
         /// <inheritdoc />
@@ -265,7 +257,7 @@
             var storageFolder =
                 await Windows.Storage.StorageFolder.GetFolderFromPathAsync(System.IO.Path.GetDirectoryName(destinationFolder.Path));
 
-            await this.file.MoveAsync(storageFolder, desiredNewName, option.ToNameCollisionOption());
+            await this.Originator.MoveAsync(storageFolder, desiredNewName, option.ToNameCollisionOption());
 
             this.Parent = destinationFolder;
         }
@@ -292,7 +284,7 @@
 
             var storageFile = await Windows.Storage.StorageFile.GetFileFromPathAsync(fileToReplace.Path);
 
-            await this.file.MoveAndReplaceAsync(storageFile);
+            await this.Originator.MoveAndReplaceAsync(storageFile);
 
             this.Parent = fileToReplace.Parent;
         }
@@ -305,7 +297,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot write to a file that does not exist.");
             }
 
-            await FileIO.WriteTextAsync(this.file, text);
+            await FileIO.WriteTextAsync(this.Originator, text);
         }
 
         /// <inheritdoc />
@@ -316,7 +308,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot read from a file that does not exist.");
             }
 
-            var text = await FileIO.ReadTextAsync(this.file);
+            var text = await FileIO.ReadTextAsync(this.Originator);
             return text;
         }
 
