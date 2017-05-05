@@ -59,6 +59,8 @@
             singleFilePick.FileTypeFilter.Add(".jpg");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
 
+            var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
+
             var multiFilePick = new FileOpenPicker(this);
             multiFilePick.FileTypeFilter.Add(".jpg");
             var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
