@@ -11,7 +11,7 @@
     <iconUrl>http://jamescroft.co.uk/wp-content/uploads/2017/03/XApiLog.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>This library contains a collection of Windows.Device.Geolocation APIs built for UWP, iOS and Android built by the community on GitHub.</description>
-    <releaseNotes>Initial release of XPlat.Device.Geolocation.Geolocator and associated components.</releaseNotes>
+    <releaseNotes>#{GeolocationReleaseNotes}#</releaseNotes>
     <copyright>Copyright (c) XPlat APIs. All rights reserved.</copyright>
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Geolocation Geolocator</tags>
     <dependencies>
