@@ -48,6 +48,10 @@
     <Compile Include="ApplicationData.cs" />
     <Compile Include="AppSettingsContainer.cs" />
     <Compile Include="FileProperties\BasicProperties.cs" />
+    <Compile Include="FileProperties\ImageProperties.cs" />
+    <Compile Include="FileProperties\MusicProperties.cs" />
+    <Compile Include="FileProperties\StorageItemContentProperties.cs" />
+    <Compile Include="FileProperties\VideoProperties.cs" />
     <Compile Include="Pickers\FileOpenPicker.cs" />
     <Compile Include="Pickers\FileOpenPickerActivity.cs" />
     <Compile Include="Pickers\FileOpenPickerFilesReceived.cs" />

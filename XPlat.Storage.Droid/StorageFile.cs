@@ -447,6 +447,8 @@
             return text;
         }
 
+        public IStorageItemContentProperties Properties { get; }
+
         /// <summary>
         /// Gets an IStorageFile object to represent the file at the specified path.
         /// </summary>

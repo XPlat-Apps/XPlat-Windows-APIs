@@ -3,6 +3,8 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using XPlat.Storage.FileProperties;
+
     public interface IStorageFile : IStorageItem
     {
         /// <summary>
@@ -161,5 +163,10 @@
         /// When this method completes, it returns the file's content as a string.
         /// </returns>
         Task<string> ReadTextAsync();
+
+        /// <summary>
+        /// Gets an object that provides access to the content-related properties of the current item.
+        /// </summary>
+        IStorageItemContentProperties Properties { get; }
     }
 }
