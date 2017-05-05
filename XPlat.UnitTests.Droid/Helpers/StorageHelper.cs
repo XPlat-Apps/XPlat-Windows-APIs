@@ -7,14 +7,28 @@
     {
         public static IStorageFile CreateStorageFile(IStorageFolder folder, string name)
         {
-            var storageFileTask = folder.CreateFileAsync(name, CreationCollisionOption.GenerateUniqueName);
+            var storageFileTask = folder.CreateFileAsync(name);
             storageFileTask.Wait();
             return storageFileTask.Result;
         }
 
         public static IStorageFolder CreateStorageFolder(IStorageFolder folder, string name)
         {
-            var storageFileTask = folder.CreateFolderAsync(name, CreationCollisionOption.GenerateUniqueName);
+            var storageFileTask = folder.CreateFolderAsync(name);
+            storageFileTask.Wait();
+            return storageFileTask.Result;
+        }
+
+        public static IStorageFile CreateStorageFile(IStorageFolder folder, string name, CreationCollisionOption collisionOption)
+        {
+            var storageFileTask = folder.CreateFileAsync(name, collisionOption);
+            storageFileTask.Wait();
+            return storageFileTask.Result;
+        }
+
+        public static IStorageFolder CreateStorageFolder(IStorageFolder folder, string name, CreationCollisionOption collisionOption)
+        {
+            var storageFileTask = folder.CreateFolderAsync(name, collisionOption);
             storageFileTask.Wait();
             return storageFileTask.Result;
         }
@@ -30,6 +44,12 @@
             var propsTask = item.GetBasicPropertiesAsync();
             propsTask.Wait();
             return propsTask.Result;
+        }
+
+        public static void DeleteStorageItem(IStorageItem item)
+        {
+            var deleteTask = item.DeleteAsync();
+            deleteTask.Wait();
         }
     }
 }

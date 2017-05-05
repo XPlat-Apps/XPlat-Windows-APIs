@@ -9,11 +9,11 @@
     public class StorageFolderTests
     {
         [Test]
-        public void StorageFolderReturnsBasicProperties()
+        public void StorageFolder_ReturnsBasicProperties()
         {
             const string Text = "Hello, World!";
 
-            var folder = StorageHelper.CreateStorageFolder(ApplicationData.Current.LocalFolder, "FolderTest");
+            var folder = StorageHelper.CreateStorageFolder(ApplicationData.Current.LocalFolder, "FolderTest", CreationCollisionOption.GenerateUniqueName);
 
             var props = StorageHelper.GetBasicProperties(folder);
 

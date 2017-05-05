@@ -9,7 +9,7 @@
     public class StorageFileTests
     {
         [Test]
-        public void StorageFileReturnsBasicProperties()
+        public void StorageFile_ReturnsBasicProperties()
         {
             const string Text = "Hello, World!";
 

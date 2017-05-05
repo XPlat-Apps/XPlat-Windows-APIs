@@ -8,7 +8,7 @@
     public class AppSettingTests
     {
         [Test]
-        public void AppSettingsReturnsSettings()
+        public void Settings_ReturnsValues()
         {
             const string SettingKey = "Hello";
             const int SettingValue = 100;

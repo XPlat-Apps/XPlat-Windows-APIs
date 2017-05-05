@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Tests\Storage\ApplicationDataTests.cs" />
     <Compile Include="Tests\Storage\AppSettingTests.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
