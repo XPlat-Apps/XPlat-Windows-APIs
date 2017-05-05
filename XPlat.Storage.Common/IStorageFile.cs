@@ -11,6 +11,19 @@
         string FileType { get; }
 
         /// <summary>
+        /// Gets the MIME type of the contents of the file.
+        /// </summary>
+        string ContentType { get; }
+
+        /// <summary>
+        /// Opens a stream over the current file for reading file contents.
+        /// </summary>
+        /// <returns>
+        /// When this method completes, it returns the stream.
+        /// </returns>
+        Task<Stream> OpenReadAsync();
+
+        /// <summary>
         /// Opens a stream over the file.
         /// </summary>
         /// <param name="accessMode">

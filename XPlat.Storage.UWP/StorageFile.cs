@@ -58,6 +58,9 @@
         public string FileType => this.Originator.FileType;
 
         /// <inheritdoc />
+        public string ContentType => this.Originator.ContentType;
+
+        /// <inheritdoc />
         public IStorageFolder Parent { get; private set; }
 
         /// <inheritdoc />
@@ -128,6 +131,18 @@
 
             var basicProperties = await storageFolder.GetBasicPropertiesAsync();
             return basicProperties.ToBasicProperties();
+        }
+
+        /// <inheritdoc />
+        public async Task<Stream> OpenReadAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(this.Name, "Cannot open a file that does not exist.");
+            }
+
+            var s = await this.Originator.OpenReadAsync();
+            return s.AsStream();
         }
 
         /// <inheritdoc />

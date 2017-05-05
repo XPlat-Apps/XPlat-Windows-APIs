@@ -6,7 +6,7 @@
     using System.Threading.Tasks;
 
     using XPlat.Storage.FileProperties;
-    using XPlat.Threading.Tasks;
+    using XPlat.Storage.Helpers;
 
     using File = System.IO.File;
 
@@ -166,6 +166,15 @@
 
         /// <inheritdoc />
         public string FileType => System.IO.Path.GetExtension(this.Path);
+
+        /// <inheritdoc />
+        public string ContentType => MimeTypeHelper.GetMimeType(this.FileType);
+
+        /// <inheritdoc />
+        public Task<Stream> OpenReadAsync()
+        {
+            return this.OpenAsync(FileAccessMode.Read);
+        }
 
         /// <inheritdoc />
         public Task<Stream> OpenAsync(FileAccessMode accessMode)

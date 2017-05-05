@@ -40,6 +40,12 @@
     <Compile Include="CreationCollisionOption.cs" />
     <Compile Include="FileAccessMode.cs" />
     <Compile Include="FileProperties\IBasicProperties.cs" />
+    <Compile Include="FileProperties\IImageProperties.cs" />
+    <Compile Include="FileProperties\IMusicProperties.cs" />
+    <Compile Include="FileProperties\IStorageItemContentProperties.cs" />
+    <Compile Include="FileProperties\IVideoProperties.cs" />
+    <Compile Include="FileProperties\PhotoOrientation.cs" />
+    <Compile Include="FileProperties\VideoOrientation.cs" />
     <Compile Include="IApplicationData.cs" />
     <Compile Include="IAppSettingsContainer.cs" />
     <Compile Include="IStorageFile.cs" />
@@ -47,7 +53,7 @@
     <Compile Include="IStorageItem.cs" />
     <Compile Include="NameCollisionOption.cs" />
     <Compile Include="Pickers\IFileOpenPicker.cs" />
-    <Compile Include="Pickers\MimeTypeHelper.cs" />
+    <Compile Include="Helpers\MimeTypeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageFileIOException.cs" />
     <Compile Include="StorageItemCreationException.cs" />

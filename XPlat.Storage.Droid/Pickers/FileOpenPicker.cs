@@ -10,6 +10,7 @@ namespace XPlat.Storage.Pickers
     using Android.Content;
 
     using XPlat.Foundation;
+    using XPlat.Storage.Helpers;
 
     /// <summary>
     /// Defines a service for a UI file open picker.
