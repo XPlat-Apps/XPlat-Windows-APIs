@@ -31,7 +31,7 @@
         [Test]
         public void StorageFolder_GetItemsAsync_ReturnsSubsetOfItems()
         {
-            const int ItemsToRetrieve = 6;
+            const int ItemsToRetrieve = 20;
 
             for (var i = 0; i < 5; i++)
             {
@@ -49,7 +49,7 @@
                     CreationCollisionOption.ReplaceExisting);
             }
 
-            var items = StorageHelper.GetFolderItems(ApplicationData.Current.LocalFolder, 7, ItemsToRetrieve);
+            var items = StorageHelper.GetFolderItems(ApplicationData.Current.LocalFolder, 0, ItemsToRetrieve);
 
             Assert.AreEqual(ItemsToRetrieve, items.Count);
         }

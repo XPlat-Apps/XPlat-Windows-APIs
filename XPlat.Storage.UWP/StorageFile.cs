@@ -46,6 +46,9 @@
         public string Name => this.Originator.Name;
 
         /// <inheritdoc />
+        public string DisplayName => this.Originator.DisplayName;
+
+        /// <inheritdoc />
         public string Path => this.Originator.Path;
 
         /// <inheritdoc />

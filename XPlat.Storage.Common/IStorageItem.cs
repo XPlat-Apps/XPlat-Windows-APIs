@@ -22,6 +22,11 @@
         string Name { get; }
 
         /// <summary>
+        /// Gets the user-friendly name of the current item.
+        /// </summary>
+        string DisplayName { get; }
+
+        /// <summary>
         /// Gets the full path to the item.
         /// </summary>
         string Path { get; }

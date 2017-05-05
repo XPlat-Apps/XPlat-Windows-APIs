@@ -37,6 +37,9 @@
         public string Name => System.IO.Path.GetFileName(this.Path);
 
         /// <inheritdoc />
+        public string DisplayName => System.IO.Path.GetFileNameWithoutExtension(this.Path);
+
+        /// <inheritdoc />
         public string Path { get; private set; }
 
         /// <inheritdoc />

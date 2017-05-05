@@ -7,7 +7,6 @@
     using System.Threading.Tasks;
 
     using XPlat.Storage.FileProperties;
-    using XPlat.Threading.Tasks;
 
     /// <summary>
     /// Defines an application folder.
@@ -33,7 +32,17 @@
         public DateTime DateCreated => Directory.GetCreationTime(this.Path);
 
         /// <inheritdoc />
-        public string Name => System.IO.Path.GetDirectoryName(this.Path);
+        public string Name
+        {
+            get
+            {
+                var directoryInfo = new DirectoryInfo(this.Path);
+                return directoryInfo.Name;
+            }
+        }
+
+        /// <inheritdoc />
+        public string DisplayName => this.Name;
 
         /// <inheritdoc />
         public string Path { get; private set; }
