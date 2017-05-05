@@ -3,7 +3,7 @@
   <metadata>
     <id>XPlat.UI.Core</id>
     <version>#{Build.BuildNumber}#</version>
-    <title>XPlat - Storage APIs</title>
+    <title>XPlat - UI Core APIs</title>
     <authors>James Croft</authors>
     <owners>James Croft</owners>
     <licenseUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit/blob/master/LICENSE</licenseUrl>
