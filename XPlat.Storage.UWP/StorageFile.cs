@@ -1,11 +1,11 @@
 ﻿namespace XPlat.Storage
 {
-    using Windows.Storage;
-
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
+
+    using Windows.Storage;
 
     using XPlat.Storage.FileProperties;
 
@@ -100,7 +100,7 @@
                           "Cannot get properties for a file that does not exist.");
             }
 
-            var storageFile = this.Originator as Windows.Storage.StorageFile;
+            var storageFile = this.Originator;
             return storageFile != null ? await storageFile.Properties.RetrievePropertiesAsync(null) : null;
         }
 
@@ -120,7 +120,7 @@
                     "Cannot get properties for a folder that does not exist.");
             }
 
-            var storageFolder = this.Originator as Windows.Storage.StorageFile;
+            var storageFolder = this.Originator;
             if (storageFolder == null) return null;
 
             var basicProperties = await storageFolder.GetBasicPropertiesAsync();

@@ -52,7 +52,7 @@
         }
 
         /// <inheritdoc />
-        public async Task RenameAsync(string desiredName, NameCollisionOption option)
+        public Task RenameAsync(string desiredName, NameCollisionOption option)
         {
             if (!this.Exists)
             {
@@ -69,8 +69,6 @@
                 throw new ArgumentException("The desired new name is the same as the current name.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             var fileInfo = new FileInfo(this.Path);
             if (fileInfo.Directory == null)
             {
@@ -84,7 +82,7 @@
                 case NameCollisionOption.GenerateUniqueName:
                     newPath = System.IO.Path.Combine(
                         fileInfo.Directory.FullName,
-                        string.Format("{0}-{1}", desiredName, Guid.NewGuid()));
+                        $"{desiredName}-{Guid.NewGuid()}");
                     fileInfo.MoveTo(newPath);
                     break;
                 case NameCollisionOption.ReplaceExisting:
@@ -108,23 +106,25 @@
             }
 
             this.Path = newPath;
+
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
-        public async Task DeleteAsync()
+        public Task DeleteAsync()
         {
             if (!this.Exists)
             {
                 throw new StorageItemNotFoundException(this.Name, "Cannot delete a file that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             File.Delete(this.Path);
+
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
-        public async Task<IDictionary<string, object>> GetPropertiesAsync()
+        public Task<IDictionary<string, object>> GetPropertiesAsync()
         {
             if (!this.Exists)
             {
@@ -133,13 +133,11 @@
                     "Cannot get properties for a file that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
-            var props = new Dictionary<string, object>();
+            IDictionary<string, object> props = new Dictionary<string, object>();
 
             // ToDo; find a library or implement metadata extraction from file.
 
-            return props;
+            return Task.FromResult(props);
         }
 
         /// <inheritdoc />
@@ -149,7 +147,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<IBasicProperties> GetBasicPropertiesAsync()
+        public Task<IBasicProperties> GetBasicPropertiesAsync()
         {
             if (!this.Exists)
             {
@@ -158,33 +156,37 @@
                     "Cannot get properties for a folder that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+            IBasicProperties props = new BasicProperties(this.Path);
 
-            return new BasicProperties(this.Path);
+            return Task.FromResult(props);
         }
 
         /// <inheritdoc />
         public string FileType => System.IO.Path.GetExtension(this.Path);
 
         /// <inheritdoc />
-        public async Task<Stream> OpenAsync(FileAccessMode accessMode)
+        public Task<Stream> OpenAsync(FileAccessMode accessMode)
         {
             if (!this.Exists)
             {
                 throw new StorageItemNotFoundException(this.Name, "Cannot open a file that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+            Stream stream;
 
             switch (accessMode)
             {
                 case FileAccessMode.Read:
-                    return File.OpenRead(this.Path);
+                    stream = File.OpenRead(this.Path);
+                    break;
                 case FileAccessMode.ReadWrite:
-                    return File.Open(this.Path, FileMode.Open, FileAccess.ReadWrite);
+                    stream = File.Open(this.Path, FileMode.Open, FileAccess.ReadWrite);
+                    break;
                 default:
                     throw new StorageFileIOException(this.Name, "The file could not be opened.");
             }
+
+            return Task.FromResult(stream);
         }
 
         /// <inheritdoc />
@@ -200,7 +202,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<IStorageFile> CopyAsync(
+        public Task<IStorageFile> CopyAsync(
             IStorageFolder destinationFolder,
             string desiredNewName,
             NameCollisionOption option)
@@ -227,8 +229,6 @@
                 throw new ArgumentNullException(nameof(desiredNewName));
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             string newPath = System.IO.Path.Combine(destinationFolder.Path, desiredNewName);
 
             switch (option)
@@ -236,7 +236,7 @@
                 case NameCollisionOption.GenerateUniqueName:
                     newPath = System.IO.Path.Combine(
                         destinationFolder.Path,
-                        string.Format("{0}-{1}", Guid.NewGuid(), desiredNewName));
+                        $"{Guid.NewGuid()}-{desiredNewName}");
 
                     File.Copy(this.Path, newPath);
                     break;
@@ -260,11 +260,12 @@
                     break;
             }
 
-            return new StorageFile(destinationFolder, newPath);
+            IStorageFile file = new StorageFile(destinationFolder, newPath);
+            return Task.FromResult(file);
         }
 
         /// <inheritdoc />
-        public async Task CopyAndReplaceAsync(IStorageFile fileToReplace)
+        public Task CopyAndReplaceAsync(IStorageFile fileToReplace)
         {
             if (!this.Exists)
             {
@@ -283,9 +284,9 @@
                     "Cannot copy to and replace a file that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             File.Copy(this.Path, fileToReplace.Path, true);
+
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
@@ -301,7 +302,7 @@
         }
 
         /// <inheritdoc />
-        public async Task MoveAsync(
+        public Task MoveAsync(
             IStorageFolder destinationFolder,
             string desiredNewName,
             NameCollisionOption option)
@@ -328,8 +329,6 @@
                 throw new ArgumentNullException(nameof(desiredNewName));
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             string newPath = System.IO.Path.Combine(destinationFolder.Path, desiredNewName);
 
             switch (option)
@@ -337,7 +336,7 @@
                 case NameCollisionOption.GenerateUniqueName:
                     newPath = System.IO.Path.Combine(
                         destinationFolder.Path,
-                        string.Format("{0}-{1}", Guid.NewGuid(), desiredNewName));
+                        $"{Guid.NewGuid()}-{desiredNewName}");
 
                     File.Move(this.Path, newPath);
                     break;
@@ -362,10 +361,12 @@
             }
 
             this.Path = newPath;
+
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
-        public async Task MoveAndReplaceAsync(IStorageFile fileToReplace)
+        public Task MoveAndReplaceAsync(IStorageFile fileToReplace)
         {
             if (!this.Exists)
             {
@@ -384,8 +385,6 @@
                     "Cannot move to and replace a file that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             var newPath = fileToReplace.Path;
 
             File.Delete(newPath);
@@ -393,6 +392,8 @@
 
             this.Path = newPath;
             this.Parent = fileToReplace.Parent;
+
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
@@ -445,8 +446,6 @@
         /// </returns>
         public static async Task<IStorageFile> GetFileFromPathAsync(string path)
         {
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             IStorageFolder resultFileParentFolder;
 
             if (File.Exists(path))

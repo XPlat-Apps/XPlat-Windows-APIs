@@ -53,5 +53,30 @@
 
             Assert.AreEqual(ItemsToRetrieve, items.Count);
         }
+
+        [Test]
+        public void StorageFolder_TryGetItemAsync_ReturnsExistingItem()
+        {
+            const string FileName = "Test.txt";
+
+            StorageHelper.CreateStorageFile(
+                ApplicationData.Current.LocalFolder,
+                FileName,
+                CreationCollisionOption.ReplaceExisting);
+
+            var item = StorageHelper.TryGetItem(ApplicationData.Current.LocalFolder, FileName);
+
+            Assert.IsNotNull(item);
+        }
+
+        [Test]
+        public void StorageFolder_TryGetItemAsync_ReturnsNullForNonExistingItem()
+        {
+            const string FileName = "DefinitelyNotAFile.txt";
+
+            var item = StorageHelper.TryGetItem(ApplicationData.Current.LocalFolder, FileName);
+
+            Assert.IsNull(item);
+        }
     }
 }

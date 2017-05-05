@@ -21,14 +21,20 @@
             return storageFileTask.Result;
         }
 
-        public static IStorageFile CreateStorageFile(IStorageFolder folder, string name, CreationCollisionOption collisionOption)
+        public static IStorageFile CreateStorageFile(
+            IStorageFolder folder,
+            string name,
+            CreationCollisionOption collisionOption)
         {
             var storageFileTask = folder.CreateFileAsync(name, collisionOption);
             storageFileTask.Wait();
             return storageFileTask.Result;
         }
 
-        public static IStorageFolder CreateStorageFolder(IStorageFolder folder, string name, CreationCollisionOption collisionOption)
+        public static IStorageFolder CreateStorageFolder(
+            IStorageFolder folder,
+            string name,
+            CreationCollisionOption collisionOption)
         {
             var storageFileTask = folder.CreateFolderAsync(name, collisionOption);
             storageFileTask.Wait();
@@ -59,6 +65,13 @@
         {
             var deleteTask = item.DeleteAsync();
             deleteTask.Wait();
+        }
+
+        public static IStorageItem TryGetItem(IStorageFolder folder, string name)
+        {
+            var getItemTask = folder.TryGetItemAsync(name);
+            getItemTask.Wait();
+            return getItemTask.Result;
         }
     }
 }

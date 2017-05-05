@@ -401,6 +401,38 @@
             return result;
         }
 
+        /// <inheritdoc />
+        public async Task<IStorageItem> TryGetItemAsync(string name)
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(
+                    this.Name,
+                    "Cannot get an item from a folder that does not exist.");
+            }
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
+
+            var storageItem = await this.Originator.TryGetItemAsync(name);
+
+            if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.File))
+            {
+                var storageFile = storageItem as Windows.Storage.StorageFile;
+                return new StorageFile(this, storageFile);
+            }
+
+            if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.Folder))
+            {
+                var storageFolder = storageItem as Windows.Storage.StorageFolder;
+                return new StorageFolder(this, storageFolder);
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Gets the folder that has the specified absolute path in the file system.
         /// </summary>

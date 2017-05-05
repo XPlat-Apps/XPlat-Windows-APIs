@@ -7,7 +7,6 @@
     using System.Threading.Tasks;
 
     using XPlat.Storage.FileProperties;
-    using XPlat.Threading.Tasks;
 
     /// <summary>
     /// Defines an application folder.
@@ -51,7 +50,7 @@
         }
 
         /// <inheritdoc />
-        public async Task RenameAsync(string desiredName, NameCollisionOption option)
+        public Task RenameAsync(string desiredName, NameCollisionOption option)
         {
             if (!this.Exists)
             {
@@ -68,8 +67,6 @@
                 throw new ArgumentException("The desired new name is the same as the current name.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             var directoryInfo = new DirectoryInfo(this.Path);
             if (directoryInfo.Parent == null)
             {
@@ -83,7 +80,7 @@
                 case NameCollisionOption.GenerateUniqueName:
                     newPath = System.IO.Path.Combine(
                         directoryInfo.Parent.FullName,
-                        string.Format("{0}-{1}", desiredName, Guid.NewGuid()));
+                        $"{desiredName}-{Guid.NewGuid()}");
                     directoryInfo.MoveTo(newPath);
                     break;
                 case NameCollisionOption.ReplaceExisting:
@@ -107,23 +104,25 @@
             }
 
             this.Path = newPath;
+
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
-        public async Task DeleteAsync()
+        public Task DeleteAsync()
         {
             if (!this.Exists)
             {
                 throw new StorageItemNotFoundException(this.Name, "Cannot delete a folder that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             Directory.Delete(this.Path, true);
+
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
-        public async Task<IDictionary<string, object>> GetPropertiesAsync()
+        public Task<IDictionary<string, object>> GetPropertiesAsync()
         {
             if (!this.Exists)
             {
@@ -132,10 +131,11 @@
                     "Cannot get properties for a folder that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             // ToDo, current not implemented. 
-            return new Dictionary<string, object>();
+
+            IDictionary<string, object> properties = new Dictionary<string, object>();
+
+            return Task.FromResult(properties);
         }
 
         /// <inheritdoc />
@@ -145,7 +145,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<IBasicProperties> GetBasicPropertiesAsync()
+        public Task<IBasicProperties> GetBasicPropertiesAsync()
         {
             if (!this.Exists)
             {
@@ -154,9 +154,8 @@
                     "Cannot get properties for a folder that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
-            return new BasicProperties(this.Path, true);
+            IBasicProperties properties = new BasicProperties(this.Path, true);
+            return Task.FromResult(properties);
         }
 
         /// <inheritdoc />
@@ -166,7 +165,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<IStorageFile> CreateFileAsync(string desiredName, CreationCollisionOption options)
+        public Task<IStorageFile> CreateFileAsync(string desiredName, CreationCollisionOption options)
         {
             if (!this.Exists)
             {
@@ -180,15 +179,13 @@
                 throw new ArgumentNullException(nameof(desiredName));
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             var filePath = System.IO.Path.Combine(this.Path, desiredName);
             if (File.Exists(filePath))
             {
                 switch (options)
                 {
                     case CreationCollisionOption.GenerateUniqueName:
-                        desiredName = string.Format("{0}-{1}", Guid.NewGuid(), desiredName);
+                        desiredName = $"{Guid.NewGuid()}-{desiredName}";
                         filePath = System.IO.Path.Combine(this.Path, desiredName);
                         CreateFile(filePath);
                         break;
@@ -215,7 +212,9 @@
                 CreateFile(filePath);
             }
 
-            return new StorageFile(this, filePath);
+            IStorageFile file = new StorageFile(this, filePath);
+
+            return Task.FromResult(file);
         }
 
         /// <inheritdoc />
@@ -225,7 +224,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<IStorageFolder> CreateFolderAsync(string desiredName, CreationCollisionOption options)
+        public Task<IStorageFolder> CreateFolderAsync(string desiredName, CreationCollisionOption options)
         {
             if (!this.Exists)
             {
@@ -239,15 +238,13 @@
                 throw new ArgumentNullException(nameof(desiredName));
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             var folderPath = System.IO.Path.Combine(this.Path, desiredName);
             if (Directory.Exists(folderPath))
             {
                 switch (options)
                 {
                     case CreationCollisionOption.GenerateUniqueName:
-                        desiredName = string.Format("{0}-{1}", desiredName, Guid.NewGuid());
+                        desiredName = $"{desiredName}-{Guid.NewGuid()}";
                         folderPath = System.IO.Path.Combine(this.Path, desiredName);
                         CreateFolder(folderPath);
                         break;
@@ -274,7 +271,8 @@
                 CreateFolder(folderPath);
             }
 
-            return new StorageFolder(this, folderPath);
+            IStorageFolder folder = new StorageFolder(this, folderPath);
+            return Task.FromResult(folder);
         }
 
         /// <inheritdoc />
@@ -284,7 +282,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<IStorageFile> GetFileAsync(string name, bool createIfNotExists)
+        public Task<IStorageFile> GetFileAsync(string name, bool createIfNotExists)
         {
             if (!this.Exists)
             {
@@ -298,20 +296,19 @@
                 throw new ArgumentNullException(nameof(name));
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             var filePath = System.IO.Path.Combine(this.Path, name);
             if (!File.Exists(filePath))
             {
                 if (createIfNotExists)
                 {
-                    return await this.CreateFileAsync(name);
+                    return this.CreateFileAsync(name);
                 }
 
                 throw new StorageItemNotFoundException(name, "The file could not be found in the folder.");
             }
 
-            return new StorageFile(this, filePath);
+            IStorageFile file = new StorageFile(this, filePath);
+            return Task.FromResult(file);
         }
 
         /// <inheritdoc />
@@ -321,7 +318,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<IStorageFolder> GetFolderAsync(string name, bool createIfNotExists)
+        public Task<IStorageFolder> GetFolderAsync(string name, bool createIfNotExists)
         {
             if (!this.Exists)
             {
@@ -335,20 +332,19 @@
                 throw new ArgumentNullException(nameof(name));
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             var folderPath = System.IO.Path.Combine(this.Path, name);
             if (!Directory.Exists(folderPath))
             {
                 if (createIfNotExists)
                 {
-                    return await this.CreateFolderAsync(name);
+                    return this.CreateFolderAsync(name);
                 }
 
                 throw new StorageItemNotFoundException(name, "The folder could not be found in the folder.");
             }
 
-            return new StorageFolder(this, folderPath);
+            IStorageFolder folder = new StorageFolder(this, folderPath);
+            return Task.FromResult(folder);
         }
 
         /// <inheritdoc />
@@ -365,8 +361,6 @@
             {
                 throw new ArgumentNullException(nameof(name));
             }
-
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
 
             IStorageItem storageItem = null;
 
@@ -401,7 +395,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<IReadOnlyList<IStorageFile>> GetFilesAsync()
+        public Task<IReadOnlyList<IStorageFile>> GetFilesAsync()
         {
             if (!this.Exists)
             {
@@ -410,13 +404,15 @@
                     "Cannot get files from a folder that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+            IReadOnlyList<IStorageFile> files = Directory.GetFiles(this.Path)
+                .Select(filePath => new StorageFile(this, filePath))
+                .ToList();
 
-            return Directory.GetFiles(this.Path).Select(filePath => new StorageFile(this, filePath)).ToList();
+            return Task.FromResult(files);
         }
 
         /// <inheritdoc />
-        public async Task<IReadOnlyList<IStorageFolder>> GetFoldersAsync()
+        public Task<IReadOnlyList<IStorageFolder>> GetFoldersAsync()
         {
             if (!this.Exists)
             {
@@ -425,9 +421,11 @@
                     "Cannot get folders from a folder that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+            IReadOnlyList<IStorageFolder> folders = Directory.GetDirectories(this.Path)
+                .Select(folderPath => new StorageFolder(this, folderPath))
+                .ToList();
 
-            return Directory.GetDirectories(this.Path).Select(folderPath => new StorageFolder(this, folderPath)).ToList();
+            return Task.FromResult(folders);
         }
 
         /// <inheritdoc />
@@ -439,8 +437,6 @@
                     this.Name,
                     "Cannot get items from a folder that does not exist.");
             }
-
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
 
             var files = await this.GetFilesAsync();
             var folders = await this.GetFoldersAsync();
@@ -462,11 +458,26 @@
                     "Cannot get items from a folder that does not exist.");
             }
 
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             var allItems = await this.GetItemsAsync();
 
             return allItems.Take(startIndex, maxItemsToRetrieve).ToList();
+        }
+
+        /// <inheritdoc />
+        public async Task<IStorageItem> TryGetItemAsync(string name)
+        {
+            IStorageItem item = null;
+
+            try
+            {
+                item = await this.GetItemAsync(name);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            return item;
         }
 
         /// <summary>
@@ -480,8 +491,6 @@
         /// </returns>
         public static async Task<IStorageFolder> GetFolderFromPathAsync(string path)
         {
-            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
-
             IStorageFolder resultParentFolder;
 
             if (Directory.Exists(path))
