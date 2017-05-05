@@ -142,5 +142,19 @@
         /// When this method completes successfully, it returns a list of the files and folders. The files and folders in the list are represented by objects of type IStorageItem.
         /// </returns>
         Task<IReadOnlyList<IStorageItem>> GetItemsAsync();
+
+        /// <summary>
+        /// Gets an index-based range of files and folders from the list of all files and subfolders in the current folder.
+        /// </summary>
+        /// <returns>
+        /// When this method completes successfully, it returns a list of the files and subfolders in the current folder. The list is of type IReadOnlyList IStorageItem. Each item in the list is represented by an IStorageItem object. To work with the returned items, call the IsOfType method of the IStorageItem interface to determine whether each item is a file or a folder. Then cast the item to a StorageFolder or StorageFile.
+        /// </returns>
+        /// <param name="startIndex">
+        ///     The zero-based index of the first item in the range to get.
+        /// </param>
+        /// <param name="maxItemsToRetrieve">
+        ///     The maximum number of items to get.
+        /// </param>
+        Task<IReadOnlyList<IStorageItem>> GetItemsAsync(int startIndex, int maxItemsToRetrieve);
     }
 }

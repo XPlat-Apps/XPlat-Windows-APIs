@@ -1,5 +1,7 @@
 ﻿namespace XPlat.UnitTests.Droid.Helpers
 {
+    using System.Collections.Generic;
+
     using XPlat.Storage;
     using XPlat.Storage.FileProperties;
 
@@ -31,6 +33,13 @@
             var storageFileTask = folder.CreateFolderAsync(name, collisionOption);
             storageFileTask.Wait();
             return storageFileTask.Result;
+        }
+
+        public static IReadOnlyList<IStorageItem> GetFolderItems(IStorageFolder folder, int idx, int count)
+        {
+            var itemsTask = folder.GetItemsAsync(idx, count);
+            itemsTask.Wait();
+            return itemsTask.Result;
         }
 
         public static void WriteTextToFile(IStorageFile file, string text)

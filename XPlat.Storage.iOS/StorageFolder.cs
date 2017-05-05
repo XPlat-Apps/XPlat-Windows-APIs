@@ -442,14 +442,31 @@
 
             await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
 
-            var files = await this.GetFilesAsync();
             var folders = await this.GetFoldersAsync();
+            var files = await this.GetFilesAsync();
 
             var items = new List<IStorageItem>();
-            items.AddRange(files);
             items.AddRange(folders);
+            items.AddRange(files);
 
             return items;
+        }
+
+        /// <inheritdoc />
+        public async Task<IReadOnlyList<IStorageItem>> GetItemsAsync(int startIndex, int maxItemsToRetrieve)
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(
+                    this.Name,
+                    "Cannot get items from a folder that does not exist.");
+            }
+
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            var allItems = await this.GetItemsAsync();
+
+            return allItems.Take(startIndex, maxItemsToRetrieve).ToList();
         }
 
         /// <summary>

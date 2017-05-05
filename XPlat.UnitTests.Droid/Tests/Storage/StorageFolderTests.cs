@@ -27,5 +27,31 @@
 
             Assert.AreEqual(Text.Length, updatedProps.Size);
         }
+
+        [Test]
+        public void StorageFolder_GetItemsAsync_ReturnsSubsetOfItems()
+        {
+            const int ItemsToRetrieve = 6;
+
+            for (var i = 0; i < 5; i++)
+            {
+                StorageHelper.CreateStorageFolder(
+                    ApplicationData.Current.LocalFolder,
+                    $"Folder{i}",
+                    CreationCollisionOption.ReplaceExisting);
+            }
+
+            for (var i = 0; i < 5; i++)
+            {
+                StorageHelper.CreateStorageFile(
+                    ApplicationData.Current.LocalFolder,
+                    $"File{i}.txt",
+                    CreationCollisionOption.ReplaceExisting);
+            }
+
+            var items = StorageHelper.GetFolderItems(ApplicationData.Current.LocalFolder, 7, ItemsToRetrieve);
+
+            Assert.AreEqual(ItemsToRetrieve, items.Count);
+        }
     }
 }

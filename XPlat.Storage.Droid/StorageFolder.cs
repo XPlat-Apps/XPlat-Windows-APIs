@@ -452,6 +452,23 @@
             return items;
         }
 
+        /// <inheritdoc />
+        public async Task<IReadOnlyList<IStorageItem>> GetItemsAsync(int startIndex, int maxItemsToRetrieve)
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(
+                    this.Name,
+                    "Cannot get items from a folder that does not exist.");
+            }
+
+            await TaskSchedulerAwaiter.NewTaskSchedulerAwaiter();
+
+            var allItems = await this.GetItemsAsync();
+
+            return allItems.Take(startIndex, maxItemsToRetrieve).ToList();
+        }
+
         /// <summary>
         /// Gets the folder that has the specified absolute path in the file system.
         /// </summary>

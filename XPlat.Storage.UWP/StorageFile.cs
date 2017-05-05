@@ -23,7 +23,7 @@
         /// <param name="file">
         /// The associated <see cref="StorageFile"/>.
         /// </param>
-        internal StorageFile(IStorageFolder parentFolder, Windows.Storage.IStorageFile file)
+        internal StorageFile(IStorageFolder parentFolder, Windows.Storage.StorageFile file)
         {
             if (file == null)
             {
@@ -37,7 +37,7 @@
         /// <summary>
         /// Gets the originating Windows storage file.
         /// </summary>
-        public Windows.Storage.IStorageFile Originator { get; }
+        public Windows.Storage.StorageFile Originator { get; }
 
         /// <inheritdoc />
         public DateTime DateCreated => this.Originator.DateCreated.DateTime;

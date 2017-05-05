@@ -22,7 +22,7 @@
         /// <param name="folder">
         /// The associated <see cref="StorageFolder"/>
         /// </param>
-        internal StorageFolder(IStorageFolder parentFolder, Windows.Storage.IStorageFolder folder)
+        internal StorageFolder(IStorageFolder parentFolder, Windows.Storage.StorageFolder folder)
         {
             if (folder == null)
             {
@@ -36,7 +36,7 @@
         /// <summary>
         /// Gets the originating Windows storage folder.
         /// </summary>
-        public Windows.Storage.IStorageFolder Originator { get; }
+        public Windows.Storage.StorageFolder Originator { get; }
 
         /// <inheritdoc />
         public DateTime DateCreated => this.Originator.DateCreated.DateTime;
@@ -340,6 +340,42 @@
             }
 
             var storageItems = await this.Originator.GetItemsAsync();
+
+            var result = new List<IStorageItem>();
+
+            foreach (var storageItem in storageItems)
+            {
+                if (storageItem == null || storageItem.IsOfType(Windows.Storage.StorageItemTypes.None))
+                {
+                    continue;
+                }
+
+                if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.File))
+                {
+                    var storageFile = storageItem as Windows.Storage.StorageFile;
+                    result.Add(new StorageFile(this, storageFile));
+                }
+                else if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.Folder))
+                {
+                    var storageFolder = storageItem as Windows.Storage.StorageFolder;
+                    result.Add(new StorageFolder(this, storageFolder));
+                }
+            }
+
+            return result;
+        }
+
+        /// <inheritdoc />
+        public async Task<IReadOnlyList<IStorageItem>> GetItemsAsync(int startIndex, int maxItemsToRetrieve)
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(
+                    this.Name,
+                    "Cannot get items from a folder that does not exist.");
+            }
+
+            var storageItems = await this.Originator.GetItemsAsync((uint)startIndex, (uint)maxItemsToRetrieve);
 
             var result = new List<IStorageItem>();
 
