@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("XPlat.NuGet.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("XPlat.Playground.Droid.Resource", IsApplication=true)]
 
-namespace XPlat.NuGet.Droid
+namespace XPlat.Playground.Droid
 {
 	
 	
@@ -26,18 +26,18 @@ namespace XPlat.NuGet.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::XPlat.Device.Display.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Display.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.Device.Geolocation.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Geolocation.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.Device.Power.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Power.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.Media.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Media.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.Storage.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Storage.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.UI.Core.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.UI.Core.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
+			global::XPlat.Device.Display.Resource.String.ApplicationName = global::XPlat.Playground.Droid.Resource.String.ApplicationName;
+			global::XPlat.Device.Display.Resource.String.Hello = global::XPlat.Playground.Droid.Resource.String.Hello;
+			global::XPlat.Device.Geolocation.Resource.String.ApplicationName = global::XPlat.Playground.Droid.Resource.String.ApplicationName;
+			global::XPlat.Device.Geolocation.Resource.String.Hello = global::XPlat.Playground.Droid.Resource.String.Hello;
+			global::XPlat.Device.Power.Resource.String.ApplicationName = global::XPlat.Playground.Droid.Resource.String.ApplicationName;
+			global::XPlat.Device.Power.Resource.String.Hello = global::XPlat.Playground.Droid.Resource.String.Hello;
+			global::XPlat.Media.Resource.String.ApplicationName = global::XPlat.Playground.Droid.Resource.String.ApplicationName;
+			global::XPlat.Media.Resource.String.Hello = global::XPlat.Playground.Droid.Resource.String.Hello;
+			global::XPlat.Storage.Resource.String.ApplicationName = global::XPlat.Playground.Droid.Resource.String.ApplicationName;
+			global::XPlat.Storage.Resource.String.Hello = global::XPlat.Playground.Droid.Resource.String.Hello;
+			global::XPlat.UI.Core.Resource.String.ApplicationName = global::XPlat.Playground.Droid.Resource.String.ApplicationName;
+			global::XPlat.UI.Core.Resource.String.Hello = global::XPlat.Playground.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

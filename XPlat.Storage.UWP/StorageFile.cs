@@ -23,7 +23,7 @@
         /// <param name="file">
         /// The associated <see cref="StorageFile"/>.
         /// </param>
-        internal StorageFile(IStorageFolder parentFolder, Windows.Storage.StorageFile file)
+        public StorageFile(IStorageFolder parentFolder, Windows.Storage.StorageFile file)
         {
             if (file == null)
             {
@@ -330,6 +330,7 @@
             return text;
         }
 
+        /// <inheritdoc />
         public IStorageItemContentProperties Properties { get; }
 
         /// <summary>

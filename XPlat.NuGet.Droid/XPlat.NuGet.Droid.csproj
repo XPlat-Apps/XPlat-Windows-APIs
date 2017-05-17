@@ -58,38 +58,44 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="XPlat.Core, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Core.1.2.17125.3\lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Core.dll</HintPath>
+    <Reference Include="XPlat.Core, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Core.1.2.17137.3\lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Core.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Display.Common, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Display.1.2.17125.3\lib\MonoAndroid10\XPlat.Device.Display.Common.dll</HintPath>
+    <Reference Include="XPlat.Device.Display.Common, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Display.1.2.17137.3\lib\MonoAndroid10\XPlat.Device.Display.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Display.Droid, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Display.1.2.17125.3\lib\MonoAndroid10\XPlat.Device.Display.Droid.dll</HintPath>
+    <Reference Include="XPlat.Device.Display.Droid, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Display.1.2.17137.3\lib\MonoAndroid10\XPlat.Device.Display.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Geolocation.Common, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17125.3\lib\MonoAndroid10\XPlat.Device.Geolocation.Common.dll</HintPath>
+    <Reference Include="XPlat.Device.Geolocation.Common, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17137.3\lib\MonoAndroid10\XPlat.Device.Geolocation.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Geolocation.Droid, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17125.3\lib\MonoAndroid10\XPlat.Device.Geolocation.Droid.dll</HintPath>
+    <Reference Include="XPlat.Device.Geolocation.Droid, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17137.3\lib\MonoAndroid10\XPlat.Device.Geolocation.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Power.Common, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Power.1.2.17125.3\lib\MonoAndroid10\XPlat.Device.Power.Common.dll</HintPath>
+    <Reference Include="XPlat.Device.Power.Common, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Power.1.2.17137.3\lib\MonoAndroid10\XPlat.Device.Power.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Power.Droid, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Power.1.2.17125.3\lib\MonoAndroid10\XPlat.Device.Power.Droid.dll</HintPath>
+    <Reference Include="XPlat.Device.Power.Droid, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Power.1.2.17137.3\lib\MonoAndroid10\XPlat.Device.Power.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Storage.Common, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Storage.1.2.17125.3\lib\MonoAndroid10\XPlat.Storage.Common.dll</HintPath>
+    <Reference Include="XPlat.Media.Common, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Media.1.2.17137.3\lib\MonoAndroid10\XPlat.Media.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Storage.Droid, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Storage.1.2.17125.3\lib\MonoAndroid10\XPlat.Storage.Droid.dll</HintPath>
+    <Reference Include="XPlat.Media.Droid, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Media.1.2.17137.3\lib\MonoAndroid10\XPlat.Media.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.UI.Core.Common, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.UI.Core.1.2.17125.3\lib\MonoAndroid10\XPlat.UI.Core.Common.dll</HintPath>
+    <Reference Include="XPlat.Storage.Common, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Storage.1.2.17137.3\lib\MonoAndroid10\XPlat.Storage.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.UI.Core.Droid, Version=1.2.17125.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.UI.Core.1.2.17125.3\lib\MonoAndroid10\XPlat.UI.Core.Droid.dll</HintPath>
+    <Reference Include="XPlat.Storage.Droid, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Storage.1.2.17137.3\lib\MonoAndroid10\XPlat.Storage.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.UI.Core.Common, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.UI.Core.1.2.17137.3\lib\MonoAndroid10\XPlat.UI.Core.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XPlat.UI.Core.Droid, Version=1.2.17137.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.UI.Core.1.2.17137.3\lib\MonoAndroid10\XPlat.UI.Core.Droid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

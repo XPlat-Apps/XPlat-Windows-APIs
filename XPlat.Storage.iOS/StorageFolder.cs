@@ -22,7 +22,7 @@
         /// <param name="path">
         /// The path to the folder.
         /// </param>
-        internal StorageFolder(IStorageFolder parentFolder, string path)
+        public StorageFolder(IStorageFolder parentFolder, string path)
         {
             this.Parent = parentFolder;
             this.Path = path;

@@ -24,7 +24,7 @@
         /// <param name="path">
         /// The path to the file.
         /// </param>
-        internal StorageFile(IStorageFolder parentFolder, string path)
+        public StorageFile(IStorageFolder parentFolder, string path)
         {
             this.Parent = parentFolder;
             this.Path = path;
@@ -447,7 +447,8 @@
             return text;
         }
 
-        public IStorageItemContentProperties Properties { get; }
+        /// <inheritdoc />
+        public IStorageItemContentProperties Properties => new StorageItemContentProperties(this.Path);
 
         /// <summary>
         /// Gets an IStorageFile object to represent the file at the specified path.

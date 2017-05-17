@@ -44,9 +44,10 @@
             this.action = bundle.GetString(IntentAction);
             this.fileName = bundle.GetString(IntentFileName, $"{Guid.NewGuid()}.jpg");
 
-            var filePath = ApplicationData.Current.TemporaryFolder.Path;
+            // Saves to the public repository (can't access internal)
+            var filePath = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim).AbsolutePath;
 
-            this.file = new File(filePath, fileName);
+            this.file = new File(filePath, this.fileName);
 
             Intent intent = null;
             try
@@ -87,7 +88,9 @@
             }
             else
             {
+                //var internalStorageFile = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(this.fileName);
                 var storageFile = await StorageFile.GetFileFromPathAsync(this.file.AbsolutePath);
+                //await storageFile.MoveAndReplaceAsync(internalStorageFile);
 
                 var args = new CameraFileCaptured(requestCode, storageFile, false);
                 CameraFileCaptured?.Invoke(this, args);

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BEF28EC-3FE5-47E4-9247-DE44FC075819}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XPlat.Playground.Droid</RootNamespace>
+    <AssemblyName>XPlat.Playground.Droid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>PdbOnly</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GettingStarted.Xamarin" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
+      <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
+      <Name>XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Display.Common\XPlat.Device.Display.Common.csproj">
+      <Project>{cbec1318-09a6-4b4f-b8d2-b252403fc1ca}</Project>
+      <Name>XPlat.Device.Display.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Display.Droid\XPlat.Device.Display.Droid.csproj">
+      <Project>{87a57abb-afb1-4a7f-b3ba-6e08a5ef73d5}</Project>
+      <Name>XPlat.Device.Display.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Geolocation.Common\XPlat.Device.Geolocation.Common.csproj">
+      <Project>{1c7b8f43-de7e-4efa-b622-e3eed28c43a1}</Project>
+      <Name>XPlat.Device.Geolocation.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Geolocation.Droid\XPlat.Device.Geolocation.Droid.csproj">
+      <Project>{d1998fc4-4d94-4256-a7fa-45d679521ff6}</Project>
+      <Name>XPlat.Device.Geolocation.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Power.Common\XPlat.Device.Power.Common.csproj">
+      <Project>{653e542d-79fe-4e10-87fd-48b6897198ed}</Project>
+      <Name>XPlat.Device.Power.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Power.Droid\XPlat.Device.Power.Droid.csproj">
+      <Project>{ea8186b2-fd27-4e54-b615-bf11dfda3298}</Project>
+      <Name>XPlat.Device.Power.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Media.Common\XPlat.Media.Common.csproj">
+      <Project>{1770495f-5b12-4e6e-95e3-3ffdb620fcb2}</Project>
+      <Name>XPlat.Media.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Media.Droid\XPlat.Media.Droid.csproj">
+      <Project>{4384c631-1d42-4014-8ea9-eb331c337f25}</Project>
+      <Name>XPlat.Media.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Storage.Common\XPlat.Storage.Common.csproj">
+      <Project>{3f0a5ecc-70f4-4118-8ebd-e513764448b1}</Project>
+      <Name>XPlat.Storage.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Storage.Droid\XPlat.Storage.Droid.csproj">
+      <Project>{98f089a5-f5e0-44a8-a7ac-d693159f4892}</Project>
+      <Name>XPlat.Storage.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.UI.Core.Common\XPlat.UI.Core.Common.csproj">
+      <Project>{44725ae3-47dd-43a5-980e-b98eb8128125}</Project>
+      <Name>XPlat.UI.Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.UI.Core.Droid\XPlat.UI.Core.Droid.csproj">
+      <Project>{a81d3fd2-31b7-466a-a79e-6bb2c20ec325}</Project>
+      <Name>XPlat.UI.Core.Droid</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+		<Target Name="BeforeBuild">
+		</Target>
+		<Target Name="AfterBuild">
+		</Target>
+ -->
+</Project>

@@ -22,7 +22,7 @@
         /// <param name="folder">
         /// The associated <see cref="StorageFolder"/>
         /// </param>
-        internal StorageFolder(IStorageFolder parentFolder, Windows.Storage.StorageFolder folder)
+        public StorageFolder(IStorageFolder parentFolder, Windows.Storage.StorageFolder folder)
         {
             if (folder == null)
             {

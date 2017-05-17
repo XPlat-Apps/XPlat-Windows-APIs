@@ -1,4 +1,4 @@
-﻿namespace XPlat.NuGet.Droid
+﻿namespace XPlat.Playground.Droid
 {
     using System;
 
@@ -11,7 +11,7 @@
     using XPlat.Storage;
     using XPlat.Storage.Pickers;
 
-    [Activity(Label = "XPlat.NuGet.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "XPlat.Playground.Droid", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         private Geolocator geolocator;
@@ -27,7 +27,7 @@
             var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
                            CreationCollisionOption.OpenIfExists);
-            
+
             await file.WriteTextAsync("Hello from the Android app!");
 
             var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
@@ -63,7 +63,10 @@
             singleFilePick.FileTypeFilter.Add(".jpg");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
 
-            var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
+            if (pickedFile != null)
+            {
+                var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
+            }
 
             var multiFilePick = new FileOpenPicker(this);
             multiFilePick.FileTypeFilter.Add(".jpg");
@@ -90,3 +93,4 @@
         }
     }
 }
+
