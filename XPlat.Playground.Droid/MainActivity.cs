@@ -59,6 +59,13 @@
             CameraCaptureUI dialog = new CameraCaptureUI(this);
             IStorageFile cameraCaptureFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
 
+            if (cameraCaptureFile != null)
+            {
+                var imageProps = await cameraCaptureFile.Properties.GetImagePropertiesAsync();
+
+                var bytes = await cameraCaptureFile.ReadBytesAsync();
+            }
+            
             var singleFilePick = new FileOpenPicker(this);
             singleFilePick.FileTypeFilter.Add(".jpg");
             var pickedFile = await singleFilePick.PickSingleFileAsync();

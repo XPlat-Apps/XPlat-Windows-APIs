@@ -448,6 +448,31 @@
         }
 
         /// <inheritdoc />
+        public Task WriteBytesAsync(byte[] bytes)
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(this.Name, "Cannot write to a file that does not exist.");
+            }
+
+            File.WriteAllBytes(this.Path, bytes);
+
+            return Task.CompletedTask;
+        }
+
+        /// <inheritdoc />
+        public Task<byte[]> ReadBytesAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(this.Name, "Cannot read from a file that does not exist.");
+            }
+
+            var bytes = File.ReadAllBytes(this.Path);
+            return Task.FromResult(bytes);
+        }
+
+        /// <inheritdoc />
         public IStorageItemContentProperties Properties => new StorageItemContentProperties(this.Path);
 
         /// <summary>

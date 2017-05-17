@@ -1,4 +1,6 @@
-﻿namespace XPlat.Storage
+﻿using System.Runtime.InteropServices.WindowsRuntime;
+
+namespace XPlat.Storage
 {
     using System;
     using System.Collections.Generic;
@@ -328,6 +330,29 @@
 
             var text = await FileIO.ReadTextAsync(this.Originator);
             return text;
+        }
+
+        /// <inheritdoc />
+        public async Task WriteBytesAsync(byte[] bytes)
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(this.Name, "Cannot write to a file that does not exist.");
+            }
+
+            await FileIO.WriteBytesAsync(this.Originator, bytes);
+        }
+
+        /// <inheritdoc />
+        public async Task<byte[]> ReadBytesAsync()
+        {
+            if (!this.Exists)
+            {
+                throw new StorageItemNotFoundException(this.Name, "Cannot read from a file that does not exist.");
+            }
+
+            var buffer = await FileIO.ReadBufferAsync(this.Originator);
+            return buffer.ToArray();
         }
 
         /// <inheritdoc />

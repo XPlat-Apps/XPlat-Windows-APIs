@@ -1,3 +1,6 @@
+using Android;
+using Android.Content.PM;
+
 namespace XPlat.Device.Geolocation
 {
     using System;

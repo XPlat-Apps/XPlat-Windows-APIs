@@ -37,15 +37,15 @@
         {
             base.OnCreate(savedInstanceState);
 
-            var bundle = savedInstanceState ?? this.Intent.Extras;
+            Bundle bundle = savedInstanceState ?? this.Intent.Extras;
 
-            var isComplete = bundle.GetBoolean("isComplete", false);
+            bool isComplete = bundle.GetBoolean("isComplete", false);
             this.requestId = bundle.GetInt(IntentId, 0);
             this.action = bundle.GetString(IntentAction);
             this.fileName = bundle.GetString(IntentFileName, $"{Guid.NewGuid()}.jpg");
 
             // Saves to the public repository (can't access internal)
-            var filePath = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim).AbsolutePath;
+            string filePath = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim).AbsolutePath;
 
             this.file = new File(filePath, this.fileName);
 
@@ -88,11 +88,15 @@
             }
             else
             {
-                //var internalStorageFile = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(this.fileName);
-                var storageFile = await StorageFile.GetFileFromPathAsync(this.file.AbsolutePath);
-                //await storageFile.MoveAndReplaceAsync(internalStorageFile);
+                IStorageFile internalStorageFile = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(this.fileName);
+                IStorageFile storageFile = await StorageFile.GetFileFromPathAsync(this.file.AbsolutePath);
 
-                var args = new CameraFileCaptured(requestCode, storageFile, false);
+                byte[] fileData = await storageFile.ReadBytesAsync();
+                await internalStorageFile.WriteBytesAsync(fileData);
+
+                await storageFile.DeleteAsync();
+
+                CameraFileCaptured args = new CameraFileCaptured(requestCode, internalStorageFile, false);
                 CameraFileCaptured?.Invoke(this, args);
                 this.Finish();
             }
