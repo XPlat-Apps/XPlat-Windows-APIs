@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>XPlat.Media</id>
+    <version>#{Build.BuildNumber}#</version>
+    <title>XPlat - Media APIs</title>
+    <authors>James Croft</authors>
+    <owners>James Croft</owners>
+    <licenseUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</projectUrl>
+    <iconUrl>http://jamescroft.co.uk/wp-content/uploads/2017/03/XApiLog.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This library contains a collection of Windows.Media APIs built for UWP, iOS and Android built by the community on GitHub.</description>
+    <releaseNotes>#{MediaReleaseNotes}#</releaseNotes>
+    <copyright>Copyright (c) XPlat APIs. All rights reserved.</copyright>
+    <tags>Xamarin UWP iOS Android Toolkit API Extensions Components CameraCaptureUI</tags>
+    <dependencies>
+      <group targetFramework="uap10.0">
+        <dependency id="XPlat.Storage" version="#{Build.BuildNumber}#" />
+      </group>
+      <group targetFramework="MonoAndroid10">
+        <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
+        <dependency id="XPlat.Storage" version="#{Build.BuildNumber}#" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\XPlat.Media.UWP\bin\Release\XPlat.Media.Common.dll" target="lib\uap10.0\XPlat.Media.Common.dll" />
+    <file src="..\XPlat.Media.UWP\bin\Release\XPlat.Media.Common.xml" target="lib\uap10.0\XPlat.Media.Common.xml" />
+    <file src="..\XPlat.Media.UWP\bin\Release\XPlat.Media.UWP.pri" target="lib\uap10.0\XPlat.Media.UWP.pri" />
+    <file src="..\XPlat.Media.UWP\bin\Release\XPlat.Media.UWP.dll" target="lib\uap10.0\XPlat.Media.UWP.dll" />
+    <file src="..\XPlat.Media.UWP\bin\Release\XPlat.Media.UWP.xml" target="lib\uap10.0\XPlat.Media.UWP.xml" />
+
+    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Common.dll" target="lib\MonoAndroid10\XPlat.Media.Common.dll" />
+    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Common.xml" target="lib\MonoAndroid10\XPlat.Media.Common.xml" />
+    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Droid.dll" target="lib\MonoAndroid10\XPlat.Media.Droid.dll" />
+    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Droid.xml" target="lib\MonoAndroid10\XPlat.Media.Droid.xml" />
+  </files>
+</package>
