@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A81D3FD2-31B7-466A-A79E-6BB2C20EC325}</ProjectGuid>
+    <ProjectGuid>{4384C631-1D42-4014-8EA9-EB331C337F25}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XPlat.UI.Core</RootNamespace>
-    <AssemblyName>XPlat.UI.Core.Droid</AssemblyName>
+    <RootNamespace>XPlat.Media</RootNamespace>
+    <AssemblyName>XPlat.Media.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -33,7 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\XPlat.UI.Core.Droid.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\XPlat.Media.Droid.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CoreDispatcher.cs" />
+    <Compile Include="Capture\CameraCaptureUIActivity.cs" />
+    <Compile Include="Capture\CameraCaptureUI.cs" />
+    <Compile Include="Capture\CameraFileCaptured.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,9 +58,21 @@
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XPlat.UI.Core.Common\XPlat.UI.Core.Common.csproj">
-      <Project>{44725ae3-47dd-43a5-980e-b98eb8128125}</Project>
-      <Name>XPlat.UI.Core.Common</Name>
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
+      <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
+      <Name>XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Media.Common\XPlat.Media.Common.csproj">
+      <Project>{1770495f-5b12-4e6e-95e3-3ffdb620fcb2}</Project>
+      <Name>XPlat.Media.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Storage.Common\XPlat.Storage.Common.csproj">
+      <Project>{3f0a5ecc-70f4-4118-8ebd-e513764448b1}</Project>
+      <Name>XPlat.Storage.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Storage.Droid\XPlat.Storage.Droid.csproj">
+      <Project>{98f089a5-f5e0-44a8-a7ac-d693159f4892}</Project>
+      <Name>XPlat.Storage.Droid</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
