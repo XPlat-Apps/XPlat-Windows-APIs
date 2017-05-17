@@ -57,7 +57,7 @@
             }
 
             CameraCaptureUI dialog = new CameraCaptureUI(this);
-            IStorageFile cameraCaptureFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
+            IStorageFile cameraCaptureFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
 
             if (cameraCaptureFile != null)
             {
