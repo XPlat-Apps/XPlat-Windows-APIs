@@ -19,6 +19,7 @@
         <dependency id="XPlat.Storage" version="#{Build.BuildNumber}#" />
       </group>
       <group targetFramework="MonoAndroid10">
+        <dependency id="Xamarin.Android.Support.v7.AppCompat" version="25.3.1">
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
         <dependency id="XPlat.Storage" version="#{Build.BuildNumber}#" />
       </group>

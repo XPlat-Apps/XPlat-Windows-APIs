@@ -3,16 +3,25 @@
     using System;
     using System.Threading.Tasks;
 
+    using Android;
+
     using Android.App;
+
     using Android.Content;
-    using Android.Content.PM;
     using Android.OS;
+
+    using Android.Content.PM;
+    using Android.Support.V4.App;
     using Android.Provider;
 
     using Java.IO;
 
     using XPlat.Foundation;
     using XPlat.Storage;
+
+    using System.Collections.Generic;
+
+    using Android.Support.V4.Content;
 
     [Activity(NoHistory = false, LaunchMode = LaunchMode.Multiple)]
     internal class CameraCaptureUIActivity : Activity
@@ -37,6 +46,37 @@
         {
             base.OnCreate(savedInstanceState);
 
+            List<string> permissions = new List<string>();
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) !=
+                (int) Permission.Granted)
+            {
+                permissions.Add(Manifest.Permission.ReadExternalStorage);
+            }
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) !=
+                (int) Permission.Granted)
+            {
+                permissions.Add(Manifest.Permission.WriteExternalStorage);
+            }
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Camera) != (int)Permission.Granted)
+            {
+                permissions.Add(Manifest.Permission.Camera);
+            }
+
+            if (permissions.Count > 0)
+            {
+                ActivityCompat.RequestPermissions(this, permissions.ToArray(), 0);
+            }
+            else
+            {
+                this.StartCamera(savedInstanceState);
+            }
+        }
+
+        private void StartCamera(Bundle savedInstanceState)
+        {
             Bundle bundle = savedInstanceState ?? this.Intent.Extras;
 
             bool isComplete = bundle.GetBoolean("isComplete", false);
@@ -45,7 +85,9 @@
             this.fileName = bundle.GetString(IntentFileName, $"{Guid.NewGuid()}.jpg");
 
             // Saves to the public repository (can't access internal)
-            string filePath = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim).AbsolutePath;
+            string filePath = Android.OS.Environment
+                .GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim)
+                .AbsolutePath;
 
             this.file = new File(filePath, this.fileName);
 
@@ -74,6 +116,39 @@
             }
         }
 
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
+            Permission[] grantResults)
+        {
+            if (requestCode == 0)
+            {
+                bool granted = true;
+
+                foreach (Permission grantResult in grantResults)
+                {
+                    if (!granted)
+                    {
+                        break;
+                    }
+
+                    granted = grantResult == Permission.Granted;
+                }
+
+                if (granted)
+                {
+                    this.StartCamera(null);
+                }
+                else
+                {
+                    this.Finish();
+                }
+
+            }
+            else
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
+
         protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
@@ -88,7 +163,8 @@
             }
             else
             {
-                IStorageFile internalStorageFile = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(this.fileName);
+                IStorageFile internalStorageFile =
+                    await ApplicationData.Current.TemporaryFolder.CreateFileAsync(this.fileName);
                 IStorageFile storageFile = await StorageFile.GetFileFromPathAsync(this.file.AbsolutePath);
 
                 byte[] fileData = await storageFile.ReadBytesAsync();
