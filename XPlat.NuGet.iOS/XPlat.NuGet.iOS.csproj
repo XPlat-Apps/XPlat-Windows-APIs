@@ -97,38 +97,38 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="XPlat.Core, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Core.1.2.17137.5\lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Core.dll</HintPath>
+    <Reference Include="XPlat.Core, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Core.1.2.17137.6\lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Core.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Display.Common, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Display.1.2.17137.5\lib\Xamarin.iOS10\XPlat.Device.Display.Common.dll</HintPath>
+    <Reference Include="XPlat.Device.Display.Common, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Display.1.2.17137.6\lib\Xamarin.iOS10\XPlat.Device.Display.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Display.iOS, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Display.1.2.17137.5\lib\Xamarin.iOS10\XPlat.Device.Display.iOS.dll</HintPath>
+    <Reference Include="XPlat.Device.Display.iOS, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Display.1.2.17137.6\lib\Xamarin.iOS10\XPlat.Device.Display.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Geolocation.Common, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17137.5\lib\Xamarin.iOS10\XPlat.Device.Geolocation.Common.dll</HintPath>
+    <Reference Include="XPlat.Device.Geolocation.Common, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17137.6\lib\Xamarin.iOS10\XPlat.Device.Geolocation.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Geolocation.iOS, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17137.5\lib\Xamarin.iOS10\XPlat.Device.Geolocation.iOS.dll</HintPath>
+    <Reference Include="XPlat.Device.Geolocation.iOS, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Geolocation.1.2.17137.6\lib\Xamarin.iOS10\XPlat.Device.Geolocation.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Power.Common, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Power.1.2.17137.5\lib\Xamarin.iOS10\XPlat.Device.Power.Common.dll</HintPath>
+    <Reference Include="XPlat.Device.Power.Common, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Power.1.2.17137.6\lib\Xamarin.iOS10\XPlat.Device.Power.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Device.Power.iOS, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Device.Power.1.2.17137.5\lib\Xamarin.iOS10\XPlat.Device.Power.iOS.dll</HintPath>
+    <Reference Include="XPlat.Device.Power.iOS, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Device.Power.1.2.17137.6\lib\Xamarin.iOS10\XPlat.Device.Power.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Storage.Common, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Storage.1.2.17137.5\lib\Xamarin.iOS10\XPlat.Storage.Common.dll</HintPath>
+    <Reference Include="XPlat.Storage.Common, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Storage.1.2.17137.6\lib\Xamarin.iOS10\XPlat.Storage.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.Storage.iOS, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.Storage.1.2.17137.5\lib\Xamarin.iOS10\XPlat.Storage.iOS.dll</HintPath>
+    <Reference Include="XPlat.Storage.iOS, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.Storage.1.2.17137.6\lib\Xamarin.iOS10\XPlat.Storage.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.UI.Core.Common, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.UI.Core.1.2.17137.5\lib\Xamarin.iOS10\XPlat.UI.Core.Common.dll</HintPath>
+    <Reference Include="XPlat.UI.Core.Common, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.UI.Core.1.2.17137.6\lib\Xamarin.iOS10\XPlat.UI.Core.Common.dll</HintPath>
     </Reference>
-    <Reference Include="XPlat.UI.Core.iOS, Version=1.2.17137.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlat.UI.Core.1.2.17137.5\lib\Xamarin.iOS10\XPlat.UI.Core.iOS.dll</HintPath>
+    <Reference Include="XPlat.UI.Core.iOS, Version=1.2.17137.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XPlat.UI.Core.1.2.17137.6\lib\Xamarin.iOS10\XPlat.UI.Core.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
