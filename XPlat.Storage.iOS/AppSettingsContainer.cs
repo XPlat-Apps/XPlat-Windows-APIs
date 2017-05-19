@@ -6,6 +6,8 @@
 
     using global::Foundation;
 
+    using Newtonsoft.Json;
+
     using XPlat.Helpers;
 
     /// <summary>
@@ -93,7 +95,8 @@
                         }
                         else
                         {
-                            throw new ArgumentException("The provided value is not a supported type.");
+                            string json = StandardUserDefaults.StringForKey(key);
+                            setting = JsonConvert.DeserializeObject<T>(json);
                         }
                         break;
                 }
@@ -145,7 +148,7 @@
                         }
                         else
                         {
-                            throw new ArgumentException("The provided value is not a supported type.");
+                            StandardUserDefaults.SetString(JsonConvert.SerializeObject(value), key);
                         }
                         break;
                 }

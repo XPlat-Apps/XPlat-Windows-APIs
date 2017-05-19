@@ -1,6 +1,7 @@
 ﻿namespace XPlat.Playground.Droid
 {
     using System;
+    using System.Collections.Generic;
 
     using Android.App;
     using Android.OS;
@@ -8,6 +9,7 @@
     using XPlat.Device.Display;
     using XPlat.Device.Geolocation;
     using XPlat.Media.Capture;
+    using XPlat.Playground.Droid.Models;
     using XPlat.Storage;
     using XPlat.Storage.Pickers;
 
@@ -23,6 +25,40 @@
             var request = new DisplayRequest(this.Window);
 
             request.RequestActive();
+
+            // Test with list of strings
+            List<string> values = new List<string> { "Hello", "World", "ASDF" };
+            ApplicationData.Current.LocalSettings.AddOrUpdate("Roles", values);
+            
+            // Test with list of objects
+            List<Test> tests = new List<Test>
+                                   {
+                                       new Test
+                                           {
+                                               Date = DateTime.Now,
+                                               Name = "Hello, World!",
+                                               NestedTest =
+                                                   new Test
+                                                       {
+                                                           Date = DateTime.MinValue,
+                                                           Name = "Nested Hello!"
+                                                       }
+                                           },
+                                       new Test
+                                           {
+                                               Date = DateTime.MinValue,
+                                               Name = "Hello, World AGAIN!",
+                                               NestedTest =
+                                                   new Test
+                                                       {
+                                                           Date = DateTime.UtcNow,
+                                                           Name = "Nested Hello AGAIN!"
+                                                       }
+                                           }
+                                   };
+            ApplicationData.Current.LocalSettings.AddOrUpdate("Tests", tests);
+            
+            var settings = ApplicationData.Current.LocalSettings.Get<List<Test>>("Tests");
 
             var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",

@@ -17,10 +17,12 @@
     <dependencies>
       <group targetFramework="MonoAndroid10">
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
       </group>
 
       <group targetFramework="Xamarin.iOS10">
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />        
       </group>
     </dependencies>
   </metadata>

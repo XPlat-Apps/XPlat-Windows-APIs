@@ -7,6 +7,8 @@
     using Android.Content;
     using Android.Preferences;
 
+    using Newtonsoft.Json;
+
     using XPlat.Helpers;
 
     /// <summary>
@@ -94,7 +96,8 @@
                             }
                             else
                             {
-                                throw new ArgumentException("The provided value is not a supported type.");
+                                string json = SharedPreferences.GetString(key, ParseHelper.SafeParseString(value));
+                                setting = JsonConvert.DeserializeObject<T>(json);
                             }
                             break;
                     }
@@ -151,7 +154,7 @@
                                 }
                                 else
                                 {
-                                    throw new ArgumentException("The provided value is not a supported type.");
+                                    editor.PutString(key, JsonConvert.SerializeObject(value));
                                 }
                                 break;
                         }

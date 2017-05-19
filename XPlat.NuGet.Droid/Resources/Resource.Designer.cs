@@ -26,18 +26,6 @@ namespace XPlat.NuGet.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::XPlat.Device.Display.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Display.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.Device.Geolocation.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Geolocation.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.Device.Power.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Power.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.Media.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Media.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.Storage.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.Storage.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
-			global::XPlat.UI.Core.Resource.String.ApplicationName = global::XPlat.NuGet.Droid.Resource.String.ApplicationName;
-			global::XPlat.UI.Core.Resource.String.Hello = global::XPlat.NuGet.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
