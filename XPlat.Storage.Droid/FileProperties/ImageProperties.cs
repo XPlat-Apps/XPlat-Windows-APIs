@@ -20,7 +20,7 @@
 
         public int Rating { get; }
 
-        public DateTime DateTaken => DateTime.ParseExact(this.exifInterface.GetAttribute(ExifInterface.TagDatetimeOriginal), "yyyy:MM:dd HH:mm:ss", null);
+        public string DateTaken => this.exifInterface.GetAttribute(ExifInterface.TagDatetimeOriginal);
 
         public string CameraModel => this.exifInterface.GetAttribute(ExifInterface.TagModel);
 

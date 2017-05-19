@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreationCollisionOption.cs" />
+    <Compile Include="Extensions\Extensions.Storage.cs" />
     <Compile Include="FileAccessMode.cs" />
     <Compile Include="FileProperties\IBasicProperties.cs" />
     <Compile Include="FileProperties\IImageProperties.cs" />

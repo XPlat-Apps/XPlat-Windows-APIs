@@ -127,7 +127,7 @@
         }
 
         /// <inheritdoc />
-        public Task<IDictionary<string, object>> GetPropertiesAsync()
+        public async Task<IDictionary<string, object>> GetPropertiesAsync()
         {
             if (!this.Exists)
             {
@@ -138,9 +138,48 @@
 
             IDictionary<string, object> props = new Dictionary<string, object>();
 
-            // ToDo; find a library or implement metadata extraction from file.
+            if (!props.ContainsKey("System.FileName"))
+            {
+                props.Add("System.FileName", this.Name);
+            }
 
-            return Task.FromResult(props);
+            if (!props.ContainsKey("System.FileExtension"))
+            {
+                props.Add("System.FileExtension", this.FileType);
+            }
+
+            try
+            {
+                var basicProps = await this.GetBasicPropertiesAsync();
+
+                if (!props.ContainsKey("System.Size"))
+                {
+                    props.Add("System.Size", basicProps.Size);
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            try
+            {
+                var mediaProps = await this.Properties.GetAllMediaPropertiesAsync();
+
+                foreach (var prop in mediaProps)
+                {
+                    if (!props.ContainsKey(prop.Key))
+                    {
+                        props.Add(prop);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // igored
+            }
+
+            return props;
         }
 
         /// <inheritdoc />

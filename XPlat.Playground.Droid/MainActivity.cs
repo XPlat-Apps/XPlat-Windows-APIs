@@ -93,10 +93,12 @@
             }
 
             CameraCaptureUI dialog = new CameraCaptureUI(this);
-            IStorageFile cameraCaptureFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
+            IStorageFile cameraCaptureFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
 
             if (cameraCaptureFile != null)
             {
+                var props = await cameraCaptureFile.GetPropertiesAsync();
+
                 var imageProps = await cameraCaptureFile.Properties.GetImagePropertiesAsync();
 
                 var bytes = await cameraCaptureFile.ReadBytesAsync();

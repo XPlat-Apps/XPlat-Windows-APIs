@@ -9,7 +9,7 @@
 
         int Rating { get; }
 
-        DateTime DateTaken { get; }
+        string DateTaken { get; }
 
         string CameraModel { get; }
 
