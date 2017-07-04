@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BEB9F5EA-EC25-4E4D-93CA-E6F1FC0114D9}</ProjectGuid>
+    <ProjectGuid>{B83710DD-27C9-4D37-BBCC-4239AB34B765}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XPlat.Networking</RootNamespace>
-    <AssemblyName>XPlat.Networking.Droid</AssemblyName>
+    <RootNamespace>XPlat.Device.Launcher</RootNamespace>
+    <AssemblyName>XPlat.Device.Launcher.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -33,7 +33,7 @@
     <DefineConstants>TRACE;DROID</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\XPlat.Networking.Droid.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\XPlat.Device.Launcher.Droid.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -47,12 +47,6 @@
   <ItemGroup>
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\XPlat.Networking.Common\XPlat.Networking.Common.csproj">
-      <Project>{1937eb4f-4a90-4c02-ac7c-c8267570316d}</Project>
-      <Name>XPlat.Networking.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
