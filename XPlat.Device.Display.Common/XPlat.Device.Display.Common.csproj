@@ -5,7 +5,7 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CBEC1318-09A6-4B4F-B8D2-B252403FC1CA}</ProjectGuid>
+    <ProjectGuid>{35C303C9-66B9-446B-95C4-F1F44AF101B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>XPlat.Device.Display</RootNamespace>
     <AssemblyName>XPlat.Device.Display.Common</AssemblyName>
@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\XPlat.Device.Display.Common.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\XPlat.Device.Display.Common.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->

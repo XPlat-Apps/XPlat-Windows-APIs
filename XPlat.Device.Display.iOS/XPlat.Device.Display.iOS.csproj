@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EFA62C23-7FAF-4A1A-9F37-E2E73A18A0F6}</ProjectGuid>
+    <ProjectGuid>{24511A5E-E817-42B7-9989-063D57993DD9}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>XPlat.Device.Display</RootNamespace>
@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XPlat.Device.Display.Common\XPlat.Device.Display.Common.csproj">
-      <Project>{cbec1318-09a6-4b4f-b8d2-b252403fc1ca}</Project>
+      <Project>{35c303c9-66b9-446b-95c4-f1f44af101b2}</Project>
       <Name>XPlat.Device.Display.Common</Name>
     </ProjectReference>
   </ItemGroup>

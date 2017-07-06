@@ -20,7 +20,7 @@
 
         public int Rating { get; }
 
-        public string DateTaken => this.exifInterface.GetAttribute(ExifInterface.TagDatetimeOriginal);
+        public string DateTaken => this.exifInterface.GetAttribute(ExifInterface.TagDatetime);
 
         public string CameraModel => this.exifInterface.GetAttribute(ExifInterface.TagModel);
 

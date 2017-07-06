@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9C08722E-F132-4FCC-A14A-9AED3AB79D92}</ProjectGuid>
+    <ProjectGuid>{9DF49B1F-DB55-43D2-BDA8-D6B981EE904B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XPlat.Device.Display</RootNamespace>
@@ -114,7 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XPlat.Device.Display.Common\XPlat.Device.Display.Common.csproj">
-      <Project>{cbec1318-09a6-4b4f-b8d2-b252403fc1ca}</Project>
+      <Project>{35c303c9-66b9-446b-95c4-f1f44af101b2}</Project>
       <Name>XPlat.Device.Display.Common</Name>
     </ProjectReference>
   </ItemGroup>
