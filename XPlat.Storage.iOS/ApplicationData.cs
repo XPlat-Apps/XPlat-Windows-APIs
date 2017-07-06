@@ -61,7 +61,7 @@
         private static IStorageFolder CreateLocalFolder()
         {
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            return new StorageFolder(null, System.IO.Path.Combine(documentsPath, "..", "Library"));
+            return new StorageFolder(System.IO.Path.Combine(documentsPath, "..", "Library"));
         }
 
         private static IStorageFolder CreateRoamingFolder()
@@ -72,7 +72,7 @@
         private static IStorageFolder CreateTemporaryFolder()
         {
             var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var localFolder = new StorageFolder(null, System.IO.Path.Combine(documentsPath, "..", "Library"));
+            var localFolder = new StorageFolder(System.IO.Path.Combine(documentsPath, "..", "Library"));
 
             var tempFolderTask = localFolder.CreateFolderAsync("Temp", CreationCollisionOption.OpenIfExists);
 

@@ -37,9 +37,9 @@
         bool Exists { get; }
 
         /// <summary>
-        /// Gets the parent folder for the item.
+        /// Gets the attributes of the current storage item.
         /// </summary>
-        IStorageFolder Parent { get; }
+        FileAttributes Attributes { get; }
 
         /// <summary>
         /// Renames the current item.
@@ -100,5 +100,13 @@
         /// When this method completes successfully, it returns the basic properties of the current folder or file group as an IBasicProperties object.
         /// </returns>
         Task<IBasicProperties> GetBasicPropertiesAsync();
+
+        /// <summary>
+        /// Gets the parent folder of the current storage item.
+        /// </summary>
+        /// <returns>
+        /// When this method completes, it returns the parent folder as an IStorageFolder.
+        /// </returns>
+        Task<IStorageFolder> GetParentAsync();
     }
 }

@@ -34,7 +34,7 @@
             }
 
             var file = await picker.PickSingleFileAsync();
-            return file == null ? null : new StorageFile(null, file);
+            return file == null ? null : new StorageFile(file);
         }
 
         /// <inheritdoc />
@@ -55,7 +55,7 @@
                 return result;
             }
 
-            result.AddRange(from file in files where file != null select new StorageFile(null, file));
+            result.AddRange(from file in files where file != null select new StorageFile(file));
 
             return result;
         }

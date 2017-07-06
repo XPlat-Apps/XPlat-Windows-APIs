@@ -18,15 +18,11 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageFile"/> class.
         /// </summary>
-        /// <param name="parentFolder">
-        /// The parent folder.
-        /// </param>
         /// <param name="path">
         /// The path to the file.
         /// </param>
-        public StorageFile(IStorageFolder parentFolder, string path)
+        internal StorageFile(string path)
         {
-            this.Parent = parentFolder;
             this.Path = path;
         }
 
@@ -46,7 +42,7 @@
         public bool Exists => File.Exists(this.Path);
 
         /// <inheritdoc />
-        public IStorageFolder Parent { get; private set; }
+        public FileAttributes Attributes => File.GetAttributes(this.Path).AsFileAttributes();
 
         /// <inheritdoc />
         public Task RenameAsync(string desiredName)
@@ -83,9 +79,7 @@
             switch (option)
             {
                 case NameCollisionOption.GenerateUniqueName:
-                    newPath = System.IO.Path.Combine(
-                        fileInfo.Directory.FullName,
-                        $"{desiredName}-{Guid.NewGuid()}");
+                    newPath = System.IO.Path.Combine(fileInfo.Directory.FullName, $"{desiredName}-{Guid.NewGuid()}");
                     fileInfo.MoveTo(newPath);
                     break;
                 case NameCollisionOption.ReplaceExisting:
@@ -204,6 +198,15 @@
         }
 
         /// <inheritdoc />
+        public Task<IStorageFolder> GetParentAsync()
+        {
+            var result = default(IStorageFolder);
+            var parent = Directory.GetParent(this.Path);
+            if (parent != null) result = new StorageFolder(parent.FullName);
+            return Task.FromResult(result);
+        }
+
+        /// <inheritdoc />
         public string FileType => System.IO.Path.GetExtension(this.Path);
 
         /// <inheritdoc />
@@ -233,8 +236,7 @@
                 case FileAccessMode.ReadWrite:
                     stream = File.Open(this.Path, FileMode.Open, FileAccess.ReadWrite);
                     break;
-                default:
-                    throw new StorageFileIOException(this.Name, "The file could not be opened.");
+                default: throw new StorageFileIOException(this.Name, "The file could not be opened.");
             }
 
             return Task.FromResult(stream);
@@ -285,9 +287,7 @@
             switch (option)
             {
                 case NameCollisionOption.GenerateUniqueName:
-                    newPath = System.IO.Path.Combine(
-                        destinationFolder.Path,
-                        $"{Guid.NewGuid()}-{desiredNewName}");
+                    newPath = System.IO.Path.Combine(destinationFolder.Path, $"{Guid.NewGuid()}-{desiredNewName}");
 
                     File.Copy(this.Path, newPath);
                     break;
@@ -311,7 +311,7 @@
                     break;
             }
 
-            IStorageFile file = new StorageFile(destinationFolder, newPath);
+            IStorageFile file = new StorageFile(newPath);
             return Task.FromResult(file);
         }
 
@@ -353,10 +353,7 @@
         }
 
         /// <inheritdoc />
-        public Task MoveAsync(
-            IStorageFolder destinationFolder,
-            string desiredNewName,
-            NameCollisionOption option)
+        public Task MoveAsync(IStorageFolder destinationFolder, string desiredNewName, NameCollisionOption option)
         {
             if (!this.Exists)
             {
@@ -385,9 +382,7 @@
             switch (option)
             {
                 case NameCollisionOption.GenerateUniqueName:
-                    newPath = System.IO.Path.Combine(
-                        destinationFolder.Path,
-                        $"{Guid.NewGuid()}-{desiredNewName}");
+                    newPath = System.IO.Path.Combine(destinationFolder.Path, $"{Guid.NewGuid()}-{desiredNewName}");
 
                     File.Move(this.Path, newPath);
                     break;
@@ -442,7 +437,6 @@
             File.Move(this.Path, newPath);
 
             this.Path = newPath;
-            this.Parent = fileToReplace.Parent;
 
             return Task.CompletedTask;
         }
@@ -523,30 +517,15 @@
         /// <returns>
         /// When this method completes, it returns the file as an IStorageFile.
         /// </returns>
-        public static async Task<IStorageFile> GetFileFromPathAsync(string path)
+        public static Task<IStorageFile> GetFileFromPathAsync(string path)
         {
-            IStorageFolder resultFileParentFolder;
-
-            if (File.Exists(path))
+            if (string.IsNullOrWhiteSpace(path))
             {
-                var fileInfo = new FileInfo(path);
-                if (fileInfo.Directory != null && fileInfo.Directory.Exists)
-                {
-                    resultFileParentFolder = await StorageFolder.GetFolderFromPathAsync(fileInfo.Directory.FullName);
-                }
-                else
-                {
-                    resultFileParentFolder = null;
-                }
-            }
-            else
-            {
-                return null;
+                throw new ArgumentNullException(nameof(path));
             }
 
-            var resultFile = new StorageFile(resultFileParentFolder, path);
-
-            return resultFile;
+            IStorageFile resultFile = new StorageFile(path);
+            return Task.FromResult(resultFile);
         }
     }
 }

@@ -49,6 +49,24 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
+      <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
+      <Name>XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Launcher.Common\XPlat.Device.Launcher.Common.csproj">
+      <Project>{fd1e031f-44d6-4864-bd03-ad7c48a0e7e5}</Project>
+      <Name>XPlat.Device.Launcher.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Storage.Common\XPlat.Storage.Common.csproj">
+      <Project>{3f0a5ecc-70f4-4118-8ebd-e513764448b1}</Project>
+      <Name>XPlat.Storage.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Storage.Droid\XPlat.Storage.Droid.csproj">
+      <Project>{98f089a5-f5e0-44a8-a7ac-d693159f4892}</Project>
+      <Name>XPlat.Storage.Droid</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

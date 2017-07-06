@@ -6,6 +6,7 @@
     using Android.App;
     using Android.OS;
 
+    using XPlat.Device;
     using XPlat.Device.Display;
     using XPlat.Device.Geolocation;
     using XPlat.Media.Capture;
@@ -65,6 +66,8 @@
                            CreationCollisionOption.OpenIfExists);
 
             await file.WriteTextAsync("Hello from the Android app!");
+
+            var parent = await file.GetParentAsync();
 
             var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
             var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;

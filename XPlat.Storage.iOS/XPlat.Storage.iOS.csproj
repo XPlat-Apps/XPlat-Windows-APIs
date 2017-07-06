@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationData.cs" />
+    <Compile Include="Extensions\Extensions.Storage.cs" />
     <Compile Include="FileProperties\BasicProperties.cs" />
     <Compile Include="StorageFile.cs" />
     <Compile Include="StorageFolder.cs" />

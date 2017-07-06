@@ -16,15 +16,11 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageFolder"/> class.
         /// </summary>
-        /// <param name="parentFolder">
-        /// The parent folder.
-        /// </param>
         /// <param name="path">
         /// The path to the folder.
         /// </param>
-        public StorageFolder(IStorageFolder parentFolder, string path)
+        internal StorageFolder(string path)
         {
-            this.Parent = parentFolder;
             this.Path = path;
         }
 
@@ -51,7 +47,7 @@
         public bool Exists => Directory.Exists(this.Path);
 
         /// <inheritdoc />
-        public IStorageFolder Parent { get; }
+        public FileAttributes Attributes => File.GetAttributes(this.Path).AsFileAttributes();
 
         /// <inheritdoc />
         public Task RenameAsync(string desiredName)
@@ -169,6 +165,15 @@
         }
 
         /// <inheritdoc />
+        public Task<IStorageFolder> GetParentAsync()
+        {
+            var result = default(IStorageFolder);
+            var parent = Directory.GetParent(this.Path);
+            if (parent != null) result = new StorageFolder(parent.FullName);
+            return Task.FromResult(result);
+        }
+
+        /// <inheritdoc />
         public Task<IStorageFile> CreateFileAsync(string desiredName)
         {
             return this.CreateFileAsync(desiredName, CreationCollisionOption.FailIfExists);
@@ -222,7 +227,7 @@
                 CreateFile(filePath);
             }
 
-            IStorageFile file = new StorageFile(this, filePath);
+            IStorageFile file = new StorageFile(filePath);
 
             return Task.FromResult(file);
         }
@@ -281,7 +286,7 @@
                 CreateFolder(folderPath);
             }
 
-            IStorageFolder folder = new StorageFolder(this, folderPath);
+            IStorageFolder folder = new StorageFolder(folderPath);
             return Task.FromResult(folder);
         }
 
@@ -317,7 +322,7 @@
                 throw new StorageItemNotFoundException(name, "The file could not be found in the folder.");
             }
 
-            IStorageFile file = new StorageFile(this, filePath);
+            IStorageFile file = new StorageFile(filePath);
             return Task.FromResult(file);
         }
 
@@ -353,7 +358,7 @@
                 throw new StorageItemNotFoundException(name, "The folder could not be found in the folder.");
             }
 
-            IStorageFolder folder = new StorageFolder(this, folderPath);
+            IStorageFolder folder = new StorageFolder(folderPath);
             return Task.FromResult(folder);
         }
 
@@ -415,7 +420,7 @@
             }
 
             IReadOnlyList<IStorageFile> files = Directory.GetFiles(this.Path)
-                .Select(filePath => new StorageFile(this, filePath))
+                .Select(filePath => new StorageFile(filePath))
                 .ToList();
 
             return Task.FromResult(files);
@@ -432,7 +437,7 @@
             }
 
             IReadOnlyList<IStorageFolder> folders = Directory.GetDirectories(this.Path)
-                .Select(folderPath => new StorageFolder(this, folderPath))
+                .Select(folderPath => new StorageFolder(folderPath))
                 .ToList();
 
             return Task.FromResult(folders);
@@ -499,30 +504,15 @@
         /// <returns>
         /// When this method completes successfully, it returns an IAppFolder that represents the specified folder.
         /// </returns>
-        public static async Task<IStorageFolder> GetFolderFromPathAsync(string path)
+        public static Task<IStorageFolder> GetFolderFromPathAsync(string path)
         {
-            IStorageFolder resultParentFolder;
-
-            if (Directory.Exists(path))
+            if (string.IsNullOrWhiteSpace(path))
             {
-                var directoryInfo = new DirectoryInfo(path);
-                if (directoryInfo.Parent != null && directoryInfo.Parent.Exists)
-                {
-                    resultParentFolder = await GetFolderFromPathAsync(directoryInfo.Parent.FullName);
-                }
-                else
-                {
-                    resultParentFolder = null;
-                }
-            }
-            else
-            {
-                return null;
+                throw new ArgumentNullException(nameof(path));
             }
 
-            var resultFolder = new StorageFolder(resultParentFolder, path);
-
-            return resultFolder;
+            IStorageFolder folder = new StorageFolder(path);
+            return Task.FromResult(folder);
         }
 
         private static void CreateFile(string filePath)

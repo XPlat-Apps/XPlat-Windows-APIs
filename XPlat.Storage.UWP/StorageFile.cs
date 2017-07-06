@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.WindowsRuntime;
-
-namespace XPlat.Storage
+﻿namespace XPlat.Storage
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +9,8 @@ namespace XPlat.Storage
 
     using XPlat.Storage.FileProperties;
 
+    using System.Runtime.InteropServices.WindowsRuntime;
+
     /// <summary>
     /// Defines an application file.
     /// </summary>
@@ -19,13 +19,10 @@ namespace XPlat.Storage
         /// <summary>
         /// Initializes a new instance of the <see cref="StorageFile"/> class.
         /// </summary>
-        /// <param name="parentFolder">
-        /// The parent folder.
-        /// </param>
         /// <param name="file">
         /// The associated <see cref="StorageFile"/>.
         /// </param>
-        public StorageFile(IStorageFolder parentFolder, Windows.Storage.StorageFile file)
+        internal StorageFile(Windows.Storage.StorageFile file)
         {
             if (file == null)
             {
@@ -33,7 +30,11 @@ namespace XPlat.Storage
             }
 
             this.Originator = file;
-            this.Parent = parentFolder;
+        }
+
+        public static implicit operator StorageFile(Windows.Storage.StorageFile folder)
+        {
+            return new StorageFile(folder);
         }
 
         /// <summary>
@@ -57,13 +58,13 @@ namespace XPlat.Storage
         public bool Exists => this.Originator != null && File.Exists(this.Path);
 
         /// <inheritdoc />
+        public FileAttributes Attributes => (FileAttributes)(int)this.Originator.Attributes;
+
+        /// <inheritdoc />
         public string FileType => this.Originator.FileType;
 
         /// <inheritdoc />
         public string ContentType => this.Originator.ContentType;
-
-        /// <inheritdoc />
-        public IStorageFolder Parent { get; private set; }
 
         /// <inheritdoc />
         public Task RenameAsync(string desiredName)
@@ -136,6 +137,13 @@ namespace XPlat.Storage
         }
 
         /// <inheritdoc />
+        public async Task<IStorageFolder> GetParentAsync()
+        {
+            var parent = await this.Originator.GetParentAsync();
+            return parent == null ? null : new StorageFolder(parent);
+        }
+
+        /// <inheritdoc />
         public async Task<Stream> OpenReadAsync()
         {
             if (!this.Exists)
@@ -205,7 +213,7 @@ namespace XPlat.Storage
             var copiedStorageFile =
                 await this.Originator.CopyAsync(storageFolder, desiredNewName, option.ToNameCollisionOption());
 
-            var copiedFile = new StorageFile(destinationFolder, copiedStorageFile);
+            var copiedFile = new StorageFile(copiedStorageFile);
             return copiedFile;
         }
 
@@ -278,8 +286,6 @@ namespace XPlat.Storage
                 await Windows.Storage.StorageFolder.GetFolderFromPathAsync(System.IO.Path.GetDirectoryName(destinationFolder.Path));
 
             await this.Originator.MoveAsync(storageFolder, desiredNewName, option.ToNameCollisionOption());
-
-            this.Parent = destinationFolder;
         }
 
         /// <inheritdoc />
@@ -305,8 +311,6 @@ namespace XPlat.Storage
             var storageFile = await Windows.Storage.StorageFile.GetFileFromPathAsync(fileToReplace.Path);
 
             await this.Originator.MoveAndReplaceAsync(storageFile);
-
-            this.Parent = fileToReplace.Parent;
         }
 
         /// <inheritdoc />
@@ -370,9 +374,6 @@ namespace XPlat.Storage
         public static async Task<IStorageFile> GetFileFromPathAsync(string path)
         {
             Windows.Storage.StorageFile pathFile;
-            Windows.Storage.StorageFolder pathFileParentFolder;
-
-            StorageFolder resultFileParentFolder;
 
             try
             {
@@ -388,25 +389,7 @@ namespace XPlat.Storage
                 return null;
             }
 
-            try
-            {
-                pathFileParentFolder = await pathFile.GetParentAsync();
-            }
-            catch (Exception)
-            {
-                pathFileParentFolder = null;
-            }
-
-            if (pathFileParentFolder != null)
-            {
-                resultFileParentFolder = await StorageFolder.GetFolderFromPathAsync(pathFileParentFolder.Path);
-            }
-            else
-            {
-                resultFileParentFolder = null;
-            }
-
-            var resultFile = new StorageFile(resultFileParentFolder, pathFile);
+            var resultFile = new StorageFile(pathFile);
 
             return resultFile;
         }
@@ -423,9 +406,6 @@ namespace XPlat.Storage
         public static async Task<IStorageFile> GetFileFromApplicationUriAsync(Uri uri)
         {
             Windows.Storage.StorageFile pathFile;
-            Windows.Storage.StorageFolder pathFileParentFolder;
-
-            StorageFolder resultFileParentFolder;
 
             try
             {
@@ -441,25 +421,7 @@ namespace XPlat.Storage
                 return null;
             }
 
-            try
-            {
-                pathFileParentFolder = await pathFile.GetParentAsync();
-            }
-            catch (Exception)
-            {
-                pathFileParentFolder = null;
-            }
-
-            if (pathFileParentFolder != null)
-            {
-                resultFileParentFolder = await StorageFolder.GetFolderFromPathAsync(pathFileParentFolder.Path);
-            }
-            else
-            {
-                resultFileParentFolder = null;
-            }
-
-            var resultFile = new StorageFile(resultFileParentFolder, pathFile);
+            var resultFile = new StorageFile(pathFile);
 
             return resultFile;
         }

@@ -60,7 +60,7 @@
 
         private static IStorageFolder CreateLocalFolder()
         {
-            return new StorageFolder(null, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            return new StorageFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
         }
 
         private static IStorageFolder CreateRoamingFolder()
@@ -70,7 +70,7 @@
 
         private static IStorageFolder CreateTemporaryFolder()
         {
-            var localFolder = new StorageFolder(null, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            var localFolder = new StorageFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
             var tempFolderTask = localFolder.CreateFolderAsync("Temp", CreationCollisionOption.OpenIfExists);
 

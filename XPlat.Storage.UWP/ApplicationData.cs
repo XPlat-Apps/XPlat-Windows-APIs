@@ -59,17 +59,17 @@
 
         private static IStorageFolder CreateLocalFolder()
         {
-            return new StorageFolder(null, Windows.Storage.ApplicationData.Current.LocalFolder);
+            return new StorageFolder(Windows.Storage.ApplicationData.Current.LocalFolder);
         }
 
         private static IStorageFolder CreateRoamingFolder()
         {
-            return new StorageFolder(null, Windows.Storage.ApplicationData.Current.RoamingFolder);
+            return new StorageFolder(Windows.Storage.ApplicationData.Current.RoamingFolder);
         }
 
         private static IStorageFolder CreateTemporaryFolder()
         {
-            return new StorageFolder(null, Windows.Storage.ApplicationData.Current.TemporaryFolder);
+            return new StorageFolder(Windows.Storage.ApplicationData.Current.TemporaryFolder);
         }
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="Pickers\IFileOpenPicker.cs" />
     <Compile Include="Helpers\MimeTypeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FileAttributes.cs" />
     <Compile Include="StorageFileIOException.cs" />
     <Compile Include="StorageItemCreationException.cs" />
     <Compile Include="StorageItemException.cs" />

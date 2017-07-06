@@ -124,7 +124,7 @@ namespace XPlat.Storage.Pickers
             {
                 var path = await GetFilePathFromUriAsync(context, data);
 
-                var file = new StorageFile(ApplicationData.Current.TemporaryFolder, path);
+                var file = new StorageFile(path);
                 if (file.Exists)
                 {
                     this.filePath = file.Path;
