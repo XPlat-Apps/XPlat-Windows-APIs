@@ -40,6 +40,11 @@
     <Compile Include="Exceptions\AppPermissionInvalidException.cs" />
     <Compile Include="Extensions\Extensions.Collection.cs" />
     <Compile Include="Extensions\Extensions.DateTime.cs" />
+    <Compile Include="Foundation\Collections\CollectionChange.cs" />
+    <Compile Include="Foundation\Collections\IMapChangedEventArgs.cs" />
+    <Compile Include="Foundation\Collections\IObservableMap.cs" />
+    <Compile Include="Foundation\Collections\IPropertySet.cs" />
+    <Compile Include="Foundation\Collections\MapChangedEventHandler.cs" />
     <Compile Include="Foundation\TypedEventHandler.cs" />
     <Compile Include="Helpers\ParseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

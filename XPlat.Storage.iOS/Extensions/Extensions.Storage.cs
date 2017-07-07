@@ -1,5 +1,7 @@
 ﻿namespace XPlat.Storage
 {
+    using System.Threading.Tasks;
+
     public static partial class Extensions
     {
         public static FileAttributes AsFileAttributes(this System.IO.FileAttributes attributes)
@@ -27,6 +29,23 @@
             }
 
             return result;
+        }
+
+        public static Task ClearAsync(this IStorageFolder folder)
+        {
+            return Task.Run(
+                async () =>
+                    {
+                        foreach (var subfolder in await folder.GetFoldersAsync())
+                        {
+                            await subfolder.DeleteAsync();
+                        }
+
+                        foreach (var file in await folder.GetFilesAsync())
+                        {
+                            await file.DeleteAsync();
+                        }
+                    });
         }
     }
 }

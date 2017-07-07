@@ -109,7 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationData.cs" />
-    <Compile Include="AppSettingsContainer.cs" />
+    <Compile Include="ApplicationDataContainer.cs" />
+    <Compile Include="ApplicationDataContainerSettings.cs" />
     <Compile Include="Extensions\Extensions.Storage.cs" />
     <Compile Include="FileProperties\BasicProperties.cs" />
     <Compile Include="KnownFolders.cs" />
@@ -120,6 +121,10 @@
     <EmbeddedResource Include="Properties\XPlat.Storage.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
+      <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
+      <Name>XPlat.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.Storage.Common\XPlat.Storage.Common.csproj">
       <Project>{3f0a5ecc-70f4-4118-8ebd-e513764448b1}</Project>
       <Name>XPlat.Storage.Common</Name>

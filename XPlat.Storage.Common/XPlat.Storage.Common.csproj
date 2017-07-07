@@ -35,8 +35,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
+      <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
+      <Name>XPlat.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDataCreateDisposition.cs" />
+    <Compile Include="ApplicationDataLocality.cs" />
     <Compile Include="CreationCollisionOption.cs" />
     <Compile Include="Extensions\Extensions.Storage.cs" />
     <Compile Include="FileAccessMode.cs" />
@@ -48,10 +54,17 @@
     <Compile Include="FileProperties\PhotoOrientation.cs" />
     <Compile Include="FileProperties\VideoOrientation.cs" />
     <Compile Include="IApplicationData.cs" />
-    <Compile Include="IAppSettingsContainer.cs" />
+    <Compile Include="IApplicationDataContainer.cs" />
+    <Compile Include="IApplicationSettingsContainer.cs" />
     <Compile Include="IStorageFile.cs" />
+    <Compile Include="IStorageFileExtras.cs" />
     <Compile Include="IStorageFolder.cs" />
+    <Compile Include="IStorageFolder2.cs" />
+    <Compile Include="IStorageFolderExtras.cs" />
+    <Compile Include="IStorageFolderQueryOperations.cs" />
     <Compile Include="IStorageItem.cs" />
+    <Compile Include="IStorageItem2.cs" />
+    <Compile Include="IStorageItemProperties.cs" />
     <Compile Include="NameCollisionOption.cs" />
     <Compile Include="Pickers\IFileOpenPicker.cs" />
     <Compile Include="Helpers\MimeTypeHelper.cs" />

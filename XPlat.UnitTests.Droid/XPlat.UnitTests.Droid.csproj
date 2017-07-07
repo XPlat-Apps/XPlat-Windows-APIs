@@ -95,6 +95,14 @@
       <Project>{d1998fc4-4d94-4256-a7fa-45d679521ff6}</Project>
       <Name>XPlat.Device.Geolocation.Droid</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Launcher.Common\XPlat.Device.Launcher.Common.csproj">
+      <Project>{fd1e031f-44d6-4864-bd03-ad7c48a0e7e5}</Project>
+      <Name>XPlat.Device.Launcher.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Launcher.Droid\XPlat.Device.Launcher.Droid.csproj">
+      <Project>{b83710dd-27c9-4d37-bbcc-4239ab34b765}</Project>
+      <Name>XPlat.Device.Launcher.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.Device.Power.Common\XPlat.Device.Power.Common.csproj">
       <Project>{653e542d-79fe-4e10-87fd-48b6897198ed}</Project>
       <Name>XPlat.Device.Power.Common</Name>
@@ -102,6 +110,22 @@
     <ProjectReference Include="..\XPlat.Device.Power.Droid\XPlat.Device.Power.Droid.csproj">
       <Project>{ea8186b2-fd27-4e54-b615-bf11dfda3298}</Project>
       <Name>XPlat.Device.Power.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Media.Common\XPlat.Media.Common.csproj">
+      <Project>{1770495f-5b12-4e6e-95e3-3ffdb620fcb2}</Project>
+      <Name>XPlat.Media.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Media.Droid\XPlat.Media.Droid.csproj">
+      <Project>{4384c631-1d42-4014-8ea9-eb331c337f25}</Project>
+      <Name>XPlat.Media.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Networking.Common\XPlat.Networking.Common.csproj">
+      <Project>{1937eb4f-4a90-4c02-ac7c-c8267570316d}</Project>
+      <Name>XPlat.Networking.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Networking.Droid\XPlat.Networking.Droid.csproj">
+      <Project>{beb9f5ea-ec25-4e4d-93ca-e6f1fc0114d9}</Project>
+      <Name>XPlat.Networking.Droid</Name>
     </ProjectReference>
     <ProjectReference Include="..\XPlat.Storage.Common\XPlat.Storage.Common.csproj">
       <Project>{3f0a5ecc-70f4-4118-8ebd-e513764448b1}</Project>

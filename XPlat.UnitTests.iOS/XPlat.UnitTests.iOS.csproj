@@ -131,6 +131,10 @@
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Launcher.Common\XPlat.Device.Launcher.Common.csproj">
+      <Project>{fd1e031f-44d6-4864-bd03-ad7c48a0e7e5}</Project>
+      <Name>XPlat.Device.Launcher.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.Device.Power.Common\XPlat.Device.Power.Common.csproj">
       <Project>{653e542d-79fe-4e10-87fd-48b6897198ed}</Project>
       <Name>XPlat.Device.Power.Common</Name>
@@ -140,6 +144,14 @@
       <Name>XPlat.Device.Power.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Media.Common\XPlat.Media.Common.csproj">
+      <Project>{1770495f-5b12-4e6e-95e3-3ffdb620fcb2}</Project>
+      <Name>XPlat.Media.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Networking.Common\XPlat.Networking.Common.csproj">
+      <Project>{1937eb4f-4a90-4c02-ac7c-c8267570316d}</Project>
+      <Name>XPlat.Networking.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\XPlat.Storage.Common\XPlat.Storage.Common.csproj">
       <Project>{3f0a5ecc-70f4-4118-8ebd-e513764448b1}</Project>

@@ -209,6 +209,11 @@
             return Task.FromResult(result);
         }
 
+        public bool IsEqual(IStorageItem item)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <inheritdoc />
         public string FileType => System.IO.Path.GetExtension(this.Path);
 

@@ -48,16 +48,6 @@ namespace XPlat.UnitTests.Droid
 			global::Xamarin.Android.NUnitLite.Resource.Layout.results = global::XPlat.UnitTests.Droid.Resource.Layout.results;
 			global::Xamarin.Android.NUnitLite.Resource.Layout.test_result = global::XPlat.UnitTests.Droid.Resource.Layout.test_result;
 			global::Xamarin.Android.NUnitLite.Resource.Layout.test_suite = global::XPlat.UnitTests.Droid.Resource.Layout.test_suite;
-			global::XPlat.Device.Display.Resource.String.ApplicationName = global::XPlat.UnitTests.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Display.Resource.String.Hello = global::XPlat.UnitTests.Droid.Resource.String.Hello;
-			global::XPlat.Device.Geolocation.Resource.String.ApplicationName = global::XPlat.UnitTests.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Geolocation.Resource.String.Hello = global::XPlat.UnitTests.Droid.Resource.String.Hello;
-			global::XPlat.Device.Power.Resource.String.ApplicationName = global::XPlat.UnitTests.Droid.Resource.String.ApplicationName;
-			global::XPlat.Device.Power.Resource.String.Hello = global::XPlat.UnitTests.Droid.Resource.String.Hello;
-			global::XPlat.Storage.Resource.String.ApplicationName = global::XPlat.UnitTests.Droid.Resource.String.ApplicationName;
-			global::XPlat.Storage.Resource.String.Hello = global::XPlat.UnitTests.Droid.Resource.String.Hello;
-			global::XPlat.UI.Core.Resource.String.ApplicationName = global::XPlat.UnitTests.Droid.Resource.String.ApplicationName;
-			global::XPlat.UI.Core.Resource.String.Hello = global::XPlat.UnitTests.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

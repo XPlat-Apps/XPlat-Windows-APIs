@@ -14,7 +14,7 @@
     /// <summary>
     /// Defines application settings.
     /// </summary>
-    public sealed class AppSettingsContainer : IAppSettingsContainer
+    public sealed class AppSettingsContainer : IApplicationSettingsContainer
     {
         private readonly object obj = new object();
 

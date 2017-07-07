@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Defines the application data layer.
@@ -11,12 +12,16 @@
         private static readonly Lazy<ApplicationData> CurrentAppData =
             new Lazy<ApplicationData>(() => new ApplicationData(), LazyThreadSafetyMode.PublicationOnly);
 
-        private readonly Lazy<IAppSettingsContainer> settings = new Lazy<IAppSettingsContainer>(
-            CreateSettings,
+        private readonly Lazy<IApplicationDataContainer> localSettings = new Lazy<IApplicationDataContainer>(
+            CreateLocalSettings,
             LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IStorageFolder> localFolder = new Lazy<IStorageFolder>(
             CreateLocalFolder,
+            LazyThreadSafetyMode.PublicationOnly);
+
+        private readonly Lazy<IApplicationDataContainer> roamingSettings = new Lazy<IApplicationDataContainer>(
+            CreateRoamingSettings,
             LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IStorageFolder> roamingFolder = new Lazy<IStorageFolder>(
@@ -32,29 +37,47 @@
         /// </summary>
         public static ApplicationData Current => CurrentAppData.Value;
 
+        /// <inheritdoc />
+        public Task ClearAsync()
+        {
+            return Windows.Storage.ApplicationData.Current.ClearAsync().AsTask();
+        }
+
+        /// <inheritdoc />
+        public Task ClearAsync(ApplicationDataLocality locality)
+        {
+            return Windows.Storage.ApplicationData.Current.ClearAsync(locality.ToApplicationDataLocality()).AsTask();
+        }
+
         /// <summary>
         /// Gets the root folder for the application in the local data store.
         /// </summary>
         public IStorageFolder LocalFolder => this.localFolder.Value;
 
-        /// <summary>
-        /// Gets the settings container for the application in the local data store.
-        /// </summary>
-        public IAppSettingsContainer LocalSettings => this.settings.Value;
+        /// <inheritdoc />
+        public IApplicationDataContainer LocalSettings => this.localSettings.Value;
 
         /// <summary>
         /// Gets the root folder for the application in the roaming data store.
         /// </summary>
         public IStorageFolder RoamingFolder => this.roamingFolder.Value;
 
+        /// <inheritdoc />
+        public IApplicationDataContainer RoamingSettings => this.roamingSettings.Value;
+
         /// <summary>
         /// Gets the root folder for the application in the temporary data store.
         /// </summary>
         public IStorageFolder TemporaryFolder => this.temporaryFolder.Value;
 
-        private static IAppSettingsContainer CreateSettings()
+        private static IApplicationDataContainer CreateRoamingSettings()
         {
-            return new AppSettingsContainer();
+            return new ApplicationDataContainer(Windows.Storage.ApplicationData.Current.RoamingSettings);
+        }
+
+        private static IApplicationDataContainer CreateLocalSettings()
+        {
+            return new ApplicationDataContainer(Windows.Storage.ApplicationData.Current.LocalSettings);
         }
 
         private static IStorageFolder CreateLocalFolder()

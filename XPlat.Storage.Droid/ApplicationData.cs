@@ -12,7 +12,7 @@
         private static readonly Lazy<ApplicationData> CurrentAppData =
             new Lazy<ApplicationData>(() => new ApplicationData(), LazyThreadSafetyMode.PublicationOnly);
 
-        private readonly Lazy<IAppSettingsContainer> settings = new Lazy<IAppSettingsContainer>(
+        private readonly Lazy<IApplicationSettingsContainer> settings = new Lazy<IApplicationSettingsContainer>(
             CreateSettings,
             LazyThreadSafetyMode.PublicationOnly);
 
@@ -33,27 +33,47 @@
         /// </summary>
         public static ApplicationData Current => CurrentAppData.Value;
 
+        public Task ClearAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ClearAsync(ApplicationDataLocality locality)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Gets the root folder for the application in the local data store.
         /// </summary>
         public IStorageFolder LocalFolder => this.localFolder.Value;
 
+        IApplicationDataContainer IApplicationData.LocalSettings
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         /// <summary>
         /// Gets the settings container for the application in the local data store.
         /// </summary>
-        public IAppSettingsContainer LocalSettings => this.settings.Value;
+        public IApplicationSettingsContainer LocalSettings => this.settings.Value;
 
         /// <summary>
         /// Gets the root folder for the application in the roaming data store.
         /// </summary>
         public IStorageFolder RoamingFolder => this.roamingFolder.Value;
 
+        public IApplicationDataContainer RoamingSettings { get; }
+
         /// <summary>
         /// Gets the root folder for the application in the temporary data store.
         /// </summary>
         public IStorageFolder TemporaryFolder => this.temporaryFolder.Value;
 
-        private static IAppSettingsContainer CreateSettings()
+        private static IApplicationSettingsContainer CreateSettings()
         {
             return new AppSettingsContainer();
         }

@@ -45,11 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationData.cs" />
+    <Compile Include="ApplicationDataContainer.cs" />
+    <Compile Include="ApplicationDataContainerSettings.cs" />
+    <Compile Include="ApplicationDataContainerSettingsMapChangedEventArgs.cs" />
+    <Compile Include="Extensions\Extensions.Object.cs" />
     <Compile Include="Extensions\Extensions.Storage.cs" />
     <Compile Include="FileProperties\BasicProperties.cs" />
     <Compile Include="StorageFile.cs" />
     <Compile Include="StorageFolder.cs" />
-    <Compile Include="AppSettingsContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +66,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\Extensions.DateTime.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

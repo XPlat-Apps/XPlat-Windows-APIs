@@ -41,6 +41,9 @@
         public string DisplayName => this.Name;
 
         /// <inheritdoc />
+        public IStorageItemContentProperties Properties => new StorageItemContentProperties(new WeakReference(this));
+
+        /// <inheritdoc />
         public string Path { get; private set; }
 
         /// <inheritdoc />
@@ -128,23 +131,6 @@
         }
 
         /// <inheritdoc />
-        public Task<IDictionary<string, object>> GetPropertiesAsync()
-        {
-            if (!this.Exists)
-            {
-                throw new StorageItemNotFoundException(
-                    this.Name,
-                    "Cannot get properties for a folder that does not exist.");
-            }
-
-            // ToDo, current not implemented. 
-
-            IDictionary<string, object> properties = new Dictionary<string, object>();
-
-            return Task.FromResult(properties);
-        }
-
-        /// <inheritdoc />
         public bool IsOfType(StorageItemTypes type)
         {
             return type == StorageItemTypes.Folder;
@@ -171,6 +157,17 @@
             var parent = Directory.GetParent(this.Path);
             if (parent != null) result = new StorageFolder(parent.FullName);
             return Task.FromResult(result);
+        }
+
+        /// <inheritdoc />
+        public bool IsEqual(IStorageItem item)
+        {
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
+            return item.Path.Equals(this.Path, StringComparison.CurrentCultureIgnoreCase);
         }
 
         /// <inheritdoc />

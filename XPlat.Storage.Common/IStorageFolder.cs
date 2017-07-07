@@ -6,7 +6,7 @@
     /// <summary>
     /// Defines an interface for an application folder.
     /// </summary>
-    public interface IStorageFolder : IStorageItem
+    public interface IStorageFolder : IStorageFolderExtras, IStorageFolderQueryOperations, IStorageItemProperties, IStorageItem2, IStorageFolder2
     {
         /// <summary>
         /// Creates a new file in the current folder.
@@ -70,20 +70,6 @@
         Task<IStorageFile> GetFileAsync(string name);
 
         /// <summary>
-        /// Gets the specified file from the current folder.
-        /// </summary>
-        /// <param name="name">
-        /// The name of the file to retrieve. If the file does not exist in the current folder, the createIfNotExists flag will allow the API to create the file if set to true.
-        /// </param>
-        /// <param name="createIfNotExists">
-        /// A value indicating whether to create the file if it does not exist.
-        /// </param>
-        /// <returns>
-        /// When this method completes successfully, it returns an IStorageFile that represents the file.
-        /// </returns>
-        Task<IStorageFile> GetFileAsync(string name, bool createIfNotExists);
-
-        /// <summary>
         /// Gets the specified folder from the current folder.
         /// </summary>
         /// <param name="name">
@@ -93,20 +79,6 @@
         /// When this method completes successfully, it returns an IStorageFolder that represents the child folder.
         /// </returns>
         Task<IStorageFolder> GetFolderAsync(string name);
-
-        /// <summary>
-        /// Gets the specified folder from the current folder.
-        /// </summary>
-        /// <param name="name">
-        /// The name of the child folder to retrieve. If the child folder does not exist in the current folder, the createIfNotExists flag will allow the API to create the folder if set to true.
-        /// </param>
-        /// <param name="createIfNotExists">
-        /// A value indicating whether to create the child folder if it does not exist.
-        /// </param>
-        /// <returns>
-        /// When this method completes successfully, it returns an IStorageFolder that represents the child folder.
-        /// </returns>
-        Task<IStorageFolder> GetFolderAsync(string name, bool createIfNotExists);
 
         /// <summary>
         /// Gets the specified item from the current folder.
@@ -142,30 +114,5 @@
         /// When this method completes successfully, it returns a list of the files and folders. The files and folders in the list are represented by objects of type IStorageItem.
         /// </returns>
         Task<IReadOnlyList<IStorageItem>> GetItemsAsync();
-
-        /// <summary>
-        /// Gets an index-based range of files and folders from the list of all files and subfolders in the current folder.
-        /// </summary>
-        /// <returns>
-        /// When this method completes successfully, it returns a list of the files and subfolders in the current folder. The list is of type IReadOnlyList IStorageItem. Each item in the list is represented by an IStorageItem object. To work with the returned items, call the IsOfType method of the IStorageItem interface to determine whether each item is a file or a folder. Then cast the item to a StorageFolder or StorageFile.
-        /// </returns>
-        /// <param name="startIndex">
-        ///     The zero-based index of the first item in the range to get.
-        /// </param>
-        /// <param name="maxItemsToRetrieve">
-        ///     The maximum number of items to get.
-        /// </param>
-        Task<IReadOnlyList<IStorageItem>> GetItemsAsync(int startIndex, int maxItemsToRetrieve);
-
-        /// <summary>
-        /// Tries to get the file or folder with the specified name from the current folder. Returns null instead of raising a FileNotFoundException if the specified file or folder is not found.
-        /// </summary>
-        /// <returns>
-        /// When this method completes successfully, it returns an IStorageItem that represents the specified file or folder. If the specified file or folder is not found, this method returns null instead of raising an exception.To work with the returned item, call the IsOfType method of the IStorageItem interface to determine whether the item is a file or a folder. Then cast the item to a StorageFolder or StorageFile.
-        /// </returns>
-        /// <param name="name">
-        /// The name of the file or folder to get.
-        /// </param>
-        Task<IStorageItem> TryGetItemAsync(string name);
     }
 }

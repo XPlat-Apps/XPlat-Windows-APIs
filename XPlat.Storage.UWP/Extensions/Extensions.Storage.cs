@@ -45,6 +45,50 @@
             }
         }
 
+        public static Windows.Storage.ApplicationDataLocality ToApplicationDataLocality(
+            this ApplicationDataLocality locality)
+        {
+            switch (locality)
+            {
+                case ApplicationDataLocality.Roaming:
+                    return Windows.Storage.ApplicationDataLocality.Roaming;
+                case ApplicationDataLocality.Temporary:
+                    return Windows.Storage.ApplicationDataLocality.Temporary;
+                case ApplicationDataLocality.LocalCache:
+                    return Windows.Storage.ApplicationDataLocality.LocalCache;
+                default:
+                    return Windows.Storage.ApplicationDataLocality.Local;
+            }
+        }
+
+        public static ApplicationDataLocality ToApplicationDataLocality(
+            this Windows.Storage.ApplicationDataLocality locality)
+        {
+            switch (locality)
+            {
+                case Windows.Storage.ApplicationDataLocality.Roaming:
+                    return ApplicationDataLocality.Roaming;
+                case Windows.Storage.ApplicationDataLocality.Temporary:
+                    return ApplicationDataLocality.Temporary;
+                case Windows.Storage.ApplicationDataLocality.LocalCache:
+                    return ApplicationDataLocality.LocalCache;
+                default:
+                    return ApplicationDataLocality.Local;
+            }
+        }
+
+        public static Windows.Storage.ApplicationDataCreateDisposition ToApplicationDataCreateDisposition(
+            this ApplicationDataCreateDisposition disposition)
+        {
+            switch (disposition)
+            {
+                case ApplicationDataCreateDisposition.Existing:
+                    return Windows.Storage.ApplicationDataCreateDisposition.Existing;
+                default:
+                    return Windows.Storage.ApplicationDataCreateDisposition.Always;
+            }
+        }
+
         public static IBasicProperties ToBasicProperties(this Windows.Storage.FileProperties.BasicProperties properties)
         {
             return new BasicProperties(properties.DateModified.DateTime, properties.Size);

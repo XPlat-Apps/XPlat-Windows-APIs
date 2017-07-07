@@ -48,6 +48,14 @@
         /// <inheritdoc />
         public string DisplayName => this.Originator.DisplayName;
 
+        /// <summary>
+        /// Not implemented.
+        /// </summary>
+        /// <remarks>
+        /// This is currently not implemented. You can access the Originator.Properties value to get the native StorageFile properties.
+        /// </remarks>
+        public IStorageItemContentProperties Properties { get; }
+
         /// <inheritdoc />
         public string Path => this.Originator.Path;
 
@@ -91,20 +99,6 @@
         }
 
         /// <inheritdoc />
-        public async Task<IDictionary<string, object>> GetPropertiesAsync()
-        {
-            if (!this.Exists)
-            {
-                throw new StorageItemNotFoundException(
-                    this.Name,
-                    "Cannot get properties for a folder that does not exist.");
-            }
-
-            var storageFolder = this.Originator as Windows.Storage.StorageFolder;
-            return storageFolder != null ? await storageFolder.Properties.RetrievePropertiesAsync(null) : null;
-        }
-
-        /// <inheritdoc />
         public bool IsOfType(StorageItemTypes type)
         {
             return type == StorageItemTypes.Folder;
@@ -120,7 +114,7 @@
                     "Cannot get properties for a folder that does not exist.");
             }
 
-            var storageFolder = this.Originator as Windows.Storage.StorageFolder;
+            var storageFolder = this.Originator;
             if (storageFolder == null) return null;
 
             var basicProperties = await storageFolder.GetBasicPropertiesAsync();
@@ -132,6 +126,17 @@
         {
             var parent = await this.Originator.GetParentAsync();
             return parent == null ? null : new StorageFolder(parent);
+        }
+
+        /// <inheritdoc />
+        public bool IsEqual(IStorageItem item)
+        {
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
+            return item.Path.Equals(this.Path, StringComparison.CurrentCultureIgnoreCase);
         }
 
         /// <inheritdoc />

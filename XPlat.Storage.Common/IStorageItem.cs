@@ -1,46 +1,15 @@
 ﻿namespace XPlat.Storage
 {
     using System;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using XPlat.Storage.FileProperties;
 
     /// <summary>
-    /// Defines an interface for an application storage item.
+    /// Manipulates storage items (files and folders) and their contents, and provides information about them.
     /// </summary>
     public interface IStorageItem
     {
-        /// <summary>
-        /// Gets the date the item was created.
-        /// </summary>
-        DateTime DateCreated { get; }
-
-        /// <summary>
-        /// Gets the name of the item.
-        /// </summary>
-        string Name { get; }
-
-        /// <summary>
-        /// Gets the user-friendly name of the current item.
-        /// </summary>
-        string DisplayName { get; }
-
-        /// <summary>
-        /// Gets the full path to the item.
-        /// </summary>
-        string Path { get; }
-
-        /// <summary>
-        /// Gets a value indicating whether the item exists.
-        /// </summary>
-        bool Exists { get; }
-
-        /// <summary>
-        /// Gets the attributes of the current storage item.
-        /// </summary>
-        FileAttributes Attributes { get; }
-
         /// <summary>
         /// Renames the current item.
         /// </summary>
@@ -75,12 +44,12 @@
         Task DeleteAsync();
 
         /// <summary>
-        /// Gets the properties of the current item (like a file or folder).
+        /// Gets the basic properties of the current folder or file group.
         /// </summary>
         /// <returns>
-        /// When this method completes successfully, it returns the properties of the current item as a Dictionary.
+        /// When this method completes successfully, it returns the basic properties of the current folder or file group as an IBasicProperties object.
         /// </returns>
-        Task<IDictionary<string, object>> GetPropertiesAsync();
+        Task<IBasicProperties> GetBasicPropertiesAsync();
 
         /// <summary>
         /// Determines whether the current IStorageItem matches the specified StorageItemTypes value.
@@ -92,21 +61,30 @@
         /// True if the IStorageItem matches the specified value; otherwise false.
         /// </returns>
         bool IsOfType(StorageItemTypes type);
+        
+        /// <summary>
+        /// Gets the attributes of the current storage item.
+        /// </summary>
+        FileAttributes Attributes { get; }
 
         /// <summary>
-        /// Gets the basic properties of the current folder or file group.
+        /// Gets the date the item was created.
         /// </summary>
-        /// <returns>
-        /// When this method completes successfully, it returns the basic properties of the current folder or file group as an IBasicProperties object.
-        /// </returns>
-        Task<IBasicProperties> GetBasicPropertiesAsync();
+        DateTime DateCreated { get; }
 
         /// <summary>
-        /// Gets the parent folder of the current storage item.
+        /// Gets the name of the item.
         /// </summary>
-        /// <returns>
-        /// When this method completes, it returns the parent folder as an IStorageFolder.
-        /// </returns>
-        Task<IStorageFolder> GetParentAsync();
+        string Name { get; }
+
+        /// <summary>
+        /// Gets the full path to the item.
+        /// </summary>
+        string Path { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether the item exists.
+        /// </summary>
+        bool Exists { get; }
     }
 }

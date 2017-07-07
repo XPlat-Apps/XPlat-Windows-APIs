@@ -6,7 +6,7 @@
     /// <summary>
     /// Defines an interface for application settings.
     /// </summary>
-    public interface IAppSettingsContainer
+    public interface IApplicationSettingsContainer
     {
         /// <summary>
         /// Gets all the values stored within the application settings.

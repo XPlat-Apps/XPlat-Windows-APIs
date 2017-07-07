@@ -1,7 +1,6 @@
 ﻿namespace XPlat.Storage
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Threading.Tasks;
 
@@ -121,62 +120,6 @@
         }
 
         /// <inheritdoc />
-        public async Task<IDictionary<string, object>> GetPropertiesAsync()
-        {
-            if (!this.Exists)
-            {
-                throw new StorageItemNotFoundException(
-                    this.Name,
-                    "Cannot get properties for a file that does not exist.");
-            }
-
-            IDictionary<string, object> props = new Dictionary<string, object>();
-
-            if (!props.ContainsKey("System.FileName"))
-            {
-                props.Add("System.FileName", this.Name);
-            }
-
-            if (!props.ContainsKey("System.FileExtension"))
-            {
-                props.Add("System.FileExtension", this.FileType);
-            }
-
-            try
-            {
-                var basicProps = await this.GetBasicPropertiesAsync();
-
-                if (!props.ContainsKey("System.Size"))
-                {
-                    props.Add("System.Size", basicProps.Size);
-                }
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-
-            try
-            {
-                var mediaProps = await this.Properties.GetAllMediaPropertiesAsync();
-
-                foreach (var prop in mediaProps)
-                {
-                    if (!props.ContainsKey(prop.Key))
-                    {
-                        props.Add(prop);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                // igored
-            }
-
-            return props;
-        }
-
-        /// <inheritdoc />
         public bool IsOfType(StorageItemTypes type)
         {
             return type == StorageItemTypes.File;
@@ -204,6 +147,17 @@
             var parent = Directory.GetParent(this.Path);
             if (parent != null) result = new StorageFolder(parent.FullName);
             return Task.FromResult(result);
+        }
+
+        /// <inheritdoc />
+        public bool IsEqual(IStorageItem item)
+        {
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
+            return item.Path.Equals(this.Path, StringComparison.CurrentCultureIgnoreCase);
         }
 
         /// <inheritdoc />
@@ -506,7 +460,7 @@
         }
 
         /// <inheritdoc />
-        public IStorageItemContentProperties Properties => new StorageItemContentProperties(this.Path);
+        public IStorageItemContentProperties Properties => new StorageItemContentProperties(new WeakReference(this));
 
         /// <summary>
         /// Gets an IStorageFile object to represent the file at the specified path.

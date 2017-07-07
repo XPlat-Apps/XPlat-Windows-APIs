@@ -143,6 +143,11 @@
             return parent == null ? null : new StorageFolder(parent);
         }
 
+        public bool IsEqual(IStorageItem item)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <inheritdoc />
         public async Task<Stream> OpenReadAsync()
         {

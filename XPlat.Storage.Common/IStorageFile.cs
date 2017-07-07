@@ -3,28 +3,11 @@
     using System.IO;
     using System.Threading.Tasks;
 
-    using XPlat.Storage.FileProperties;
-
-    public interface IStorageFile : IStorageItem
+    /// <summary>
+    /// Represents a file. Provides information about the file and its contents, and ways to manipulate them.
+    /// </summary>
+    public interface IStorageFile : IStorageItemProperties, IStorageItem2, IStorageFileExtras
     {
-        /// <summary>
-        /// Gets the type (file name extension) of the file.
-        /// </summary>
-        string FileType { get; }
-
-        /// <summary>
-        /// Gets the MIME type of the contents of the file.
-        /// </summary>
-        string ContentType { get; }
-
-        /// <summary>
-        /// Opens a stream over the current file for reading file contents.
-        /// </summary>
-        /// <returns>
-        /// When this method completes, it returns the stream.
-        /// </returns>
-        Task<Stream> OpenReadAsync();
-
         /// <summary>
         /// Opens a stream over the file.
         /// </summary>
@@ -146,46 +129,13 @@
         Task MoveAndReplaceAsync(IStorageFile fileToReplace);
 
         /// <summary>
-        /// Writes a string to the current file.
+        /// Gets the type (file name extension) of the file.
         /// </summary>
-        /// <param name="text">
-        /// The text to write out.
-        /// </param>
-        /// <returns>
-        /// An object that is used to manage the asynchronous operation.
-        /// </returns>
-        Task WriteTextAsync(string text);
+        string FileType { get; }
 
         /// <summary>
-        /// Reads the current file as a string.
+        /// Gets the MIME type of the contents of the file.
         /// </summary>
-        /// <returns>
-        /// When this method completes, it returns the file's content as a string.
-        /// </returns>
-        Task<string> ReadTextAsync();
-
-        /// <summary>
-        /// Writes a byte array to the current file.
-        /// </summary>
-        /// <param name="bytes">
-        /// The byte array to write out.
-        /// </param>
-        /// <returns>
-        /// An object that is used to manage the asynchronous operation.
-        /// </returns>
-        Task WriteBytesAsync(byte[] bytes);
-
-        /// <summary>
-        /// Reads the current file as a byte array.
-        /// </summary>
-        /// <returns>
-        /// When this method completes, it returns the file's content as a byte array.
-        /// </returns>
-        Task<byte[]> ReadBytesAsync();
-
-        /// <summary>
-        /// Gets an object that provides access to the content-related properties of the current item.
-        /// </summary>
-        IStorageItemContentProperties Properties { get; }
+        string ContentType { get; }
     }
 }
