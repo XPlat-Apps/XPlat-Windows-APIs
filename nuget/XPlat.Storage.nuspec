@@ -15,6 +15,10 @@
     <copyright>Copyright (c) XPlat APIs. All rights reserved.</copyright>
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Storage StorageFile StorageFolder ApplicationData FileOpenPicker</tags>
     <dependencies>
+      <group targetFramework="uap10.0">
+        <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
+      </group>
+
       <group targetFramework="MonoAndroid10">
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
         <dependency id="Newtonsoft.Json" version="9.0.1" />
