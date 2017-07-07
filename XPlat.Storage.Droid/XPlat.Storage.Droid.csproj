@@ -52,7 +52,6 @@
     <Compile Include="ApplicationDataContainer.cs" />
     <Compile Include="ApplicationDataContainerSettings.cs" />
     <Compile Include="ApplicationDataContainerSettingsMapChangedEventArgs.cs" />
-    <Compile Include="AppSettingsContainer.cs" />
     <Compile Include="Extensions\Extensions.Storage.cs" />
     <Compile Include="FileProperties\BasicProperties.cs" />
     <Compile Include="FileProperties\ImageProperties.cs" />

@@ -21,7 +21,7 @@
         {
             this.Locality = locality;
             this.Name = name;
-            this.settings = new ApplicationDataContainerSettings(locality);
+            this.settings = new ApplicationDataContainerSettings();
         }
 
         /// <inheritdoc />
@@ -30,7 +30,7 @@
         /// </remarks>
         public IApplicationDataContainer CreateContainer(string name, ApplicationDataCreateDisposition disposition)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         /// <inheritdoc />

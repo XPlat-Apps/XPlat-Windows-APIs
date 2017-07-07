@@ -20,14 +20,15 @@
                                                     ISharedPreferencesOnSharedPreferenceChangeListener,
                                                     IPropertySet
     {
-        private readonly object obj = new object();
+        private readonly ISharedPreferences sharedPreferences;
 
-        private ApplicationDataLocality _locality;
-        private ISharedPreferences sharedPreferences;
+        private readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
 
-        internal ApplicationDataContainerSettings(ApplicationDataLocality locality)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApplicationDataContainerSettings"/> class.
+        /// </summary>
+        internal ApplicationDataContainerSettings()
         {
-            this._locality = locality;
             this.sharedPreferences = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
         }
 
@@ -53,22 +54,17 @@
 
         public void Clear()
         {
-            lock (this.obj)
-            {
-                using (this.sharedPreferences)
-                {
-                    using (var editor = this.sharedPreferences.Edit())
-                    {
-                        editor.Clear();
-                        editor.Commit();
-                    }
-                }
-            }
+            ISharedPreferencesEditor editor = this.sharedPreferences.Edit();
+            editor.Clear();
+            editor.Commit();
         }
 
         public bool Contains(KeyValuePair<string, object> item)
         {
-            return this.ContainsKey(item.Key) && this[item.Key] == item.Value;
+            object storedValue;
+            var expectedValue = item.Value;
+
+            return this.TryGetValue(item.Key, out storedValue) && expectedValue == storedValue;
         }
 
         public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
@@ -92,220 +88,50 @@
 
         public bool ContainsKey(string key)
         {
-            bool containsKey;
-
-            lock (this.obj)
-            {
-                using (this.sharedPreferences)
-                {
-                    containsKey = this.sharedPreferences.Contains(key);
-                }
-            }
-
-            return containsKey;
+            object storedValue;
+            bool success = this.TryGetValue(key, out storedValue);
+            return success;
         }
 
         public void Add(string key, object value)
         {
-            lock (this.obj)
-            {
-                var type = value.GetType();
-                var code = Type.GetTypeCode(type);
+            ISharedPreferencesEditor editor = this.sharedPreferences.Edit();
 
-                using (this.sharedPreferences)
-                {
-                    using (var editor = this.sharedPreferences.Edit())
-                    {
-                        switch (code)
-                        {
-                            case TypeCode.Boolean:
-                                editor.PutBoolean(key, ParseHelper.SafeParseBool(value));
-                                break;
-                            case TypeCode.Int32:
-                                editor.PutInt(key, ParseHelper.SafeParseInt(value));
-                                break;
-                            case TypeCode.Int64:
-                                editor.PutLong(key, ParseHelper.SafeParseInt64(value));
-                                break;
-                            case TypeCode.Single:
-                                editor.PutFloat(key, ParseHelper.SafeParseFloat(value));
-                                break;
-                            case TypeCode.Double:
-                                editor.PutString(key, ParseHelper.SafeParseString(value));
-                                break;
-                            case TypeCode.Decimal:
-                                editor.PutString(key, ParseHelper.SafeParseString(value));
-                                break;
-                            case TypeCode.DateTime:
-                                editor.PutLong(key, ParseHelper.SafeParseDateTime(value).ToUniversalTime().Ticks);
-                                break;
-                            case TypeCode.String:
-                                editor.PutString(key, ParseHelper.SafeParseString(value));
-                                break;
-                            default:
-                                if (value is Guid)
-                                {
-                                    editor.PutString(key, ParseHelper.SafeParseGuid(value).ToString());
-                                }
-                                else
-                                {
-                                    editor.PutString(key, JsonConvert.SerializeObject(value));
-                                }
-                                break;
-                        }
-
-                        editor.Commit();
-                    }
-                }
-            }
+            var valueString = JsonConvert.SerializeObject(value, this.jsonSettings);
+            editor.PutString(key, valueString);
+            editor.Commit();
         }
 
         public bool Remove(string key)
         {
-            if (!this.ContainsKey(key)) return false;
-
-            lock (this.obj)
-            {
-                using (this.sharedPreferences)
-                {
-                    using (var editor = this.sharedPreferences.Edit())
-                    {
-                        editor.Remove(key);
-                        editor.Commit();
-                    }
-                }
-            }
-
-            return true;
+            ISharedPreferencesEditor editor = this.sharedPreferences.Edit();
+            editor.Remove(key);
+            return editor.Commit();
         }
 
         public bool TryGetValue(string key, out object value)
         {
-            lock (this.obj)
+            var valueString = this.sharedPreferences.GetString(key, string.Empty);
+            if (!string.IsNullOrWhiteSpace(valueString))
             {
-                using (this.sharedPreferences)
-                {
-                    var values = this.sharedPreferences.GetStringSet(key, new List<string> { "null", string.Empty });
-                    var type = string.Empty;
-                    var val = string.Empty;
-                    foreach (var v in values)
-                    {
-                        if (string.IsNullOrEmpty(type))
-                        {
-                            type = v;
-                        }
-                        else
-                        {
-                            val = v;
-                            break;
-                        }
-                    }
-
-                    switch (type)
-                    {
-                         // ToDo   
-                    }
-
-                    value = val;
-                    return true;
-                }
+                value = JsonConvert.DeserializeObject(valueString, this.jsonSettings);
+                return true;
             }
+
+            value = null;
+            return false;
         }
 
         public object this[string key]
         {
             get
             {
-                object value;
-
-                lock (this.obj)
-                {
-                    using (this.sharedPreferences)
-                    {
-                        var values = this.sharedPreferences.GetStringSet(key, new List<string> { "null", string.Empty });
-                        var type = string.Empty;
-                        var val = string.Empty;
-                        foreach (var v in values)
-                        {
-                            if (string.IsNullOrEmpty(type))
-                            {
-                                type = v;
-                            }
-                            else
-                            {
-                                val = v;
-                                break;
-                            }
-                        }
-
-                        switch (type)
-                        {
-                            // ToDo   
-                        }
-
-                        value = val;
-                        return value;
-                    }
-                }
+                var valueString = this.sharedPreferences.GetString(key, string.Empty);
+                return !string.IsNullOrWhiteSpace(valueString) ? JsonConvert.DeserializeObject(valueString, this.jsonSettings) : null;
             }
             set
             {
-                this.AddOrUpdate(key, value);
-            }
-        }
-
-        private void AddOrUpdate(string key, object value)
-        {
-            lock (this.obj)
-            {
-                var type = value.GetType();
-                var code = Type.GetTypeCode(type);
-
-                using (this.sharedPreferences)
-                {
-                    using (var editor = this.sharedPreferences.Edit())
-                    {
-                        switch (code)
-                        {
-                            case TypeCode.Boolean:
-                                editor.PutBoolean(key, ParseHelper.SafeParseBool(value));
-                                break;
-                            case TypeCode.Int32:
-                                editor.PutInt(key, ParseHelper.SafeParseInt(value));
-                                break;
-                            case TypeCode.Int64:
-                                editor.PutLong(key, ParseHelper.SafeParseInt64(value));
-                                break;
-                            case TypeCode.Single:
-                                editor.PutFloat(key, ParseHelper.SafeParseFloat(value));
-                                break;
-                            case TypeCode.Double:
-                                editor.PutString(key, ParseHelper.SafeParseString(value));
-                                break;
-                            case TypeCode.Decimal:
-                                editor.PutString(key, ParseHelper.SafeParseString(value));
-                                break;
-                            case TypeCode.DateTime:
-                                editor.PutLong(key, ParseHelper.SafeParseDateTime(value).ToUniversalTime().Ticks);
-                                break;
-                            case TypeCode.String:
-                                editor.PutString(key, ParseHelper.SafeParseString(value));
-                                break;
-                            default:
-                                if (value is Guid)
-                                {
-                                    editor.PutString(key, ParseHelper.SafeParseGuid(value).ToString());
-                                }
-                                else
-                                {
-                                    editor.PutString(key, JsonConvert.SerializeObject(value));
-                                }
-                                break;
-                        }
-
-                        editor.Commit();
-                    }
-                }
+                this.Add(key, value);
             }
         }
 
@@ -313,23 +139,34 @@
 
         private ICollection<string> GetSettingKeys()
         {
-            ICollection<string> genericKeys = new Collection<string>();
+            ICollection<string> keys = new Collection<string>();
 
-            lock (this.obj)
+            foreach (var preference in this.sharedPreferences.All)
             {
-                using (this.sharedPreferences)
+                keys.Add(preference.Key);
+            }
+
+            return keys;
+        }
+
+        public ICollection<object> Values => this.GetSettingValues();
+
+        private ICollection<object> GetSettingValues()
+        {
+            Collection<object> values = new Collection<object>();
+
+            foreach (var preference in this.sharedPreferences.All)
+            {
+                string valueString = preference.Value.ToString();
+                var value = !string.IsNullOrWhiteSpace(valueString) ? JsonConvert.DeserializeObject(valueString, this.jsonSettings) : null;
+                if (value != null)
                 {
-                    foreach (KeyValuePair<string, object> entry in this.sharedPreferences.All)
-                    {
-                        genericKeys.Add(entry.Key);
-                    }
+                    values.Add(value);
                 }
             }
 
-            return genericKeys;
+            return values;
         }
-
-        public ICollection<object> Values { get; }
 
         private event MapChangedEventHandler<string, object> mapChanged;
 
@@ -358,7 +195,9 @@
         public T Get<T>(string key)
             where T : class
         {
-            throw new NotImplementedException();
+            object storedValue;
+            this.TryGetValue(key, out storedValue);
+            return storedValue as T;
         }
     }
 }
