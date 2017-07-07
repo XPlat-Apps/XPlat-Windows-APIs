@@ -430,5 +430,42 @@
             var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
+
+        [Test]
+        public void LocalSettings_Values_GetValue_ViaGetMethod()
+        {
+            string expectedKey = "LocalSettings_Values_GetValue_ViaGetMethod";
+            AppSetting expectedValue = new AppSetting
+                                           {
+                                               Name = "Hello, World!",
+                                               Date = DateTime.Now,
+                                               NestedSetting = new AppSetting { Name = "Nested" }
+                                           };
+
+            ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
+
+            AppSetting actualValue = ApplicationData.Current.LocalSettings.Values.Get<AppSetting>(expectedKey);
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [Test]
+        public void LocalSettings_Values_Remove_RemovedValueDoesNotExist()
+        {
+            string expectedKey = "LocalSettings_Values_Remove_RemovedValueDoesNotExist";
+            AppSetting expectedValue = new AppSetting
+                                           {
+                                               Name = "Hello, World!",
+                                               Date = DateTime.Now,
+                                               NestedSetting = new AppSetting { Name = "Nested" }
+                                           };
+
+            ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
+
+            AppSetting actualValue = ApplicationData.Current.LocalSettings.Values.Get<AppSetting>(expectedKey);
+            Assert.AreEqual(expectedValue, actualValue);
+
+            ApplicationData.Current.LocalSettings.Values.Remove(expectedKey);
+            Assert.IsFalse(ApplicationData.Current.LocalSettings.Values.ContainsKey(expectedKey));
+        }
     }
 }
