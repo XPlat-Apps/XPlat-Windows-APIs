@@ -13,7 +13,7 @@
             const string SettingKey = "Hello";
             const int SettingValue = 100;
 
-            ApplicationData.Current.LocalSettings.AddOrUpdate(SettingKey, SettingValue);
+            ApplicationData.Current.LocalSettings.Values.Add(SettingKey, SettingValue);
 
             var values = ApplicationData.Current.LocalSettings.Values;
 

@@ -12,13 +12,15 @@
         private static readonly Lazy<ApplicationData> CurrentAppData =
             new Lazy<ApplicationData>(() => new ApplicationData(), LazyThreadSafetyMode.PublicationOnly);
 
-        private readonly Lazy<IApplicationSettingsContainer> settings = new Lazy<IApplicationSettingsContainer>(
-            CreateSettings,
-            LazyThreadSafetyMode.PublicationOnly);
+        private readonly Lazy<IApplicationDataContainer> localSettings =
+            new Lazy<IApplicationDataContainer>(CreateLocalSettings, LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IStorageFolder> localFolder = new Lazy<IStorageFolder>(
             CreateLocalFolder,
             LazyThreadSafetyMode.PublicationOnly);
+
+        private readonly Lazy<IApplicationDataContainer> roamingSettings =
+            new Lazy<IApplicationDataContainer>(CreateRoamingSettings, LazyThreadSafetyMode.PublicationOnly);
 
         private readonly Lazy<IStorageFolder> roamingFolder = new Lazy<IStorageFolder>(
             CreateRoamingFolder,
@@ -33,14 +35,41 @@
         /// </summary>
         public static ApplicationData Current => CurrentAppData.Value;
 
+        /// <inheritdoc />
         public Task ClearAsync()
         {
-            throw new NotImplementedException();
+            return Task.Run(
+                async () =>
+                    {
+                        await this.LocalFolder?.ClearAsync();
+                        await this.RoamingFolder?.ClearAsync();
+                        await this.TemporaryFolder?.ClearAsync();
+                        this.LocalSettings?.Values.Clear();
+                        this.RoamingSettings?.Values.Clear();
+                    });
         }
 
+        /// <inheritdoc />
         public Task ClearAsync(ApplicationDataLocality locality)
         {
-            throw new NotImplementedException();
+            return Task.Run(
+                async () =>
+                    {
+                        switch (locality)
+                        {
+                            case ApplicationDataLocality.Local:
+                                await this.LocalFolder?.ClearAsync();
+                                this.LocalSettings?.Values.Clear();
+                                break;
+                            case ApplicationDataLocality.Roaming:
+                                await this.RoamingFolder?.ClearAsync();
+                                this.RoamingSettings?.Values.Clear();
+                                break;
+                            case ApplicationDataLocality.Temporary:
+                                await this.TemporaryFolder?.ClearAsync();
+                                break;
+                        }
+                    });
         }
 
         /// <summary>
@@ -48,34 +77,30 @@
         /// </summary>
         public IStorageFolder LocalFolder => this.localFolder.Value;
 
-        IApplicationDataContainer IApplicationData.LocalSettings
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        /// <summary>
-        /// Gets the settings container for the application in the local data store.
-        /// </summary>
-        public IApplicationSettingsContainer LocalSettings => this.settings.Value;
+        /// <inheritdoc />
+        public IApplicationDataContainer LocalSettings => this.localSettings.Value;
 
         /// <summary>
         /// Gets the root folder for the application in the roaming data store.
         /// </summary>
         public IStorageFolder RoamingFolder => this.roamingFolder.Value;
 
-        public IApplicationDataContainer RoamingSettings { get; }
+        /// <inheritdoc />
+        public IApplicationDataContainer RoamingSettings => this.roamingSettings.Value;
 
         /// <summary>
         /// Gets the root folder for the application in the temporary data store.
         /// </summary>
         public IStorageFolder TemporaryFolder => this.temporaryFolder.Value;
 
-        private static IApplicationSettingsContainer CreateSettings()
+        private static IApplicationDataContainer CreateRoamingSettings()
         {
-            return new AppSettingsContainer();
+            return null;
+        }
+
+        private static IApplicationDataContainer CreateLocalSettings()
+        {
+            return new ApplicationDataContainer(ApplicationDataLocality.Local, string.Empty);
         }
 
         private static IStorageFolder CreateLocalFolder()

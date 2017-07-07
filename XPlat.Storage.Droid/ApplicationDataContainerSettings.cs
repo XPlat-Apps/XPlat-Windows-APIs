@@ -309,7 +309,7 @@
             }
         }
 
-        public ICollection<string> Keys => GetSettingKeys();
+        public ICollection<string> Keys => this.GetSettingKeys();
 
         private ICollection<string> GetSettingKeys()
         {
