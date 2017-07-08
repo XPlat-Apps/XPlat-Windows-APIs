@@ -467,5 +467,25 @@
             ApplicationData.Current.LocalSettings.Values.Remove(expectedKey);
             Assert.IsFalse(ApplicationData.Current.LocalSettings.Values.ContainsKey(expectedKey));
         }
+
+        [Test]
+        public void LocalSettings_Values_Update_ChangedValueUpdatesSameKey()
+        {
+            string expectedKey = "LocalSettings_Values_Update_ChangedValueUpdatesSameKey";
+            string originalValue = "Hello, World!";
+            string expectedValue = "What's up doc?";
+
+            ApplicationData.Current.LocalSettings.Values.Add(expectedKey, originalValue);
+
+            var originalActualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+
+            Assert.AreEqual(originalValue, originalActualValue);
+
+            ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
+
+            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+
+            Assert.AreEqual(expectedValue, actualValue);
+        }
     }
 }

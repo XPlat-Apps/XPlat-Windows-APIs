@@ -28,7 +28,7 @@
 
             // Test with list of strings
             List<string> values = new List<string> { "Hello", "World", "ASDF" };
-            ApplicationData.Current.LocalSettings.AddOrUpdate("Roles", values);
+            ApplicationData.Current.LocalSettings.Values["Roles"] = values;
 
             // Test with list of objects
             List<Test> tests = new List<Test>
@@ -56,9 +56,9 @@
                                                        }
                                            }
                                    };
-            ApplicationData.Current.LocalSettings.AddOrUpdate("Tests", tests);
+            ApplicationData.Current.LocalSettings.Values["Tests"]= tests;
 
-            var settings = ApplicationData.Current.LocalSettings.Get<List<Test>>("Tests");
+            var settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
 
             var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
