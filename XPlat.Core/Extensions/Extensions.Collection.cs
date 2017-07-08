@@ -2,6 +2,9 @@
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Defines a collection of extensions for collections.
+    /// </summary>
     public static partial class Extensions
     {
         /// <summary>

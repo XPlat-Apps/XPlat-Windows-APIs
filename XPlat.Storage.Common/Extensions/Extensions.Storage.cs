@@ -7,8 +7,20 @@
 
     using XPlat.Storage.FileProperties;
 
+    /// <summary>
+    /// Defines a collection of common extensions for the Storage namespace.
+    /// </summary>
     public static partial class Extensions
     {
+        /// <summary>
+        /// Gets all the media properties from a storage item.
+        /// </summary>
+        /// <param name="storageProps">
+        /// The storage properties.
+        /// </param>
+        /// <returns>
+        /// When complete, this method returns a dictionary of key value pairs containing the media property and it's value.
+        /// </returns>
         public static async Task<Dictionary<string, object>> GetAllMediaPropertiesAsync(
             this IStorageItemContentProperties storageProps)
         {

@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Describes the attributes of a file or folder.
+    /// </summary>
     [Flags]
     public enum FileAttributes
     {
