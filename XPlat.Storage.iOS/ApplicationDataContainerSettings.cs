@@ -389,7 +389,10 @@
                 this.mapChanged += value;
             }
 
-            remove => this.mapChanged -= value;
+            remove
+            {
+                this.mapChanged -= value;
+            }
         }
 
         public T Get<T>(string key) where T : class
