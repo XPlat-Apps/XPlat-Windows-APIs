@@ -61,6 +61,13 @@
             return propsTask.Result;
         }
 
+        public static IDictionary<string, object> RetrieveProperties(IStorageItemProperties item, IEnumerable<string> propertiesToRetrieve)
+        {
+            var propsTask = item.Properties.RetrievePropertiesAsync(propertiesToRetrieve);
+            propsTask.Wait();
+            return propsTask.Result;
+        }
+
         public static void DeleteStorageItem(IStorageItem item)
         {
             var deleteTask = item.DeleteAsync();
