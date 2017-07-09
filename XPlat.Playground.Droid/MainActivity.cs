@@ -29,8 +29,8 @@
 
             // Test with list of strings
             List<string> values = new List<string> { "Hello", "World", "ASDF" };
-            ApplicationData.Current.LocalSettings.AddOrUpdate("Roles", values);
-            
+            ApplicationData.Current.LocalSettings.Values["Roles"] = values;
+
             // Test with list of objects
             List<Test> tests = new List<Test>
                                    {
@@ -57,9 +57,9 @@
                                                        }
                                            }
                                    };
-            ApplicationData.Current.LocalSettings.AddOrUpdate("Tests", tests);
-            
-            var settings = ApplicationData.Current.LocalSettings.Get<List<Test>>("Tests");
+            ApplicationData.Current.LocalSettings.Values["Tests"] = tests;
+
+            var settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
 
             var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
@@ -77,10 +77,10 @@
                 this.PowerManager_RemainingChargePercentChanged;
 
             this.geolocator = new Geolocator(this)
-                                  {
-                                      DesiredAccuracy = PositionAccuracy.Default,
-                                      MovementThreshold = 25
-                                  };
+            {
+                DesiredAccuracy = PositionAccuracy.Default,
+                MovementThreshold = 25
+            };
             this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
 
             var access = await this.geolocator.RequestAccessAsync();
@@ -100,13 +100,13 @@
 
             if (cameraCaptureFile != null)
             {
-                var props = await cameraCaptureFile.GetPropertiesAsync();
+                var props = await cameraCaptureFile.Properties.RetrievePropertiesAsync(null);
 
                 var imageProps = await cameraCaptureFile.Properties.GetImagePropertiesAsync();
 
                 var bytes = await cameraCaptureFile.ReadBytesAsync();
             }
-            
+
             var singleFilePick = new FileOpenPicker(this);
             singleFilePick.FileTypeFilter.Add(".jpg");
             var pickedFile = await singleFilePick.PickSingleFileAsync();
