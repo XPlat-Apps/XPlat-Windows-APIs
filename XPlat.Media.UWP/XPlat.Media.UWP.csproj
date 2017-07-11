@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capture\CameraCaptureUI.cs" />
+    <Compile Include="Extensions\Extensions.CameraCapture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\XPlat.Media.UWP.rd.xml" />
   </ItemGroup>

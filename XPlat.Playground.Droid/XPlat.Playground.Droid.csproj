@@ -15,8 +15,8 @@
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -78,6 +78,10 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XPlat.Core.Droid\XPlat.Core.Droid.csproj">
+      <Project>{c9d95ed4-018b-4dbb-a3ac-7d70809b82a1}</Project>
+      <Name>XPlat.Core.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
       <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
       <Name>XPlat.Core</Name>
@@ -121,6 +125,14 @@
     <ProjectReference Include="..\XPlat.Media.Droid\XPlat.Media.Droid.csproj">
       <Project>{4384c631-1d42-4014-8ea9-eb331c337f25}</Project>
       <Name>XPlat.Media.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Networking.Common\XPlat.Networking.Common.csproj">
+      <Project>{1937eb4f-4a90-4c02-ac7c-c8267570316d}</Project>
+      <Name>XPlat.Networking.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Networking.Droid\XPlat.Networking.Droid.csproj">
+      <Project>{beb9f5ea-ec25-4e4d-93ca-e6f1fc0114d9}</Project>
+      <Name>XPlat.Networking.Droid</Name>
     </ProjectReference>
     <ProjectReference Include="..\XPlat.Storage.Common\XPlat.Storage.Common.csproj">
       <Project>{3f0a5ecc-70f4-4118-8ebd-e513764448b1}</Project>

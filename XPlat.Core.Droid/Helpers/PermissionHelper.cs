@@ -1,8 +1,9 @@
-﻿using System.Linq;
-using Android.Content.PM;
-
-namespace XPlat.Core.Droid.Helpers
+﻿namespace XPlat.Droid.Helpers
 {
+    using System.Linq;
+
+    using Android.Content.PM;
+
     public static class PermissionHelper
     {
         public static bool VerifyPermissions(Permission[] grantResults)

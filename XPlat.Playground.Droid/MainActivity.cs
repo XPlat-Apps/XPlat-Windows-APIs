@@ -6,7 +6,6 @@
     using Android.App;
     using Android.OS;
 
-    using XPlat.Device;
     using XPlat.Device.Display;
     using XPlat.Device.Geolocation;
     using XPlat.Media.Capture;
@@ -96,8 +95,8 @@
             }
 
             CameraCaptureUI dialog = new CameraCaptureUI(this);
+            dialog.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.MediumXga;
             IStorageFile cameraCaptureFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
-
             if (cameraCaptureFile != null)
             {
                 var props = await cameraCaptureFile.Properties.RetrievePropertiesAsync(null);
