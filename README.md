@@ -26,6 +26,7 @@ Looking to get these components in your apps now? Well, you can get your hands o
 | XPlat.Device.Display | This library contains a collection of Windows.System.Display APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) |
 | XPlat.Device.Geolocation | This library contains a collection of Windows.Device.Geolocation APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) |
 | XPlat.Device.Power | This library contains a collection of Windows.System.Power APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Power.svg)](https://www.nuget.org/packages/XPlat.Device.Power/) |
+| XPlat.Device.Launcher | This library contains a collection of Windows.System.Launcher APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Launcher.svg)](https://www.nuget.org/packages/XPlat.Device.Launcher/) |
 
 ## Contributing
 Do you want to contribute? Check out the [contribution guidelines](CONTRIBUTING.md) for more info.
