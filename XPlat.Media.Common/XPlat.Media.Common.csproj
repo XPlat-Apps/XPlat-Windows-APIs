@@ -42,10 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Capture\CameraCaptureUIMaxPhotoResolution.cs" />
+    <Compile Include="Capture\CameraCaptureUIMaxVideoResolution.cs" />
     <Compile Include="Capture\CameraCaptureUIMode.cs" />
     <Compile Include="Capture\CameraCaptureUIPhotoCaptureSettings.cs" />
+    <Compile Include="Capture\CameraCaptureUIVideoCaptureSettings.cs" />
     <Compile Include="Capture\ICameraCaptureUI.cs" />
     <Compile Include="Capture\ICameraCaptureUIPhotoCaptureSettings.cs" />
+    <Compile Include="Capture\ICameraCaptureUIVideoCaptureSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

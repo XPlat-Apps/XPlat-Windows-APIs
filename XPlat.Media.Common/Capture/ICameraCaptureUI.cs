@@ -4,6 +4,9 @@
 
     using XPlat.Storage;
 
+    /// <summary>
+    /// Provides a full window UI for capturing audio, video, and photos from a camera.
+    /// </summary>
     public interface ICameraCaptureUI
     {
         /// <summary>
@@ -21,5 +24,10 @@
         /// Provides settings for capturing photos.
         /// </summary>
         CameraCaptureUIPhotoCaptureSettings PhotoSettings { get; }
+
+        /// <summary>
+        /// Provides settings for capturing videos.
+        /// </summary>
+        CameraCaptureUIVideoCaptureSettings VideoSettings { get; }
     }
 }

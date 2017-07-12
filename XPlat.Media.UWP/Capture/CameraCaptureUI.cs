@@ -3,10 +3,11 @@
     using System;
     using System.Threading.Tasks;
 
-    using Windows.Media.Capture;
-
     using XPlat.Storage;
 
+    /// <summary>
+    /// Provides a full window UI for capturing audio, video, and photos from a camera.
+    /// </summary>
     public class CameraCaptureUI : ICameraCaptureUI
     {
         /// <summary>
@@ -15,6 +16,7 @@
         public CameraCaptureUI()
         {
             this.PhotoSettings = new CameraCaptureUIPhotoCaptureSettings();
+            this.VideoSettings = new CameraCaptureUIVideoCaptureSettings();
         }
 
         /// <inheritdoc />
@@ -23,8 +25,9 @@
             var dialog = new Windows.Media.Capture.CameraCaptureUI();
             dialog.PhotoSettings.AllowCropping = this.PhotoSettings.AllowCropping;
             dialog.PhotoSettings.MaxResolution = this.PhotoSettings.MaxResolution.ToCameraCaptureUIMaxPhotoResolution();
-            dialog.VideoSettings.MaxResolution = CameraCaptureUIMaxVideoResolution.StandardDefinition;
-            dialog.VideoSettings.AllowTrimming = false;
+            dialog.VideoSettings.MaxResolution = this.VideoSettings.MaxResolution.ToCameraCaptureUIMaxVideoResolution();
+            dialog.VideoSettings.AllowTrimming = this.VideoSettings.AllowTrimming;
+            dialog.VideoSettings.MaxDurationInSeconds = this.VideoSettings.MaxDurationInSeconds;
 
             Windows.Storage.StorageFile file = null;
 
@@ -46,5 +49,8 @@
 
         /// <inheritdoc />
         public CameraCaptureUIPhotoCaptureSettings PhotoSettings { get; }
+
+        /// <inheritdoc />
+        public CameraCaptureUIVideoCaptureSettings VideoSettings { get; }
     }
 }

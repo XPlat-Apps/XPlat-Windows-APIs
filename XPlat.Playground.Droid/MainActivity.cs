@@ -95,15 +95,41 @@
             }
 
             CameraCaptureUI dialog = new CameraCaptureUI(this);
-            dialog.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.MediumXga;
-            IStorageFile cameraCaptureFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
-            if (cameraCaptureFile != null)
+            dialog.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.Large3M;
+            dialog.PhotoSettings.AllowCropping = false;
+
+            IStorageFile capturedPhotoFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+            if (capturedPhotoFile != null)
             {
-                var props = await cameraCaptureFile.Properties.RetrievePropertiesAsync(null);
+                var parentFolder = await capturedPhotoFile.GetParentAsync();
 
-                var imageProps = await cameraCaptureFile.Properties.GetImagePropertiesAsync();
+                var copy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var bytes = await cameraCaptureFile.ReadBytesAsync();
+                var props = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+
+                var imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
+
+                var bytes = await capturedPhotoFile.ReadBytesAsync();
+            }
+
+            dialog.VideoSettings.MaxResolution = CameraCaptureUIMaxVideoResolution.HighestAvailable;
+            dialog.VideoSettings.AllowTrimming = false;
+            dialog.VideoSettings.MaxDurationInSeconds = 10;
+
+            IStorageFile capturedVideoFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
+
+            if (capturedVideoFile != null)
+            {
+                var parentFolder = await capturedVideoFile.GetParentAsync();
+
+                var copy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
+
+                var props = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
+
+                var imageProps = await capturedVideoFile.Properties.GetImagePropertiesAsync();
+
+                var bytes = await capturedVideoFile.ReadBytesAsync();
             }
 
             var singleFilePick = new FileOpenPicker(this);

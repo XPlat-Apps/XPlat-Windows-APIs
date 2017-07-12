@@ -74,7 +74,7 @@
 
             Dictionary<string, object> props = new Dictionary<string, object>();
 
-            if (!props.ContainsKey("System.FileName"))
+            if (!props.ContainsKey("System.FileName") && !string.IsNullOrWhiteSpace(this.Item.Name))
             {
                 props.Add("System.FileName", this.Item.Name);
             }
@@ -82,7 +82,7 @@
             if (this.Item.IsOfType(StorageItemTypes.File))
             {
                 var item = this.Item as IStorageFile;
-                if (item != null && !props.ContainsKey("System.FileExtension"))
+                if (item != null && !props.ContainsKey("System.FileExtension") && !string.IsNullOrWhiteSpace(item.FileType))
                 {
                     props.Add("System.FileExtension", item.FileType);
                 }

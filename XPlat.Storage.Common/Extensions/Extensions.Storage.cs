@@ -42,7 +42,8 @@
                         props.Add("System.Rating", imageProps.Rating);
                     }
 
-                    if (!string.IsNullOrWhiteSpace(imageProps.DateTaken) && !props.ContainsKey("System.Photo.DateTaken"))
+                    if (!string.IsNullOrWhiteSpace(imageProps.DateTaken)
+                        && !props.ContainsKey("System.Photo.DateTaken"))
                     {
                         props.Add("System.Photo.DateTaken", imageProps.DateTaken);
                     }
@@ -75,7 +76,7 @@
                         props.Add("System.Photo.Orientation", imageProps.Orientation);
                     }
 
-                    if (imageProps.PeopleNames != null && imageProps.PeopleNames.Any()
+                    if (imageProps.PeopleNames != null && imageProps.PeopleNames.Any(x => x != null)
                         && !props.ContainsKey("System.Photo.PeopleNames"))
                     {
                         props.Add("System.Photo.PeopleNames", imageProps.PeopleNames);
@@ -86,7 +87,7 @@
                         props.Add("System.Image.VerticalSize", imageProps.Height);
                     }
 
-                    if (imageProps.Keywords != null && imageProps.Keywords.Any()
+                    if (imageProps.Keywords != null && imageProps.Keywords.Any(x => x != null)
                         && !props.ContainsKey("System.Keywords"))
                     {
                         props.Add("System.Keywords", imageProps.Keywords);
@@ -154,13 +155,13 @@
                         props.Add("System.Video.TotalBitrate", videoProps.Bitrate);
                     }
 
-                    if (videoProps.Producers != null && videoProps.Producers.Any()
+                    if (videoProps.Producers != null && videoProps.Producers.Any(x => x != null)
                         && !props.ContainsKey("System.Media.Producer"))
                     {
                         props.Add("System.Media.Producer", videoProps.Producers);
                     }
 
-                    if (videoProps.Directors != null && videoProps.Directors.Any()
+                    if (videoProps.Directors != null && videoProps.Directors.Any(x => x != null)
                         && !props.ContainsKey("System.Video.Director"))
                     {
                         props.Add("System.Video.Director", videoProps.Directors);
@@ -171,7 +172,7 @@
                         props.Add("System.Video.FrameHeight", videoProps.Height);
                     }
 
-                    if (videoProps.Keywords != null && videoProps.Keywords.Any()
+                    if (videoProps.Keywords != null && videoProps.Keywords.Any(x => x != null)
                         && !props.ContainsKey("System.Keywords"))
                     {
                         props.Add("System.Keywords", videoProps.Keywords);
@@ -187,7 +188,7 @@
                         props.Add("System.GPS.Longitude", videoProps.Latitude);
                     }
 
-                    if (videoProps.Writers != null && videoProps.Writers.Any()
+                    if (videoProps.Writers != null && videoProps.Writers.Any(x => x != null)
                         && !props.ContainsKey("System.Media.Writer"))
                     {
                         props.Add("System.Media.Writer", videoProps.Writers);
@@ -215,14 +216,12 @@
                         props.Add("System.Music.AlbumArtist", musicProps.AlbumArtist);
                     }
 
-                    if (!string.IsNullOrWhiteSpace(musicProps.Artist)
-                        && !props.ContainsKey("System.Music.Artist"))
+                    if (!string.IsNullOrWhiteSpace(musicProps.Artist) && !props.ContainsKey("System.Music.Artist"))
                     {
                         props.Add("System.Music.Artist", musicProps.Artist);
                     }
 
-                    if (!string.IsNullOrWhiteSpace(musicProps.Album)
-                        && !props.ContainsKey("System.Music.AlbumTitle"))
+                    if (!string.IsNullOrWhiteSpace(musicProps.Album) && !props.ContainsKey("System.Music.AlbumTitle"))
                     {
                         props.Add("System.Music.AlbumTitle", musicProps.Album);
                     }
@@ -253,19 +252,19 @@
                         props.Add("System.Media.SubTitle", musicProps.Subtitle);
                     }
 
-                    if (musicProps.Producers != null && musicProps.Producers.Any()
+                    if (musicProps.Producers != null && musicProps.Producers.Any(x => x != null)
                         && !props.ContainsKey("System.Media.Producer"))
                     {
                         props.Add("System.Media.Producer", musicProps.Producers);
                     }
 
-                    if (musicProps.Composers != null && musicProps.Composers.Any()
+                    if (musicProps.Composers != null && musicProps.Composers.Any(x => x != null)
                         && !props.ContainsKey("System.Music.Composer"))
                     {
                         props.Add("System.Music.Composer", musicProps.Composers);
                     }
 
-                    if (musicProps.Conductors != null && musicProps.Conductors.Any()
+                    if (musicProps.Conductors != null && musicProps.Conductors.Any(x => x != null)
                         && !props.ContainsKey("System.Music.Conductor"))
                     {
                         props.Add("System.Music.Conductor", musicProps.Conductors);
@@ -276,13 +275,13 @@
                         props.Add("System.Media.Duration", musicProps.Duration);
                     }
 
-                    if (musicProps.Writers != null && musicProps.Writers.Any()
+                    if (musicProps.Writers != null && musicProps.Writers.Any(x => x != null)
                         && !props.ContainsKey("System.Media.Writer"))
                     {
                         props.Add("System.Media.Writer", musicProps.Writers);
                     }
 
-                    if (musicProps.Genre != null && musicProps.Genre.Any()
+                    if (musicProps.Genre != null && musicProps.Genre.Any(x => x != null)
                         && !props.ContainsKey("System.Music.Genre"))
                     {
                         props.Add("System.Music.Genre", musicProps.Genre);
