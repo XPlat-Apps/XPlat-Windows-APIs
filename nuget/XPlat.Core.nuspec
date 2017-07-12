@@ -21,5 +21,7 @@
 
     <file src="..\XPlat.Core.Droid\bin\Release\XPlat.Core.Droid.dll" target="lib\MonoAndroid10\XPlat.Core.Droid.dll" />
     <file src="..\XPlat.Core.Droid\bin\Release\XPlat.Core.Droid.xml" target="lib\MonoAndroid10\XPlat.Core.Droid.xml" />
+    <file src="..\XPlat.Core.Droid\bin\Release\XPlat.Core.dll" target="lib\MonoAndroid10\XPlat.Core.dll" />
+    <file src="..\XPlat.Core.Droid\bin\Release\XPlat.Core.xml" target="lib\MonoAndroid10\XPlat.Core.xml" />
   </files>
 </package>
