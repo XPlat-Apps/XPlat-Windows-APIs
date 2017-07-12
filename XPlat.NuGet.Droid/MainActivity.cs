@@ -6,6 +6,7 @@
     using Android.App;
     using Android.OS;
 
+    using XPlat.Device;
     using XPlat.Device.Display;
     using XPlat.Device.Geolocation;
     using XPlat.Media.Capture;
@@ -56,15 +57,17 @@
                                                        }
                                            }
                                    };
-            ApplicationData.Current.LocalSettings.Values["Tests"]= tests;
+            ApplicationData.Current.LocalSettings.Values["Tests"] = tests;
 
             var settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
 
             var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
                            CreationCollisionOption.OpenIfExists);
-            
+
             await file.WriteTextAsync("Hello from the Android app!");
+
+            var parent = await file.GetParentAsync();
 
             var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
             var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
@@ -93,17 +96,62 @@
             }
 
             CameraCaptureUI dialog = new CameraCaptureUI(this);
-            IStorageFile cameraCaptureFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
+            dialog.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.Large3M;
+            dialog.PhotoSettings.AllowCropping = false;
 
-            var singleFilePick = new FileOpenPicker(this);
-            singleFilePick.FileTypeFilter.Add(".jpg");
-            var pickedFile = await singleFilePick.PickSingleFileAsync();
+            IStorageFile capturedPhotoFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
 
-            var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
+            if (capturedPhotoFile != null)
+            {
+                var parentFolder = await capturedPhotoFile.GetParentAsync();
 
-            var multiFilePick = new FileOpenPicker(this);
-            multiFilePick.FileTypeFilter.Add(".jpg");
-            var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
+                var copy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
+
+                var props = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+
+                var imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
+
+                var bytes = await capturedPhotoFile.ReadBytesAsync();
+            }
+
+            dialog.VideoSettings.MaxResolution = CameraCaptureUIMaxVideoResolution.HighestAvailable;
+            dialog.VideoSettings.AllowTrimming = false;
+            dialog.VideoSettings.MaxDurationInSeconds = 10;
+
+            IStorageFile capturedVideoFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
+
+            if (capturedVideoFile != null)
+            {
+                var parentFolder = await capturedVideoFile.GetParentAsync();
+
+                var copy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
+
+                var props = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
+
+                var imageProps = await capturedVideoFile.Properties.GetImagePropertiesAsync();
+
+                var bytes = await capturedVideoFile.ReadBytesAsync();
+            }
+
+            await Launcher.LaunchUriAsync(this, new Uri("http://www.google.com"));
+
+            await Launcher.LaunchFileAsync(this, file);
+
+
+
+
+            //var singleFilePick = new FileOpenPicker(this);
+            //singleFilePick.FileTypeFilter.Add(".jpg");
+            //var pickedFile = await singleFilePick.PickSingleFileAsync();
+
+            //if (pickedFile != null)
+            //{
+            //    var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
+            //}
+
+            //var multiFilePick = new FileOpenPicker(this);
+            //multiFilePick.FileTypeFilter.Add(".jpg");
+            //var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             var fileData = await file.ReadTextAsync();
 
