@@ -54,10 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XPlat.Core.Droid\XPlat.Core.Droid.csproj">
-      <Project>{c9d95ed4-018b-4dbb-a3ac-7d70809b82a1}</Project>
-      <Name>XPlat.Core.Droid</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
       <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
       <Name>XPlat.Core</Name>

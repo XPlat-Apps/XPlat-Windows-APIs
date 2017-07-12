@@ -1,4 +1,4 @@
-﻿namespace XPlat.Droid
+﻿namespace XPlat.Storage
 {
     using System.IO;
     using System.Threading.Tasks;

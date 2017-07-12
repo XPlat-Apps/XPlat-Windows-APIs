@@ -1,32 +1,32 @@
-﻿namespace XPlat.UnitTests.iOS.Tests.Storage
+﻿namespace XPlat.UnitTests.UWP.Tests.Storage
 {
     using System;
     using System.Collections.Generic;
 
-    using NUnit.Framework;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using XPlat.Storage;
-    using XPlat.UnitTests.iOS.Mocks;
+    using XPlat.UnitTests.UWP.Mocks;
 
-    [TestFixture]
+    [TestClass]
     public class AppSettingTests
     {
-        [Test]
+        [TestMethod]
         public void LocalSettings_Exist()
         {
             Assert.IsNotNull(ApplicationData.Current.LocalSettings);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Exist()
         {
             Assert.IsNotNull(ApplicationData.Current.LocalSettings.Values);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_CreateContainerNotSupported()
         {
-            Assert.Throws<NotSupportedException>(
+            Assert.ThrowsException<NotSupportedException>(
                 () =>
                     {
                         ApplicationData.Current.LocalSettings.CreateContainer(
@@ -35,7 +35,7 @@
                     });
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_StringSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_StringSupported";
@@ -47,7 +47,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_StringSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_StringSupported";
@@ -61,7 +61,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_StringSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_StringSupported";
@@ -74,7 +74,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_BooleanSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_BooleanSupported";
@@ -86,7 +86,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_BooleanSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_BooleanSupported";
@@ -100,7 +100,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_BooleanSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_BooleanSupported";
@@ -112,7 +112,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_Int32Supported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_Int32Supported";
@@ -124,7 +124,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_Int32Supported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_Int32Supported";
@@ -138,7 +138,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_Int32Supported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_Int32Supported";
@@ -150,7 +150,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_Int64Supported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_Int64Supported";
@@ -162,7 +162,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_Int64Supported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_Int64Supported";
@@ -176,7 +176,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_Int64Supported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_Int64Supported";
@@ -188,7 +188,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_FloatSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_FloatSupported";
@@ -200,7 +200,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_FloatSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_FloatSupported";
@@ -214,7 +214,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_FloatSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_FloatSupported";
@@ -226,7 +226,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_DoubleSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_DoubleSupported";
@@ -238,7 +238,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_DoubleSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_DoubleSupported";
@@ -252,7 +252,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_DoubleSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_DoubleSupported";
@@ -264,7 +264,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_DecimalSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_DecimalSupported";
@@ -276,7 +276,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_DecimalSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_DecimalSupported";
@@ -290,7 +290,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_DecimalSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_DecimalSupported";
@@ -302,7 +302,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_DateTimeSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_DateTimeSupported";
@@ -314,7 +314,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_DateTimeSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_DateTimeSupported";
@@ -328,7 +328,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_DateTimeSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_DateTimeSupported";
@@ -340,7 +340,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_GuidSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_GuidSupported";
@@ -352,7 +352,7 @@
             Assert.AreEqual(expectedValue.ToString(), actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_GuidSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_GuidSupported";
@@ -366,7 +366,7 @@
             Assert.AreEqual(expectedValue.ToString(), actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_GuidSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_GuidSupported";
@@ -378,7 +378,7 @@
             Assert.AreEqual(expectedValue.ToString(), actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyAndValue_ObjectSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyAndValue_ObjectSupported";
@@ -395,7 +395,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_KeyValuePair_ObjectSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_ObjectSupported";
@@ -414,7 +414,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Add_ViaKeyIndex_ObjectSupported()
         {
             string expectedKey = "LocalSettings_Values_Add_ViaKeyIndex_ObjectSupported";
@@ -431,7 +431,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_GetValue_ViaGetMethod()
         {
             string expectedKey = "LocalSettings_Values_GetValue_ViaGetMethod";
@@ -448,7 +448,7 @@
             Assert.AreEqual(expectedValue, actualValue);
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Remove_RemovedValueDoesNotExist()
         {
             string expectedKey = "LocalSettings_Values_Remove_RemovedValueDoesNotExist";
@@ -468,7 +468,7 @@
             Assert.IsFalse(ApplicationData.Current.LocalSettings.Values.ContainsKey(expectedKey));
         }
 
-        [Test]
+        [TestMethod]
         public void LocalSettings_Values_Update_ChangedValueUpdatesSameKey()
         {
             string expectedKey = "LocalSettings_Values_Update_ChangedValueUpdatesSameKey";

@@ -6,6 +6,7 @@
     using Android.App;
     using Android.OS;
 
+    using XPlat.Device;
     using XPlat.Device.Display;
     using XPlat.Device.Geolocation;
     using XPlat.Media.Capture;
@@ -132,18 +133,25 @@
                 var bytes = await capturedVideoFile.ReadBytesAsync();
             }
 
-            var singleFilePick = new FileOpenPicker(this);
-            singleFilePick.FileTypeFilter.Add(".jpg");
-            var pickedFile = await singleFilePick.PickSingleFileAsync();
+            await Launcher.LaunchUriAsync(this, new Uri("http://www.google.com"));
 
-            if (pickedFile != null)
-            {
-                var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
-            }
+            await Launcher.LaunchFileAsync(this, file);
 
-            var multiFilePick = new FileOpenPicker(this);
-            multiFilePick.FileTypeFilter.Add(".jpg");
-            var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
+            
+
+
+            //var singleFilePick = new FileOpenPicker(this);
+            //singleFilePick.FileTypeFilter.Add(".jpg");
+            //var pickedFile = await singleFilePick.PickSingleFileAsync();
+
+            //if (pickedFile != null)
+            //{
+            //    var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
+            //}
+
+            //var multiFilePick = new FileOpenPicker(this);
+            //multiFilePick.FileTypeFilter.Add(".jpg");
+            //var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             var fileData = await file.ReadTextAsync();
 

@@ -5,8 +5,6 @@
 
     using Android.Graphics;
 
-    using XPlat.Droid;
-
     public static partial class Extensions
     {
         /// <summary>

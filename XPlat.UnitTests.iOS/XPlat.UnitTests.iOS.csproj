@@ -85,9 +85,14 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Mocks\AppSetting.cs" />
+    <Compile Include="Tests\Storage\ApplicationDataTests.cs" />
     <Compile Include="Tests\Storage\AppSettingTests.cs" />
+    <Compile Include="Tests\Storage\StorageFileTests.cs" />
+    <Compile Include="Tests\Storage\StorageFolderTests.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Entitlements.plist" />

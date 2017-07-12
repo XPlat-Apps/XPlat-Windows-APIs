@@ -434,6 +434,10 @@
             }
 
             var storageItem = await this.Originator.TryGetItemAsync(name);
+            if (storageItem == null)
+            {
+                return null;
+            }
 
             if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.File))
             {
