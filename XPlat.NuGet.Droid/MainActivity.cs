@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     using Android.App;
     using Android.OS;
@@ -96,6 +97,28 @@
             }
 
             CameraCaptureUI dialog = new CameraCaptureUI(this);
+            dialog.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.Large3M;
+            dialog.PhotoSettings.AllowCropping = false;
+
+            IStorageFile capturedPhotoFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+            if (capturedPhotoFile != null)
+            {
+                var parentFolder = await capturedPhotoFile.GetParentAsync();
+
+                var copy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
+
+                var props = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+
+                var imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
+
+                var bytes = await capturedPhotoFile.ReadBytesAsync();
+
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine($"Image captured is {bytes.Length} and exists at {capturedPhotoFile.Path}.");
+#endif
+            }
+
             dialog.VideoSettings.MaxResolution = CameraCaptureUIMaxVideoResolution.HighestAvailable;
             dialog.VideoSettings.AllowTrimming = false;
 
@@ -109,30 +132,14 @@
 
                 var props = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
 
-                var imageProps = await capturedVideoFile.Properties.GetImagePropertiesAsync();
+                var videoProps = await capturedVideoFile.Properties.GetVideoPropertiesAsync();
 
                 var bytes = await capturedVideoFile.ReadBytesAsync();
+
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine($"Video captured is {bytes.Length} and exists at {capturedVideoFile.Path}.");
+#endif
             }
-
-            await Launcher.LaunchUriAsync(this, new Uri("http://www.google.com"));
-
-            await Launcher.LaunchFileAsync(this, file);
-
-
-
-
-            //var singleFilePick = new FileOpenPicker(this);
-            //singleFilePick.FileTypeFilter.Add(".jpg");
-            //var pickedFile = await singleFilePick.PickSingleFileAsync();
-
-            //if (pickedFile != null)
-            //{
-            //    var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
-            //}
-
-            //var multiFilePick = new FileOpenPicker(this);
-            //multiFilePick.FileTypeFilter.Add(".jpg");
-            //var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             var fileData = await file.ReadTextAsync();
 

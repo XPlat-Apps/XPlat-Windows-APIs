@@ -112,11 +112,14 @@
                 var imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
 
                 var bytes = await capturedPhotoFile.ReadBytesAsync();
+
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine($"Image captured is {bytes.Length} and exists at {capturedPhotoFile.Path}.");
+#endif
             }
 
             dialog.VideoSettings.MaxResolution = CameraCaptureUIMaxVideoResolution.HighestAvailable;
             dialog.VideoSettings.AllowTrimming = false;
-            dialog.VideoSettings.MaxDurationInSeconds = 10;
 
             IStorageFile capturedVideoFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
 
@@ -131,27 +134,11 @@
                 var videoProps = await capturedVideoFile.Properties.GetVideoPropertiesAsync();
 
                 var bytes = await capturedVideoFile.ReadBytesAsync();
+
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine($"Video captured is {bytes.Length} and exists at {capturedVideoFile.Path}.");
+#endif
             }
-
-            await Launcher.LaunchUriAsync(this, new Uri("http://www.google.com"));
-
-            await Launcher.LaunchFileAsync(this, file);
-
-            
-
-
-            //var singleFilePick = new FileOpenPicker(this);
-            //singleFilePick.FileTypeFilter.Add(".jpg");
-            //var pickedFile = await singleFilePick.PickSingleFileAsync();
-
-            //if (pickedFile != null)
-            //{
-            //    var imageProps = await pickedFile.Properties.GetImagePropertiesAsync();
-            //}
-
-            //var multiFilePick = new FileOpenPicker(this);
-            //multiFilePick.FileTypeFilter.Add(".jpg");
-            //var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
             var fileData = await file.ReadTextAsync();
 

@@ -1,6 +1,7 @@
 ﻿namespace XPlat.Media.Capture
 {
     using System;
+    using System.IO;
     using System.Linq;
 
     using Android.App;
@@ -8,11 +9,10 @@
     using Android.Database;
     using Android.OS;
 
-    using Java.IO;
-
     using XPlat.Storage;
     using XPlat.Storage.Helpers;
 
+    using File = Java.IO.File;
     using Uri = Android.Net.Uri;
 
     public class CameraCaptureContentProvider : ContentProvider
@@ -44,13 +44,6 @@
         {
             try
             {
-                var file = StorageHelper.CreateStorageFile(
-                    ApplicationData.Current.TemporaryFolder,
-                    Guid.NewGuid().ToString(),
-                    CreationCollisionOption.ReplaceExisting);
-
-                CurrentFilePath = file.Path;
-
                 this.Context.ContentResolver.NotifyChange(ContentUri, null);
                 return true;
             }
@@ -67,18 +60,23 @@
         {
             var storageFile = StorageHelper.CreateStorageFile(
                 ApplicationData.Current.TemporaryFolder,
-                Guid.NewGuid().ToString(),
+                nameof(CameraCaptureUI),
                 CreationCollisionOption.ReplaceExisting);
+            
+            var file = new File(storageFile.Path);
+            if (!file.Exists())
+            {
+                file.Mkdirs();
+            }
 
-            CurrentFilePath = storageFile.Path;
-
-            var file = new File(CurrentFilePath);
             if (file.Exists())
             {
+                CurrentFilePath = storageFile.Path;
+
                 return ParcelFileDescriptor.Open(file, ParcelFileMode.ReadWrite);
             }
 
-            throw new FileNotFoundException(CurrentFilePath);
+            throw new FileNotFoundException("Cannot find the file", storageFile.Path);
         }
 
         public override ICursor Query(
