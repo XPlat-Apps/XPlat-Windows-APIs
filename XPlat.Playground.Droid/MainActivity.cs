@@ -128,7 +128,7 @@
 
                 var props = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
 
-                var imageProps = await capturedVideoFile.Properties.GetImagePropertiesAsync();
+                var videoProps = await capturedVideoFile.Properties.GetVideoPropertiesAsync();
 
                 var bytes = await capturedVideoFile.ReadBytesAsync();
             }

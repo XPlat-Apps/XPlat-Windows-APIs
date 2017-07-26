@@ -96,27 +96,8 @@
             }
 
             CameraCaptureUI dialog = new CameraCaptureUI(this);
-            dialog.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.Large3M;
-            dialog.PhotoSettings.AllowCropping = false;
-
-            IStorageFile capturedPhotoFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Photo);
-
-            if (capturedPhotoFile != null)
-            {
-                var parentFolder = await capturedPhotoFile.GetParentAsync();
-
-                var copy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
-
-                var props = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
-
-                var imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
-
-                var bytes = await capturedPhotoFile.ReadBytesAsync();
-            }
-
             dialog.VideoSettings.MaxResolution = CameraCaptureUIMaxVideoResolution.HighestAvailable;
             dialog.VideoSettings.AllowTrimming = false;
-            dialog.VideoSettings.MaxDurationInSeconds = 10;
 
             IStorageFile capturedVideoFile = await dialog.CaptureFileAsync(CameraCaptureUIMode.Video);
 

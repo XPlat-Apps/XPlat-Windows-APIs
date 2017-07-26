@@ -65,13 +65,20 @@
 
         public override ParcelFileDescriptor OpenFile(Uri uri, string mode)
         {
+            var storageFile = StorageHelper.CreateStorageFile(
+                ApplicationData.Current.TemporaryFolder,
+                Guid.NewGuid().ToString(),
+                CreationCollisionOption.ReplaceExisting);
+
+            CurrentFilePath = storageFile.Path;
+
             var file = new File(CurrentFilePath);
             if (file.Exists())
             {
                 return ParcelFileDescriptor.Open(file, ParcelFileMode.ReadWrite);
             }
 
-            throw new FileNotFoundException(uri.Path);
+            throw new FileNotFoundException(CurrentFilePath);
         }
 
         public override ICursor Query(
