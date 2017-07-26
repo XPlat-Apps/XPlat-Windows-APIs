@@ -53,6 +53,7 @@
     <Compile Include="FileProperties\IVideoProperties.cs" />
     <Compile Include="FileProperties\PhotoOrientation.cs" />
     <Compile Include="FileProperties\VideoOrientation.cs" />
+    <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="IApplicationData.cs" />
     <Compile Include="IApplicationDataContainer.cs" />
     <Compile Include="IApplicationSettingsContainer.cs" />

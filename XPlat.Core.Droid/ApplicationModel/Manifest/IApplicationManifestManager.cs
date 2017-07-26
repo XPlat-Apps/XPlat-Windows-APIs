@@ -3,9 +3,8 @@
     using System.Threading.Tasks;
 
     using Android.App;
-    using Android.Content.PM;
 
-    public interface IApplicationPermissionManager
+    public interface IApplicationManifestManager
     {
         /// <summary>
         /// Gets or sets the current activity.
@@ -18,6 +17,17 @@
         int CurrentRequestId { get; }
 
         /// <summary>
+        /// Checks whether a content provider exists.
+        /// </summary>
+        /// <param name="providerName">
+        /// The name of the provider to check.
+        /// </param>
+        /// <returns>
+        /// When this method completes, true will be returned if the provider exists.
+        /// </returns>
+        bool CheckContentProviderExists(string providerName);
+
+        /// <summary>
         /// Requests for permissions to be granted.
         /// </summary>
         /// <param name="permissions">
@@ -26,7 +36,7 @@
         /// <returns>
         /// When this method completes, true will be returned if all the permissions requested were granted.
         /// </returns>
-        Task<bool> RequestAsync(params string[] permissions);
+        Task<bool> RequestPermissionAsync(params string[] permissions);
 
         /// <summary>
         /// Checks whether a permission is granted.

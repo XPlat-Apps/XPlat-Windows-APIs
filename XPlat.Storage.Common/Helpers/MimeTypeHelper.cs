@@ -2280,6 +2280,11 @@
 
         public static string GetMimeType(string fileType)
         {
+            if (!fileType.StartsWith("."))
+            {
+                fileType = $".{fileType}";
+            }
+
             var result = MimeTypes.FirstOrDefault(
                 x => x.Key.Equals(fileType, StringComparison.CurrentCultureIgnoreCase));
             return !string.IsNullOrWhiteSpace(result.Value) ? result.Value : string.Empty;

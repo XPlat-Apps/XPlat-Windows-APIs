@@ -23,6 +23,8 @@
 
     using Android.Support.V4.Content;
 
+    using XPlat.Droid.Helpers;
+
     [Activity(NoHistory = false, LaunchMode = LaunchMode.Multiple)]
     internal class CameraCaptureUIActivity : Activity
     {
@@ -83,19 +85,26 @@
             this.requestId = bundle.GetInt(IntentId, 0);
             this.action = bundle.GetString(IntentAction);
             this.fileName = bundle.GetString(IntentFileName, $"{Guid.NewGuid()}.jpg");
-
-            // Saves to the public repository (can't access internal)
-            string filePath = Android.OS.Environment
-                .GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim)
-                .AbsolutePath;
-
-            this.file = new File(filePath, this.fileName);
-
+            
             Intent intent = null;
             try
             {
                 intent = new Intent(this.action);
-                intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(this.file));
+
+                if (ApplicationManifestHelper.CheckContentProviderExists(nameof(CameraCaptureContentProvider)))
+                {
+                    intent.PutExtra(MediaStore.ExtraOutput, CameraCaptureContentProvider.ContentUri);
+                }
+                else
+                {
+                    // Saves to the public repository (can't access internal)
+                    string filePath = Android.OS.Environment
+                        .GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim)
+                        .AbsolutePath;
+
+                    this.file = new File(filePath, this.fileName);
+                    intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(this.file));
+                }
 
                 if (!isComplete)
                 {
@@ -151,31 +160,35 @@
 
         protected override async void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
-            base.OnActivityResult(requestCode, resultCode, data);
-
-            Task<CameraFileCaptured> result;
-
             if (resultCode == Result.Canceled)
             {
-                result = Task.FromResult(new CameraFileCaptured(requestCode, null, true));
+                var result = Task.FromResult(new CameraFileCaptured(requestCode, null, true));
                 result.ContinueWith(x => { CameraFileCaptured?.Invoke(this, x.Result); });
-                this.Finish();
             }
             else
             {
-                IStorageFile internalStorageFile =
-                    await ApplicationData.Current.TemporaryFolder.CreateFileAsync(this.fileName);
-                IStorageFile storageFile = await StorageFile.GetFileFromPathAsync(this.file.AbsolutePath);
+                IStorageFile storageFile;
+                if (this.file != null)
+                {
+                    storageFile = await StorageFile.GetFileFromPathAsync(this.file.AbsolutePath);
 
-                byte[] fileData = await storageFile.ReadBytesAsync();
-                await internalStorageFile.WriteBytesAsync(fileData);
+                    await storageFile.MoveAsync(ApplicationData.Current.TemporaryFolder);
+                }
+                else
+                {
+                    storageFile = await StorageFile.GetFileFromPathAsync(CameraCaptureContentProvider.CurrentFilePath)
+                                      .ConfigureAwait(false);
 
-                await storageFile.DeleteAsync();
+                    await storageFile.RenameAsync(this.fileName, NameCollisionOption.ReplaceExisting)
+                        .ConfigureAwait(false);
+                }
 
-                CameraFileCaptured args = new CameraFileCaptured(requestCode, internalStorageFile, false);
+                CameraFileCaptured args = new CameraFileCaptured(requestCode, storageFile, false);
+
                 CameraFileCaptured?.Invoke(this, args);
-                this.Finish();
             }
+
+            this.Finish();
         }
 
         protected override void OnSaveInstanceState(Bundle outState)

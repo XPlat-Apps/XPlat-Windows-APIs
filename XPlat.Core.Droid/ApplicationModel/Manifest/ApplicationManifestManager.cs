@@ -1,6 +1,7 @@
 ﻿namespace XPlat.Droid.ApplicationModel.Manifest
 {
     using System;
+    using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -9,26 +10,26 @@
     using Android.Support.V4.App;
     using Android.Support.V4.Content;
 
-    public class ApplicationPermissionManager : IApplicationPermissionManager
+    public class ApplicationManifestManager : IApplicationManifestManager
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationPermissionManager"/> class.
+        /// Initializes a new instance of the <see cref="ApplicationManifestManager"/> class.
         /// </summary>
         /// <remarks>
         /// When using the default constructor, the CurrentActivity property must be set in order to request permissions.
         /// </remarks>
-        public ApplicationPermissionManager()
+        public ApplicationManifestManager()
             : this(null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationPermissionManager"/> class.
+        /// Initializes a new instance of the <see cref="ApplicationManifestManager"/> class.
         /// </summary>
         /// <param name="activity">
         /// The current active Activity.
         /// </param>
-        public ApplicationPermissionManager(Activity activity)
+        public ApplicationManifestManager(Activity activity)
         {
             this.CurrentActivity = activity;
         }
@@ -40,7 +41,31 @@
         public int CurrentRequestId { get; private set; }
 
         /// <inheritdoc />
-        public Task<bool> RequestAsync(params string[] permissions)
+        public bool CheckContentProviderExists(string providerName)
+        {
+            if (string.IsNullOrWhiteSpace(providerName))
+            {
+                throw new ArgumentNullException(nameof(providerName));
+            }
+
+            if (this.CurrentActivity == null)
+            {
+                throw new ArgumentException(
+                    "The CurrentActivity property must be set in order to check for content providers.");
+            }
+
+            var myPackage = this.CurrentActivity.PackageManager.GetInstalledPackages(PackageInfoFlags.Providers)
+                .FirstOrDefault(
+                    x => x.PackageName.Equals(
+                        this.CurrentActivity.PackageName,
+                        StringComparison.CurrentCultureIgnoreCase));
+
+            return myPackage != null
+                   && myPackage.Providers.Any(x => x.Name.Contains(providerName, CompareOptions.IgnoreCase));
+        }
+
+        /// <inheritdoc />
+        public Task<bool> RequestPermissionAsync(params string[] permissions)
         {
             this.GenerateRequestId();
 
@@ -59,11 +84,15 @@
 
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.M)
             {
-                var permissionsToRequest = permissions.Where(permission => !this.CheckPermissionGranted(permission)).ToList();
+                var permissionsToRequest = permissions.Where(permission => !this.CheckPermissionGranted(permission))
+                    .ToList();
 
                 if (permissionsToRequest.Count > 0)
                 {
-                    ActivityCompat.RequestPermissions(this.CurrentActivity, permissionsToRequest.ToArray(), this.CurrentRequestId);
+                    ActivityCompat.RequestPermissions(
+                        this.CurrentActivity,
+                        permissionsToRequest.ToArray(),
+                        this.CurrentRequestId);
                     newTcs.SetResult(false);
                 }
                 else
