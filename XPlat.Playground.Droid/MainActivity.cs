@@ -103,18 +103,18 @@
 
             if (capturedPhotoFile != null)
             {
-                var parentFolder = await capturedPhotoFile.GetParentAsync();
+                var parentPhotoFolder = await capturedPhotoFile.GetParentAsync();
 
-                var copy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
+                var photoCopy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var props = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+                var photoAllProps = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
 
-                var imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
+                var photoProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
 
-                var bytes = await capturedPhotoFile.ReadBytesAsync();
+                var photoBytes = await capturedPhotoFile.ReadBytesAsync();
 
 #if DEBUG
-                System.Diagnostics.Debug.WriteLine($"Image captured is {bytes.Length} and exists at {capturedPhotoFile.Path}.");
+                System.Diagnostics.Debug.WriteLine($"Image captured is {photoBytes.Length} and exists at {capturedPhotoFile.Path}.");
 #endif
             }
 
@@ -125,18 +125,18 @@
 
             if (capturedVideoFile != null)
             {
-                var parentFolder = await capturedVideoFile.GetParentAsync();
+                var parentVideoFolder = await capturedVideoFile.GetParentAsync();
 
-                var copy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
+                var videoCopy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var props = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
+                var videoAllProps = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
 
                 var videoProps = await capturedVideoFile.Properties.GetVideoPropertiesAsync();
 
-                var bytes = await capturedVideoFile.ReadBytesAsync();
+                var videoBytes = await capturedVideoFile.ReadBytesAsync();
 
 #if DEBUG
-                System.Diagnostics.Debug.WriteLine($"Video captured is {bytes.Length} and exists at {capturedVideoFile.Path}.");
+                System.Diagnostics.Debug.WriteLine($"Video captured is {videoBytes.Length} and exists at {capturedVideoFile.Path}.");
 #endif
             }
 

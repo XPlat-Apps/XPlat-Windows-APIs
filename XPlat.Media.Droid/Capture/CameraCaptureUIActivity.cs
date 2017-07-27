@@ -23,7 +23,12 @@
 
     using Android.Support.V4.Content;
 
+    using Java.Net;
+
     using XPlat.Droid.Helpers;
+    using XPlat.Storage.Helpers;
+
+    using Uri = Android.Net.Uri;
 
     [Activity(NoHistory = false, LaunchMode = LaunchMode.Multiple)]
     internal class CameraCaptureUIActivity : Activity
@@ -40,7 +45,9 @@
 
         private string fileName;
 
-        private File file;
+        private File publicFile;
+
+        private File contentProviderFile;
 
         internal static event TypedEventHandler<Activity, CameraFileCaptured> CameraFileCaptured;
 
@@ -51,13 +58,13 @@
             List<string> permissions = new List<string>();
 
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) !=
-                (int) Permission.Granted)
+                (int)Permission.Granted)
             {
                 permissions.Add(Manifest.Permission.ReadExternalStorage);
             }
 
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) !=
-                (int) Permission.Granted)
+                (int)Permission.Granted)
             {
                 permissions.Add(Manifest.Permission.WriteExternalStorage);
             }
@@ -85,15 +92,23 @@
             this.requestId = bundle.GetInt(IntentId, 0);
             this.action = bundle.GetString(IntentAction);
             this.fileName = bundle.GetString(IntentFileName, $"{Guid.NewGuid()}.jpg");
-            
+
             Intent intent = null;
             try
             {
                 intent = new Intent(this.action);
 
-                if (ApplicationManifestHelper.CheckContentProviderExists(nameof(CameraCaptureContentProvider)))
+                if (ApplicationManifestHelper.CheckContentProviderExists(nameof(FileProvider)))
                 {
-                    intent.PutExtra(MediaStore.ExtraOutput, CameraCaptureContentProvider.ContentUri);
+                    StorageHelper.CreateStorageFile(ApplicationData.Current.TemporaryFolder, this.fileName);
+                    this.contentProviderFile = new File(ApplicationData.Current.TemporaryFolder.Path, this.fileName);
+
+                    var contentUri = FileProvider.GetUriForFile(this, this.PackageName, this.contentProviderFile);
+
+                    intent.PutExtra(MediaStore.ExtraOutput, contentUri);
+
+                    intent.AddFlags(ActivityFlags.GrantWriteUriPermission);
+                    intent.AddFlags(ActivityFlags.GrantReadUriPermission);
                 }
                 else
                 {
@@ -102,13 +117,20 @@
                         .GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim)
                         .AbsolutePath;
 
-                    this.file = new File(filePath, this.fileName);
-                    intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(this.file));
+                    this.publicFile = new File(filePath, this.fileName);
+                    intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(this.publicFile));
                 }
 
                 if (!isComplete)
                 {
-                    this.StartActivityForResult(intent, this.requestId);
+                    if (intent.ResolveActivity(this.PackageManager) != null)
+                    {
+                        this.StartActivityForResult(intent, this.requestId);
+                    }
+                    else
+                    {
+                        this.Finish();
+                    }
                 }
             }
             catch (Exception ex)
@@ -168,19 +190,14 @@
             else
             {
                 IStorageFile storageFile;
-                if (this.file != null)
+                if (this.publicFile != null)
                 {
-                    storageFile = await StorageFile.GetFileFromPathAsync(this.file.AbsolutePath);
-
+                    storageFile = await StorageFile.GetFileFromPathAsync(this.publicFile.AbsolutePath);
                     await storageFile.MoveAsync(ApplicationData.Current.TemporaryFolder);
                 }
                 else
                 {
-                    storageFile = await StorageFile.GetFileFromPathAsync(CameraCaptureContentProvider.CurrentFilePath)
-                                      .ConfigureAwait(false);
-
-                    await storageFile.RenameAsync(this.fileName, NameCollisionOption.ReplaceExisting)
-                        .ConfigureAwait(false);
+                    storageFile = await StorageFile.GetFileFromPathAsync(this.contentProviderFile.AbsolutePath);
                 }
 
                 CameraFileCaptured args = new CameraFileCaptured(requestCode, storageFile, false);

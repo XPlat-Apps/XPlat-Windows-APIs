@@ -50,7 +50,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Capture\CameraCaptureContentProvider.cs" />
     <Compile Include="Capture\CameraCaptureUIActivity.cs" />
     <Compile Include="Capture\CameraCaptureUI.cs" />
     <Compile Include="Capture\CameraFileCaptured.cs" />

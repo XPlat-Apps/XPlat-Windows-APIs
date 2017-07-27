@@ -59,6 +59,7 @@
     <Compile Include="FileProperties\MusicProperties.cs" />
     <Compile Include="FileProperties\StorageItemContentProperties.cs" />
     <Compile Include="FileProperties\VideoProperties.cs" />
+    <Compile Include="Helpers\DroidStorageHelper.cs" />
     <Compile Include="KnownFolders.cs" />
     <Compile Include="Pickers\FileOpenPicker.cs" />
     <Compile Include="Pickers\FileOpenPickerActivity.cs" />

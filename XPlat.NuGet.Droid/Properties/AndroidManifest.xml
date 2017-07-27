@@ -8,6 +8,6 @@
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<application android:label="XPlat NuGet" android:icon="@drawable/Icon">
-		<provider android:name="xplat.media.capture.CameraCaptureContentProvider" android:authorities="XPlat.NuGet.Droid.XPlat.NuGet.Droid" android:enabled="true" android:exported="true" />
+		<provider android:name="xplat.media.capture.CameraCaptureContentProvider" android:authorities="com.croft.xplatnuget" android:enabled="true" android:exported="true" />
 	</application>
 </manifest>

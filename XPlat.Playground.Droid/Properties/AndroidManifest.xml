@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.croft.xplatplayground" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="23" />
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-permission android:name="android.permission.BATTERY_STATS" />
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<uses-permission android:name="android.permission.CAMERA" />
-	<application android:label="XPlat Playground" android:icon="@drawable/Icon">
-    <provider android:name="xplat.media.capture.CameraCaptureContentProvider" android:authorities="com.croft.xplatplayground" android:enabled="true" android:exported="true" />
+  <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="23" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.BATTERY_STATS" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <application android:label="XPlat Playground" android:icon="@drawable/Icon">
+    <provider android:name="android.support.v4.content.FileProvider" android:authorities="com.croft.xplatplayground" android:exported="false" android:grantUriPermissions="true">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths" />
+    </provider>
   </application>
 </manifest>
