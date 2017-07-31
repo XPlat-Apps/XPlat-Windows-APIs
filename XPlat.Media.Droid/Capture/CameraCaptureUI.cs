@@ -7,6 +7,7 @@
     using Android.App;
     using Android.Content;
     using Android.Graphics;
+    using Android.Media;
     using Android.OS;
     using Android.Provider;
 
@@ -61,9 +62,7 @@
                     {
                         return;
                     }
-
-                    var resolution = this.PhotoSettings.MaxResolution;
-
+                    
                     var resultFile = args.File;
 
                     if (args.File != null && !args.File.Exists)
@@ -74,58 +73,11 @@
                     if ((mode == CameraCaptureUIMode.Photo || mode == CameraCaptureUIMode.PhotoOrVideo)
                         && resultFile != null && resultFile.Exists)
                     {
-                        if (resolution != CameraCaptureUIMaxPhotoResolution.HighestAvailable)
-                        {
-                            // Scale the image to the expected resolution if higher than the selected max resolution.
+                        var exifData = resultFile.GetExifData();
 
-                            var bitmap = BitmapFactory.DecodeFile(resultFile.Path);
-                            var width = bitmap.Width;
-                            var height = bitmap.Height;
+                        resultFile = await resultFile.ResizeImageFileAsync(this.PhotoSettings.MaxResolution);
 
-                            var isPortrait = width < height;
-
-                            float expectedWidth = width;
-                            float expectedHeight = height;
-
-                            switch (resolution)
-                            {
-                                case CameraCaptureUIMaxPhotoResolution.VerySmallQvga:
-                                    expectedWidth = isPortrait ? 240 : 320;
-                                    expectedHeight = isPortrait ? 320 : 240;
-                                    break;
-                                case CameraCaptureUIMaxPhotoResolution.SmallVga:
-                                    expectedWidth = isPortrait ? 480 : 640;
-                                    expectedHeight = isPortrait ? 640 : 480;
-                                    break;
-                                case CameraCaptureUIMaxPhotoResolution.MediumXga:
-                                    expectedWidth = isPortrait ? 768 : 1024;
-                                    expectedHeight = isPortrait ? 1024 : 768;
-                                    break;
-                                case CameraCaptureUIMaxPhotoResolution.Large3M:
-                                    expectedWidth = isPortrait ? 1080 : 1920;
-                                    expectedHeight = isPortrait ? 1920 : 1080;
-                                    break;
-                                case CameraCaptureUIMaxPhotoResolution.VeryLarge5M:
-                                    expectedWidth = isPortrait ? 1920 : 2560;
-                                    expectedHeight = isPortrait ? 2560 : 1920;
-                                    break;
-                            }
-
-                            var scale = Math.Min(width / expectedWidth, height / expectedHeight);
-
-                            var scaleImage = Bitmap.CreateScaledBitmap(
-                                bitmap,
-                                (int)(width / scale),
-                                (int)(height / scale),
-                                true);
-
-                            resultFile = await scaleImage.SaveAsFileAsync(
-                                             ApplicationData.Current.TemporaryFolder,
-                                             resultFile.Path,
-                                             Bitmap.CompressFormat.Jpeg);
-
-                            bitmap.Recycle();
-                        }
+                        resultFile.SetExifData(exifData);
                     }
 
                     tcs.SetResult(args.Cancel ? null : resultFile);

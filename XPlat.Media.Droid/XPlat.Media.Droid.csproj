@@ -53,6 +53,7 @@
     <Compile Include="Capture\CameraCaptureUIActivity.cs" />
     <Compile Include="Capture\CameraCaptureUI.cs" />
     <Compile Include="Capture\CameraFileCaptured.cs" />
+    <Compile Include="Extensions\Extensions.Image.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
