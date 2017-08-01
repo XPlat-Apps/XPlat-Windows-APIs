@@ -4,6 +4,7 @@
     using System.Collections.Generic;
 
     using Android.App;
+    using Android.Media;
     using Android.OS;
 
     using XPlat.Device;
@@ -104,6 +105,12 @@
             if (capturedPhotoFile != null)
             {
                 var parentPhotoFolder = await capturedPhotoFile.GetParentAsync();
+
+                var exif = new ExifInterface(capturedPhotoFile.Path);
+
+                var orientation = exif.GetAttribute(ExifInterface.TagOrientation);
+                var lat = exif.GetAttribute(ExifInterface.TagGpsLatitude);
+                var lon = exif.GetAttribute(ExifInterface.TagGpsLongitude);
 
                 var photoCopy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
 

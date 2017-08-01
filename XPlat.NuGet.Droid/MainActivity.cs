@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
 
     using Android.App;
+    using Android.Media;
     using Android.OS;
 
     using XPlat.Device;
@@ -58,6 +59,7 @@
                                                        }
                                            }
                                    };
+
             ApplicationData.Current.LocalSettings.Values["Tests"] = tests;
 
             var settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
@@ -104,18 +106,24 @@
 
             if (capturedPhotoFile != null)
             {
-                var parentFolder = await capturedPhotoFile.GetParentAsync();
+                var parentPhotoFolder = await capturedPhotoFile.GetParentAsync();
 
-                var copy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
+                var exif = new ExifInterface(capturedPhotoFile.Path);
 
-                var props = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+                var orientation = exif.GetAttribute(ExifInterface.TagOrientation);
+                var lat = exif.GetAttribute(ExifInterface.TagGpsLatitude);
+                var lon = exif.GetAttribute(ExifInterface.TagGpsLongitude);
 
-                var imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
+                var photoCopy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var bytes = await capturedPhotoFile.ReadBytesAsync();
+                var photoAllProps = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+
+                var photoProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
+
+                var photoBytes = await capturedPhotoFile.ReadBytesAsync();
 
 #if DEBUG
-                System.Diagnostics.Debug.WriteLine($"Image captured is {bytes.Length} and exists at {capturedPhotoFile.Path}.");
+                System.Diagnostics.Debug.WriteLine($"Image captured is {photoBytes.Length} and exists at {capturedPhotoFile.Path}.");
 #endif
             }
 
@@ -126,18 +134,18 @@
 
             if (capturedVideoFile != null)
             {
-                var parentFolder = await capturedVideoFile.GetParentAsync();
+                var parentVideoFolder = await capturedVideoFile.GetParentAsync();
 
-                var copy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
+                var videoCopy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var props = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
+                var videoAllProps = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
 
                 var videoProps = await capturedVideoFile.Properties.GetVideoPropertiesAsync();
 
-                var bytes = await capturedVideoFile.ReadBytesAsync();
+                var videoBytes = await capturedVideoFile.ReadBytesAsync();
 
 #if DEBUG
-                System.Diagnostics.Debug.WriteLine($"Video captured is {bytes.Length} and exists at {capturedVideoFile.Path}.");
+                System.Diagnostics.Debug.WriteLine($"Video captured is {videoBytes.Length} and exists at {capturedVideoFile.Path}.");
 #endif
             }
 
