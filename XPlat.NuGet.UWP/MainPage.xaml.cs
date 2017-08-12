@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
 
+    using Windows.Media.Playback;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
 

@@ -26,6 +26,8 @@ namespace XPlat.Playground.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::XPlat.Core.Droid.Resource.String.ApplicationName = global::XPlat.Playground.Droid.Resource.String.ApplicationName;
+			global::XPlat.Core.Droid.Resource.String.Hello = global::XPlat.Playground.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
