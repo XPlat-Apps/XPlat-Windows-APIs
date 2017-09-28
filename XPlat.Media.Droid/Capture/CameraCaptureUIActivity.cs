@@ -23,14 +23,12 @@
 
     using Android.Support.V4.Content;
 
-    using Java.Net;
-
     using XPlat.Droid.Helpers;
     using XPlat.Storage.Helpers;
 
     using Uri = Android.Net.Uri;
 
-    [Activity(NoHistory = false, LaunchMode = LaunchMode.Multiple)]
+    [Activity(NoHistory = false, LaunchMode = LaunchMode.Multiple, ConfigurationChanges = ConfigChanges.Orientation)]
     internal class CameraCaptureUIActivity : Activity
     {
         internal const string IntentId = "id";
@@ -97,13 +95,23 @@
             try
             {
                 intent = new Intent(this.action);
-
+                
                 if (ApplicationManifestHelper.CheckContentProviderExists(nameof(FileProvider)))
                 {
-                    StorageHelper.CreateStorageFile(ApplicationData.Current.TemporaryFolder, this.fileName);
+                    try
+                    {
+                        StorageHelper.CreateStorageFile(ApplicationData.Current.TemporaryFolder, this.fileName);
+                    }
+                    catch (StorageItemCreationException ex)
+                    {
+#if DEBUG
+                        System.Diagnostics.Debug.WriteLine(ex.ToString());
+#endif
+                    }
+
                     this.contentProviderFile = new File(ApplicationData.Current.TemporaryFolder.Path, this.fileName);
 
-                    var contentUri = FileProvider.GetUriForFile(this, this.PackageName, this.contentProviderFile);
+                    Uri contentUri = FileProvider.GetUriForFile(this, this.PackageName, this.contentProviderFile);
 
                     intent.PutExtra(MediaStore.ExtraOutput, contentUri);
 
@@ -184,18 +192,20 @@
         {
             if (resultCode == Result.Canceled)
             {
-                var result = Task.FromResult(new CameraFileCaptured(requestCode, null, true));
+                Task<CameraFileCaptured> result = Task.FromResult(new CameraFileCaptured(requestCode, null, true));
                 result.ContinueWith(x => { CameraFileCaptured?.Invoke(this, x.Result); });
             }
             else
             {
-                IStorageFile storageFile;
+                this.RealizeOriginalFile();
+
+                IStorageFile storageFile = null;
                 if (this.publicFile != null)
                 {
                     storageFile = await StorageFile.GetFileFromPathAsync(this.publicFile.AbsolutePath);
                     await storageFile.MoveAsync(ApplicationData.Current.TemporaryFolder);
                 }
-                else
+                else if (this.contentProviderFile != null)
                 {
                     storageFile = await StorageFile.GetFileFromPathAsync(this.contentProviderFile.AbsolutePath);
                 }
@@ -216,6 +226,23 @@
             outState.PutString(IntentAction, this.action);
 
             base.OnSaveInstanceState(outState);
+        }
+
+        private void RealizeOriginalFile()
+        {
+            if (ApplicationManifestHelper.CheckContentProviderExists(nameof(FileProvider)))
+            {
+                this.contentProviderFile = new File(ApplicationData.Current.TemporaryFolder.Path, this.fileName);
+            }
+            else
+            {
+                // Saves to the public repository (can't access internal)
+                string filePath = Android.OS.Environment
+                    .GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDcim)
+                    .AbsolutePath;
+
+                this.publicFile = new File(filePath, this.fileName);
+            }
         }
     }
 }
