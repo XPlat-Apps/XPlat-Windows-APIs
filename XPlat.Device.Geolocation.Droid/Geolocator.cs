@@ -1,6 +1,3 @@
-using Android;
-using Android.Content.PM;
-
 namespace XPlat.Device.Geolocation
 {
     using System;
@@ -11,7 +8,11 @@ namespace XPlat.Device.Geolocation
     using Android.Locations;
     using Android.OS;
 
+    using Java.Lang;
+
     using XPlat.Foundation;
+
+    using Exception = System.Exception;
 
     /// <summary>
     /// Defines a service to access the current geographic location.
@@ -117,9 +118,9 @@ namespace XPlat.Device.Geolocation
         /// <inheritdoc />
         public async Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
-            var tcs = new TaskCompletionSource<Geoposition>();
+            TaskCompletionSource<Geoposition> tcs = new TaskCompletionSource<Geoposition>();
 
-            var access = await this.RequestAccessAsync();
+            GeolocationAccessStatus access = await this.RequestAccessAsync();
             if (access == GeolocationAccessStatus.Allowed)
             {
                 LocationRetriever[] retriever = { null };
@@ -143,10 +144,10 @@ namespace XPlat.Device.Geolocation
 
                 try
                 {
-                    var looperThread = Looper.MyLooper() ?? Looper.MainLooper;
+                    Looper looperThread = Looper.MyLooper() ?? Looper.MainLooper;
 
-                    var numEnabledProviders = 0;
-                    foreach (var provider in this.locationProviders)
+                    int numEnabledProviders = 0;
+                    foreach (string provider in this.locationProviders)
                     {
                         if (this.locationManager.IsProviderEnabled(provider))
                         {
@@ -174,7 +175,7 @@ namespace XPlat.Device.Geolocation
                         return await tcs.Task;
                     }
                 }
-                catch (Java.Lang.SecurityException ex)
+                catch (SecurityException ex)
                 {
                     tcs.TrySetException(
                         new GeolocatorException("A location cannot be retrieved as the access was unauthorized.", ex));
@@ -212,7 +213,7 @@ namespace XPlat.Device.Geolocation
         /// <inheritdoc />
         public Task<GeolocationAccessStatus> RequestAccessAsync()
         {
-            var status = this.locationProviders.Any(this.locationManager.IsProviderEnabled)
+            GeolocationAccessStatus status = this.locationProviders.Any(this.locationManager.IsProviderEnabled)
                              ? GeolocationAccessStatus.Allowed
                              : GeolocationAccessStatus.Denied;
 
@@ -226,8 +227,8 @@ namespace XPlat.Device.Geolocation
                 this.locationListener.PositionChanged += this.LocationListener_PositionChanged;
                 this.locationListener.StatusChanged += this.LocationListener_StatusChanged;
 
-                var looperThread = Looper.MyLooper() ?? Looper.MainLooper;
-                foreach (var provider in this.locationProviders)
+                Looper looperThread = Looper.MyLooper() ?? Looper.MainLooper;
+                foreach (string provider in this.locationProviders)
                 {
                     this.locationManager.RequestLocationUpdates(
                         provider,

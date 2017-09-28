@@ -100,12 +100,12 @@
         public Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
             // Setting the timeout on the Windows API to a year as an exception is thrown when it times out. 
-            var getPositionTask = this.Locator.GetGeopositionAsync(maximumAge, TimeSpan.FromDays(365));
+            IAsyncOperation<Windows.Devices.Geolocation.Geoposition> getPositionTask = this.Locator.GetGeopositionAsync(maximumAge, TimeSpan.FromDays(365));
 
             // Creating a specific timeout task to handle this in a nicer way.
-            var timeoutTask = new TimeoutTask(timeout, getPositionTask.Cancel);
+            TimeoutTask timeoutTask = new TimeoutTask(timeout, getPositionTask.Cancel);
 
-            var tcs = new TaskCompletionSource<Geoposition>();
+            TaskCompletionSource<Geoposition> tcs = new TaskCompletionSource<Geoposition>();
 
             getPositionTask.Completed = (op, s) =>
                 {

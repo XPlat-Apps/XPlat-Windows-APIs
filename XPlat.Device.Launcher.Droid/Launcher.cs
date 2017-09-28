@@ -14,7 +14,7 @@
             return Task.Run(
                 () =>
                     {
-                        var result = false;
+                        bool result = false;
 
                         try
                         {
@@ -39,7 +39,7 @@
             return Task.Run(
                 () =>
                     {
-                        var result = LaunchQuerySupportStatus.Unknown;
+                        LaunchQuerySupportStatus result = LaunchQuerySupportStatus.Unknown;
 
                         try
                         {
@@ -84,13 +84,13 @@
             return Task.Run(
                 () =>
                     {
-                        var result = false;
+                        bool result = false;
 
                         try
                         {
                             if (file != null && file.Exists)
                             {
-                                var fileContentType = string.IsNullOrWhiteSpace(file.ContentType)
+                                string fileContentType = string.IsNullOrWhiteSpace(file.ContentType)
                                                           ? "*/*"
                                                           : file.ContentType;
 
@@ -117,7 +117,7 @@
             return Task.Run(
                 () =>
                     {
-                        var result = false;
+                        bool result = false;
 
                         try
                         {

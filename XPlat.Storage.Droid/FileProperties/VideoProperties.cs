@@ -61,10 +61,10 @@
         private double? GetLatitude()
         {
             const string RegexPattern = @"[+-]\d{1,3}.\d{0,10}";
-            var regex = new Regex(RegexPattern);
+            Regex regex = new Regex(RegexPattern);
 
-            var latLong = this.mediaMetadataRetriever.ExtractMetadata(MetadataKey.Location);
-            var matches = regex.Matches(latLong);
+            string latLong = this.mediaMetadataRetriever.ExtractMetadata(MetadataKey.Location);
+            MatchCollection matches = regex.Matches(latLong);
             if (matches.Count >= 2)
             {
                 return ParseHelper.SafeParseDouble(matches[0]);
@@ -76,10 +76,10 @@
         private double? GetLongitude()
         {
             const string RegexPattern = @"[+-]\d{1,3}.\d{0,10}";
-            var regex = new Regex(RegexPattern);
+            Regex regex = new Regex(RegexPattern);
 
-            var latLong = this.mediaMetadataRetriever.ExtractMetadata(MetadataKey.Location);
-            var matches = regex.Matches(latLong);
+            string latLong = this.mediaMetadataRetriever.ExtractMetadata(MetadataKey.Location);
+            MatchCollection matches = regex.Matches(latLong);
             if (matches.Count >= 2)
             {
                 return ParseHelper.SafeParseDouble(matches[1]);
@@ -90,7 +90,7 @@
 
         private VideoOrientation GetVideoOrientation()
         {
-            var orientation = ParseHelper.SafeParseInt(
+            int orientation = ParseHelper.SafeParseInt(
                 this.mediaMetadataRetriever.ExtractMetadata(MetadataKey.VideoRotation));
 
             switch (orientation)

@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
 
-    using Windows.Media.Playback;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Navigation;
 
@@ -13,7 +12,7 @@
     using XPlat.Media.Capture;
     using XPlat.NuGet.UWP.Models;
     using XPlat.Storage;
-    using XPlat.Storage.Pickers;
+    using XPlat.Storage.FileProperties;
 
     public sealed partial class MainPage : Page
     {
@@ -28,7 +27,7 @@
         {
             base.OnNavigatedTo(e);
 
-            var request = new DisplayRequest();
+            DisplayRequest request = new DisplayRequest();
             request.RequestActive();
 
             // Test with list of strings
@@ -63,18 +62,18 @@
                                    };
             ApplicationData.Current.LocalSettings.Values["Tests"] = tests;
 
-            var settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
+            List<Test> settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
 
-            var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
+            IStorageFile file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
                            CreationCollisionOption.OpenIfExists);
 
             await file.WriteTextAsync("Hello from the Android app!");
 
-            var parent = await file.GetParentAsync();
+            IStorageFolder parent = await file.GetParentAsync();
 
-            var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
-            var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
+            BatteryStatus batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
+            int remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
 
             Device.Power.PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
             Device.Power.PowerManager.Current.RemainingChargePercentChanged +=
@@ -87,10 +86,10 @@
                                   };
             this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
 
-            var access = await this.geolocator.RequestAccessAsync();
+            GeolocationAccessStatus access = await this.geolocator.RequestAccessAsync();
             if (access == GeolocationAccessStatus.Allowed)
             {
-                var currentLocation = await this.geolocator.GetGeopositionAsync(
+                Geoposition currentLocation = await this.geolocator.GetGeopositionAsync(
                                           new TimeSpan(0, 0, 10),
                                           new TimeSpan(0, 0, 5));
                 if (currentLocation != null)
@@ -107,15 +106,15 @@
 
             if (capturedPhotoFile != null)
             {
-                var parentFolder = await capturedPhotoFile.GetParentAsync();
+                IStorageFolder parentFolder = await capturedPhotoFile.GetParentAsync();
 
-                var copy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
+                IStorageFile copy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var props = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+                IDictionary<string, object> props = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
 
-                var imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
+                IImageProperties imageProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
 
-                var bytes = await capturedPhotoFile.ReadBytesAsync();
+                byte[] bytes = await capturedPhotoFile.ReadBytesAsync();
             }
 
             dialog.VideoSettings.MaxResolution = CameraCaptureUIMaxVideoResolution.HighestAvailable;
@@ -126,15 +125,15 @@
 
             if (capturedVideoFile != null)
             {
-                var parentFolder = await capturedVideoFile.GetParentAsync();
+                IStorageFolder parentFolder = await capturedVideoFile.GetParentAsync();
 
-                var copy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
+                IStorageFile copy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var props = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
+                IDictionary<string, object> props = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
 
-                var imageProps = await capturedVideoFile.Properties.GetImagePropertiesAsync();
+                IImageProperties imageProps = await capturedVideoFile.Properties.GetImagePropertiesAsync();
 
-                var bytes = await capturedVideoFile.ReadBytesAsync();
+                byte[] bytes = await capturedVideoFile.ReadBytesAsync();
             }
 
             //var singleFilePick = new FileOpenPicker(this);
@@ -150,24 +149,24 @@
             //multiFilePick.FileTypeFilter.Add(".jpg");
             //var pickedFiles = await multiFilePick.PickMultipleFilesAsync();
 
-            var fileData = await file.ReadTextAsync();
+            string fileData = await file.ReadTextAsync();
 
             request.RequestRelease();
         }
 
         private void PowerManager_RemainingChargePercentChanged(object sender, int e)
         {
-            var percent = e;
+            int percent = e;
         }
 
         private void PowerManager_BatteryStatusChanged(object sender, BatteryStatus e)
         {
-            var status = e;
+            BatteryStatus status = e;
         }
 
         private void Geolocator_PositionChanged(IGeolocator sender, PositionChangedEventArgs args)
         {
-            var position = args.Position;
+            Geoposition position = args.Position;
         }
     }
 }

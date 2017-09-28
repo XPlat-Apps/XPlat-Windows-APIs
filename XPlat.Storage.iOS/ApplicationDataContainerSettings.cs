@@ -258,8 +258,8 @@
         {
             lock (this.obj)
             {
-                var type = value.GetType();
-                var code = Type.GetTypeCode(type);
+                Type type = value.GetType();
+                TypeCode code = Type.GetTypeCode(type);
 
                 switch (code)
                 {
@@ -399,8 +399,8 @@
         {
             if (!this.ContainsKey(key)) return null;
 
-            var type = typeof(T);
-            var code = Type.GetTypeCode(type);
+            Type type = typeof(T);
+            TypeCode code = Type.GetTypeCode(type);
 
             object setting;
 
@@ -487,7 +487,7 @@
                     break;
             }
 
-            var value = (T)setting;
+            T value = (T)setting;
 
             return value;
         }

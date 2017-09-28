@@ -12,7 +12,7 @@
 
         public override bool Equals(object obj)
         {
-            var appSetting = obj as AppSetting;
+            AppSetting appSetting = obj as AppSetting;
             return appSetting != null ? this.Equals(appSetting) : base.Equals(obj);
         }
 
@@ -26,7 +26,7 @@
         {
             unchecked
             {
-                var hashCode = (this.Name != null ? this.Name.GetHashCode() : 0);
+                int hashCode = (this.Name != null ? this.Name.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ this.Date.GetHashCode();
                 hashCode = (hashCode * 397) ^ (this.NestedSetting != null ? this.NestedSetting.GetHashCode() : 0);
                 return hashCode;

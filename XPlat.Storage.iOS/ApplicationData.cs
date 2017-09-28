@@ -102,7 +102,7 @@
 
         private static IStorageFolder CreateLocalFolder()
         {
-            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             return new StorageFolder(System.IO.Path.Combine(documentsPath, "..", "Library"));
         }
 
@@ -113,10 +113,10 @@
 
         private static IStorageFolder CreateTemporaryFolder()
         {
-            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var localFolder = new StorageFolder(System.IO.Path.Combine(documentsPath, "..", "Library"));
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            StorageFolder localFolder = new StorageFolder(System.IO.Path.Combine(documentsPath, "..", "Library"));
 
-            var tempFolderTask = localFolder.CreateFolderAsync("Temp", CreationCollisionOption.OpenIfExists);
+            Task<IStorageFolder> tempFolderTask = localFolder.CreateFolderAsync("Temp", CreationCollisionOption.OpenIfExists);
 
             Task.WaitAll(tempFolderTask);
 

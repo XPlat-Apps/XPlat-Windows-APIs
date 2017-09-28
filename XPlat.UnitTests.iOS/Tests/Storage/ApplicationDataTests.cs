@@ -35,7 +35,7 @@
         [Test]
         public void ApplicationData_CreatedFileExists()
         {
-            var file = StorageHelper.CreateStorageFile(
+            IStorageFile file = StorageHelper.CreateStorageFile(
                 ApplicationData.Current.LocalFolder,
                 "test.txt",
                 CreationCollisionOption.ReplaceExisting);
@@ -59,7 +59,7 @@
         [Test]
         public void ApplicationData_DeleteCreatedFileDoesNotExist()
         {
-            var file = StorageHelper.CreateStorageFile(
+            IStorageFile file = StorageHelper.CreateStorageFile(
                 ApplicationData.Current.LocalFolder,
                 "test.txt",
                 CreationCollisionOption.ReplaceExisting);
@@ -72,7 +72,7 @@
         [Test]
         public void ApplicationData_StorageItemNotFoundExceptionThrownWhenWritingTextToDeletedFile()
         {
-            var file = StorageHelper.CreateStorageFile(
+            IStorageFile file = StorageHelper.CreateStorageFile(
                 ApplicationData.Current.LocalFolder,
                 "test.txt",
                 CreationCollisionOption.ReplaceExisting);

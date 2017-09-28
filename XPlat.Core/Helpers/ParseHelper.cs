@@ -18,7 +18,7 @@
         /// </returns>
         public static bool SafeParseBool(object boolean)
         {
-            var parsedValue = false;
+            bool parsedValue = false;
             if (boolean != null)
             {
                 bool.TryParse(boolean.ToString(), out parsedValue);
@@ -37,7 +37,7 @@
         /// </returns>
         public static int SafeParseInt(object integer)
         {
-            var parsedValue = 0;
+            int parsedValue = 0;
             if (integer != null)
             {
                 int.TryParse(integer.ToString(), out parsedValue);
@@ -94,7 +94,7 @@
         /// </returns>
         public static Guid SafeParseGuid(object guid)
         {
-            var parsedValue = Guid.Empty;
+            Guid parsedValue = Guid.Empty;
 
             if (guid != null)
             {
@@ -196,7 +196,7 @@
         /// </returns>
         public static TEnum SafeParseEnum<TEnum>(object enumValue) where TEnum : struct
         {
-            var parsedValue = default(TEnum);
+            TEnum parsedValue = default(TEnum);
             if (enumValue != null)
             {
                 Enum.TryParse(enumValue.ToString(), out parsedValue);
@@ -215,7 +215,7 @@
         /// </returns>
         public static DateTime SafeParseDateTime(object dateTime)
         {
-            var parsedValue = DateTime.MinValue;
+            DateTime parsedValue = DateTime.MinValue;
             if (dateTime != null)
             {
                 DateTime.TryParse(dateTime.ToString(), out parsedValue);
@@ -234,7 +234,7 @@
         /// </returns>
         public static DateTimeOffset SafeParseDateTimeOffset(object dateTimeOffset)
         {
-            var parsedValue = DateTimeOffset.MinValue;
+            DateTimeOffset parsedValue = DateTimeOffset.MinValue;
             if (dateTimeOffset != null)
             {
                 DateTimeOffset.TryParse(dateTimeOffset.ToString(), out parsedValue);

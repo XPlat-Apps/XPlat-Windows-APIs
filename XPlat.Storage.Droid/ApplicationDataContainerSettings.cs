@@ -14,8 +14,6 @@
 
     using Newtonsoft.Json;
 
-    using XPlat.Helpers;
-
     public class ApplicationDataContainerSettings : Java.Lang.Object,
                                                     ISharedPreferencesOnSharedPreferenceChangeListener,
                                                     IPropertySet
@@ -62,16 +60,16 @@
         public bool Contains(KeyValuePair<string, object> item)
         {
             object storedValue;
-            var expectedValue = item.Value;
+            object expectedValue = item.Value;
 
             return this.TryGetValue(item.Key, out storedValue) && expectedValue == storedValue;
         }
 
         public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
         {
-            var index = arrayIndex;
+            int index = arrayIndex;
 
-            foreach (var key in this.Keys)
+            foreach (string key in this.Keys)
             {
                 array[index++] = new KeyValuePair<string, object>(key, this[key]);
             }
@@ -97,7 +95,7 @@
         {
             ISharedPreferencesEditor editor = this.sharedPreferences.Edit();
 
-            var valueString = JsonConvert.SerializeObject(value, this.jsonSettings);
+            string valueString = JsonConvert.SerializeObject(value, this.jsonSettings);
             editor.PutString(key, valueString);
             editor.Commit();
         }
@@ -111,7 +109,7 @@
 
         public bool TryGetValue(string key, out object value)
         {
-            var valueString = this.sharedPreferences.GetString(key, string.Empty);
+            string valueString = this.sharedPreferences.GetString(key, string.Empty);
             if (!string.IsNullOrWhiteSpace(valueString))
             {
                 value = JsonConvert.DeserializeObject(valueString, this.jsonSettings);
@@ -126,7 +124,7 @@
         {
             get
             {
-                var valueString = this.sharedPreferences.GetString(key, string.Empty);
+                string valueString = this.sharedPreferences.GetString(key, string.Empty);
                 return !string.IsNullOrWhiteSpace(valueString) ? JsonConvert.DeserializeObject(valueString, this.jsonSettings) : null;
             }
             set
@@ -141,7 +139,7 @@
         {
             ICollection<string> keys = new Collection<string>();
 
-            foreach (var preference in this.sharedPreferences.All)
+            foreach (KeyValuePair<string, object> preference in this.sharedPreferences.All)
             {
                 keys.Add(preference.Key);
             }
@@ -155,10 +153,10 @@
         {
             Collection<object> values = new Collection<object>();
 
-            foreach (var preference in this.sharedPreferences.All)
+            foreach (KeyValuePair<string, object> preference in this.sharedPreferences.All)
             {
                 string valueString = preference.Value.ToString();
-                var value = !string.IsNullOrWhiteSpace(valueString) ? JsonConvert.DeserializeObject(valueString, this.jsonSettings) : null;
+                object value = !string.IsNullOrWhiteSpace(valueString) ? JsonConvert.DeserializeObject(valueString, this.jsonSettings) : null;
                 if (value != null)
                 {
                     values.Add(value);

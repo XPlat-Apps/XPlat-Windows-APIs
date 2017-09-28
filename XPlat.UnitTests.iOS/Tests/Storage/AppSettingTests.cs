@@ -43,7 +43,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -53,11 +53,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_StringSupported";
             string expectedValue = "Hello, World!";
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -70,7 +70,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -82,7 +82,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -92,11 +92,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_BooleanSupported";
             bool expectedValue = true;
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -108,7 +108,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -120,7 +120,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -130,11 +130,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_Int32Supported";
             int expectedValue = 100;
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -146,7 +146,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -158,7 +158,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -168,11 +168,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_Int64Supported";
             long expectedValue = 100;
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -184,7 +184,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -196,7 +196,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -206,11 +206,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_FloatSupported";
             float expectedValue = 100;
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -222,7 +222,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -234,7 +234,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -244,11 +244,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_DoubleSupported";
             double expectedValue = 100;
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -260,7 +260,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -272,7 +272,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -282,11 +282,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_DecimalSupported";
             decimal expectedValue = 100;
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -298,7 +298,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -310,7 +310,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -320,11 +320,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_DateTimeSupported";
             DateTime expectedValue = DateTime.Now;
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -336,7 +336,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -348,7 +348,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue.ToString(), actualValue);
         }
 
@@ -358,11 +358,11 @@
             string expectedKey = "LocalSettings_Values_Add_KeyValuePair_GuidSupported";
             Guid expectedValue = Guid.NewGuid();
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue.ToString(), actualValue);
         }
 
@@ -374,7 +374,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue.ToString(), actualValue);
         }
 
@@ -391,7 +391,7 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, expectedValue);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -406,11 +406,11 @@
                                                NestedSetting = new AppSetting { Name = "Nested" }
                                            };
 
-            var keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
+            KeyValuePair<string, object> keyValuePair = new KeyValuePair<string, object>(expectedKey, expectedValue);
 
             ApplicationData.Current.LocalSettings.Values.Add(keyValuePair);
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -427,7 +427,7 @@
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
             Assert.AreEqual(expectedValue, actualValue);
         }
 
@@ -477,13 +477,13 @@
 
             ApplicationData.Current.LocalSettings.Values.Add(expectedKey, originalValue);
 
-            var originalActualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object originalActualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
 
             Assert.AreEqual(originalValue, originalActualValue);
 
             ApplicationData.Current.LocalSettings.Values[expectedKey] = expectedValue;
 
-            var actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
+            object actualValue = ApplicationData.Current.LocalSettings.Values[expectedKey];
 
             Assert.AreEqual(expectedValue, actualValue);
         }

@@ -68,8 +68,8 @@ namespace XPlat.Device.Geolocation
             {
                 if (this.activeProvider != null && this.locationManager.IsProviderEnabled(this.activeProvider))
                 {
-                    var locationProvider = this.locationManager.GetProvider(location.Provider);
-                    var timeSinceLastLocation = location.Time.TimeSpanFromMilliseconds()
+                    LocationProvider locationProvider = this.locationManager.GetProvider(location.Provider);
+                    TimeSpan timeSinceLastLocation = location.Time.TimeSpanFromMilliseconds()
                                                 - this.lastLocation.Time.TimeSpanFromMilliseconds();
 
                     if (locationProvider.Accuracy > this.locationManager.GetProvider(this.activeProvider).Accuracy
@@ -83,7 +83,7 @@ namespace XPlat.Device.Geolocation
                 this.activeProvider = location.Provider;
             }
 
-            var previous = Interlocked.Exchange(ref this.lastLocation, location);
+            Location previous = Interlocked.Exchange(ref this.lastLocation, location);
             previous?.Dispose();
 
             this.PositionChanged?.Invoke(this, new PositionChangedEventArgs(location.ToLocalGeoposition()));
@@ -147,7 +147,7 @@ namespace XPlat.Device.Geolocation
 
         private void UpdateActiveLocationManagerProviders()
         {
-            foreach (var p in this.allLocationProviders)
+            foreach (string p in this.allLocationProviders)
             {
                 if (this.locationManager.IsProviderEnabled(p))
                 {

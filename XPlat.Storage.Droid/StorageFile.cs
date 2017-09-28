@@ -67,7 +67,7 @@
                 throw new ArgumentException("The desired new name is the same as the current name.");
             }
 
-            var fileInfo = new FileInfo(this.Path);
+            FileInfo fileInfo = new FileInfo(this.Path);
             if (fileInfo.Directory == null)
             {
                 throw new InvalidOperationException("This file cannot be renamed.");
@@ -143,8 +143,8 @@
         /// <inheritdoc />
         public Task<IStorageFolder> GetParentAsync()
         {
-            var result = default(IStorageFolder);
-            var parent = Directory.GetParent(this.Path);
+            IStorageFolder result = default(IStorageFolder);
+            DirectoryInfo parent = Directory.GetParent(this.Path);
             if (parent != null) result = new StorageFolder(parent.FullName);
             return Task.FromResult(result);
         }
@@ -385,7 +385,7 @@
                     "Cannot move to and replace a file that does not exist.");
             }
 
-            var newPath = fileToReplace.Path;
+            string newPath = fileToReplace.Path;
 
             File.Delete(newPath);
             File.Move(this.Path, newPath);
@@ -403,10 +403,10 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot write to a file that does not exist.");
             }
 
-            using (var stream = await this.OpenAsync(FileAccessMode.ReadWrite))
+            using (Stream stream = await this.OpenAsync(FileAccessMode.ReadWrite))
             {
                 stream.SetLength(0);
-                using (var writer = new StreamWriter(stream))
+                using (StreamWriter writer = new StreamWriter(stream))
                 {
                     await writer.WriteAsync(text);
                 }
@@ -423,9 +423,9 @@
 
             string text;
 
-            using (var stream = await this.OpenAsync(FileAccessMode.Read))
+            using (Stream stream = await this.OpenAsync(FileAccessMode.Read))
             {
-                using (var reader = new StreamReader(stream))
+                using (StreamReader reader = new StreamReader(stream))
                 {
                     text = await reader.ReadToEndAsync();
                 }
@@ -455,7 +455,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot read from a file that does not exist.");
             }
 
-            var bytes = File.ReadAllBytes(this.Path);
+            byte[] bytes = File.ReadAllBytes(this.Path);
             return Task.FromResult(bytes);
         }
 

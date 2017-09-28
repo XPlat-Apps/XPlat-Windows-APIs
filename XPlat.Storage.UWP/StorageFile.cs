@@ -11,6 +11,10 @@
 
     using System.Runtime.InteropServices.WindowsRuntime;
 
+    using Windows.Storage.Streams;
+
+    using BasicProperties = Windows.Storage.FileProperties.BasicProperties;
+
     /// <summary>
     /// Defines an application file.
     /// </summary>
@@ -109,7 +113,7 @@
                           "Cannot get properties for a file that does not exist.");
             }
 
-            var storageFile = this.Originator;
+            Windows.Storage.StorageFile storageFile = this.Originator;
             return storageFile != null ? await storageFile.Properties.RetrievePropertiesAsync(null) : null;
         }
 
@@ -129,17 +133,17 @@
                     "Cannot get properties for a folder that does not exist.");
             }
 
-            var storageFolder = this.Originator;
+            Windows.Storage.StorageFile storageFolder = this.Originator;
             if (storageFolder == null) return null;
 
-            var basicProperties = await storageFolder.GetBasicPropertiesAsync();
+            BasicProperties basicProperties = await storageFolder.GetBasicPropertiesAsync();
             return basicProperties.ToBasicProperties();
         }
 
         /// <inheritdoc />
         public async Task<IStorageFolder> GetParentAsync()
         {
-            var parent = await this.Originator.GetParentAsync();
+            Windows.Storage.StorageFolder parent = await this.Originator.GetParentAsync();
             return parent == null ? null : new StorageFolder(parent);
         }
 
@@ -156,7 +160,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot open a file that does not exist.");
             }
 
-            var s = await this.Originator.OpenReadAsync();
+            IRandomAccessStreamWithContentType s = await this.Originator.OpenReadAsync();
             return s.AsStream();
         }
 
@@ -168,7 +172,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot open a file that does not exist.");
             }
 
-            var s = await this.Originator.OpenAsync(accessMode.ToFileAccessMode());
+            IRandomAccessStream s = await this.Originator.OpenAsync(accessMode.ToFileAccessMode());
             return s.AsStream();
         }
 
@@ -212,13 +216,13 @@
                 throw new ArgumentNullException(nameof(desiredNewName));
             }
 
-            var storageFolder =
+            Windows.Storage.StorageFolder storageFolder =
                 await Windows.Storage.StorageFolder.GetFolderFromPathAsync(System.IO.Path.GetDirectoryName(destinationFolder.Path));
 
-            var copiedStorageFile =
+            Windows.Storage.StorageFile copiedStorageFile =
                 await this.Originator.CopyAsync(storageFolder, desiredNewName, option.ToNameCollisionOption());
 
-            var copiedFile = new StorageFile(copiedStorageFile);
+            StorageFile copiedFile = new StorageFile(copiedStorageFile);
             return copiedFile;
         }
 
@@ -242,7 +246,7 @@
                           "Cannot copy to and replace a file that does not exist.");
             }
 
-            var storageFile = await Windows.Storage.StorageFile.GetFileFromPathAsync(fileToReplace.Path);
+            Windows.Storage.StorageFile storageFile = await Windows.Storage.StorageFile.GetFileFromPathAsync(fileToReplace.Path);
 
             await this.Originator.CopyAndReplaceAsync(storageFile);
         }
@@ -287,7 +291,7 @@
                 throw new ArgumentNullException(nameof(desiredNewName));
             }
 
-            var storageFolder =
+            Windows.Storage.StorageFolder storageFolder =
                 await Windows.Storage.StorageFolder.GetFolderFromPathAsync(System.IO.Path.GetDirectoryName(destinationFolder.Path));
 
             await this.Originator.MoveAsync(storageFolder, desiredNewName, option.ToNameCollisionOption());
@@ -313,7 +317,7 @@
                           "Cannot move to and replace a file that does not exist.");
             }
 
-            var storageFile = await Windows.Storage.StorageFile.GetFileFromPathAsync(fileToReplace.Path);
+            Windows.Storage.StorageFile storageFile = await Windows.Storage.StorageFile.GetFileFromPathAsync(fileToReplace.Path);
 
             await this.Originator.MoveAndReplaceAsync(storageFile);
         }
@@ -337,7 +341,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot read from a file that does not exist.");
             }
 
-            var text = await FileIO.ReadTextAsync(this.Originator);
+            string text = await FileIO.ReadTextAsync(this.Originator);
             return text;
         }
 
@@ -360,7 +364,7 @@
                 throw new StorageItemNotFoundException(this.Name, "Cannot read from a file that does not exist.");
             }
 
-            var buffer = await FileIO.ReadBufferAsync(this.Originator);
+            IBuffer buffer = await FileIO.ReadBufferAsync(this.Originator);
             return buffer.ToArray();
         }
 
@@ -394,7 +398,7 @@
                 return null;
             }
 
-            var resultFile = new StorageFile(pathFile);
+            StorageFile resultFile = new StorageFile(pathFile);
 
             return resultFile;
         }
@@ -426,7 +430,7 @@
                 return null;
             }
 
-            var resultFile = new StorageFile(pathFile);
+            StorageFile resultFile = new StorageFile(pathFile);
 
             return resultFile;
         }

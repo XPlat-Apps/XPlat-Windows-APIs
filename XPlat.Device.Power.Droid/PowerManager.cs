@@ -82,11 +82,11 @@ namespace XPlat.Device.Power
         {
             try
             {
-                using (var filter = new IntentFilter(Intent.ActionBatteryChanged))
+                using (IntentFilter filter = new IntentFilter(Intent.ActionBatteryChanged))
                 {
-                    using (var battery = Application.Context.RegisterReceiver(null, filter))
+                    using (Intent battery = Application.Context.RegisterReceiver(null, filter))
                     {
-                        var batteryStatus = battery.GetIntExtra(BatteryManager.ExtraStatus, -1);
+                        int batteryStatus = battery.GetIntExtra(BatteryManager.ExtraStatus, -1);
 
                         switch (batteryStatus)
                         {
@@ -113,12 +113,12 @@ namespace XPlat.Device.Power
         {
             try
             {
-                using (var filter = new IntentFilter(Intent.ActionBatteryChanged))
+                using (IntentFilter filter = new IntentFilter(Intent.ActionBatteryChanged))
                 {
-                    using (var battery = Application.Context.RegisterReceiver(null, filter))
+                    using (Intent battery = Application.Context.RegisterReceiver(null, filter))
                     {
-                        var level = battery.GetIntExtra(BatteryManager.ExtraLevel, -1);
-                        var scale = battery.GetIntExtra(BatteryManager.ExtraScale, -1);
+                        int level = battery.GetIntExtra(BatteryManager.ExtraLevel, -1);
+                        int scale = battery.GetIntExtra(BatteryManager.ExtraScale, -1);
 
                         return (int)Math.Floor(level * 100D / scale);
                     }

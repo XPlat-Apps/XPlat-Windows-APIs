@@ -18,7 +18,7 @@
                 return null;
             }
 
-            var geocoordinate = new Geocoordinate();
+            Geocoordinate geocoordinate = new Geocoordinate();
 
             if (location.HorizontalAccuracy > -1)
             {

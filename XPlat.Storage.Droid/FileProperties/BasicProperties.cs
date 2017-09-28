@@ -51,12 +51,12 @@
             {
                 if (this.isFolder)
                 {
-                    var files = Directory.GetFiles(this.filePath, "*.*");
-                    var length = files.Select(file => new FileInfo(file)).Select(fileInfo => fileInfo.Length).Sum();
+                    string[] files = Directory.GetFiles(this.filePath, "*.*");
+                    long length = files.Select(file => new FileInfo(file)).Select(fileInfo => fileInfo.Length).Sum();
                     return (ulong)length;
                 }
 
-                var info = new FileInfo(this.filePath);
+                FileInfo info = new FileInfo(this.filePath);
                 return (ulong)info.Length;
             }
         }

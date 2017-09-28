@@ -1,10 +1,12 @@
 ﻿namespace XPlat.UnitTests.UWP.Tests.Storage
 {
+    using System.Collections.Generic;
     using System.Linq;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using XPlat.Storage;
+    using XPlat.Storage.FileProperties;
     using XPlat.UnitTests.UWP.Helpers;
 
     [TestClass]
@@ -19,14 +21,14 @@
         {
             const string Text = "Hello, World!";
 
-            var file = StorageHelper.CreateStorageFile(ApplicationData.Current.LocalFolder, SizeUpdatesFile, CreationCollisionOption.ReplaceExisting);
-            var props = StorageHelper.GetBasicProperties(file);
+            IStorageFile file = StorageHelper.CreateStorageFile(ApplicationData.Current.LocalFolder, SizeUpdatesFile, CreationCollisionOption.ReplaceExisting);
+            IBasicProperties props = StorageHelper.GetBasicProperties(file);
 
             Assert.AreEqual(0, props.Size);
 
             StorageHelper.WriteTextToFile(file, Text);
 
-            var updatedProps = StorageHelper.GetBasicProperties(file);
+            IBasicProperties updatedProps = StorageHelper.GetBasicProperties(file);
 
             Assert.AreEqual(Text.Length, updatedProps.Size);
         }
@@ -34,8 +36,8 @@
         [TestMethod]
         public void StorageFile_RetrievePropertiesAsync_ContainsSome()
         {
-            var file = StorageHelper.CreateStorageFile(ApplicationData.Current.LocalFolder, RetrievePropertiesFile, CreationCollisionOption.ReplaceExisting);
-            var props = StorageHelper.RetrieveProperties(file, null);
+            IStorageFile file = StorageHelper.CreateStorageFile(ApplicationData.Current.LocalFolder, RetrievePropertiesFile, CreationCollisionOption.ReplaceExisting);
+            IDictionary<string, object> props = StorageHelper.RetrieveProperties(file, null);
 
             Assert.IsTrue(props.Any());
         }

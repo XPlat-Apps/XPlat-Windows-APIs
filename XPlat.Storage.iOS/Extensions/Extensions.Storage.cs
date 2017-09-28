@@ -6,7 +6,7 @@
     {
         public static FileAttributes AsFileAttributes(this System.IO.FileAttributes attributes)
         {
-            var result = FileAttributes.Normal;
+            FileAttributes result = FileAttributes.Normal;
 
             if (attributes.HasFlag(System.IO.FileAttributes.ReadOnly))
             {
@@ -36,12 +36,12 @@
             return Task.Run(
                 async () =>
                     {
-                        foreach (var subfolder in await folder.GetFoldersAsync())
+                        foreach (IStorageFolder subfolder in await folder.GetFoldersAsync())
                         {
                             await subfolder.DeleteAsync();
                         }
 
-                        foreach (var file in await folder.GetFilesAsync())
+                        foreach (IStorageFile file in await folder.GetFilesAsync())
                         {
                             await file.DeleteAsync();
                         }

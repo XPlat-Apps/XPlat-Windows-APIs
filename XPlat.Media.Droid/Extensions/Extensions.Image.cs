@@ -10,6 +10,8 @@
     using XPlat.Media.Capture;
     using XPlat.Storage;
 
+    using Stream = System.IO.Stream;
+
     public static class Extensions
     {
         /// <summary>
@@ -60,9 +62,9 @@
             {
                 result = await saveLocation.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
 
-                using (var imageStream = await image.GetStreamAsync(compressionFormat))
+                using (Stream imageStream = await image.GetStreamAsync(compressionFormat))
                 {
-                    using (var fileStream = await result.OpenAsync(FileAccessMode.ReadWrite))
+                    using (Stream fileStream = await result.OpenAsync(FileAccessMode.ReadWrite))
                     {
                         await imageStream.CopyToAsync(fileStream);
                     }
@@ -113,15 +115,15 @@
                 return null;
             }
 
-            var exif = new Dictionary<string, string>();
+            Dictionary<string, string> exif = new Dictionary<string, string>();
 
-            var exifInterface = new ExifInterface(imageFile.Path);
+            ExifInterface exifInterface = new ExifInterface(imageFile.Path);
 
-            foreach (var exifKey in exifKeys)
+            foreach (string exifKey in exifKeys)
             {
                 try
                 {
-                    var exifVal = exifInterface.GetAttribute(exifKey);
+                    string exifVal = exifInterface.GetAttribute(exifKey);
                     if (!string.IsNullOrWhiteSpace(exifVal))
                     {
                         exif.Add(exifKey, exifVal);
@@ -143,8 +145,8 @@
                 return;
             }
 
-            var exifInterface = new ExifInterface(imageFile.Path);
-            foreach (var exifKvp in exifData)
+            ExifInterface exifInterface = new ExifInterface(imageFile.Path);
+            foreach (KeyValuePair<string, string> exifKvp in exifData)
             {
                 try
                 {
@@ -167,11 +169,11 @@
 
             if (resolution != CameraCaptureUIMaxPhotoResolution.HighestAvailable)
             {
-                var bitmap = BitmapFactory.DecodeFile(imageFile.Path);
-                var width = bitmap.Width;
-                var height = bitmap.Height;
+                Bitmap bitmap = BitmapFactory.DecodeFile(imageFile.Path);
+                int width = bitmap.Width;
+                int height = bitmap.Height;
 
-                var isPortrait = width < height;
+                bool isPortrait = width < height;
 
                 float expectedWidth = width;
                 float expectedHeight = height;
@@ -200,9 +202,9 @@
                         break;
                 }
 
-                var scale = Math.Min(width / expectedWidth, height / expectedHeight);
+                float scale = Math.Min(width / expectedWidth, height / expectedHeight);
 
-                var scaleImage = Bitmap.CreateScaledBitmap(
+                Bitmap scaleImage = Bitmap.CreateScaledBitmap(
                     bitmap,
                     (int)(width / scale),
                     (int)(height / scale),

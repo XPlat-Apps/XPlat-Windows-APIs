@@ -17,7 +17,7 @@
                 throw new ArgumentNullException(nameof(providerName));
             }
 
-            var myPackage = Application.Context.PackageManager.GetInstalledPackages(PackageInfoFlags.Providers)
+            PackageInfo myPackage = Application.Context.PackageManager.GetInstalledPackages(PackageInfoFlags.Providers)
                 .FirstOrDefault(
                     x => x.PackageName.Equals(
                         Application.Context.PackageName,

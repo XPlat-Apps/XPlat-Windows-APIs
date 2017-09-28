@@ -1,6 +1,5 @@
 ﻿namespace XPlat.Storage.FileProperties
 {
-    using System;
     using System.Collections.Generic;
 
     using Android.Media;
@@ -68,8 +67,8 @@
 
         private double? GetLatitude()
         {
-            var attrLat = this.exifInterface.GetAttribute(ExifInterface.TagGpsLatitude);
-            var attrLatRef = this.exifInterface.GetAttribute(ExifInterface.TagGpsLatitudeRef);
+            string attrLat = this.exifInterface.GetAttribute(ExifInterface.TagGpsLatitude);
+            string attrLatRef = this.exifInterface.GetAttribute(ExifInterface.TagGpsLatitudeRef);
 
             if (!string.IsNullOrWhiteSpace(attrLat) && !string.IsNullOrWhiteSpace(attrLatRef))
             {
@@ -81,8 +80,8 @@
 
         private double? GetLongitude()
         {
-            var attrLong = this.exifInterface.GetAttribute(ExifInterface.TagGpsLongitude);
-            var attrLongRef = this.exifInterface.GetAttribute(ExifInterface.TagGpsLongitudeRef);
+            string attrLong = this.exifInterface.GetAttribute(ExifInterface.TagGpsLongitude);
+            string attrLongRef = this.exifInterface.GetAttribute(ExifInterface.TagGpsLongitudeRef);
 
             if (!string.IsNullOrWhiteSpace(attrLong) && !string.IsNullOrWhiteSpace(attrLongRef))
             {
@@ -94,24 +93,24 @@
 
         private static double ConvertToDegrees(string stringDms)
         {
-            var dms = stringDms.Split(',');
+            string[] dms = stringDms.Split(',');
 
-            var stringD = dms[0].Split('/');
-            var d0 = double.Parse(stringD[0]);
-            var d1 = double.Parse(stringD[1]);
-            var floatD = d0 / d1;
+            string[] stringD = dms[0].Split('/');
+            double d0 = double.Parse(stringD[0]);
+            double d1 = double.Parse(stringD[1]);
+            double floatD = d0 / d1;
 
-            var stringM = dms[1].Split('/');
-            var m0 = double.Parse(stringM[0]);
-            var m1 = double.Parse(stringM[1]);
-            var floatM = m0 / m1;
+            string[] stringM = dms[1].Split('/');
+            double m0 = double.Parse(stringM[0]);
+            double m1 = double.Parse(stringM[1]);
+            double floatM = m0 / m1;
 
-            var stringS = dms[2].Split('/');
-            var s0 = double.Parse(stringS[0]);
-            var s1 = double.Parse(stringS[1]);
-            var floatS = s0 / s1;
+            string[] stringS = dms[2].Split('/');
+            double s0 = double.Parse(stringS[0]);
+            double s1 = double.Parse(stringS[1]);
+            double floatS = s0 / s1;
 
-            var result = floatD + (floatM / 60) + (floatS / 3600);
+            double result = floatD + (floatM / 60) + (floatS / 3600);
             return result;
         }
     }

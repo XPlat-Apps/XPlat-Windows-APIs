@@ -65,7 +65,7 @@
         /// <inheritdoc />
         public Task<GeolocationAccessStatus> RequestAccessAsync()
         {
-            var info = NSBundle.MainBundle.InfoDictionary;
+            NSDictionary info = NSBundle.MainBundle.InfoDictionary;
             if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
             {
                 if (info.ContainsKey(new NSString("NSLocationWhenInUseUsageDescription")))
@@ -100,9 +100,9 @@
         /// <inheritdoc />
         public async Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
-            var tcs = new TaskCompletionSource<Geoposition>();
+            TaskCompletionSource<Geoposition> tcs = new TaskCompletionSource<Geoposition>();
 
-            var access = await this.RequestAccessAsync();
+            GeolocationAccessStatus access = await this.RequestAccessAsync();
             if (access == GeolocationAccessStatus.Allowed)
             {
                 if (this.LastKnownPosition == null
@@ -134,9 +134,9 @@
 
         private void LocationManager_OnUpdatedLocation(object sender, CLLocationUpdatedEventArgs args)
         {
-            var loc = args.NewLocation;
+            CLLocation loc = args.NewLocation;
 
-            var geoposition = loc.ToLocalGeoposition();
+            Geoposition geoposition = loc.ToLocalGeoposition();
 
             this.LastKnownPosition = geoposition;
             this.PositionChanged?.Invoke(this, new PositionChangedEventArgs(geoposition));
@@ -146,9 +146,9 @@
 
         private void LocationManager_OnLocationsUpdated(object sender, CLLocationsUpdatedEventArgs args)
         {
-            foreach (var loc in args.Locations)
+            foreach (CLLocation loc in args.Locations)
             {
-                var geoposition = loc.ToLocalGeoposition();
+                Geoposition geoposition = loc.ToLocalGeoposition();
 
                 this.LastKnownPosition = geoposition;
                 this.PositionChanged?.Invoke(this, new PositionChangedEventArgs(geoposition));

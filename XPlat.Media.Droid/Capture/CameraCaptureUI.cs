@@ -1,14 +1,12 @@
 ﻿namespace XPlat.Media.Capture
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
     using Android.App;
     using Android.Content;
-    using Android.Graphics;
-    using Android.Media;
-    using Android.OS;
     using Android.Provider;
 
     using XPlat.Foundation;
@@ -41,9 +39,9 @@
         /// <inheritdoc />
         public Task<IStorageFile> CaptureFileAsync(CameraCaptureUIMode mode)
         {
-            var id = this.GenerateRequestId();
+            int id = this.GenerateRequestId();
 
-            var newTcs = new TaskCompletionSource<IStorageFile>(id);
+            TaskCompletionSource<IStorageFile> newTcs = new TaskCompletionSource<IStorageFile>(id);
             if (Interlocked.CompareExchange(ref this.currentSingleTcs, newTcs, null) != null)
             {
                 throw new InvalidOperationException("Cannot activate multiple requests for files.");
@@ -54,7 +52,7 @@
             TypedEventHandler<Activity, CameraFileCaptured> handler = null;
             handler = async (sender, args) =>
                 {
-                    var tcs = Interlocked.Exchange(ref this.currentSingleTcs, null);
+                    TaskCompletionSource<IStorageFile> tcs = Interlocked.Exchange(ref this.currentSingleTcs, null);
 
                     CameraCaptureUIActivity.CameraFileCaptured -= handler;
 
@@ -63,7 +61,7 @@
                         return;
                     }
                     
-                    var resultFile = args.File;
+                    IStorageFile resultFile = args.File;
 
                     if (args.File != null && !args.File.Exists)
                     {
@@ -73,11 +71,18 @@
                     if ((mode == CameraCaptureUIMode.Photo || mode == CameraCaptureUIMode.PhotoOrVideo)
                         && resultFile != null && resultFile.Exists)
                     {
-                        var exifData = resultFile.GetExifData();
-
-                        resultFile = await resultFile.ResizeImageFileAsync(this.PhotoSettings.MaxResolution);
-
-                        resultFile.SetExifData(exifData);
+                        IReadOnlyDictionary<string, string> exifData = resultFile.GetExifData();
+                        try
+                        {
+                            resultFile = await resultFile.ResizeImageFileAsync(this.PhotoSettings.MaxResolution);
+                        }
+                        catch (Exception ex)
+                        {
+#if DEBUG
+                            System.Diagnostics.Debug.WriteLine(ex.ToString());
+#endif
+                        }
+                        resultFile?.SetExifData(exifData);
                     }
 
                     tcs.SetResult(args.Cancel ? null : resultFile);
@@ -96,7 +101,7 @@
 
         private Intent GenerateIntent(int id, CameraCaptureUIMode mode)
         {
-            var cameraCaptureIntent = new Intent(this.context, typeof(CameraCaptureUIActivity));
+            Intent cameraCaptureIntent = new Intent(this.context, typeof(CameraCaptureUIActivity));
             cameraCaptureIntent.PutExtra(CameraCaptureUIActivity.IntentId, id);
 
             switch (mode)

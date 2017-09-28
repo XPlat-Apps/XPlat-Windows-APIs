@@ -24,11 +24,11 @@
         public static async Task<Dictionary<string, object>> GetAllMediaPropertiesAsync(
             this IStorageItemContentProperties storageProps)
         {
-            var props = new Dictionary<string, object>();
+            Dictionary<string, object> props = new Dictionary<string, object>();
 
             try
             {
-                var imageProps = await storageProps.GetImagePropertiesAsync();
+                IImageProperties imageProps = await storageProps.GetImagePropertiesAsync();
 
                 if (imageProps != null)
                 {
@@ -106,7 +106,7 @@
 
             try
             {
-                var videoProps = await storageProps.GetVideoPropertiesAsync();
+                IVideoProperties videoProps = await storageProps.GetVideoPropertiesAsync();
                 if (videoProps != null)
                 {
                     if (videoProps.Year != 0 && !props.ContainsKey("System.Media.Year"))
@@ -202,7 +202,7 @@
 
             try
             {
-                var musicProps = await storageProps.GetMusicPropertiesAsync();
+                IMusicProperties musicProps = await storageProps.GetMusicPropertiesAsync();
                 if (musicProps != null)
                 {
                     if (!props.ContainsKey("System.Rating"))

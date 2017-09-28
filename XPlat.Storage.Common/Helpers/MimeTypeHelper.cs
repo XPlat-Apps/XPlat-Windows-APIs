@@ -2264,11 +2264,11 @@
                 return null;
             }
 
-            var result = new List<string>();
+            List<string> result = new List<string>();
 
-            foreach (var fileType in fileTypes)
+            foreach (string fileType in fileTypes)
             {
-                var mimeType = GetMimeType(fileType);
+                string mimeType = GetMimeType(fileType);
                 if (!string.IsNullOrWhiteSpace(mimeType) && !result.Contains(mimeType))
                 {
                     result.Add(mimeType);
@@ -2285,7 +2285,7 @@
                 fileType = $".{fileType}";
             }
 
-            var result = MimeTypes.FirstOrDefault(
+            KeyValuePair<string, string> result = MimeTypes.FirstOrDefault(
                 x => x.Key.Equals(fileType, StringComparison.CurrentCultureIgnoreCase));
             return !string.IsNullOrWhiteSpace(result.Value) ? result.Value : string.Empty;
         }

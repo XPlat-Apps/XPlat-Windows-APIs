@@ -43,9 +43,9 @@ namespace XPlat.Storage.Pickers
         /// <inheritdoc />
         public Task<IStorageFile> PickSingleFileAsync()
         {
-            var id = this.GenerateRequestId();
+            int id = this.GenerateRequestId();
 
-            var newTcs = new TaskCompletionSource<IStorageFile>(id);
+            TaskCompletionSource<IStorageFile> newTcs = new TaskCompletionSource<IStorageFile>(id);
             if (Interlocked.CompareExchange(ref this.currentSingleTcs, newTcs, null) != null)
             {
                 throw new InvalidOperationException("Cannot activate multiple requests for files.");
@@ -56,7 +56,7 @@ namespace XPlat.Storage.Pickers
             TypedEventHandler<Activity, FileOpenPickerFilesReceived> handler = null;
             handler = (sender, args) =>
                 {
-                    var tcs = Interlocked.Exchange(ref this.currentSingleTcs, null);
+                    TaskCompletionSource<IStorageFile> tcs = Interlocked.Exchange(ref this.currentSingleTcs, null);
 
                     FileOpenPickerActivity.FilesReceived -= handler;
 
@@ -76,9 +76,9 @@ namespace XPlat.Storage.Pickers
         /// <inheritdoc />
         public Task<IReadOnlyList<IStorageFile>> PickMultipleFilesAsync()
         {
-            var id = this.GenerateRequestId();
+            int id = this.GenerateRequestId();
 
-            var multiTcs = new TaskCompletionSource<IReadOnlyList<IStorageFile>>(id);
+            TaskCompletionSource<IReadOnlyList<IStorageFile>> multiTcs = new TaskCompletionSource<IReadOnlyList<IStorageFile>>(id);
             if (Interlocked.CompareExchange(ref this.currentMultiTcs, multiTcs, null) != null)
             {
                 throw new InvalidOperationException("Cannot activate multiple requests for files.");
@@ -89,7 +89,7 @@ namespace XPlat.Storage.Pickers
             TypedEventHandler<Activity, FileOpenPickerFilesReceived> handler = null;
             handler = (sender, args) =>
                 {
-                    var tcs = Interlocked.Exchange(ref this.currentMultiTcs, null);
+                    TaskCompletionSource<IReadOnlyList<IStorageFile>> tcs = Interlocked.Exchange(ref this.currentMultiTcs, null);
 
                     FileOpenPickerActivity.FilesReceived -= handler;
 
@@ -116,10 +116,10 @@ namespace XPlat.Storage.Pickers
 
         private Intent GenerateIntent(int id, bool allowMultiple)
         {
-            var fileOpenPickerIntent = new Intent(this.context, typeof(FileOpenPickerActivity));
+            Intent fileOpenPickerIntent = new Intent(this.context, typeof(FileOpenPickerActivity));
             fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentId, id);
 
-            var mimeTypes = string.Join("|", MimeTypeHelper.GetMimeTypes(this.FileTypeFilter));
+            string mimeTypes = string.Join("|", MimeTypeHelper.GetMimeTypes(this.FileTypeFilter));
             if (string.IsNullOrWhiteSpace(mimeTypes))
             {
                 throw new InvalidOperationException("Cannot request file picker without any file type filters.");

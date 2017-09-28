@@ -27,13 +27,13 @@
         /// </returns>
         public static IEnumerable<T> Take<T>(this List<T> list, int startingIndex, int takeCount)
         {
-            var results = new List<T>();
+            List<T> results = new List<T>();
 
-            var itemsToTake = takeCount;
+            int itemsToTake = takeCount;
 
             if (list.Count - 1 - startingIndex > itemsToTake)
             {
-                var items = list.GetRange(startingIndex, itemsToTake);
+                List<T> items = list.GetRange(startingIndex, itemsToTake);
                 results.AddRange(items);
             }
             else
@@ -41,7 +41,7 @@
                 itemsToTake = list.Count - startingIndex;
                 if (itemsToTake > 0)
                 {
-                    var items = list.GetRange(startingIndex, itemsToTake);
+                    List<T> items = list.GetRange(startingIndex, itemsToTake);
                     results.AddRange(items);
                 }
             }
@@ -69,13 +69,13 @@
         /// </returns>
         public static IEnumerable<T> Take<T>(this IReadOnlyList<T> list, int startingIndex, int takeCount)
         {
-            var results = new List<T>();
+            List<T> results = new List<T>();
 
-            var itemsToTake = takeCount;
+            int itemsToTake = takeCount;
 
             if (list.Count - 1 - startingIndex > itemsToTake)
             {
-                var items = list.GetRange(startingIndex, itemsToTake);
+                IEnumerable<T> items = list.GetRange(startingIndex, itemsToTake);
                 results.AddRange(items);
             }
             else
@@ -83,7 +83,7 @@
                 itemsToTake = list.Count - startingIndex;
                 if (itemsToTake > 0)
                 {
-                    var items = list.GetRange(startingIndex, itemsToTake);
+                    IEnumerable<T> items = list.GetRange(startingIndex, itemsToTake);
                     results.AddRange(items);
                 }
             }
@@ -111,10 +111,10 @@
         /// </returns>
         public static IEnumerable<T> GetRange<T>(this IReadOnlyList<T> list, int index, int count)
         {
-            var range = new List<T>();
-            for (var i = 0; i < count; i++)
+            List<T> range = new List<T>();
+            for (int i = 0; i < count; i++)
             {
-                var j = i + index;
+                int j = i + index;
                 if (j >= index + count)
                 {
                     break;

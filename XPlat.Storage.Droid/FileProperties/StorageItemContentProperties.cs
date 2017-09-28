@@ -81,7 +81,7 @@
 
             if (this.Item.IsOfType(StorageItemTypes.File))
             {
-                var item = this.Item as IStorageFile;
+                IStorageFile item = this.Item as IStorageFile;
                 if (item != null && !props.ContainsKey("System.FileExtension") && !string.IsNullOrWhiteSpace(item.FileType))
                 {
                     props.Add("System.FileExtension", item.FileType);
@@ -90,7 +90,7 @@
 
             try
             {
-                var basicProps = await this.Item.GetBasicPropertiesAsync();
+                IBasicProperties basicProps = await this.Item.GetBasicPropertiesAsync();
 
                 if (!props.ContainsKey("System.Size"))
                 {
@@ -104,9 +104,9 @@
 
             try
             {
-                var mediaProps = await this.GetAllMediaPropertiesAsync();
+                Dictionary<string, object> mediaProps = await this.GetAllMediaPropertiesAsync();
 
-                foreach (var prop in mediaProps)
+                foreach (KeyValuePair<string, object> prop in mediaProps)
                 {
                     if (!props.ContainsKey(prop.Key) && prop.Value != null)
                     {

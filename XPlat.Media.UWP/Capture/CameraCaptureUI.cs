@@ -22,7 +22,7 @@
         /// <inheritdoc />
         public async Task<IStorageFile> CaptureFileAsync(CameraCaptureUIMode mode)
         {
-            var dialog = new Windows.Media.Capture.CameraCaptureUI();
+            Windows.Media.Capture.CameraCaptureUI dialog = new Windows.Media.Capture.CameraCaptureUI();
             dialog.PhotoSettings.AllowCropping = this.PhotoSettings.AllowCropping;
             dialog.PhotoSettings.MaxResolution = this.PhotoSettings.MaxResolution.ToCameraCaptureUIMaxPhotoResolution();
             dialog.VideoSettings.MaxResolution = this.VideoSettings.MaxResolution.ToCameraCaptureUIMaxVideoResolution();

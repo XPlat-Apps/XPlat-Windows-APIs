@@ -1,6 +1,5 @@
 ﻿namespace XPlat.Storage
 {
-    using System.Collections;
     using System.Collections.Generic;
 
     /// <summary>

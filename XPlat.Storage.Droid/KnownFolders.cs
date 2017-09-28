@@ -1,5 +1,7 @@
 ﻿namespace XPlat.Storage
 {
+    using System.Threading.Tasks;
+
     using Android.OS;
 
     /// <summary>
@@ -14,7 +16,7 @@
         {
             get
             {
-                var cameraRoll = StorageFolder.GetFolderFromPathAsync(
+                Task<IStorageFolder> cameraRoll = StorageFolder.GetFolderFromPathAsync(
                     Environment.GetExternalStoragePublicDirectory(Environment.DirectoryDcim).AbsolutePath);
                 cameraRoll.Wait();
                 return cameraRoll.Result;
@@ -28,7 +30,7 @@
         {
             get
             {
-                var documentsLibrary = StorageFolder.GetFolderFromPathAsync(
+                Task<IStorageFolder> documentsLibrary = StorageFolder.GetFolderFromPathAsync(
                     System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments));
                 documentsLibrary.Wait();
                 return documentsLibrary.Result;
@@ -42,7 +44,7 @@
         {
             get
             {
-                var musicLibrary = StorageFolder.GetFolderFromPathAsync(
+                Task<IStorageFolder> musicLibrary = StorageFolder.GetFolderFromPathAsync(
                     System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyMusic));
                 musicLibrary.Wait();
                 return musicLibrary.Result;
@@ -56,7 +58,7 @@
         {
             get
             {
-                var picturesLibrary = StorageFolder.GetFolderFromPathAsync(
+                Task<IStorageFolder> picturesLibrary = StorageFolder.GetFolderFromPathAsync(
                     System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyPictures));
                 picturesLibrary.Wait();
                 return picturesLibrary.Result;
@@ -70,7 +72,7 @@
         {
             get
             {
-                var videosLibrary = StorageFolder.GetFolderFromPathAsync(
+                Task<IStorageFolder> videosLibrary = StorageFolder.GetFolderFromPathAsync(
                     System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyVideos));
                 videosLibrary.Wait();
                 return videosLibrary.Result;

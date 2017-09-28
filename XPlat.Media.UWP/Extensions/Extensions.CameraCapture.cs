@@ -1,13 +1,11 @@
 ﻿namespace XPlat.Media
 {
-    using System;
-
     using Windows.Media.Capture;
 
     public static partial class Extensions
     {
         public static CameraCaptureUIMaxPhotoResolution ToCameraCaptureUIMaxPhotoResolution(
-            this XPlat.Media.Capture.CameraCaptureUIMaxPhotoResolution resolution)
+            this Capture.CameraCaptureUIMaxPhotoResolution resolution)
         {
             switch (resolution)
             {
@@ -26,7 +24,7 @@
         }
 
         public static CameraCaptureUIMaxVideoResolution ToCameraCaptureUIMaxVideoResolution(
-            this XPlat.Media.Capture.CameraCaptureUIMaxVideoResolution resolution)
+            this Capture.CameraCaptureUIMaxVideoResolution resolution)
         {
             switch (resolution)
             {

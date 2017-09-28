@@ -1,7 +1,5 @@
 ﻿namespace XPlat.Storage
 {
-    using System;
-
     using XPlat.Storage.FileProperties;
 
     public static partial class Extensions

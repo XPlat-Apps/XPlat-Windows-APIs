@@ -8,6 +8,8 @@
 
     using XPlat.Storage.FileProperties;
 
+    using BasicProperties = Windows.Storage.FileProperties.BasicProperties;
+
     /// <summary>
     /// Defines an application folder.
     /// </summary>
@@ -114,17 +116,17 @@
                     "Cannot get properties for a folder that does not exist.");
             }
 
-            var storageFolder = this.Originator;
+            Windows.Storage.StorageFolder storageFolder = this.Originator;
             if (storageFolder == null) return null;
 
-            var basicProperties = await storageFolder.GetBasicPropertiesAsync();
+            BasicProperties basicProperties = await storageFolder.GetBasicPropertiesAsync();
             return basicProperties.ToBasicProperties();
         }
 
         /// <inheritdoc />
         public async Task<IStorageFolder> GetParentAsync()
         {
-            var parent = await this.Originator.GetParentAsync();
+            Windows.Storage.StorageFolder parent = await this.Originator.GetParentAsync();
             return parent == null ? null : new StorageFolder(parent);
         }
 
@@ -160,7 +162,7 @@
                 throw new ArgumentNullException(nameof(desiredName));
             }
 
-            var storageFile = await this.Originator.CreateFileAsync(desiredName, options.ToCreationCollisionOption());
+            Windows.Storage.StorageFile storageFile = await this.Originator.CreateFileAsync(desiredName, options.ToCreationCollisionOption());
             return new StorageFile(storageFile);
         }
 
@@ -185,7 +187,7 @@
                 throw new ArgumentNullException(nameof(desiredName));
             }
 
-            var storageFolder =
+            Windows.Storage.StorageFolder storageFolder =
                 await this.Originator.CreateFolderAsync(desiredName, options.ToCreationCollisionOption());
             return new StorageFolder(storageFolder);
         }
@@ -291,7 +293,7 @@
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var storageItem = await this.Originator.GetItemAsync(name);
+            Windows.Storage.IStorageItem storageItem = await this.Originator.GetItemAsync(name);
 
             if (storageItem == null)
             {
@@ -305,13 +307,13 @@
 
             if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.File))
             {
-                var storageFile = storageItem as Windows.Storage.StorageFile;
+                Windows.Storage.StorageFile storageFile = storageItem as Windows.Storage.StorageFile;
                 return new StorageFile(storageFile);
             }
 
             if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.Folder))
             {
-                var storageFolder = storageItem as Windows.Storage.StorageFolder;
+                Windows.Storage.StorageFolder storageFolder = storageItem as Windows.Storage.StorageFolder;
                 return new StorageFolder(storageFolder);
             }
 
@@ -328,7 +330,7 @@
                     "Cannot get files from a folder that does not exist.");
             }
 
-            var storageFiles = await this.Originator.GetFilesAsync();
+            IReadOnlyList<Windows.Storage.StorageFile> storageFiles = await this.Originator.GetFilesAsync();
             return storageFiles.Select(storageFile => new StorageFile(storageFile)).ToList();
         }
 
@@ -342,7 +344,7 @@
                     "Cannot get folders from a folder that does not exist.");
             }
 
-            var storageFolders = await this.Originator.GetFoldersAsync();
+            IReadOnlyList<Windows.Storage.StorageFolder> storageFolders = await this.Originator.GetFoldersAsync();
             return storageFolders.Select(storageFolder => new StorageFolder(storageFolder)).ToList();
         }
 
@@ -356,11 +358,11 @@
                     "Cannot get items from a folder that does not exist.");
             }
 
-            var storageItems = await this.Originator.GetItemsAsync();
+            IReadOnlyList<Windows.Storage.IStorageItem> storageItems = await this.Originator.GetItemsAsync();
 
-            var result = new List<IStorageItem>();
+            List<IStorageItem> result = new List<IStorageItem>();
 
-            foreach (var storageItem in storageItems)
+            foreach (Windows.Storage.IStorageItem storageItem in storageItems)
             {
                 if (storageItem == null || storageItem.IsOfType(Windows.Storage.StorageItemTypes.None))
                 {
@@ -369,12 +371,12 @@
 
                 if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.File))
                 {
-                    var storageFile = storageItem as Windows.Storage.StorageFile;
+                    Windows.Storage.StorageFile storageFile = storageItem as Windows.Storage.StorageFile;
                     result.Add(new StorageFile(storageFile));
                 }
                 else if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.Folder))
                 {
-                    var storageFolder = storageItem as Windows.Storage.StorageFolder;
+                    Windows.Storage.StorageFolder storageFolder = storageItem as Windows.Storage.StorageFolder;
                     result.Add(new StorageFolder(storageFolder));
                 }
             }
@@ -392,11 +394,11 @@
                     "Cannot get items from a folder that does not exist.");
             }
 
-            var storageItems = await this.Originator.GetItemsAsync((uint)startIndex, (uint)maxItemsToRetrieve);
+            IReadOnlyList<Windows.Storage.IStorageItem> storageItems = await this.Originator.GetItemsAsync((uint)startIndex, (uint)maxItemsToRetrieve);
 
-            var result = new List<IStorageItem>();
+            List<IStorageItem> result = new List<IStorageItem>();
 
-            foreach (var storageItem in storageItems)
+            foreach (Windows.Storage.IStorageItem storageItem in storageItems)
             {
                 if (storageItem == null || storageItem.IsOfType(Windows.Storage.StorageItemTypes.None))
                 {
@@ -405,12 +407,12 @@
 
                 if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.File))
                 {
-                    var storageFile = storageItem as Windows.Storage.StorageFile;
+                    Windows.Storage.StorageFile storageFile = storageItem as Windows.Storage.StorageFile;
                     result.Add(new StorageFile(storageFile));
                 }
                 else if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.Folder))
                 {
-                    var storageFolder = storageItem as Windows.Storage.StorageFolder;
+                    Windows.Storage.StorageFolder storageFolder = storageItem as Windows.Storage.StorageFolder;
                     result.Add(new StorageFolder(storageFolder));
                 }
             }
@@ -433,7 +435,7 @@
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var storageItem = await this.Originator.TryGetItemAsync(name);
+            Windows.Storage.IStorageItem storageItem = await this.Originator.TryGetItemAsync(name);
             if (storageItem == null)
             {
                 return null;
@@ -441,13 +443,13 @@
 
             if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.File))
             {
-                var storageFile = storageItem as Windows.Storage.StorageFile;
+                Windows.Storage.StorageFile storageFile = storageItem as Windows.Storage.StorageFile;
                 return new StorageFile(storageFile);
             }
 
             if (storageItem.IsOfType(Windows.Storage.StorageItemTypes.Folder))
             {
-                var storageFolder = storageItem as Windows.Storage.StorageFolder;
+                Windows.Storage.StorageFolder storageFolder = storageItem as Windows.Storage.StorageFolder;
                 return new StorageFolder(storageFolder);
             }
 
@@ -481,7 +483,7 @@
                 return null;
             }
 
-            var resultFolder = new StorageFolder(pathFolder);
+            StorageFolder resultFolder = new StorageFolder(pathFolder);
 
             return resultFolder;
         }

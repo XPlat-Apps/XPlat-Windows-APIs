@@ -1,16 +1,16 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "XPlat.Core": "1.2.17212.1",
-    "XPlat.Device.Display": "1.2.17212.1",
-    "XPlat.Device.Geolocation": "1.2.17212.1",
-    "XPlat.Device.Power": "1.2.17212.1",
-    "XPlat.Media": "1.2.17212.1",
-    "XPlat.Storage": "1.2.17212.1",
-    "XPlat.UI.Core": "1.2.17212.1"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.0",
+    "XPlat.Core": "1.2.17271.2",
+    "XPlat.Device.Display": "1.2.17271.2",
+    "XPlat.Device.Geolocation": "1.2.17271.2",
+    "XPlat.Device.Power": "1.2.17271.2",
+    "XPlat.Media": "1.2.17271.2",
+    "XPlat.Storage": "1.2.17271.2",
+    "XPlat.UI.Core": "1.2.17271.2"
   },
   "frameworks": {
-    "uap10.0": {}
+    "uap10.0.10586": {}
   },
   "runtimes": {
     "win10-arm": {},

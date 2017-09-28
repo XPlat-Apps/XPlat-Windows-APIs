@@ -1,6 +1,7 @@
 ﻿namespace XPlat.Droid.ApplicationModel.Manifest
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
@@ -54,7 +55,7 @@
                     "The CurrentActivity property must be set in order to check for content providers.");
             }
 
-            var myPackage = this.CurrentActivity.PackageManager.GetInstalledPackages(PackageInfoFlags.Providers)
+            PackageInfo myPackage = this.CurrentActivity.PackageManager.GetInstalledPackages(PackageInfoFlags.Providers)
                 .FirstOrDefault(
                     x => x.PackageName.Equals(
                         this.CurrentActivity.PackageName,
@@ -69,7 +70,7 @@
         {
             this.GenerateRequestId();
 
-            var newTcs = new TaskCompletionSource<bool>(this.CurrentRequestId);
+            TaskCompletionSource<bool> newTcs = new TaskCompletionSource<bool>(this.CurrentRequestId);
 
             if (permissions == null || !permissions.Any())
             {
@@ -84,7 +85,7 @@
 
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.M)
             {
-                var permissionsToRequest = permissions.Where(permission => !this.CheckPermissionGranted(permission))
+                List<string> permissionsToRequest = permissions.Where(permission => !this.CheckPermissionGranted(permission))
                     .ToList();
 
                 if (permissionsToRequest.Count > 0)

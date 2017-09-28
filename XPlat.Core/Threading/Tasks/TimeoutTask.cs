@@ -41,7 +41,7 @@
 
         private void OnTimeout()
         {
-            var start = DateTime.UtcNow;
+            DateTime start = DateTime.UtcNow;
             while (!this.taskCancelled)
             {
                 if (DateTime.UtcNow - start < this.timeout)

@@ -18,13 +18,13 @@
                     return obj.ToString();
                 }
 
-                var date = obj as NSDate;
+                NSDate date = obj as NSDate;
                 if (date != null)
                 {
                     return date.ToDateTimeOffset();
                 }
 
-                var uuid = obj as NSUuid;
+                NSUuid uuid = obj as NSUuid;
                 if (uuid != null)
                 {
                     return new Guid(uuid.GetBytes());
@@ -35,10 +35,10 @@
                     return decimal.Parse(obj.ToString(), CultureInfo.InvariantCulture);
                 }
 
-                var number = obj as NSNumber;
+                NSNumber number = obj as NSNumber;
                 if (number != null)
                 {
-                    var nsNumber = number;
+                    NSNumber nsNumber = number;
                     switch (nsNumber.ObjCType)
                     {
                         case "c": return nsNumber.BoolValue;

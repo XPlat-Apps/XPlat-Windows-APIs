@@ -115,9 +115,9 @@
 
         private static IStorageFolder CreateTemporaryFolder()
         {
-            var localFolder = new StorageFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
+            StorageFolder localFolder = new StorageFolder(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
 
-            var tempFolderTask = localFolder.CreateFolderAsync("Temp", CreationCollisionOption.OpenIfExists);
+            Task<IStorageFolder> tempFolderTask = localFolder.CreateFolderAsync("Temp", CreationCollisionOption.OpenIfExists);
 
             Task.WaitAll(tempFolderTask);
 

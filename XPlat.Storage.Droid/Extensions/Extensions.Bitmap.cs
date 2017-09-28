@@ -11,8 +11,8 @@
         {
             using (image)
             {
-                var stream = new MemoryStream();
-                var result = await image.CompressAsync(compressionFormat, quality, stream);
+                MemoryStream stream = new MemoryStream();
+                bool result = await image.CompressAsync(compressionFormat, quality, stream);
 
                 image.Recycle();
 

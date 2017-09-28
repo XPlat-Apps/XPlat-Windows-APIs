@@ -32,7 +32,7 @@
         {
             get
             {
-                var directoryInfo = new DirectoryInfo(this.Path);
+                DirectoryInfo directoryInfo = new DirectoryInfo(this.Path);
                 return directoryInfo.Name;
             }
         }
@@ -78,7 +78,7 @@
                 throw new ArgumentException("The desired new name is the same as the current name.");
             }
 
-            var directoryInfo = new DirectoryInfo(this.Path);
+            DirectoryInfo directoryInfo = new DirectoryInfo(this.Path);
             if (directoryInfo.Parent == null)
             {
                 throw new InvalidOperationException("This folder cannot be renamed.");
@@ -155,8 +155,8 @@
         /// <inheritdoc />
         public Task<IStorageFolder> GetParentAsync()
         {
-            var result = default(IStorageFolder);
-            var parent = Directory.GetParent(this.Path);
+            IStorageFolder result = default(IStorageFolder);
+            DirectoryInfo parent = Directory.GetParent(this.Path);
             if (parent != null) result = new StorageFolder(parent.FullName);
             return Task.FromResult(result);
         }
@@ -193,7 +193,7 @@
                 throw new ArgumentNullException(nameof(desiredName));
             }
 
-            var filePath = System.IO.Path.Combine(this.Path, desiredName);
+            string filePath = System.IO.Path.Combine(this.Path, desiredName);
             if (File.Exists(filePath))
             {
                 switch (options)
@@ -251,7 +251,7 @@
                 throw new ArgumentNullException(nameof(desiredName));
             }
 
-            var folderPath = System.IO.Path.Combine(this.Path, desiredName);
+            string folderPath = System.IO.Path.Combine(this.Path, desiredName);
             if (Directory.Exists(folderPath))
             {
                 switch (options)
@@ -309,7 +309,7 @@
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var filePath = System.IO.Path.Combine(this.Path, name);
+            string filePath = System.IO.Path.Combine(this.Path, name);
             if (!File.Exists(filePath))
             {
                 if (createIfNotExists)
@@ -345,7 +345,7 @@
                 throw new ArgumentNullException(nameof(name));
             }
 
-            var folderPath = System.IO.Path.Combine(this.Path, name);
+            string folderPath = System.IO.Path.Combine(this.Path, name);
             if (!Directory.Exists(folderPath))
             {
                 if (createIfNotExists)
@@ -445,10 +445,10 @@
                     "Cannot get items from a folder that does not exist.");
             }
 
-            var folders = await this.GetFoldersAsync();
-            var files = await this.GetFilesAsync();
+            IReadOnlyList<IStorageFolder> folders = await this.GetFoldersAsync();
+            IReadOnlyList<IStorageFile> files = await this.GetFilesAsync();
 
-            var items = new List<IStorageItem>();
+            List<IStorageItem> items = new List<IStorageItem>();
             items.AddRange(folders);
             items.AddRange(files);
 
@@ -465,7 +465,7 @@
                     "Cannot get items from a folder that does not exist.");
             }
 
-            var allItems = await this.GetItemsAsync();
+            IReadOnlyList<IStorageItem> allItems = await this.GetItemsAsync();
 
             return allItems.Take(startIndex, maxItemsToRetrieve).ToList();
         }

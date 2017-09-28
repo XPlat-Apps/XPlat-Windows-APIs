@@ -23,11 +23,11 @@ namespace XPlat.Device.Power
                 return;
             }
 
-            var batteryLevel = intent.GetIntExtra(BatteryManager.ExtraLevel, -1);
-            var batteryScale = intent.GetIntExtra(BatteryManager.ExtraScale, -1);
-            var batteryStatus = intent.GetIntExtra(BatteryManager.ExtraStatus, -1);
+            int batteryLevel = intent.GetIntExtra(BatteryManager.ExtraLevel, -1);
+            int batteryScale = intent.GetIntExtra(BatteryManager.ExtraScale, -1);
+            int batteryStatus = intent.GetIntExtra(BatteryManager.ExtraStatus, -1);
 
-            var status = BatteryStatus.NotPresent;
+            BatteryStatus status = BatteryStatus.NotPresent;
 
             switch (batteryStatus)
             {
@@ -46,13 +46,13 @@ namespace XPlat.Device.Power
                     break;
             }
 
-            var remainingChargePercent = (int)Math.Floor(batteryLevel * 100D / batteryScale);
+            int remainingChargePercent = (int)Math.Floor(batteryLevel * 100D / batteryScale);
 
             if (status != this.previousStatus || remainingChargePercent != this.previousRemainingCharge)
             {
                 lock (this.obj)
                 {
-                    var eventArgs = new BatteryStatusChangedEventArgs(status, remainingChargePercent);
+                    BatteryStatusChangedEventArgs eventArgs = new BatteryStatusChangedEventArgs(status, remainingChargePercent);
 
                     try
                     {

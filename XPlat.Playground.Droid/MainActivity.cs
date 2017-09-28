@@ -4,27 +4,31 @@
     using System.Collections.Generic;
 
     using Android.App;
+    using Android.Content.PM;
     using Android.Media;
     using Android.OS;
 
-    using XPlat.Device;
     using XPlat.Device.Display;
     using XPlat.Device.Geolocation;
     using XPlat.Media.Capture;
     using XPlat.Playground.Droid.Models;
     using XPlat.Storage;
-    using XPlat.Storage.Pickers;
+    using XPlat.Storage.FileProperties;
 
-    [Activity(Label = "XPlat.Playground.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    using BatteryStatus = XPlat.Device.Power.BatteryStatus;
+
+    [Activity(Label = "XPlat.Playground.Droid", MainLauncher = true, Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
     public class MainActivity : Activity
     {
         private Geolocator geolocator;
+
+        private ConfigChanges config;
 
         protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            var request = new DisplayRequest(this.Window);
+            DisplayRequest request = new DisplayRequest(this.Window);
 
             request.RequestActive();
 
@@ -58,20 +62,21 @@
                                                        }
                                            }
                                    };
+
             ApplicationData.Current.LocalSettings.Values["Tests"] = tests;
 
-            var settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
+            List<Test> settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
 
-            var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
+            IStorageFile file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
                            "HelloWorld.txt",
                            CreationCollisionOption.OpenIfExists);
 
             await file.WriteTextAsync("Hello from the Android app!");
 
-            var parent = await file.GetParentAsync();
+            IStorageFolder parent = await file.GetParentAsync();
 
-            var batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
-            var remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
+            BatteryStatus batteryStatus = Device.Power.PowerManager.Current.BatteryStatus;
+            int remainingPercentage = Device.Power.PowerManager.Current.RemainingChargePercent;
 
             Device.Power.PowerManager.Current.BatteryStatusChanged += this.PowerManager_BatteryStatusChanged;
             Device.Power.PowerManager.Current.RemainingChargePercentChanged +=
@@ -84,10 +89,10 @@
             };
             this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
 
-            var access = await this.geolocator.RequestAccessAsync();
+            GeolocationAccessStatus access = await this.geolocator.RequestAccessAsync();
             if (access == GeolocationAccessStatus.Allowed)
             {
-                var currentLocation = await this.geolocator.GetGeopositionAsync(
+                Geoposition currentLocation = await this.geolocator.GetGeopositionAsync(
                                           new TimeSpan(0, 0, 10),
                                           new TimeSpan(0, 0, 5));
                 if (currentLocation != null)
@@ -104,21 +109,21 @@
 
             if (capturedPhotoFile != null)
             {
-                var parentPhotoFolder = await capturedPhotoFile.GetParentAsync();
+                IStorageFolder parentPhotoFolder = await capturedPhotoFile.GetParentAsync();
 
-                var exif = new ExifInterface(capturedPhotoFile.Path);
+                ExifInterface exif = new ExifInterface(capturedPhotoFile.Path);
 
-                var orientation = exif.GetAttribute(ExifInterface.TagOrientation);
-                var lat = exif.GetAttribute(ExifInterface.TagGpsLatitude);
-                var lon = exif.GetAttribute(ExifInterface.TagGpsLongitude);
+                string orientation = exif.GetAttribute(ExifInterface.TagOrientation);
+                string lat = exif.GetAttribute(ExifInterface.TagGpsLatitude);
+                string lon = exif.GetAttribute(ExifInterface.TagGpsLongitude);
 
-                var photoCopy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
+                IStorageFile photoCopy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var photoAllProps = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+                IDictionary<string, object> photoAllProps = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
 
-                var photoProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
+                IImageProperties photoProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
 
-                var photoBytes = await capturedPhotoFile.ReadBytesAsync();
+                byte[] photoBytes = await capturedPhotoFile.ReadBytesAsync();
 
 #if DEBUG
                 System.Diagnostics.Debug.WriteLine($"Image captured is {photoBytes.Length} and exists at {capturedPhotoFile.Path}.");
@@ -132,39 +137,46 @@
 
             if (capturedVideoFile != null)
             {
-                var parentVideoFolder = await capturedVideoFile.GetParentAsync();
+                IStorageFolder parentVideoFolder = await capturedVideoFile.GetParentAsync();
 
-                var videoCopy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
+                IStorageFile videoCopy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                var videoAllProps = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
+                IDictionary<string, object> videoAllProps = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
 
-                var videoProps = await capturedVideoFile.Properties.GetVideoPropertiesAsync();
+                IVideoProperties videoProps = await capturedVideoFile.Properties.GetVideoPropertiesAsync();
 
-                var videoBytes = await capturedVideoFile.ReadBytesAsync();
+                byte[] videoBytes = await capturedVideoFile.ReadBytesAsync();
 
 #if DEBUG
                 System.Diagnostics.Debug.WriteLine($"Video captured is {videoBytes.Length} and exists at {capturedVideoFile.Path}.");
 #endif
             }
 
-            var fileData = await file.ReadTextAsync();
+            string fileData = await file.ReadTextAsync();
 
             request.RequestRelease();
         }
 
-        private void PowerManager_RemainingChargePercentChanged(object sender, int i)
+        protected override void OnDestroy()
         {
-            var percent = i;
+            base.OnDestroy();
+
+            this.config = this.ChangingConfigurations;
         }
 
-        private void PowerManager_BatteryStatusChanged(object sender, Device.Power.BatteryStatus batteryStatus)
+        private void PowerManager_RemainingChargePercentChanged(object sender, int i)
         {
-            var status = batteryStatus;
+            int percent = i;
+        }
+
+        private void PowerManager_BatteryStatusChanged(object sender, BatteryStatus batteryStatus)
+        {
+            BatteryStatus status = batteryStatus;
         }
 
         private void Geolocator_PositionChanged(IGeolocator sender, PositionChangedEventArgs args)
         {
-            var position = args.Position;
+            Geoposition position = args.Position;
         }
     }
 }

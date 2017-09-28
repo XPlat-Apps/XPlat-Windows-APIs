@@ -8,6 +8,7 @@ namespace XPlat.Storage.Pickers
 
     using Android.App;
     using Android.Content;
+    using Android.Content.PM;
     using Android.Database;
     using Android.OS;
     using Android.Provider;
@@ -16,7 +17,7 @@ namespace XPlat.Storage.Pickers
 
     using Uri = Android.Net.Uri;
 
-    [Activity]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
     internal class FileOpenPickerActivity : Activity
     {
         internal const string IntentId = "id";
@@ -41,13 +42,13 @@ namespace XPlat.Storage.Pickers
         {
             base.OnCreate(savedInstanceState);
 
-            var bundle = savedInstanceState ?? this.Intent.Extras;
+            Bundle bundle = savedInstanceState ?? this.Intent.Extras;
 
-            var isComplete = bundle.GetBoolean("isComplete", false);
+            bool isComplete = bundle.GetBoolean("isComplete", false);
             this.requestId = bundle.GetInt(IntentId, 0);
             this.action = bundle.GetString(IntentAction);
             this.type = bundle.GetString(IntentType);
-            var allowMultiple = bundle.GetBoolean(Intent.ExtraAllowMultiple, false);
+            bool allowMultiple = bundle.GetBoolean(Intent.ExtraAllowMultiple, false);
 
             Intent intent = null;
             try
@@ -97,7 +98,7 @@ namespace XPlat.Storage.Pickers
             }
             else
             {
-                var args = await this.ExtractFileArgsAsync(this, requestCode, data?.Data);
+                FileOpenPickerFilesReceived args = await this.ExtractFileArgsAsync(this, requestCode, data?.Data);
                 FilesReceived?.Invoke(this, args);
                 this.Finish();
             }
@@ -122,9 +123,9 @@ namespace XPlat.Storage.Pickers
         {
             if (data != null)
             {
-                var path = await GetFilePathFromUriAsync(context, data);
+                string path = await GetFilePathFromUriAsync(context, data);
 
-                var file = new StorageFile(path);
+                StorageFile file = new StorageFile(path);
                 if (file.Exists)
                 {
                     this.filePath = file.Path;
@@ -137,7 +138,7 @@ namespace XPlat.Storage.Pickers
 
         private static Task<string> GetFilePathFromUriAsync(Context context, Uri data)
         {
-            var tcs = new TaskCompletionSource<string>();
+            TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
 
             if (data != null)
             {
@@ -156,7 +157,7 @@ namespace XPlat.Storage.Pickers
 
                             try
                             {
-                                var projection = new[] { MediaStore.MediaColumns.DisplayName };
+                                string[] projection = new[] { MediaStore.MediaColumns.DisplayName };
                                 cursor = context.ContentResolver.Query(data, projection, null, null, null);
                             }
                             catch (Exception)
@@ -165,7 +166,7 @@ namespace XPlat.Storage.Pickers
 
                             if (cursor != null && cursor.MoveToFirst())
                             {
-                                var index = cursor.GetColumnIndex(MediaStore.MediaColumns.DisplayName);
+                                int index = cursor.GetColumnIndex(MediaStore.MediaColumns.DisplayName);
                                 displayName = cursor.GetString(index);
                             }
 
@@ -173,10 +174,10 @@ namespace XPlat.Storage.Pickers
                             {
                                 try
                                 {
-                                    var filePath =
+                                    string filePath =
                                         $"{ApplicationData.Current.TemporaryFolder.Path}/{DateTime.UtcNow.Year}{DateTime.UtcNow.DayOfYear}_{displayName}";
 
-                                    using (var input = context.ContentResolver.OpenInputStream(data))
+                                    using (Stream input = context.ContentResolver.OpenInputStream(data))
                                     {
                                         using (Stream output = File.Create(filePath))
                                         {

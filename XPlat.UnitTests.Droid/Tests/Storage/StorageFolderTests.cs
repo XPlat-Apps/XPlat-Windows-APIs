@@ -1,8 +1,11 @@
 ﻿namespace XPlat.UnitTests.Droid.Tests.Storage
 {
+    using System.Collections.Generic;
+
     using NUnit.Framework;
 
     using XPlat.Storage;
+    using XPlat.Storage.FileProperties;
     using XPlat.UnitTests.Droid.Helpers;
 
     [TestFixture]
@@ -13,17 +16,17 @@
         {
             const string Text = "Hello, World!";
 
-            var folder = StorageHelper.CreateStorageFolder(ApplicationData.Current.LocalFolder, "FolderTest", CreationCollisionOption.GenerateUniqueName);
+            IStorageFolder folder = StorageHelper.CreateStorageFolder(ApplicationData.Current.LocalFolder, "FolderTest", CreationCollisionOption.GenerateUniqueName);
 
-            var props = StorageHelper.GetBasicProperties(folder);
+            IBasicProperties props = StorageHelper.GetBasicProperties(folder);
 
             Assert.AreEqual(0, props.Size);
 
-            var file1 = StorageHelper.CreateStorageFile(folder, "TestFile1.txt");
+            IStorageFile file1 = StorageHelper.CreateStorageFile(folder, "TestFile1.txt");
 
             StorageHelper.WriteTextToFile(file1, Text);
 
-            var updatedProps = StorageHelper.GetBasicProperties(folder);
+            IBasicProperties updatedProps = StorageHelper.GetBasicProperties(folder);
 
             Assert.AreEqual(Text.Length, updatedProps.Size);
         }
@@ -33,7 +36,7 @@
         {
             const int ItemsToRetrieve = 20;
 
-            for (var i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 StorageHelper.CreateStorageFolder(
                     ApplicationData.Current.LocalFolder,
@@ -41,7 +44,7 @@
                     CreationCollisionOption.ReplaceExisting);
             }
 
-            for (var i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 StorageHelper.CreateStorageFile(
                     ApplicationData.Current.LocalFolder,
@@ -49,7 +52,7 @@
                     CreationCollisionOption.ReplaceExisting);
             }
 
-            var items = StorageHelper.GetFolderItems(ApplicationData.Current.LocalFolder, 0, ItemsToRetrieve);
+            IReadOnlyList<IStorageItem> items = StorageHelper.GetFolderItems(ApplicationData.Current.LocalFolder, 0, ItemsToRetrieve);
 
             Assert.AreEqual(ItemsToRetrieve, items.Count);
         }
@@ -64,7 +67,7 @@
                 FileName,
                 CreationCollisionOption.ReplaceExisting);
 
-            var item = StorageHelper.TryGetItem(ApplicationData.Current.LocalFolder, FileName);
+            IStorageItem item = StorageHelper.TryGetItem(ApplicationData.Current.LocalFolder, FileName);
 
             Assert.IsNotNull(item);
         }
@@ -74,7 +77,7 @@
         {
             const string FileName = "DefinitelyNotAFile.txt";
 
-            var item = StorageHelper.TryGetItem(ApplicationData.Current.LocalFolder, FileName);
+            IStorageItem item = StorageHelper.TryGetItem(ApplicationData.Current.LocalFolder, FileName);
 
             Assert.IsNull(item);
         }

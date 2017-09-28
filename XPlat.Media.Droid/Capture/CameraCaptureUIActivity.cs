@@ -28,7 +28,7 @@
 
     using Uri = Android.Net.Uri;
 
-    [Activity(NoHistory = false, LaunchMode = LaunchMode.Multiple, ConfigurationChanges = ConfigChanges.Orientation)]
+    [Activity(NoHistory = false, LaunchMode = LaunchMode.Multiple, ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
     internal class CameraCaptureUIActivity : Activity
     {
         internal const string IntentId = "id";
@@ -46,6 +46,8 @@
         private File publicFile;
 
         private File contentProviderFile;
+
+        private ConfigChanges config;
 
         internal static event TypedEventHandler<Activity, CameraFileCaptured> CameraFileCaptured;
 
@@ -80,6 +82,13 @@
             {
                 this.StartCamera(savedInstanceState);
             }
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            this.config = this.ChangingConfigurations;
         }
 
         private void StartCamera(Bundle savedInstanceState)
