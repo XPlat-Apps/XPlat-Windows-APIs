@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
     "XPlat.Core": "1.2.17271.2",
     "XPlat.Device.Display": "1.2.17271.2",
     "XPlat.Device.Geolocation": "1.2.17271.2",
