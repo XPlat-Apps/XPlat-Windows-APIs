@@ -1,13 +1,13 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
-    "XPlat.Core": "1.2.17271.2",
-    "XPlat.Device.Display": "1.2.17271.2",
-    "XPlat.Device.Geolocation": "1.2.17271.2",
-    "XPlat.Device.Power": "1.2.17271.2",
-    "XPlat.Media": "1.2.17271.2",
-    "XPlat.Storage": "1.2.17271.2",
-    "XPlat.UI.Core": "1.2.17271.2"
+    "XPlat.Core": "1.2.17271.5",
+    "XPlat.Device.Display": "1.2.17271.5",
+    "XPlat.Device.Geolocation": "1.2.17271.5",
+    "XPlat.Device.Power": "1.2.17271.5",
+    "XPlat.Media": "1.2.17271.5",
+    "XPlat.Storage": "1.2.17271.5",
+    "XPlat.UI.Core": "1.2.17271.5"
   },
   "frameworks": {
     "uap10.0.10586": {}
