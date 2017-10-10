@@ -161,7 +161,10 @@
             {
                 IStorageFolder parentPhotoFolder = await openedFile.GetParentAsync();
 
-                IStorageFile photoCopy = await openedFile.CopyAsync(KnownFolders.CameraRoll);
+                IStorageFile photoCopy = await openedFile.CopyAsync(
+                                             KnownFolders.CameraRoll,
+                                             "hello",
+                                             NameCollisionOption.GenerateUniqueName);
 
                 IDictionary<string, object> photoAllProps = await openedFile.Properties.RetrievePropertiesAsync(null);
 
