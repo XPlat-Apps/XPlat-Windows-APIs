@@ -119,13 +119,10 @@ namespace XPlat.Storage.Pickers
             Intent fileOpenPickerIntent = new Intent(this.context, typeof(FileOpenPickerActivity));
             fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentId, id);
 
-            string mimeTypes = string.Join("|", MimeTypeHelper.GetMimeTypes(this.FileTypeFilter));
-            if (string.IsNullOrWhiteSpace(mimeTypes))
-            {
-                throw new InvalidOperationException("Cannot request file picker without any file type filters.");
-            }
+            IEnumerable<string> mimeTypes =  MimeTypeHelper.GetMimeTypes(this.FileTypeFilter);
 
-            fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentType, mimeTypes);
+            fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentType, "*/*");
+            fileOpenPickerIntent.PutExtra(Intent.ExtraMimeTypes, mimeTypes.ToArray());
             fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentAction, Intent.ActionGetContent);
 
             if (allowMultiple)

@@ -14,6 +14,7 @@
     using XPlat.NuGet.Droid.Models;
     using XPlat.Storage;
     using XPlat.Storage.FileProperties;
+    using XPlat.Storage.Pickers;
 
     using BatteryStatus = XPlat.Device.Power.BatteryStatus;
 
@@ -150,6 +151,29 @@
 #endif
             }
 
+            FileOpenPicker openPicker = new FileOpenPicker(this);
+            openPicker.FileTypeFilter.Add(".jpg");
+            openPicker.FileTypeFilter.Add(".mp4");
+            openPicker.FileTypeFilter.Add(".pdf");
+            IStorageFile openedFile = await openPicker.PickSingleFileAsync();
+
+            if (openedFile != null)
+            {
+                IStorageFolder parentPhotoFolder = await openedFile.GetParentAsync();
+
+                IStorageFile photoCopy = await openedFile.CopyAsync(KnownFolders.CameraRoll);
+
+                IDictionary<string, object> photoAllProps = await openedFile.Properties.RetrievePropertiesAsync(null);
+
+                IImageProperties photoProps = await openedFile.Properties.GetImagePropertiesAsync();
+
+                byte[] photoBytes = await openedFile.ReadBytesAsync();
+
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine($"File captured is {photoBytes.Length} and exists at {openedFile.Path}.");
+#endif
+            }
+            
             string fileData = await file.ReadTextAsync();
 
             request.RequestRelease();

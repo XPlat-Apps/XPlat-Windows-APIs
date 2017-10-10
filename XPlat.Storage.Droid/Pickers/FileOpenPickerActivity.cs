@@ -3,6 +3,7 @@ namespace XPlat.Storage.Pickers
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -36,6 +37,8 @@ namespace XPlat.Storage.Pickers
 
         private string filePath;
 
+        private string[] extraMimes;
+
         internal static event TypedEventHandler<Activity, FileOpenPickerFilesReceived> FilesReceived;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -48,6 +51,7 @@ namespace XPlat.Storage.Pickers
             this.requestId = bundle.GetInt(IntentId, 0);
             this.action = bundle.GetString(IntentAction);
             this.type = bundle.GetString(IntentType);
+            this.extraMimes = bundle.GetStringArray(Intent.ExtraMimeTypes);
             bool allowMultiple = bundle.GetBoolean(Intent.ExtraAllowMultiple, false);
 
             Intent intent = null;
@@ -61,9 +65,15 @@ namespace XPlat.Storage.Pickers
                     intent.PutExtra(Intent.ExtraAllowMultiple, true);
                 }
 
+                if (this.extraMimes != null && this.extraMimes.Any())
+                {
+                    intent.PutExtra(Intent.ExtraMimeTypes, this.extraMimes);
+                }
+
                 if (!isComplete)
                 {
-                    this.StartActivityForResult(intent, this.requestId);
+                    Intent chooser = Intent.CreateChooser(intent, allowMultiple ? "Select files" : "Select a file");
+                    this.StartActivityForResult(chooser, this.requestId);
                 }
             }
             catch (Exception ex)
@@ -84,11 +94,9 @@ namespace XPlat.Storage.Pickers
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-            Task<FileOpenPickerFilesReceived> result;
-
             if (resultCode == Result.Canceled)
             {
-                result = Task.FromResult(new FileOpenPickerFilesReceived(requestCode, null, true));
+                Task<FileOpenPickerFilesReceived> result = Task.FromResult(new FileOpenPickerFilesReceived(requestCode, null, true));
                 result.ContinueWith(
                     x =>
                         {

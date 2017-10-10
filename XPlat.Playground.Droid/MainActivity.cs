@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using Android.App;
     using Android.Content.PM;
@@ -14,10 +15,15 @@
     using XPlat.Playground.Droid.Models;
     using XPlat.Storage;
     using XPlat.Storage.FileProperties;
+    using XPlat.Storage.Pickers;
 
     using BatteryStatus = XPlat.Device.Power.BatteryStatus;
 
-    [Activity(Label = "XPlat.Playground.Droid", MainLauncher = true, Icon = "@drawable/icon", ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
+    [Activity(
+        Label = "XPlat.Playground.Droid",
+        MainLauncher = true,
+        Icon = "@drawable/icon",
+        ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenSize)]
     public class MainActivity : Activity
     {
         private Geolocator geolocator;
@@ -68,8 +74,8 @@
             List<Test> settings = ApplicationData.Current.LocalSettings.Values.Get<List<Test>>("Tests");
 
             IStorageFile file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync(
-                           "HelloWorld.txt",
-                           CreationCollisionOption.OpenIfExists);
+                                    "HelloWorld.txt",
+                                    CreationCollisionOption.OpenIfExists);
 
             await file.WriteTextAsync("Hello from the Android app!");
 
@@ -82,19 +88,16 @@
             Device.Power.PowerManager.Current.RemainingChargePercentChanged +=
                 this.PowerManager_RemainingChargePercentChanged;
 
-            this.geolocator = new Geolocator(this)
-            {
-                DesiredAccuracy = PositionAccuracy.Default,
-                MovementThreshold = 25
-            };
+            this.geolocator =
+                new Geolocator(this) { DesiredAccuracy = PositionAccuracy.Default, MovementThreshold = 25 };
             this.geolocator.PositionChanged += this.Geolocator_PositionChanged;
 
             GeolocationAccessStatus access = await this.geolocator.RequestAccessAsync();
             if (access == GeolocationAccessStatus.Allowed)
             {
                 Geoposition currentLocation = await this.geolocator.GetGeopositionAsync(
-                                          new TimeSpan(0, 0, 10),
-                                          new TimeSpan(0, 0, 5));
+                                                  new TimeSpan(0, 0, 10),
+                                                  new TimeSpan(0, 0, 5));
                 if (currentLocation != null)
                 {
                     // ToDo
@@ -119,14 +122,16 @@
 
                 IStorageFile photoCopy = await capturedPhotoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                IDictionary<string, object> photoAllProps = await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
+                IDictionary<string, object> photoAllProps =
+                    await capturedPhotoFile.Properties.RetrievePropertiesAsync(null);
 
                 IImageProperties photoProps = await capturedPhotoFile.Properties.GetImagePropertiesAsync();
 
                 byte[] photoBytes = await capturedPhotoFile.ReadBytesAsync();
 
 #if DEBUG
-                System.Diagnostics.Debug.WriteLine($"Image captured is {photoBytes.Length} and exists at {capturedPhotoFile.Path}.");
+                System.Diagnostics.Debug.WriteLine(
+                    $"Image captured is {photoBytes.Length} and exists at {capturedPhotoFile.Path}.");
 #endif
             }
 
@@ -141,14 +146,41 @@
 
                 IStorageFile videoCopy = await capturedVideoFile.CopyAsync(KnownFolders.CameraRoll);
 
-                IDictionary<string, object> videoAllProps = await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
+                IDictionary<string, object> videoAllProps =
+                    await capturedVideoFile.Properties.RetrievePropertiesAsync(null);
 
                 IVideoProperties videoProps = await capturedVideoFile.Properties.GetVideoPropertiesAsync();
 
                 byte[] videoBytes = await capturedVideoFile.ReadBytesAsync();
 
 #if DEBUG
-                System.Diagnostics.Debug.WriteLine($"Video captured is {videoBytes.Length} and exists at {capturedVideoFile.Path}.");
+                System.Diagnostics.Debug.WriteLine(
+                    $"Video captured is {videoBytes.Length} and exists at {capturedVideoFile.Path}.");
+#endif
+            }
+
+            FileOpenPicker openPicker = new FileOpenPicker(this);
+            IReadOnlyList<IStorageFile> openedFiles = await openPicker.PickMultipleFilesAsync();
+
+            IStorageFile openedFile = openedFiles?.FirstOrDefault();
+            if (openedFile != null)
+            {
+                IStorageFolder parentPhotoFolder = await openedFile.GetParentAsync();
+
+                IStorageFile photoCopy = await openedFile.CopyAsync(
+                                             KnownFolders.CameraRoll,
+                                             "hello",
+                                             NameCollisionOption.GenerateUniqueName);
+
+                IDictionary<string, object> photoAllProps = await openedFile.Properties.RetrievePropertiesAsync(null);
+
+                IImageProperties photoProps = await openedFile.Properties.GetImagePropertiesAsync();
+
+                byte[] photoBytes = await openedFile.ReadBytesAsync();
+
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine(
+                    $"File captured is {photoBytes.Length} and exists at {openedFile.Path}.");
 #endif
             }
 
@@ -180,4 +212,3 @@
         }
     }
 }
-
