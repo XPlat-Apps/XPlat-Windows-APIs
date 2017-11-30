@@ -15,6 +15,10 @@
     <copyright>Copyright (c) XPlat APIs. All rights reserved.</copyright>
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Storage StorageFile StorageFolder ApplicationData FileOpenPicker</tags>
     <dependencies>
+      <group targetFramework="portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10">
+        <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
+      </group>
+
       <group targetFramework="uap10.0">
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
       </group>
@@ -31,6 +35,9 @@
     </dependencies>
   </metadata>
   <files>
+    <file src="..\XPlat.Storage.Common\bin\Release\XPlat.Storage.Common.dll" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Storage.Common.dll" />
+    <file src="..\XPlat.Storage.Common\bin\Release\XPlat.Storage.Common.xml" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Storage.Common.xml" />
+
     <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.Common.dll" target="lib\uap10.0\XPlat.Storage.Common.dll" />
     <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.Common.xml" target="lib\uap10.0\XPlat.Storage.Common.xml" />
     <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.UWP.pri" target="lib\uap10.0\XPlat.Storage.UWP.pri" />

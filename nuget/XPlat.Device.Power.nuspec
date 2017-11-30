@@ -25,6 +25,9 @@
     </dependencies>
   </metadata>
   <files>
+    <file src="..\XPlat.Device.Power.Common\bin\Release\XPlat.Device.Power.Common.dll" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Device.Power.Common.dll" />
+    <file src="..\XPlat.Device.Power.Common\bin\Release\XPlat.Device.Power.Common.xml" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Device.Power.Common.xml" />
+
     <file src="..\XPlat.Device.Power.UWP\bin\Release\XPlat.Device.Power.Common.dll" target="lib\uap10.0\XPlat.Device.Power.Common.dll" />
     <file src="..\XPlat.Device.Power.UWP\bin\Release\XPlat.Device.Power.Common.xml" target="lib\uap10.0\XPlat.Device.Power.Common.xml" />
     <file src="..\XPlat.Device.Power.UWP\bin\Release\XPlat.Device.Power.UWP.pri" target="lib\uap10.0\XPlat.Device.Power.UWP.pri" />

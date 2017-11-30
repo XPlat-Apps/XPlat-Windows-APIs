@@ -16,6 +16,9 @@
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components UI Core CoreDispatcher UIDispatcher</tags>
   </metadata>
   <files>
+    <file src="..\XPlat.UI.Core.Common\bin\Release\XPlat.UI.Core.Common.dll" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.UI.Core.Common.dll" />
+    <file src="..\XPlat.UI.Core.Common\bin\Release\XPlat.UI.Core.Common.xml" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.UI.Core.Common.xml" />
+
     <file src="..\XPlat.UI.Core.UWP\bin\Release\XPlat.UI.Core.Common.dll" target="lib\uap10.0\XPlat.UI.Core.Common.dll" />
     <file src="..\XPlat.UI.Core.UWP\bin\Release\XPlat.UI.Core.Common.xml" target="lib\uap10.0\XPlat.UI.Core.Common.xml" />
     <file src="..\XPlat.UI.Core.UWP\bin\Release\XPlat.UI.Core.UWP.pri" target="lib\uap10.0\XPlat.UI.Core.UWP.pri" />

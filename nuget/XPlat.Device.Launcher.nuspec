@@ -22,6 +22,9 @@
     </dependencies>
   </metadata>
   <files>
+    <file src="..\XPlat.Device.Launcher.Common\bin\Release\XPlat.Device.Launcher.Common.dll" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Device.Launcher.Common.dll" />
+    <file src="..\XPlat.Device.Launcher.Common\bin\Release\XPlat.Device.Launcher.Common.xml" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Device.Launcher.Common.xml" />
+
     <file src="..\XPlat.Device.Launcher.Droid\bin\Release\XPlat.Device.Launcher.Common.dll" target="lib\MonoAndroid10\XPlat.Device.Launcher.Common.dll" />
     <file src="..\XPlat.Device.Launcher.Droid\bin\Release\XPlat.Device.Launcher.Common.xml" target="lib\MonoAndroid10\XPlat.Device.Launcher.Common.xml" />
     <file src="..\XPlat.Device.Launcher.Droid\bin\Release\XPlat.Device.Launcher.Droid.dll" target="lib\MonoAndroid10\XPlat.Device.Launcher.Droid.dll" />

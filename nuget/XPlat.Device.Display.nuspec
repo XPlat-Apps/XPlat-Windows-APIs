@@ -21,6 +21,9 @@
     </dependencies>
   </metadata>
   <files>
+    <file src="..\XPlat.Device.Display.Common\bin\Release\XPlat.Device.Display.Common.dll" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Device.Display.Common.dll" />
+    <file src="..\XPlat.Device.Display.Common\bin\Release\XPlat.Device.Display.Common.xml" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Device.Display.Common.xml" />
+
     <file src="..\XPlat.Device.Display\bin\Release\XPlat.Device.Display.Common.dll" target="lib\uap10.0\XPlat.Device.Display.Common.dll" />
     <file src="..\XPlat.Device.Display\bin\Release\XPlat.Device.Display.Common.xml" target="lib\uap10.0\XPlat.Device.Display.Common.xml" />
     <file src="..\XPlat.Device.Display\bin\Release\XPlat.Device.Display.UWP.pri" target="lib\uap10.0\XPlat.Device.Display.UWP.pri" />

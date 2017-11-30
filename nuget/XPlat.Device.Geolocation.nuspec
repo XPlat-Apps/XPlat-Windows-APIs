@@ -19,6 +19,9 @@
     </dependencies>
   </metadata>
   <files>
+    <file src="..\XPlat.Device.Geolocation.Common\bin\Release\XPlat.Device.Geolocation.Common.dll" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Device.Geolocation.Common.dll" />
+    <file src="..\XPlat.Device.Geolocation.Common\bin\Release\XPlat.Device.Geolocation.Common.xml" target="lib\portable-net451+win81+MonoAndroid10+xamarinios10+MonoTouch10\XPlat.Device.Geolocation.Common.xml" />
+
     <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.Common.dll" target="lib\uap10.0\XPlat.Device.Geolocation.Common.dll" />
     <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.Common.xml" target="lib\uap10.0\XPlat.Device.Geolocation.Common.xml" />
     <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.UWP.pri" target="lib\uap10.0\XPlat.Device.Geolocation.UWP.pri" />
