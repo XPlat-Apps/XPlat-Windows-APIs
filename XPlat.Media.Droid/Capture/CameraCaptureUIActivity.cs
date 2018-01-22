@@ -187,6 +187,8 @@
                 }
                 else
                 {
+                    Task<CameraFileCaptured> result = Task.FromResult(new CameraFileCaptured(requestCode, null, true));
+                    result.ContinueWith(x => { CameraFileCaptured?.Invoke(this, x.Result); });
                     this.Finish();
                 }
 
