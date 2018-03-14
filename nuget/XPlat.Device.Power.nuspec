@@ -40,10 +40,8 @@
     <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Droid.xml" target="lib\MonoAndroid10\XPlat.Device.Power.Droid.xml" />
 
     <file src="..\XPlat.Device.Power.iOS\bin\Release\XPlat.Device.Power.Common.dll" target="lib\Xamarin.iOS10\XPlat.Device.Power.Common.dll" />
-    <file src="..\XPlat.Device.Power.iOS\bin\Release\XPlat.Device.Power.Common.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Device.Power.Common.dll.mdb" />
     <file src="..\XPlat.Device.Power.iOS\bin\Release\XPlat.Device.Power.Common.xml" target="lib\Xamarin.iOS10\XPlat.Device.Power.Common.xml" />
     <file src="..\XPlat.Device.Power.iOS\bin\Release\XPlat.Device.Power.iOS.dll" target="lib\Xamarin.iOS10\XPlat.Device.Power.iOS.dll" />
-    <file src="..\XPlat.Device.Power.iOS\bin\Release\XPlat.Device.Power.iOS.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Device.Power.iOS.dll.mdb" />
     <file src="..\XPlat.Device.Power.iOS\bin\Release\XPlat.Device.Power.iOS.xml" target="lib\Xamarin.iOS10\XPlat.Device.Power.iOS.xml" />
   </files>
 </package>

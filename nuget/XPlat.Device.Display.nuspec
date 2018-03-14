@@ -36,10 +36,8 @@
     <file src="..\XPlat.Device.Display.Droid\bin\Release\XPlat.Device.Display.Droid.xml" target="lib\MonoAndroid10\XPlat.Device.Display.Droid.xml" />
 
     <file src="..\XPlat.Device.Display.iOS\bin\Release\XPlat.Device.Display.Common.dll" target="lib\Xamarin.iOS10\XPlat.Device.Display.Common.dll" />
-    <file src="..\XPlat.Device.Display.iOS\bin\Release\XPlat.Device.Display.Common.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Device.Display.Common.dll.mdb" />
     <file src="..\XPlat.Device.Display.iOS\bin\Release\XPlat.Device.Display.Common.xml" target="lib\Xamarin.iOS10\XPlat.Device.Display.Common.xml" />
     <file src="..\XPlat.Device.Display.iOS\bin\Release\XPlat.Device.Display.iOS.dll" target="lib\Xamarin.iOS10\XPlat.Device.Display.iOS.dll" />
-    <file src="..\XPlat.Device.Display.iOS\bin\Release\XPlat.Device.Display.iOS.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Device.Display.iOS.dll.mdb" />
     <file src="..\XPlat.Device.Display.iOS\bin\Release\XPlat.Device.Display.iOS.xml" target="lib\Xamarin.iOS10\XPlat.Device.Display.iOS.xml" />
   </files>
 </package>

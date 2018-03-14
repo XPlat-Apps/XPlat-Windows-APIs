@@ -50,10 +50,8 @@
     <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Droid.xml" target="lib\MonoAndroid10\XPlat.Storage.Droid.xml" />
 
     <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.Common.dll" target="lib\Xamarin.iOS10\XPlat.Storage.Common.dll" />
-    <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.Common.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Storage.Common.dll.mdb" />
     <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.Common.xml" target="lib\Xamarin.iOS10\XPlat.Storage.Common.xml" />
     <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.iOS.dll" target="lib\Xamarin.iOS10\XPlat.Storage.iOS.dll" />
-    <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.iOS.dll.mdb" target="lib\Xamarin.iOS10\XPlat.Storage.iOS.dll.mdb" />
     <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.iOS.xml" target="lib\Xamarin.iOS10\XPlat.Storage.iOS.xml" />
   </files>
 </package>
