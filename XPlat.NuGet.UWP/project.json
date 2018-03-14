@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "MADE.Analyzers": "1.0.6491.39580",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.8",
     "XPlat.Core": "1.2.18022.1",
     "XPlat.Device.Display": "1.2.18022.1",
     "XPlat.Device.Geolocation": "1.2.18022.1",
