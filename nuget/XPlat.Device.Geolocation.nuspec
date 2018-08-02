@@ -28,10 +28,10 @@
     <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.UWP.dll" target="lib\uap10.0\XPlat.Device.Geolocation.UWP.dll" />
     <file src="..\XPlat.Device.Geolocation.UWP\bin\Release\XPlat.Device.Geolocation.UWP.xml" target="lib\uap10.0\XPlat.Device.Geolocation.UWP.xml" />
 
-    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Common.dll" target="lib\MonoAndroid10\XPlat.Device.Geolocation.Common.dll" />
-    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Common.xml" target="lib\MonoAndroid10\XPlat.Device.Geolocation.Common.xml" />
-    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Droid.dll" target="lib\MonoAndroid10\XPlat.Device.Geolocation.Droid.dll" />
-    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Droid.xml" target="lib\MonoAndroid10\XPlat.Device.Geolocation.Droid.xml" />
+    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Common.dll" target="lib\MonoAndroid81\XPlat.Device.Geolocation.Common.dll" />
+    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Common.xml" target="lib\MonoAndroid81\XPlat.Device.Geolocation.Common.xml" />
+    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Droid.dll" target="lib\MonoAndroid81\XPlat.Device.Geolocation.Droid.dll" />
+    <file src="..\XPlat.Device.Geolocation.Droid\bin\Release\XPlat.Device.Geolocation.Droid.xml" target="lib\MonoAndroid81\XPlat.Device.Geolocation.Droid.xml" />
 
     <file src="..\XPlat.Device.Geolocation.iOS\bin\Release\XPlat.Device.Geolocation.Common.dll" target="lib\Xamarin.iOS10\XPlat.Device.Geolocation.Common.dll" />
     <file src="..\XPlat.Device.Geolocation.iOS\bin\Release\XPlat.Device.Geolocation.Common.xml" target="lib\Xamarin.iOS10\XPlat.Device.Geolocation.Common.xml" />

@@ -25,10 +25,10 @@
     <file src="..\XPlat.UI.Core.UWP\bin\Release\XPlat.UI.Core.UWP.dll" target="lib\uap10.0\XPlat.UI.Core.UWP.dll" />
     <file src="..\XPlat.UI.Core.UWP\bin\Release\XPlat.UI.Core.UWP.xml" target="lib\uap10.0\XPlat.UI.Core.UWP.xml" />
 
-    <file src="..\XPlat.UI.Core.Droid\bin\Release\XPlat.UI.Core.Common.dll" target="lib\MonoAndroid10\XPlat.UI.Core.Common.dll" />
-    <file src="..\XPlat.UI.Core.Droid\bin\Release\XPlat.UI.Core.Common.xml" target="lib\MonoAndroid10\XPlat.UI.Core.Common.xml" />
-    <file src="..\XPlat.UI.Core.Droid\bin\Release\XPlat.UI.Core.Droid.dll" target="lib\MonoAndroid10\XPlat.UI.Core.Droid.dll" />
-    <file src="..\XPlat.UI.Core.Droid\bin\Release\XPlat.UI.Core.Droid.xml" target="lib\MonoAndroid10\XPlat.UI.Core.Droid.xml" />
+    <file src="..\XPlat.UI.Core.Droid\bin\Release\XPlat.UI.Core.Common.dll" target="lib\MonoAndroid81\XPlat.UI.Core.Common.dll" />
+    <file src="..\XPlat.UI.Core.Droid\bin\Release\XPlat.UI.Core.Common.xml" target="lib\MonoAndroid81\XPlat.UI.Core.Common.xml" />
+    <file src="..\XPlat.UI.Core.Droid\bin\Release\XPlat.UI.Core.Droid.dll" target="lib\MonoAndroid81\XPlat.UI.Core.Droid.dll" />
+    <file src="..\XPlat.UI.Core.Droid\bin\Release\XPlat.UI.Core.Droid.xml" target="lib\MonoAndroid81\XPlat.UI.Core.Droid.xml" />
 
     <file src="..\XPlat.UI.Core.iOS\bin\Release\XPlat.UI.Core.Common.dll" target="lib\Xamarin.iOS10\XPlat.UI.Core.Common.dll" />
     <file src="..\XPlat.UI.Core.iOS\bin\Release\XPlat.UI.Core.Common.xml" target="lib\Xamarin.iOS10\XPlat.UI.Core.Common.xml" />

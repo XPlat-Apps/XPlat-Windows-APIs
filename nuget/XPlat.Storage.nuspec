@@ -23,7 +23,7 @@
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
       </group>
 
-      <group targetFramework="MonoAndroid10">
+      <group targetFramework="MonoAndroid81">
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
         <dependency id="Newtonsoft.Json" version="11.0.1" />
       </group>
@@ -44,10 +44,10 @@
     <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.UWP.dll" target="lib\uap10.0\XPlat.Storage.UWP.dll" />
     <file src="..\XPlat.Storage.UWP\bin\Release\XPlat.Storage.UWP.xml" target="lib\uap10.0\XPlat.Storage.UWP.xml" />
 
-    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Common.dll" target="lib\MonoAndroid10\XPlat.Storage.Common.dll" />
-    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Common.xml" target="lib\MonoAndroid10\XPlat.Storage.Common.xml" />
-    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Droid.dll" target="lib\MonoAndroid10\XPlat.Storage.Droid.dll" />
-    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Droid.xml" target="lib\MonoAndroid10\XPlat.Storage.Droid.xml" />
+    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Common.dll" target="lib\MonoAndroid81\XPlat.Storage.Common.dll" />
+    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Common.xml" target="lib\MonoAndroid81\XPlat.Storage.Common.xml" />
+    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Droid.dll" target="lib\MonoAndroid81\XPlat.Storage.Droid.dll" />
+    <file src="..\XPlat.Storage.Droid\bin\Release\XPlat.Storage.Droid.xml" target="lib\MonoAndroid81\XPlat.Storage.Droid.xml" />
 
     <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.Common.dll" target="lib\Xamarin.iOS10\XPlat.Storage.Common.dll" />
     <file src="..\XPlat.Storage.iOS\bin\Release\XPlat.Storage.Common.xml" target="lib\Xamarin.iOS10\XPlat.Storage.Common.xml" />

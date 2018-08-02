@@ -12,12 +12,13 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>XPlat.NuGet.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -89,10 +90,6 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <None Include="project.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -127,6 +124,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MADE.Analyzers">
+      <Version>1.0.6491.39580</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="XPlat.Core">
+      <Version>1.2.18073.5</Version>
+    </PackageReference>
+    <PackageReference Include="XPlat.Device.Display">
+      <Version>1.2.18073.5</Version>
+    </PackageReference>
+    <PackageReference Include="XPlat.Device.Geolocation">
+      <Version>1.2.18073.5</Version>
+    </PackageReference>
+    <PackageReference Include="XPlat.Device.Power">
+      <Version>1.2.18073.5</Version>
+    </PackageReference>
+    <PackageReference Include="XPlat.Media">
+      <Version>1.2.18073.5</Version>
+    </PackageReference>
+    <PackageReference Include="XPlat.Storage">
+      <Version>1.2.18073.5</Version>
+    </PackageReference>
+    <PackageReference Include="XPlat.UI.Core">
+      <Version>1.2.18073.5</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

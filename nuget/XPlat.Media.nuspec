@@ -21,8 +21,8 @@
       <group targetFramework="uap10.0">
         <dependency id="XPlat.Storage" version="#{Build.BuildNumber}#" />
       </group>
-      <group targetFramework="MonoAndroid10">
-        <dependency id="Xamarin.Android.Support.v4" version="23.4.0.1" />
+      <group targetFramework="MonoAndroid81">
+        <dependency id="Xamarin.Android.Support.v4" version="27.0.2.1" />
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
         <dependency id="XPlat.Storage" version="#{Build.BuildNumber}#" />
       </group>
@@ -38,9 +38,9 @@
     <file src="..\XPlat.Media.UWP\bin\Release\XPlat.Media.UWP.dll" target="lib\uap10.0\XPlat.Media.UWP.dll" />
     <file src="..\XPlat.Media.UWP\bin\Release\XPlat.Media.UWP.xml" target="lib\uap10.0\XPlat.Media.UWP.xml" />
 
-    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Common.dll" target="lib\MonoAndroid10\XPlat.Media.Common.dll" />
-    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Common.xml" target="lib\MonoAndroid10\XPlat.Media.Common.xml" />
-    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Droid.dll" target="lib\MonoAndroid10\XPlat.Media.Droid.dll" />
-    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Droid.xml" target="lib\MonoAndroid10\XPlat.Media.Droid.xml" />
+    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Common.dll" target="lib\MonoAndroid81\XPlat.Media.Common.dll" />
+    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Common.xml" target="lib\MonoAndroid81\XPlat.Media.Common.xml" />
+    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Droid.dll" target="lib\MonoAndroid81\XPlat.Media.Droid.dll" />
+    <file src="..\XPlat.Media.Droid\bin\Release\XPlat.Media.Droid.xml" target="lib\MonoAndroid81\XPlat.Media.Droid.xml" />
   </files>
 </package>

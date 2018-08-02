@@ -15,7 +15,7 @@
     <copyright>Copyright (c) XPlat APIs. All rights reserved.</copyright>
     <tags>Xamarin UWP iOS Android Toolkit API Extensions Components Power PowerManager</tags>
     <dependencies>
-      <group targetFramework="MonoAndroid10">
+      <group targetFramework="MonoAndroid81">
         <dependency id="XPlat.Core" version="#{Build.BuildNumber}#" />
       </group>
 
@@ -34,10 +34,10 @@
     <file src="..\XPlat.Device.Power.UWP\bin\Release\XPlat.Device.Power.UWP.dll" target="lib\uap10.0\XPlat.Device.Power.UWP.dll" />
     <file src="..\XPlat.Device.Power.UWP\bin\Release\XPlat.Device.Power.UWP.xml" target="lib\uap10.0\XPlat.Device.Power.UWP.xml" />
 
-    <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Common.dll" target="lib\MonoAndroid10\XPlat.Device.Power.Common.dll" />
-    <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Common.xml" target="lib\MonoAndroid10\XPlat.Device.Power.Common.xml" />
-    <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Droid.dll" target="lib\MonoAndroid10\XPlat.Device.Power.Droid.dll" />
-    <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Droid.xml" target="lib\MonoAndroid10\XPlat.Device.Power.Droid.xml" />
+    <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Common.dll" target="lib\MonoAndroid81\XPlat.Device.Power.Common.dll" />
+    <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Common.xml" target="lib\MonoAndroid81\XPlat.Device.Power.Common.xml" />
+    <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Droid.dll" target="lib\MonoAndroid81\XPlat.Device.Power.Droid.dll" />
+    <file src="..\XPlat.Device.Power.Droid\bin\Release\XPlat.Device.Power.Droid.xml" target="lib\MonoAndroid81\XPlat.Device.Power.Droid.xml" />
 
     <file src="..\XPlat.Device.Power.iOS\bin\Release\XPlat.Device.Power.Common.dll" target="lib\Xamarin.iOS10\XPlat.Device.Power.Common.dll" />
     <file src="..\XPlat.Device.Power.iOS\bin\Release\XPlat.Device.Power.Common.xml" target="lib\Xamarin.iOS10\XPlat.Device.Power.Common.xml" />
