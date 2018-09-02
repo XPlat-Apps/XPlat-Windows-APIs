@@ -3,7 +3,7 @@
 // </copyright>
 
 #if __ANDROID__
-namespace XPlat.Device.Display
+namespace XPlat.Devices.Display
 {
     using System;
 

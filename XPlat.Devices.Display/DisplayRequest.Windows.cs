@@ -3,7 +3,7 @@
 // </copyright>
 
 #if WINDOWS_UWP
-namespace XPlat.Device.Display
+namespace XPlat.Devices.Display
 {
     /// <summary>Represents a display request.</summary>
     public class DisplayRequest : IDisplayRequest

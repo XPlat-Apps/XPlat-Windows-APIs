@@ -2,7 +2,7 @@
 // Copyright (c) James Croft. All rights reserved.
 // </copyright>
 
-namespace XPlat.Device.Display
+namespace XPlat.Devices.Display
 {
     /// <summary>Represents a display request.</summary>
     public interface IDisplayRequest

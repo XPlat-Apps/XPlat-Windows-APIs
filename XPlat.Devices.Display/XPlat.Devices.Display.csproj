@@ -17,11 +17,11 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Display DisplayRequest</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageId>XPlat.Device.Display</PackageId>
+    <PackageId>XPlat.Devices.Display</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Device.Display.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Devices.Display.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

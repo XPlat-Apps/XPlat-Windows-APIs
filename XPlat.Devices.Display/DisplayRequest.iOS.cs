@@ -1,5 +1,5 @@
 ﻿#if __IOS__
-namespace XPlat.Device.Display
+namespace XPlat.Devices.Display
 {
     using UIKit;
 
