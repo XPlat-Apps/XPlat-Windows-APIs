@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Devices.Geolocation",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Devices.Display", "XPlat.Devices.Display\XPlat.Devices.Display.csproj", "{CA8BD9A9-288F-4AF7-8CFC-3B65D2776B0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.Foundation", "XPlat.Foundation\XPlat.Foundation.csproj", "{32E91160-AD0A-4AE1-944B-0F39305BC65C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Foundation", "XPlat.Foundation\XPlat.Foundation.csproj", "{32E91160-AD0A-4AE1-944B-0F39305BC65C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.Core", "XPlat.Core\XPlat.Core.csproj", "{77A76F2F-5226-4454-B030-D4DFDEC6573B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{32E91160-AD0A-4AE1-944B-0F39305BC65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32E91160-AD0A-4AE1-944B-0F39305BC65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32E91160-AD0A-4AE1-944B-0F39305BC65C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77A76F2F-5226-4454-B030-D4DFDEC6573B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A76F2F-5226-4454-B030-D4DFDEC6573B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A76F2F-5226-4454-B030-D4DFDEC6573B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A76F2F-5226-4454-B030-D4DFDEC6573B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{43D61348-7B9C-4E96-B4E6-9AB34537EF3C} = {D1AEF003-632F-4A32-8281-32F22FD47EA6}
 		{CA8BD9A9-288F-4AF7-8CFC-3B65D2776B0C} = {D1AEF003-632F-4A32-8281-32F22FD47EA6}
 		{32E91160-AD0A-4AE1-944B-0F39305BC65C} = {D1AEF003-632F-4A32-8281-32F22FD47EA6}
+		{77A76F2F-5226-4454-B030-D4DFDEC6573B} = {D1AEF003-632F-4A32-8281-32F22FD47EA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D974AA36-9622-4207-B11A-D2648ADC3DC9}

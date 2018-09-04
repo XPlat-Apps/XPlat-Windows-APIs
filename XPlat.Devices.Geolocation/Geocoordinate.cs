@@ -25,6 +25,41 @@ namespace XPlat.Devices.Geolocation
             this.Timestamp = coordinate.Timestamp;
             this.Point = new Geopoint(coordinate.Point);
         }
+#elif __ANDROID__
+        public Geocoordinate(Android.Locations.Location location)
+        {
+            this.Latitude = location.Latitude;
+            this.Longitude = location.Longitude;
+            this.Altitude = location.HasAltitude ? location.Altitude : 0;
+            this.Accuracy = location.HasAccuracy ? location.Accuracy : 0;
+            this.Heading = location.HasBearing ? location.Bearing : 0;
+            this.Speed = location.HasSpeed ? location.Speed : 0;
+            this.Timestamp = new DateTimeOffset(Geolocator.AndroidLocationTime.AddMilliseconds(location.Time));
+            this.Point = new Geopoint(location);
+        }
+#elif __IOS__
+        public Geocoordinate(CoreLocation.CLLocation location)
+        {
+            if (location.HorizontalAccuracy > -1)
+            {
+                this.Accuracy = location.HorizontalAccuracy;
+                this.Latitude = location.Coordinate.Latitude;
+                this.Longitude = location.Coordinate.Longitude;
+            }
+
+            if (location.VerticalAccuracy > -1)
+            {
+                this.Altitude = location.Altitude;
+            }
+
+            if (location.Speed > -1)
+            {
+                this.Speed = location.Speed;
+            }
+
+            this.Timestamp = new DateTimeOffset((DateTime)location.Timestamp);
+            this.Point = new Geopoint(location);
+        }
 #endif
 
         /// <summary>Gets or sets the latitude in degrees. The valid range of values is from -90.0 to 90.0.</summary>

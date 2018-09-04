@@ -30,6 +30,20 @@ namespace XPlat.Devices.Geolocation
             this.Longitude = geoposition.Longitude;
             this.Altitude = geoposition.Altitude;
         }
+#elif __ANDROID__
+        public BasicGeoposition(Android.Locations.Location location)
+        {
+            this.Latitude = location.Latitude;
+            this.Longitude = location.Longitude;
+            this.Altitude = location.HasAltitude ? location.Altitude : 0;
+        }
+#elif __IOS__
+        public BasicGeoposition(CoreLocation.CLLocation location)
+        {
+            this.Latitude = location.HorizontalAccuracy > -1 ? location.Coordinate.Latitude : 0;
+            this.Longitude = location.HorizontalAccuracy > -1 ? location.Coordinate.Longitude : 0;
+            this.Altitude = location.VerticalAccuracy > -1 ? location.Altitude : 0;
+        }
 #endif
     }
 }

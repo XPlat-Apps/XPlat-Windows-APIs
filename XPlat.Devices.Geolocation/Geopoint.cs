@@ -25,6 +25,16 @@ namespace XPlat.Devices.Geolocation
         {
             this.Position = new BasicGeoposition(geoposition);
         }
+#elif __ANDROID__
+        public Geopoint(Android.Locations.Location location)
+        {
+            this.Position = new BasicGeoposition(location);
+        }
+#elif __IOS__
+        public Geopoint(CoreLocation.CLLocation location)
+        {
+            this.Position = new BasicGeoposition(location);
+        }
 #endif
 
         /// <summary>Gets or sets the position of a geographic point.</summary>
