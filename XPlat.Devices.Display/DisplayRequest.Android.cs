@@ -5,8 +5,9 @@
 #if __ANDROID__
 namespace XPlat.Devices.Display
 {
-    using System;
+    using XPlat.Exceptions;
 
+    using System;
     using Android.Views;
 
     /// <summary>Represents a display request.</summary>
@@ -29,7 +30,7 @@ namespace XPlat.Devices.Display
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException("DisplayRequest requires the 'android.permission.WAKE_LOCK' to be enabled to request active.", ex);
+                throw new AppPermissionInvalidException("android.permission.WAKE_LOCK", ex.ToString(), ex);
             }
         }
 
@@ -42,7 +43,7 @@ namespace XPlat.Devices.Display
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException("DisplayRequest requires the 'android.permission.WAKE_LOCK' to be enabled to request release.", ex);
+                throw new AppPermissionInvalidException("android.permission.WAKE_LOCK", ex.ToString(), ex);
             }
         }
     }

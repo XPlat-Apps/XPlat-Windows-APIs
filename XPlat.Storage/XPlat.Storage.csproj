@@ -7,21 +7,21 @@
     <Version>1.0.0.0</Version>
     <Authors>James Croft</Authors>
     <Company>James Croft</Company>
-    <Product>XPlat - Windows.Devices.Geolocation APIs</Product>
-    <Description>Brings the functionality of the Windows.Devices.Geolocation APIs cross-platform with support for Windows, Android and iOS.</Description>
+    <Product>XPlat - Windows.Storage APIs</Product>
+    <Description>Brings the functionality of the Windows.Storage APIs cross-platform with support for Windows, Android and iOS.</Description>
     <Copyright>Copyright (C) James Croft. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</PackageProjectUrl>
     <PackageIconUrl>http://jamescroft.co.uk/wp-content/uploads/2017/03/XApiLog.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Geolocation Geolocator</PackageTags>
+    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Storage StorageFile StorageFolder ApplicationData FileOpenPicker</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageId>XPlat.Devices.Geolocation</PackageId>
+    <PackageId>XPlat.Storage</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Devices.Geolocation.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Storage.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,15 +40,10 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" PrivateAssets="All" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
-    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
-
 
 </Project>

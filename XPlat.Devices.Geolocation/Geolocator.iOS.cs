@@ -1,15 +1,16 @@
-﻿#if __IOS__
+﻿// <copyright file="Geolocator.iOS.cs" company="James Croft">
+// Copyright (c) James Croft. All rights reserved.
+// </copyright>
+
+#if __IOS__
 namespace XPlat.Devices.Geolocation
 {
     using System;
     using System.Threading.Tasks;
-
     using CoreLocation;
-
     using global::Foundation;
-
     using UIKit;
-
+    using XPlat.Exceptions;
     using XPlat.Foundation;
 
     /// <summary>
@@ -78,7 +79,9 @@ namespace XPlat.Devices.Geolocation
                 }
                 else
                 {
-                    throw new InvalidOperationException("iOS8+ requires the NSLocationWhenInUseUsageDescription or NSLocationAlwaysUsageDescription to enable the Geolocator position changes.");
+                    throw new AppPermissionInvalidException(
+                        "NSLocationWhenInUseUsageDescription/NSLocationAlwaysUsageDescription",
+                        "iOS8+ requires the NSLocationWhenInUseUsageDescription or NSLocationAlwaysUsageDescription to enable the Geolocator position changes.");
                 }
             }
 
@@ -92,7 +95,7 @@ namespace XPlat.Devices.Geolocation
         /// <inheritdoc />
         public Task<Geoposition> GetGeopositionAsync()
         {
-            return this.GetGeopositionAsync(new TimeSpan(), TimeSpan.MaxValue);
+            return this.GetGeopositionAsync(TimeSpan.MaxValue, TimeSpan.MaxValue);
         }
 
         /// <inheritdoc />
