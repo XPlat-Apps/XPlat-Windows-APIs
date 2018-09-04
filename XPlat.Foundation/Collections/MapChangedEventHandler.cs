@@ -1,4 +1,8 @@
-﻿namespace XPlat.Foundation.Collections
+﻿// <copyright file="MapChangedEventHandler.cs" company="James Croft">
+// Copyright (c) James Croft. All rights reserved.
+// </copyright>
+
+namespace XPlat.Foundation.Collections
 {
     /// <summary>
     /// Represents the method that handles the changed event of an observable map.

@@ -48,10 +48,7 @@ namespace XPlat.Devices.Geolocation
         /// <summary>Gets or sets the requested minimum time interval between location updates, in milliseconds.</summary>
         public uint ReportInterval
         {
-            get => uint.TryParse(this.reportInterval.TotalMilliseconds.ToString(CultureInfo.CurrentCulture),
-                out uint interval)
-                ? interval
-                : 0;
+            get => uint.TryParse(this.reportInterval.TotalMilliseconds.ToString(CultureInfo.CurrentCulture), out uint interval) ? interval : 0;
             set => this.reportInterval = TimeSpan.FromMilliseconds(value);
         }
 
@@ -139,11 +136,11 @@ namespace XPlat.Devices.Geolocation
 
         private void UpdateReadyStatus()
         {
-            this.StatusChanged?.Invoke(
-                this,
-                this.activeLocationProviders.Count == 0
-                    ? new StatusChangedEventArgs(PositionStatus.NotAvailable)
-                    : new StatusChangedEventArgs(PositionStatus.Ready));
+            StatusChangedEventArgs status = this.activeLocationProviders.Count == 0
+                ? new StatusChangedEventArgs(PositionStatus.NotAvailable)
+                : new StatusChangedEventArgs(PositionStatus.Ready);
+
+            this.StatusChanged?.Invoke(this, status);
         }
 
         private void UpdateActiveLocationManagerProviders()

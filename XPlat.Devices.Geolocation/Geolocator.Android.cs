@@ -21,9 +21,6 @@ namespace XPlat.Devices.Geolocation
 
     public class Geolocator : IGeolocator
     {
-        /// <summary>Gets the time used for converting the Android <see cref="Location"/> objects Time property to a DateTime.</summary>
-        public static DateTime AndroidLocationTime => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
         private readonly object obj = new object();
 
         private readonly LocationManager locationManager;
@@ -54,6 +51,9 @@ namespace XPlat.Devices.Geolocation
 
         /// <summary>Raised when the ability of the Geolocator to provide updated location changes.</summary>
         public event TypedEventHandler<IGeolocator, StatusChangedEventArgs> StatusChanged;
+
+        /// <summary>Gets the time used for converting the Android <see cref="Location"/> objects Time property to a DateTime.</summary>
+        public static DateTime AndroidLocationTime => new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>Gets the last known position recorded by the Geolocator.</summary>
         public Geoposition LastKnownPosition { get; private set; }
@@ -94,12 +94,14 @@ namespace XPlat.Devices.Geolocation
                         {
                             this.DesiredAccuracyInMeters = 500;
                         }
+
                         break;
                     case PositionAccuracy.High:
                         if (this.DesiredAccuracyInMeters != 10)
                         {
                             this.DesiredAccuracyInMeters = 10;
                         }
+
                         break;
                 }
             }
@@ -124,7 +126,7 @@ namespace XPlat.Devices.Geolocation
             GeolocationAccessStatus access = await this.RequestAccessAsync();
             if (access == GeolocationAccessStatus.Allowed)
             {
-                LocationRetriever[] retriever = {null};
+                LocationRetriever[] retriever = { null };
                 retriever[0] = new LocationRetriever(
                     this.DesiredAccuracyInMeters,
                     timeout,

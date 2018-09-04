@@ -133,6 +133,13 @@ namespace XPlat.Devices.Geolocation
             return await tcs.Task;
         }
 
+        private static CLLocationManager RetrieveLocationManager()
+        {
+            CLLocationManager manager = null;
+            new NSObject().InvokeOnMainThread(() => manager = new CLLocationManager());
+            return manager;
+        }
+
         private void LocationManager_OnUpdatedLocation(object sender, CLLocationUpdatedEventArgs args)
         {
             CLLocation loc = args.NewLocation;
@@ -180,17 +187,13 @@ namespace XPlat.Devices.Geolocation
 
         private void LocationManager_OnFailed(object sender, NSErrorEventArgs args)
         {
-            if ((CLError)(int)args.Error.Code != CLError.Network) return;
+            if ((CLError)(int)args.Error.Code != CLError.Network)
+            {
+                return;
+            }
 
             this.LocationStatus = PositionStatus.NotAvailable;
             this.StatusChanged?.Invoke(this, new StatusChangedEventArgs(this.LocationStatus));
-        }
-
-        private static CLLocationManager RetrieveLocationManager()
-        {
-            CLLocationManager manager = null;
-            new NSObject().InvokeOnMainThread(() => manager = new CLLocationManager());
-            return manager;
         }
     }
 }

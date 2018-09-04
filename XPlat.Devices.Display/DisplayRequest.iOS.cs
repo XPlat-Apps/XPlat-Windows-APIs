@@ -1,4 +1,8 @@
-﻿#if __IOS__
+﻿// <copyright file="DisplayRequest.iOS.cs" company="James Croft">
+// Copyright (c) James Croft. All rights reserved.
+// </copyright>
+
+#if __IOS__
 namespace XPlat.Devices.Display
 {
     using UIKit;

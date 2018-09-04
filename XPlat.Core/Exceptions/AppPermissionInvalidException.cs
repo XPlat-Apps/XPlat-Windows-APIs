@@ -1,4 +1,8 @@
-﻿namespace XPlat.Exceptions
+﻿// <copyright file="AppPermissionInvalidException.cs" company="James Croft">
+// Copyright (c) James Croft. All rights reserved.
+// </copyright>
+
+namespace XPlat.Exceptions
 {
     using System;
 

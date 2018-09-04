@@ -1,7 +1,11 @@
-﻿using System;
+﻿// <copyright file="GeolocatorException.cs" company="James Croft">
+// Copyright (c) James Croft. All rights reserved.
+// </copyright>
 
 namespace XPlat.Devices.Geolocation
 {
+    using System;
+
     public class GeolocatorException : Exception
     {
         public GeolocatorException()

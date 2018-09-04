@@ -5,10 +5,9 @@
 #if __ANDROID__
 namespace XPlat.Devices.Display
 {
-    using XPlat.Exceptions;
-
     using System;
     using Android.Views;
+    using XPlat.Exceptions;
 
     /// <summary>Represents a display request.</summary>
     public class DisplayRequest : IDisplayRequest
