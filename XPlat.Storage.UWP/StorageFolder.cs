@@ -62,7 +62,8 @@
         public string Path => this.Originator.Path;
 
         /// <inheritdoc />
-        public bool Exists => this.Originator != null && Directory.Exists(this.Originator.Path);
+        public bool Exists => this.Originator != null;//impossible to create Windows.StorageItem that doesn't exist?
+
 
         /// <inheritdoc />
         public FileAttributes Attributes => (FileAttributes)(int)this.Originator.Attributes;
@@ -229,10 +230,12 @@
 
             if (createIfNotExists && storageFile == null)
             {
-                return await this.CreateFileAsync(name, CreationCollisionOption.OpenIfExists);
+                return await this.CreateFileAsync(name, CreationCollisionOption.OpenIfExists).ConfigureAwait(false);
             }
-
-            return new StorageFile(storageFile);
+            else
+            {
+                return new StorageFile(storageFile);
+            }
         }
 
         /// <inheritdoc />
