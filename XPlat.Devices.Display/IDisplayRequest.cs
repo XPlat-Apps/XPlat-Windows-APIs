@@ -1,8 +1,4 @@
-﻿// <copyright file="IDisplayRequest.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Display
+﻿namespace XPlat.Devices.Display
 {
     /// <summary>Represents a display request.</summary>
     public interface IDisplayRequest

@@ -1,8 +1,4 @@
-﻿// <copyright file="PositionStatusExtensions.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Geolocation.Extensions
+﻿namespace XPlat.Devices.Geolocation.Extensions
 {
     using System;
 

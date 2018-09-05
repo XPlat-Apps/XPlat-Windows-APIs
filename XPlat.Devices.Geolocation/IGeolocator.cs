@@ -8,9 +8,7 @@ namespace XPlat.Devices.Geolocation
     using System.Threading.Tasks;
     using XPlat.Foundation;
 
-    /// <summary>
-    /// Defines an interface to access the current geographic location.
-    /// </summary>
+    /// <summary>Provides access to the current geographic location.</summary>
     public interface IGeolocator
     {
         /// <summary>Raised when the location is updated.</summary>

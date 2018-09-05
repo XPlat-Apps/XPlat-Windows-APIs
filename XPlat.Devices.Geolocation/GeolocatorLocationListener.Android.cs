@@ -1,8 +1,4 @@
-﻿// <copyright file="GeolocatorLocationListener.Android.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-#if __ANDROID__
+﻿#if __ANDROID__
 namespace XPlat.Devices.Geolocation
 {
     using System;

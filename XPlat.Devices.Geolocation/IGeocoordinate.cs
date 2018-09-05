@@ -1,11 +1,8 @@
-﻿// <copyright file="IGeocoordinate.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Devices.Geolocation
 {
     using System;
 
+    /// <summary>Contains the information for identifying a geographic location.</summary>
     public interface IGeocoordinate
     {
         /// <summary>Gets or sets the latitude in degrees. The valid range of values is from -90.0 to 90.0.</summary>

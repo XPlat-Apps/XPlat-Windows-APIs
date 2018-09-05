@@ -1,8 +1,4 @@
-﻿// <copyright file="Geopoint.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Devices.Geolocation
 {
     /// <summary>Describes a geographic point.</summary>
     public class Geopoint : IGeopoint

@@ -1,8 +1,6 @@
 ﻿namespace XPlat.Foundation.Collections
 {
-    /// <summary>
-    /// Represents a collection of key-value pairs, correlating several other collection interfaces.
-    /// </summary>
+    /// <summary>Represents a property set, which is a set of PropertyValue objects with string keys.</summary>
     public interface IPropertySet : IObservableMap<string, object>
     {
         /// <summary>

@@ -1,8 +1,4 @@
-﻿// <copyright file="PositionStatus.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Devices.Geolocation
 {
     /// <summary>Indicates the ability of the Geolocator object to provide location data.</summary>
     public enum PositionStatus

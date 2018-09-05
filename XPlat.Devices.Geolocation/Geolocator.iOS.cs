@@ -1,8 +1,4 @@
-﻿// <copyright file="Geolocator.iOS.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-#if __IOS__
+﻿#if __IOS__
 namespace XPlat.Devices.Geolocation
 {
     using System;
@@ -39,31 +35,32 @@ namespace XPlat.Devices.Geolocation
             }
         }
 
-        /// <inheritdoc />
+        /// <summary>Raised when the location is updated.</summary>
         public event TypedEventHandler<IGeolocator, PositionChangedEventArgs> PositionChanged;
 
-        /// <inheritdoc />
+        /// <summary>Raised when the ability of the Geolocator to provide updated location changes.</summary>
         public event TypedEventHandler<IGeolocator, StatusChangedEventArgs> StatusChanged;
 
-        /// <inheritdoc />
+        /// <summary>Gets the last known position recorded by the Geolocator.</summary>
         public Geoposition LastKnownPosition { get; private set; }
 
-        /// <inheritdoc />
+        /// <summary>Gets or sets the requested minimum time interval between location updates, in milliseconds. If your application requires updates infrequently, set this value so that location services can conserve power by calculating location only when needed.</summary>
         public uint ReportInterval { get; set; }
 
-        /// <inheritdoc />
+        /// <summary>Gets or sets the distance of movement, in meters, relative to the coordinate from the last PositionChanged event, that is required for the Geolocator to raise a PositionChanged event.</summary>
         public double MovementThreshold { get; set; }
 
-        /// <inheritdoc />
+        /// <summary>Gets or sets the accuracy level at which the Geolocator provides location updates.</summary>
         public PositionAccuracy DesiredAccuracy { get; set; }
 
-        /// <inheritdoc />
+        /// <summary>Gets the status that indicates the ability of the Geolocator to provide location updates.</summary>
         public PositionStatus LocationStatus { get; private set; }
 
-        /// <inheritdoc />
+        /// <summary>Gets or sets the desired accuracy in meters for data returned from the location service.</summary>
         public uint DesiredAccuracyInMeters { get; set; }
 
-        /// <inheritdoc />
+        /// <summary>Requests permission to access location data.</summary>
+        /// <returns>A GeolocationAccessStatus that indicates if permission to location data has been granted.</returns>
         public Task<GeolocationAccessStatus> RequestAccessAsync()
         {
             NSDictionary info = NSBundle.MainBundle.InfoDictionary;
@@ -92,13 +89,15 @@ namespace XPlat.Devices.Geolocation
             return Task.FromResult(GeolocationAccessStatus.Allowed);
         }
 
-        /// <inheritdoc />
+        /// <summary>Starts an asynchronous operation to retrieve the current location of the device.</summary>
+        /// <returns>An asynchronous operation that, upon completion, returns a Geoposition marking the found location.</returns>
         public Task<Geoposition> GetGeopositionAsync()
         {
             return this.GetGeopositionAsync(TimeSpan.MaxValue, TimeSpan.MaxValue);
         }
 
-        /// <inheritdoc />
+        /// <summary>Starts an asynchronous operation to retrieve the current location of the device.</summary>
+        /// <returns>An asynchronous operation that, upon completion, returns a Geoposition marking the found location.</returns>
         public async Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
             TaskCompletionSource<Geoposition> tcs = new TaskCompletionSource<Geoposition>();
@@ -187,7 +186,7 @@ namespace XPlat.Devices.Geolocation
 
         private void LocationManager_OnFailed(object sender, NSErrorEventArgs args)
         {
-            if ((CLError)(int)args.Error.Code != CLError.Network)
+            if ((CLError) (int) args.Error.Code != CLError.Network)
             {
                 return;
             }

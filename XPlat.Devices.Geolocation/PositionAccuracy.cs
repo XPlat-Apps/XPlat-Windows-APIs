@@ -1,8 +1,4 @@
-﻿// <copyright file="PositionAccuracy.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Devices.Geolocation
 {
     /// <summary>Indicates the requested accuracy level for the location data that the application uses.</summary>
     public enum PositionAccuracy

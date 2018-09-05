@@ -1,9 +1,6 @@
-﻿// <copyright file="IStatusChangedEventArgs.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Devices.Geolocation
 {
+    /// <summary>Provides information for the StatusChanged event.</summary>
     public interface IStatusChangedEventArgs
     {
         /// <summary>Gets the updated status of the Geolocator object.</summary>

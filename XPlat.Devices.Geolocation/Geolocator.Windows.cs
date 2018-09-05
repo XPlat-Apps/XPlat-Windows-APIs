@@ -1,8 +1,4 @@
-﻿// <copyright file="Geolocator.Windows.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-#if WINDOWS_UWP
+﻿#if WINDOWS_UWP
 namespace XPlat.Devices.Geolocation
 {
     using System;
@@ -18,7 +14,7 @@ namespace XPlat.Devices.Geolocation
         /// </summary>
         public Geolocator()
         {
-            this.Locator.StatusChanged += this.Locator_OnStatusChanged;
+            this.Originator.StatusChanged += this.Locator_OnStatusChanged;
         }
 
         /// <summary>Raised when the location is updated.</summary>
@@ -28,7 +24,7 @@ namespace XPlat.Devices.Geolocation
         public event XPlat.Foundation.TypedEventHandler<IGeolocator, StatusChangedEventArgs> StatusChanged;
 
         /// <summary>Gets the originating Windows Geolocator instance.</summary>
-        public Windows.Devices.Geolocation.Geolocator Locator { get; } = new Windows.Devices.Geolocation.Geolocator();
+        public Windows.Devices.Geolocation.Geolocator Originator { get; } = new Windows.Devices.Geolocation.Geolocator();
 
         /// <summary>Gets the last known position recorded by the Geolocator.</summary>
         public Geoposition LastKnownPosition { get; private set; }
@@ -36,15 +32,15 @@ namespace XPlat.Devices.Geolocation
         /// <summary>Gets or sets the requested minimum time interval between location updates, in milliseconds. If your application requires updates infrequently, set this value so that location services can conserve power by calculating location only when needed.</summary>
         public uint ReportInterval
         {
-            get => this.Locator.ReportInterval;
-            set => this.Locator.ReportInterval = value;
+            get => this.Originator.ReportInterval;
+            set => this.Originator.ReportInterval = value;
         }
 
         /// <summary>Gets or sets the distance of movement, in meters, relative to the coordinate from the last PositionChanged event, that is required for the Geolocator to raise a PositionChanged event.</summary>
         public double MovementThreshold
         {
-            get => this.Locator.MovementThreshold;
-            set => this.Locator.MovementThreshold = value;
+            get => this.Originator.MovementThreshold;
+            set => this.Originator.MovementThreshold = value;
         }
 
         /// <summary>Gets the status that indicates the ability of the Geolocator to provide location updates.</summary>
@@ -53,10 +49,10 @@ namespace XPlat.Devices.Geolocation
         /// <summary>Gets or sets the accuracy level at which the Geolocator provides location updates.</summary>
         public PositionAccuracy DesiredAccuracy
         {
-            get => this.Locator.DesiredAccuracy == Windows.Devices.Geolocation.PositionAccuracy.Default
+            get => this.Originator.DesiredAccuracy == Windows.Devices.Geolocation.PositionAccuracy.Default
                            ? PositionAccuracy.Default
                            : PositionAccuracy.High;
-            set => this.Locator.DesiredAccuracy = value == PositionAccuracy.Default
+            set => this.Originator.DesiredAccuracy = value == PositionAccuracy.Default
                                                    ? Windows.Devices.Geolocation.PositionAccuracy.Default
                                                    : Windows.Devices.Geolocation.PositionAccuracy.High;
         }
@@ -64,15 +60,15 @@ namespace XPlat.Devices.Geolocation
         /// <summary>Gets or sets the desired accuracy in meters for data returned from the location service.</summary>
         public uint DesiredAccuracyInMeters
         {
-            get => this.Locator.DesiredAccuracyInMeters ?? 0;
-            set => this.Locator.DesiredAccuracyInMeters = value;
+            get => this.Originator.DesiredAccuracyInMeters ?? 0;
+            set => this.Originator.DesiredAccuracyInMeters = value;
         }
 
         /// <summary>Starts an asynchronous operation to retrieve the current location of the device.</summary>
         /// <returns>An asynchronous operation that, upon completion, returns a Geoposition marking the found location.</returns>
         public async Task<Geoposition> GetGeopositionAsync()
         {
-            Windows.Devices.Geolocation.Geoposition pos = await this.Locator.GetGeopositionAsync();
+            Windows.Devices.Geolocation.Geoposition pos = await this.Originator.GetGeopositionAsync();
             return new Geoposition(pos);
         }
 
@@ -81,7 +77,7 @@ namespace XPlat.Devices.Geolocation
         public Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
             // Setting the timeout on the Windows API to a year as an exception is thrown when it times out.
-            IAsyncOperation<Windows.Devices.Geolocation.Geoposition> getPositionTask = this.Locator.GetGeopositionAsync(maximumAge, TimeSpan.FromDays(365));
+            IAsyncOperation<Windows.Devices.Geolocation.Geoposition> getPositionTask = this.Originator.GetGeopositionAsync(maximumAge, TimeSpan.FromDays(365));
 
             // Creating a specific timeout task to handle this in a nicer way.
             TimeoutTask timeoutTask = new TimeoutTask(timeout, getPositionTask.Cancel);
@@ -116,9 +112,9 @@ namespace XPlat.Devices.Geolocation
         {
             Windows.Devices.Geolocation.GeolocationAccessStatus accessStatus;
 
-            if (this.Locator != null)
+            if (this.Originator != null)
             {
-                this.Locator.PositionChanged -= this.Locator_OnPositionChanged;
+                this.Originator.PositionChanged -= this.Locator_OnPositionChanged;
             }
 
             try
@@ -130,9 +126,9 @@ namespace XPlat.Devices.Geolocation
                 accessStatus = Windows.Devices.Geolocation.GeolocationAccessStatus.Denied;
             }
 
-            if (accessStatus == Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed && this.Locator != null)
+            if (accessStatus == Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed && this.Originator != null)
             {
-                this.Locator.PositionChanged += this.Locator_OnPositionChanged;
+                this.Originator.PositionChanged += this.Locator_OnPositionChanged;
             }
 
             return accessStatus.ToInternalGeolocationAccessStatus();

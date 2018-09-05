@@ -1,8 +1,4 @@
-﻿// <copyright file="BasicGeoposition.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Devices.Geolocation
 {
     /// <summary>The basic information to describe a geographic position.</summary>
     public struct BasicGeoposition

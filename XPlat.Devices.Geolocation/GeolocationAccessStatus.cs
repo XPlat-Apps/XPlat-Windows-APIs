@@ -1,8 +1,4 @@
-﻿// <copyright file="GeolocationAccessStatus.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
-
-namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Devices.Geolocation
 {
     /// <summary>Indicates if your app has permission to access location data.</summary>
     public enum GeolocationAccessStatus
