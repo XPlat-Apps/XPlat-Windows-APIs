@@ -3,6 +3,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    /// <summary>Provides additional extra methods for manipulating data for storage files.</summary>
     public interface IStorageFileExtras
     {
         /// <summary>

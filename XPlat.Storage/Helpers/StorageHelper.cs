@@ -1,4 +1,6 @@
-﻿namespace XPlat.Storage.Helpers
+﻿using XPlat.Storage.Search;
+
+namespace XPlat.Storage.Helpers
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

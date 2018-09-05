@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
 
+    /// <summary>Provides additional extra methods for getting items from within storage folders.</summary>
     public interface IStorageFolderExtras
     {
         /// <summary>
