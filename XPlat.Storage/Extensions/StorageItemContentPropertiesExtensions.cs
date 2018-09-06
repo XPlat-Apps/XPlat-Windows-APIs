@@ -1,16 +1,15 @@
-﻿namespace XPlat.Storage
+﻿namespace XPlat.Storage.Extensions
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
     using XPlat.Storage.FileProperties;
 
     /// <summary>
     /// Defines a collection of common extensions for the Storage namespace.
     /// </summary>
-    public static partial class Extensions
+    public static class StorageItemContentPropertiesExtensions
     {
         /// <summary>
         /// Gets all the media properties from a storage item.
@@ -99,9 +98,9 @@
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // ignored
+                System.Diagnostics.Debug.WriteLine(ex);
             }
 
             try
@@ -195,9 +194,9 @@
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // ignored
+                System.Diagnostics.Debug.WriteLine(ex);
             }
 
             try
@@ -293,9 +292,9 @@
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // ignored
+                System.Diagnostics.Debug.WriteLine(ex);
             }
 
             return props;
