@@ -59,7 +59,7 @@
         public string Path => this.Originator.Path;
 
         /// <inheritdoc />
-        public bool Exists => this.Originator != null;// && File.Exists(this.Path);
+        public bool Exists => this.Originator != null;
 
         /// <inheritdoc />
         public FileAttributes Attributes => (FileAttributes)(int)this.Originator.Attributes;
