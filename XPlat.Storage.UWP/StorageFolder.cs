@@ -62,7 +62,7 @@
         public string Path => this.Originator.Path;
 
         /// <inheritdoc />
-        public bool Exists => this.Originator != null;//impossible to create Windows.StorageItem that doesn't exist?
+        public bool Exists => this.Originator != null;
 
 
         /// <inheritdoc />
