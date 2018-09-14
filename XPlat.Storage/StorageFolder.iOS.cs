@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+﻿#if __IOS__
 namespace XPlat.Storage
 {
     using System;
@@ -41,7 +41,7 @@ namespace XPlat.Storage
         public string DisplayName => this.Name;
 
         /// <summary>Gets an object that provides access to the content-related properties of the item.</summary>
-        public IStorageItemContentProperties Properties => new StorageItemContentProperties(new WeakReference(this));
+        public IStorageItemContentProperties Properties { get; }
 
         /// <summary>Gets the full file-system path of the item, if the item has a path.</summary>
         public string Path { get; private set; }
@@ -52,15 +52,6 @@ namespace XPlat.Storage
         /// <summary>Gets the attributes of a storage item.</summary>
         public FileAttributes Attributes => File.GetAttributes(this.Path).ToInternalFileAttributes();
 
-        /// <summary>
-        /// Gets the folder that has the specified absolute path in the file system.
-        /// </summary>
-        /// <param name="path">
-        /// The absolute path in the file system (not the Uri) of the folder to get.
-        /// </param>
-        /// <returns>
-        /// When this method completes successfully, it returns an IAppFolder that represents the specified folder.
-        /// </returns>
         public static Task<IStorageFolder> GetFolderFromPathAsync(string path)
         {
             if (string.IsNullOrWhiteSpace(path))
@@ -175,8 +166,8 @@ namespace XPlat.Storage
                     "Cannot get properties for a folder that does not exist.");
             }
 
-            IBasicProperties properties = new BasicProperties(this.Path, true);
-            return Task.FromResult(properties);
+            IBasicProperties props = new BasicProperties(this.Path, true);
+            return Task.FromResult(props);
         }
 
         /// <summary>Gets the parent folder of the current storage item.</summary>
@@ -266,7 +257,6 @@ namespace XPlat.Storage
             }
 
             IStorageFile file = new StorageFile(filePath);
-
             return Task.FromResult(file);
         }
 
@@ -341,18 +331,10 @@ namespace XPlat.Storage
             return this.GetFileAsync(name, false);
         }
 
-        /// <summary>
-        /// Gets the specified file from the current folder.
-        /// </summary>
-        /// <param name="name">
-        /// The name of the file to retrieve. If the file does not exist in the current folder, the createIfNotExists flag will allow the API to create the file if set to true.
-        /// </param>
-        /// <param name="createIfNotExists">
-        /// A value indicating whether to create the file if it does not exist.
-        /// </param>
-        /// <returns>
-        /// When this method completes successfully, it returns an IStorageFile that represents the file.
-        /// </returns>
+        /// <summary>Gets the specified file from the current folder.</summary>
+        /// <param name="name">The name of the file to retrieve. If the file does not exist in the current folder, the createIfNotExists flag will allow the API to create the file if set to true.</param>
+        /// <param name="createIfNotExists">A value indicating whether to create the file if it does not exist.</param>
+        /// <returns>When this method completes successfully, it returns an IStorageFile that represents the file.</returns>
         public Task<IStorageFile> GetFileAsync(string name, bool createIfNotExists)
         {
             if (!this.Exists)
@@ -390,18 +372,10 @@ namespace XPlat.Storage
             return this.GetFolderAsync(name, false);
         }
 
-        /// <summary>
-        /// Gets the specified folder from the current folder.
-        /// </summary>
-        /// <param name="name">
-        /// The name of the child folder to retrieve. If the child folder does not exist in the current folder, the createIfNotExists flag will allow the API to create the folder if set to true.
-        /// </param>
-        /// <param name="createIfNotExists">
-        /// A value indicating whether to create the child folder if it does not exist.
-        /// </param>
-        /// <returns>
-        /// When this method completes successfully, it returns an IStorageFolder that represents the child folder.
-        /// </returns>
+        /// <summary>Gets the specified folder from the current folder.</summary>
+        /// <param name="name">The name of the child folder to retrieve. If the child folder does not exist in the current folder, the createIfNotExists flag will allow the API to create the folder if set to true.</param>
+        /// <param name="createIfNotExists">A value indicating whether to create the child folder if it does not exist.</param>
+        /// <returns>When this method completes successfully, it returns an IStorageFolder that represents the child folder.</returns>
         public Task<IStorageFolder> GetFolderAsync(string name, bool createIfNotExists)
         {
             if (!this.Exists)
@@ -506,10 +480,7 @@ namespace XPlat.Storage
                     "Cannot get files from a folder that does not exist.");
             }
 
-            IReadOnlyList<IStorageFile> files = Directory.GetFiles(this.Path)
-                .Select(filePath => new StorageFile(filePath))
-                .ToList();
-
+            IReadOnlyList<IStorageFile> files = Directory.GetFiles(this.Path).Select(filePath => new StorageFile(filePath)).ToList();
             return Task.FromResult(files);
         }
 
@@ -524,10 +495,7 @@ namespace XPlat.Storage
                     "Cannot get folders from a folder that does not exist.");
             }
 
-            IReadOnlyList<IStorageFolder> folders = Directory.GetDirectories(this.Path)
-                .Select(folderPath => new StorageFolder(folderPath))
-                .ToList();
-
+            IReadOnlyList<IStorageFolder> folders = Directory.GetDirectories(this.Path).Select(folderPath => new StorageFolder(folderPath)).ToList();
             return Task.FromResult(folders);
         }
 
@@ -542,12 +510,12 @@ namespace XPlat.Storage
                     "Cannot get items from a folder that does not exist.");
             }
 
-            IReadOnlyList<IStorageFile> files = await this.GetFilesAsync();
             IReadOnlyList<IStorageFolder> folders = await this.GetFoldersAsync();
+            IReadOnlyList<IStorageFile> files = await this.GetFilesAsync();
 
             List<IStorageItem> items = new List<IStorageItem>();
-            items.AddRange(files);
             items.AddRange(folders);
+            items.AddRange(files);
 
             return items;
         }
@@ -581,9 +549,9 @@ namespace XPlat.Storage
             {
                 item = await this.GetItemAsync(name);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                // ignored
             }
 
             return item;
