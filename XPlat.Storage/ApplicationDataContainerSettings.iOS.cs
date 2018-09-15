@@ -148,7 +148,10 @@ namespace XPlat.Storage
         /// <inheritdoc />
         public bool Remove(string key)
         {
-            if (!this.ContainsKey(key)) return false;
+            if (!this.ContainsKey(key))
+            {
+                return false;
+            }
 
             if (this.IsRoaming)
             {
@@ -403,7 +406,10 @@ namespace XPlat.Storage
 
         public T Get<T>(string key) where T : class
         {
-            if (!this.ContainsKey(key)) return null;
+            if (!this.ContainsKey(key))
+            {
+                return null;
+            }
 
             Type type = typeof(T);
             TypeCode code = Type.GetTypeCode(type);

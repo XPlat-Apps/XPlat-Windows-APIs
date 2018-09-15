@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Foundation", "XPlat.F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Core", "XPlat.Core\XPlat.Core.csproj", "{77A76F2F-5226-4454-B030-D4DFDEC6573B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.Devices.Launcher", "XPlat.Devices.Launcher\XPlat.Devices.Launcher.csproj", "{75FBCF99-A80E-4A3E-9BD2-94FAF0FC9022}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Devices.Launcher", "XPlat.Devices.Launcher\XPlat.Devices.Launcher.csproj", "{75FBCF99-A80E-4A3E-9BD2-94FAF0FC9022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.Storage", "XPlat.Storage\XPlat.Storage.csproj", "{212B0428-3E12-4490-A3CA-7609D26FED19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Storage", "XPlat.Storage\XPlat.Storage.csproj", "{212B0428-3E12-4490-A3CA-7609D26FED19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.UnitTests", "XPlat.UnitTests\XPlat.UnitTests.csproj", "{873A2FF4-B5EB-49BB-AA06-557E0E2BDBD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{212B0428-3E12-4490-A3CA-7609D26FED19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{212B0428-3E12-4490-A3CA-7609D26FED19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{212B0428-3E12-4490-A3CA-7609D26FED19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{873A2FF4-B5EB-49BB-AA06-557E0E2BDBD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{873A2FF4-B5EB-49BB-AA06-557E0E2BDBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{873A2FF4-B5EB-49BB-AA06-557E0E2BDBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{873A2FF4-B5EB-49BB-AA06-557E0E2BDBD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{77A76F2F-5226-4454-B030-D4DFDEC6573B} = {D1AEF003-632F-4A32-8281-32F22FD47EA6}
 		{75FBCF99-A80E-4A3E-9BD2-94FAF0FC9022} = {D1AEF003-632F-4A32-8281-32F22FD47EA6}
 		{212B0428-3E12-4490-A3CA-7609D26FED19} = {D1AEF003-632F-4A32-8281-32F22FD47EA6}
+		{873A2FF4-B5EB-49BB-AA06-557E0E2BDBD0} = {D999DCBF-510C-47AC-8B80-3995DDEB9855}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D974AA36-9622-4207-B11A-D2648ADC3DC9}
