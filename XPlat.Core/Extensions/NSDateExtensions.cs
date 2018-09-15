@@ -1,9 +1,8 @@
 ﻿#if __IOS__
-namespace XPlat.Storage.Extensions
+namespace XPlat.Extensions
 {
     using System;
-
-    using global::Foundation;
+    using Foundation;
 
     public static class NSDateExtensions
     {

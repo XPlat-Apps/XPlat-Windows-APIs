@@ -1,10 +1,9 @@
 ﻿#if __IOS__
-namespace XPlat.Storage.Extensions
+namespace XPlat.Extensions
 {
     using System;
     using System.Globalization;
-
-    using global::Foundation;
+    using Foundation;
 
     public static class NSObjectExtensions
     {
@@ -19,14 +18,12 @@ namespace XPlat.Storage.Extensions
                     return obj.ToString();
                 }
 
-                NSDate date = obj as NSDate;
-                if (date != null)
+                if (obj is NSDate date)
                 {
                     return date.ToDateTimeOffset();
                 }
 
-                NSUuid uuid = obj as NSUuid;
-                if (uuid != null)
+                if (obj is NSUuid uuid)
                 {
                     return new Guid(uuid.GetBytes());
                 }
@@ -36,8 +33,7 @@ namespace XPlat.Storage.Extensions
                     return decimal.Parse(obj.ToString(), CultureInfo.InvariantCulture);
                 }
 
-                NSNumber number = obj as NSNumber;
-                if (number != null)
+                if (obj is NSNumber number)
                 {
                     NSNumber nsNumber = number;
                     switch (nsNumber.ObjCType)

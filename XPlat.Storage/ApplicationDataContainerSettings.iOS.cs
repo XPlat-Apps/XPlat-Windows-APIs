@@ -7,8 +7,8 @@ namespace XPlat.Storage
     using System.Linq;
     using global::Foundation;
     using Newtonsoft.Json;
+    using XPlat.Extensions;
     using XPlat.Foundation.Collections;
-    using XPlat.Storage.Extensions;
 
     public class ApplicationDataContainerSettings : IPropertySet
     {
