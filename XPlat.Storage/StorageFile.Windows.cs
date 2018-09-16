@@ -19,7 +19,7 @@ namespace XPlat.Storage
         /// <param name="file">
         /// The associated <see cref="StorageFile"/>.
         /// </param>
-        internal StorageFile(Windows.Storage.StorageFile file)
+        public StorageFile(Windows.Storage.StorageFile file)
         {
             this.Originator = file ?? throw new ArgumentNullException(nameof(file));
         }
