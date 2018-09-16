@@ -14,9 +14,7 @@ namespace XPlat.Media.Capture
     using XPlat.Storage;
     using XPlat.Storage.Extensions;
 
-    /// <summary>
-    /// Provides a full window UI for capturing audio, video, and photos from a camera.
-    /// </summary>
+    /// <summary>Provides a full window UI for capturing video and photos from a camera.</summary>
     public class CameraCaptureUI : ICameraCaptureUI
     {
         private readonly Context context;
@@ -24,6 +22,7 @@ namespace XPlat.Media.Capture
         private int requestId;
 
         private TaskCompletionSource<IStorageFile> currentSingleTcs;
+
         private int requestCode;
 
         /// <summary>
@@ -39,7 +38,15 @@ namespace XPlat.Media.Capture
             this.VideoSettings = new CameraCaptureUIVideoCaptureSettings();
         }
 
-        /// <inheritdoc />
+        /// <summary>Provides settings for capturing photos.</summary>
+        public CameraCaptureUIPhotoCaptureSettings PhotoSettings { get; }
+
+        /// <summary>Provides settings for capturing videos. The settings include maximum resolution, maximum duration, and whether or not to allow trimming.</summary>
+        public CameraCaptureUIVideoCaptureSettings VideoSettings { get; }
+
+        /// <summary>Launches the CameraCaptureUI user interface.</summary>
+        /// <returns>When this operation completes, an IStorageFile object is returned.</returns>
+        /// <param name="mode">Specifies whether the user interface that will be shown allows the user to capture a photo, capture a video, or capture both photos and videos.</param>
         public Task<IStorageFile> CaptureFileAsync(CameraCaptureUIMode mode)
         {
             int newRequestCode = RequestCodeHelper.GenerateRequestCode();
@@ -83,10 +90,9 @@ namespace XPlat.Media.Capture
                     }
                     catch (Exception ex)
                     {
-#if DEBUG
                         System.Diagnostics.Debug.WriteLine(ex.ToString());
-#endif
                     }
+
                     resultFile?.SetExifData(exifData);
                 }
 
@@ -97,12 +103,6 @@ namespace XPlat.Media.Capture
 
             return newTcs.Task;
         }
-
-        /// <inheritdoc />
-        public CameraCaptureUIPhotoCaptureSettings PhotoSettings { get; }
-
-        /// <inheritdoc />
-        public CameraCaptureUIVideoCaptureSettings VideoSettings { get; }
 
         private Intent GenerateIntent(int id, CameraCaptureUIMode mode)
         {
