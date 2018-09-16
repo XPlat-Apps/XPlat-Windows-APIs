@@ -1,35 +1,47 @@
-XPlat Windows APIs
-===========
+<img src="Assets/ProjectBanner.png" alt="XPlat Windows APIs" />
 
-XPlat Windows APIs are designed to make it easier for UWP developers to build for iOS and Android taking advantage of common APIs found in the Windows APIs without a great deal of change to their existing Windows app code. 
+# XPlat Windows APIs
 
-The design for these APIs are based on the interfaces within the Windows SDK allowing an ease to porting a current Universal Windows Platform application to Xamarin iOS and Android.
+XPlat Windows APIs are designed to make it easier for Universal Windows Platform (UWP) developers to share their knowledge of the platform APIs across Android and iOS. 
 
-For example, if your application takes advantage of the Windows.Storage (e.g. Windows.Storage.ApplicationData.Current.LocalFolder), we provide a XPlat.Storage API for those (e.g. XPlat.Storage.ApplicationData.Current.LocalFolder) which you can use in your Xamarin iOS and Android applications. 
+XPlat also appeals to developers looking to migrate their existing code bases to Xamarin with minimal code change by mimicking Windows APIs allowing an easy transition to the equivalent XPlat API.
 
-## Project build status
+For example, if your application takes advantage of the Windows.Storage (e.g. Windows.Storage.ApplicationData.Current.LocalFolder), we provide a XPlat.Storage API for those (e.g. XPlat.Storage.ApplicationData.Current.LocalFolder) which you can use in your iOS and Android applications. 
 
-| Branch | Status |
-| ------ | ------ |
-| develop | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/4cfe114a-c08f-45a4-91ee-3260703e08dd/14/badge)](https://github.com/jamesmcroft/XPlat-Windows-APIs/tree/develop) |
-| master | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/4cfe114a-c08f-45a4-91ee-3260703e08dd/14/badge)](https://github.com/jamesmcroft/XPlat-Windows-APIs/tree/master) | 
+## Build status
 
-## Install via NuGet
+| Packages | Status | Version |
+| ------ | ------ | ------ |
+| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat.CI)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+
+## Made with XPlat
+
+Got a great project you've built with XPlat? [*Add your projects to our collection!*](PROJECTS.md)
+
+## Hands on with XPlat
 Looking to get these components in your apps now? Well, you can get your hands on the components via NuGet.
 
-| Package | Description | Version |
-| ------ | ------ | ------ |
-| XPlat.Core | This library contains a collection of core/common APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
-| XPlat.UI.Core | This library contains a collection of Windows.UI.Core APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
-| XPlat.Storage | This library contains a collection of Windows.Storage APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) |
-| XPlat.Media | This library contains a collection of Windows.Media APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Media.svg)](https://www.nuget.org/packages/XPlat.Media/) |
-| XPlat.Device.Display | This library contains a collection of Windows.System.Display APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) |
-| XPlat.Device.Geolocation | This library contains a collection of Windows.Device.Geolocation APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) |
-| XPlat.Device.Power | This library contains a collection of Windows.System.Power APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Power.svg)](https://www.nuget.org/packages/XPlat.Device.Power/) |
-| XPlat.Device.Launcher | This library contains a collection of Windows.System.Launcher APIs. | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Launcher.svg)](https://www.nuget.org/packages/XPlat.Device.Launcher/) |
+| Package | Version |
+| ------ | ------ |
+| XPlat.Core | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+| XPlat.UI.Core | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
+| XPlat.Storage | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) |
+| XPlat.Media | [![NuGet](https://img.shields.io/nuget/v/XPlat.Media.svg)](https://www.nuget.org/packages/XPlat.Media/) |
+| XPlat.Device.Display | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) |
+| XPlat.Device.Geolocation | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) |
+| XPlat.Device.Power | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Power.svg)](https://www.nuget.org/packages/XPlat.Device.Power/) |
+| XPlat.Device.Launcher | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Launcher.svg)](https://www.nuget.org/packages/XPlat.Device.Launcher/) |
 
-## Contributing
-Do you want to contribute? Check out the [contribution guidelines](CONTRIBUTING.md) for more info.
+## Feature requests and issue tracking
+
+XPlat takes advantage of GitHub's issue tracking system to track both feature requests and issues. 
+
+So whether you've got an API you'd like to see made cross-platform or want to call us out on a mistake we've made, please use log them in [XPlat issues](https://github.com/jamesmcroft/XPlat-Windows-APIs/issues).
+
+## Contributing to XPlat
+
+Want to get hands on with XPlat's code? Check out our [contribution guidelines](CONTRIBUTING.md).
 
 ## License
-XPlat Windows APIs are made available under the terms and conditions of the [MIT license](LICENSE). 
+
+XPlat's source code is made available under the terms and conditions of the [MIT license](LICENSE).
