@@ -1,23 +1,45 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>XPlat.Devices</RootNamespace>
+    <TargetFrameworks>netstandard1.4;xamarin.ios10;monoandroid81;uap10.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.0</Version>
+    <Authors>James Croft</Authors>
+    <Company>James Croft</Company>
+    <Product>XPlat - Windows.System.Launcher APIs</Product>
+    <Description>Brings the functionality of the Windows.System.Launcher APIs cross-platform with support for Windows, Android and iOS.</Description>
+    <Copyright>Copyright (C) James Croft. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</PackageProjectUrl>
+    <PackageIconUrl>http://jamescroft.co.uk/wp-content/uploads/2017/03/XApiLog.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Launcher File URI</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageId>XPlat.Devices.Launcher</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Devices.Launcher.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="stylecop.json" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" PrivateAssets="All" />
   </ItemGroup>
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 
 </Project>
