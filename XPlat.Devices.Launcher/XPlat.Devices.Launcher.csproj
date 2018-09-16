@@ -10,10 +10,10 @@
     <Product>XPlat - Windows.System.Launcher APIs</Product>
     <Description>Brings the functionality of the Windows.System.Launcher APIs cross-platform with support for Windows, Android and iOS.</Description>
     <Copyright>Copyright (C) James Croft. All rights reserved.</Copyright>
-    <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</PackageProjectUrl>
-    <PackageIconUrl>http://jamescroft.co.uk/wp-content/uploads/2017/03/XApiLog.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/jamesmcroft/XPlat-API-Toolkit</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/develop/Assets/ProjectIcon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Launcher File URI</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
