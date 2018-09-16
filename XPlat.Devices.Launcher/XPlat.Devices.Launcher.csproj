@@ -18,6 +18,7 @@
     <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Launcher File URI</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageId>XPlat.Devices.Launcher</PackageId>
+    <RootNamespace>XPlat.Devices</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -38,6 +39,10 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
