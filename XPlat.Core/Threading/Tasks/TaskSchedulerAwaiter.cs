@@ -1,4 +1,8 @@
-﻿namespace XPlat.Threading.Tasks
+﻿// <copyright file="TaskSchedulerAwaiter.cs" company="James Croft">
+// Copyright (c) James Croft. All rights reserved.
+// </copyright>
+
+namespace XPlat.Threading.Tasks
 {
     using System;
     using System.Runtime.CompilerServices;
@@ -21,17 +25,6 @@
         }
 
         /// <summary>
-        /// Gets the <see cref="TaskSchedulerAwaiter"/>.
-        /// </summary>
-        /// <returns>
-        /// Returns this instance.
-        /// </returns>
-        public TaskSchedulerAwaiter GetAwaiter()
-        {
-            return this;
-        }
-
-        /// <summary>
         /// Gets a value indicating whether the awaiter is completed.
         /// </summary>
         public bool IsCompleted => this.taskScheduler == null;
@@ -45,6 +38,17 @@
         public static TaskSchedulerAwaiter NewTaskSchedulerAwaiter()
         {
             return new TaskSchedulerAwaiter(SynchronizationContext.Current != null ? TaskScheduler.Default : null);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="TaskSchedulerAwaiter"/>.
+        /// </summary>
+        /// <returns>
+        /// Returns this instance.
+        /// </returns>
+        public TaskSchedulerAwaiter GetAwaiter()
+        {
+            return this;
         }
 
         /// <summary>

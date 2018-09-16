@@ -1,4 +1,8 @@
-﻿namespace XPlat.Threading.Tasks
+﻿// <copyright file="TimeoutTask.cs" company="James Croft">
+// Copyright (c) James Croft. All rights reserved.
+// </copyright>
+
+namespace XPlat.Threading.Tasks
 {
     using System;
     using System.Threading.Tasks;

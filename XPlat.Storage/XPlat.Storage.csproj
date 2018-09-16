@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.4;xamarin.ios10;monoandroid81;uap10.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.0</Version>
+    <Authors>James Croft</Authors>
+    <Company>James Croft</Company>
+    <Product>XPlat - Windows.Storage APIs</Product>
+    <Description>Brings the functionality of the Windows.Storage APIs cross-platform with support for Windows, Android and iOS.</Description>
+    <Copyright>Copyright (C) James Croft. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/develop/Assets/ProjectIcon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Storage StorageFile StorageFolder ApplicationData</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageId>XPlat.Storage</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Storage.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+
+</Project>

@@ -121,6 +121,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Main.cs" />
@@ -133,7 +136,6 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Entitlements.plist" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default.png" />
@@ -151,75 +153,45 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
-      <Project>{4586695b-7e5c-4977-9bcd-cd7144e21a97}</Project>
+      <Project>{77a76f2f-5226-4454-b030-d4dfdec6573b}</Project>
       <Name>XPlat.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Device.Display.Common\XPlat.Device.Display.Common.csproj">
-      <Project>{cbec1318-09a6-4b4f-b8d2-b252403fc1ca}</Project>
-      <Name>XPlat.Device.Display.Common</Name>
+    <ProjectReference Include="..\XPlat.Devices.Display\XPlat.Devices.Display.csproj">
+      <Project>{ca8bd9a9-288f-4af7-8cfc-3b65d2776b0c}</Project>
+      <Name>XPlat.Devices.Display</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Device.Display.iOS\XPlat.Device.Display.iOS.csproj">
-      <Project>{efa62c23-7faf-4a1a-9f37-e2e73a18a0f6}</Project>
-      <Name>XPlat.Device.Display.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
+    <ProjectReference Include="..\XPlat.Devices.Geolocation\XPlat.Devices.Geolocation.csproj">
+      <Project>{43d61348-7b9c-4e96-b4e6-9ab34537ef3c}</Project>
+      <Name>XPlat.Devices.Geolocation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Device.Geolocation.Common\XPlat.Device.Geolocation.Common.csproj">
-      <Project>{1c7b8f43-de7e-4efa-b622-e3eed28c43a1}</Project>
-      <Name>XPlat.Device.Geolocation.Common</Name>
+    <ProjectReference Include="..\XPlat.Devices.Launcher\XPlat.Devices.Launcher.csproj">
+      <Project>{75fbcf99-a80e-4a3e-9bd2-94faf0fc9022}</Project>
+      <Name>XPlat.Devices.Launcher</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Device.Geolocation.iOS\XPlat.Device.Geolocation.iOS.csproj">
-      <Project>{69ce740c-4485-4ac0-bf75-e863e445700e}</Project>
-      <Name>XPlat.Device.Geolocation.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
+    <ProjectReference Include="..\XPlat.Devices.Power\XPlat.Devices.Power.csproj">
+      <Project>{b094382d-916b-49bc-93f5-3e06e464a008}</Project>
+      <Name>XPlat.Devices.Power</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Device.Launcher.Common\XPlat.Device.Launcher.Common.csproj">
-      <Project>{fd1e031f-44d6-4864-bd03-ad7c48a0e7e5}</Project>
-      <Name>XPlat.Device.Launcher.Common</Name>
+    <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj">
+      <Project>{32e91160-ad0a-4ae1-944b-0f39305bc65c}</Project>
+      <Name>XPlat.Foundation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Device.Power.Common\XPlat.Device.Power.Common.csproj">
-      <Project>{653e542d-79fe-4e10-87fd-48b6897198ed}</Project>
-      <Name>XPlat.Device.Power.Common</Name>
+    <ProjectReference Include="..\XPlat.Media.Capture\XPlat.Media.Capture.csproj">
+      <Project>{c4504bbd-e3d3-4d2e-be83-865eaf558aa9}</Project>
+      <Name>XPlat.Media.Capture</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Device.Power.iOS\XPlat.Device.Power.iOS.csproj">
-      <Project>{723d86a9-a323-478a-862d-9673cb7a4612}</Project>
-      <Name>XPlat.Device.Power.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
+    <ProjectReference Include="..\XPlat.Storage.Pickers\XPlat.Storage.Pickers.csproj">
+      <Project>{23e4798b-8f59-408a-a714-ffb8cbd0b3fe}</Project>
+      <Name>XPlat.Storage.Pickers</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Media.Common\XPlat.Media.Common.csproj">
-      <Project>{1770495f-5b12-4e6e-95e3-3ffdb620fcb2}</Project>
-      <Name>XPlat.Media.Common</Name>
+    <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj">
+      <Project>{212b0428-3e12-4490-a3ca-7609d26fed19}</Project>
+      <Name>XPlat.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Networking.Common\XPlat.Networking.Common.csproj">
-      <Project>{1937eb4f-4a90-4c02-ac7c-c8267570316d}</Project>
-      <Name>XPlat.Networking.Common</Name>
+    <ProjectReference Include="..\XPlat.UI.Core\XPlat.UI.Core.csproj">
+      <Project>{fc1117f0-1777-4f8a-b0fc-a5a7873b3a57}</Project>
+      <Name>XPlat.UI.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Storage.Common\XPlat.Storage.Common.csproj">
-      <Project>{3f0a5ecc-70f4-4118-8ebd-e513764448b1}</Project>
-      <Name>XPlat.Storage.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XPlat.Storage.iOS\XPlat.Storage.iOS.csproj">
-      <Project>{420db4df-b943-401f-b302-5e6b2a668d8d}</Project>
-      <Name>XPlat.Storage.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
-    </ProjectReference>
-    <ProjectReference Include="..\XPlat.UI.Core.Common\XPlat.UI.Core.Common.csproj">
-      <Project>{44725ae3-47dd-43a5-980e-b98eb8128125}</Project>
-      <Name>XPlat.UI.Core.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XPlat.UI.Core.iOS\XPlat.UI.Core.iOS.csproj">
-      <Project>{a06c4ddf-c716-4723-b384-5b508b386307}</Project>
-      <Name>XPlat.UI.Core.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
