@@ -100,7 +100,7 @@
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             try
@@ -196,7 +196,7 @@
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             try
@@ -294,7 +294,7 @@
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             return props;

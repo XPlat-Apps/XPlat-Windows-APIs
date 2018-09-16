@@ -102,7 +102,7 @@ namespace XPlat.Storage.FileProperties
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             try
@@ -119,7 +119,7 @@ namespace XPlat.Storage.FileProperties
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             return props;

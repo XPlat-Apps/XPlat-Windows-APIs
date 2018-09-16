@@ -74,7 +74,9 @@ namespace XPlat.Storage
                 });
         }
 
-        /// <inheritdoc />
+        /// <summary>Removes all application data from the specified app data store.</summary>
+        /// <returns>An object that is used to manage the asynchronous clear operation.</returns>
+        /// <param name="locality">One of the enumeration values.</param>
         public Task ClearAsync(ApplicationDataLocality locality)
         {
             return Task.Run(

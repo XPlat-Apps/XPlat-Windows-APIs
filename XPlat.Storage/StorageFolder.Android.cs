@@ -484,7 +484,7 @@ namespace XPlat.Storage
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             if (storageItem == null || !storageItem.Exists)
@@ -583,7 +583,7 @@ namespace XPlat.Storage
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             return item;

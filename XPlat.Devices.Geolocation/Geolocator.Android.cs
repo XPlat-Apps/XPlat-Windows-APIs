@@ -205,7 +205,8 @@ namespace XPlat.Devices.Geolocation
             return await tcs.Task;
         }
 
-        /// <inheritdoc />
+        /// <summary>Requests permission to access location data.</summary>
+        /// <returns>A GeolocationAccessStatus that indicates if permission to location data has been granted.</returns>
         public Task<GeolocationAccessStatus> RequestAccessAsync()
         {
             GeolocationAccessStatus status = this.locationProviders.Any(this.locationManager.IsProviderEnabled)
