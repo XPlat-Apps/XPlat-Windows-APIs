@@ -41,6 +41,15 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj" />
+  </ItemGroup>
+
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 
 </Project>
