@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8BF97FE-1157-411F-ABB6-21EFC4F6A18A}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XPlat.UnitTests.Android</RootNamespace>
+    <AssemblyName>XPlat.UnitTests.Android</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>PdbOnly</DebugType>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>PdbOnly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>PdbOnly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Android.NUnitLite" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\StorageHelper.cs" />
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Mocks\AppSetting.cs" />
+    <Compile Include="Tests\Storage\ApplicationDataTests.cs" />
+    <Compile Include="Tests\Storage\AppSettingTests.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Storage\StorageFileTests.cs" />
+    <Compile Include="Tests\Storage\StorageFolderTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
+      <Project>{77a76f2f-5226-4454-b030-d4dfdec6573b}</Project>
+      <Name>XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Devices.Display\XPlat.Devices.Display.csproj">
+      <Project>{ca8bd9a9-288f-4af7-8cfc-3b65d2776b0c}</Project>
+      <Name>XPlat.Devices.Display</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Devices.Geolocation\XPlat.Devices.Geolocation.csproj">
+      <Project>{43d61348-7b9c-4e96-b4e6-9ab34537ef3c}</Project>
+      <Name>XPlat.Devices.Geolocation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Devices.Launcher\XPlat.Devices.Launcher.csproj">
+      <Project>{75fbcf99-a80e-4a3e-9bd2-94faf0fc9022}</Project>
+      <Name>XPlat.Devices.Launcher</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Devices.Power\XPlat.Devices.Power.csproj">
+      <Project>{b094382d-916b-49bc-93f5-3e06e464a008}</Project>
+      <Name>XPlat.Devices.Power</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj">
+      <Project>{32e91160-ad0a-4ae1-944b-0f39305bc65c}</Project>
+      <Name>XPlat.Foundation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Media.Capture\XPlat.Media.Capture.csproj">
+      <Project>{c4504bbd-e3d3-4d2e-be83-865eaf558aa9}</Project>
+      <Name>XPlat.Media.Capture</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Storage.Pickers\XPlat.Storage.Pickers.csproj">
+      <Project>{23e4798b-8f59-408a-a714-ffb8cbd0b3fe}</Project>
+      <Name>XPlat.Storage.Pickers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj">
+      <Project>{212b0428-3e12-4490-a3ca-7609d26fed19}</Project>
+      <Name>XPlat.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.UI.Core\XPlat.UI.Core.csproj">
+      <Project>{fc1117f0-1777-4f8a-b0fc-a5a7873b3a57}</Project>
+      <Name>XPlat.UI.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
