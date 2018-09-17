@@ -21,6 +21,8 @@ Got a great project you've built with XPlat? [*Add your projects to our collecti
 ## Hands on with XPlat
 Looking to get these components in your apps now? Well, you can get your hands on the components via NuGet.
 
+You can also see what's included in XPlat through our in progress [API docs](https://xplat.gitbook.io/docs/)!
+
 | Package | Version |
 | ------ | ------ |
 | XPlat.Core | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
