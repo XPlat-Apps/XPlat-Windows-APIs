@@ -8,6 +8,7 @@ namespace XPlat.Media.Capture
     using Android.App;
     using Android.Content;
     using Android.Provider;
+    using XPlat.Exceptions;
     using XPlat.Foundation;
     using XPlat.Helpers;
     using XPlat.Media.Capture.Extensions;
@@ -73,30 +74,38 @@ namespace XPlat.Media.Capture
                     return;
                 }
 
-                IStorageFile resultFile = args.File;
-
-                if (args.File != null && !args.File.Exists)
+                if (args.PermissionDenied)
                 {
-                    resultFile = null;
+                    tcs.SetException(new AppPermissionInvalidException("android.permission.CAMERA",
+                        "Camera permission is required in order to use camera function"));
                 }
-
-                if ((mode == CameraCaptureUIMode.Photo || mode == CameraCaptureUIMode.PhotoOrVideo)
-                    && resultFile != null && resultFile.Exists)
+                else
                 {
-                    IReadOnlyDictionary<string, string> exifData = resultFile.GetExifData();
-                    try
+                    IStorageFile resultFile = args.File;
+
+                    if (args.File != null && !args.File.Exists)
                     {
-                        resultFile = await resultFile.ResizeImageFileAsync(this.PhotoSettings.MaxResolution);
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine(ex.ToString());
+                        resultFile = null;
                     }
 
-                    resultFile?.SetExifData(exifData);
-                }
+                    if ((mode == CameraCaptureUIMode.Photo || mode == CameraCaptureUIMode.PhotoOrVideo)
+                        && resultFile != null && resultFile.Exists)
+                    {
+                        IReadOnlyDictionary<string, string> exifData = resultFile.GetExifData();
+                        try
+                        {
+                            resultFile = await resultFile.ResizeImageFileAsync(this.PhotoSettings.MaxResolution);
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.WriteLine(ex.ToString());
+                        }
 
-                tcs.SetResult(args.Cancel ? null : resultFile);
+                        resultFile?.SetExifData(exifData);
+                    }
+
+                    tcs.SetResult(args.Cancel ? null : resultFile);
+                }
             };
 
             CameraCaptureUIActivity.CameraFileCaptured += handler;
