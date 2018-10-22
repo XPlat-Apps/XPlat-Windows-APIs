@@ -5,7 +5,7 @@ namespace XPlat.Media.Capture
 
     internal class CameraFileCaptured
     {
-        public CameraFileCaptured(int requestId, IStorageFile file, bool cancel)
+        public CameraFileCaptured(int requestId, IStorageFile file, bool cancel, bool permissionDenied)
         {
             if (file == null)
             {
@@ -15,9 +15,12 @@ namespace XPlat.Media.Capture
             this.RequestId = requestId;
             this.File = file;
             this.Cancel = cancel;
+            this.PermissionDenied = permissionDenied;
         }
 
         public bool Cancel { get; }
+
+        public bool PermissionDenied { get; }
 
         public IStorageFile File { get; }
 

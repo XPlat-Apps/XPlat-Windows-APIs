@@ -40,11 +40,20 @@ namespace XPlat.Media.Capture
 
         private ConfigChanges config;
 
+        private bool isComplete;
+
         internal static event TypedEventHandler<Activity, CameraFileCaptured> CameraFileCaptured;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            Bundle bundle = savedInstanceState ?? this.Intent.Extras;
+
+            this.isComplete = bundle.GetBoolean("isComplete", false);
+            this.requestId = bundle.GetInt(IntentId, 0);
+            this.action = bundle.GetString(IntentAction);
+            this.fileName = bundle.GetString(IntentFileName, $"{Guid.NewGuid()}.jpg");
 
             List<string> permissions = new List<string>();
 
@@ -71,7 +80,7 @@ namespace XPlat.Media.Capture
             }
             else
             {
-                this.StartCamera(savedInstanceState);
+                this.StartCamera();
             }
         }
 
@@ -82,15 +91,8 @@ namespace XPlat.Media.Capture
             this.config = this.ChangingConfigurations;
         }
 
-        private void StartCamera(Bundle savedInstanceState)
+        private void StartCamera()
         {
-            Bundle bundle = savedInstanceState ?? this.Intent.Extras;
-
-            bool isComplete = bundle.GetBoolean("isComplete", false);
-            this.requestId = bundle.GetInt(IntentId, 0);
-            this.action = bundle.GetString(IntentAction);
-            this.fileName = bundle.GetString(IntentFileName, $"{Guid.NewGuid()}.jpg");
-
             Intent intent = null;
             try
             {
@@ -127,7 +129,7 @@ namespace XPlat.Media.Capture
                     intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(this.publicFile));
                 }
 
-                if (!isComplete)
+                if (!this.isComplete)
                 {
                     if (intent.ResolveActivity(this.PackageManager) != null)
                     {
@@ -142,7 +144,7 @@ namespace XPlat.Media.Capture
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
-                CameraFileCaptured?.Invoke(this, new CameraFileCaptured(this.requestId, null, true));
+                CameraFileCaptured?.Invoke(this, new CameraFileCaptured(this.requestId, null, true, false));
             }
             finally
             {
@@ -169,11 +171,12 @@ namespace XPlat.Media.Capture
 
                 if (granted)
                 {
-                    this.StartCamera(null);
+                    this.StartCamera();
                 }
                 else
                 {
-                    Task<CameraFileCaptured> result = Task.FromResult(new CameraFileCaptured(requestCode, null, true));
+                    Task<CameraFileCaptured> result =
+                        Task.FromResult(new CameraFileCaptured(this.requestId, null, true, true));
                     result.ContinueWith(x => { CameraFileCaptured?.Invoke(this, x.Result); });
                     this.Finish();
                 }
@@ -181,7 +184,7 @@ namespace XPlat.Media.Capture
             }
             else
             {
-                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                base.OnRequestPermissionsResult(this.requestId, permissions, grantResults);
             }
         }
 
@@ -189,7 +192,8 @@ namespace XPlat.Media.Capture
         {
             if (resultCode == Result.Canceled)
             {
-                Task<CameraFileCaptured> result = Task.FromResult(new CameraFileCaptured(requestCode, null, true));
+                Task<CameraFileCaptured>
+                    result = Task.FromResult(new CameraFileCaptured(requestCode, null, true, false));
                 result.ContinueWith(x => { CameraFileCaptured?.Invoke(this, x.Result); });
             }
             else
@@ -207,7 +211,7 @@ namespace XPlat.Media.Capture
                     storageFile = await StorageFile.GetFileFromPathAsync(this.contentProviderFile.AbsolutePath);
                 }
 
-                CameraFileCaptured args = new CameraFileCaptured(requestCode, storageFile, false);
+                CameraFileCaptured args = new CameraFileCaptured(requestCode, storageFile, false, false);
 
                 CameraFileCaptured?.Invoke(this, args);
             }
