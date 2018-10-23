@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	<Button android:id="@+id/request_location_access" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Request Location Access" />
+
+	<MADE.App.Views.HeaderedTextBlock android:id="@+id/location_access_status" android:layout_width="match_parent" android:layout_height="wrap_content" app:header="Current location access" />
+	<MADE.App.Views.HeaderedTextBlock android:id="@+id/location_provider_status" android:layout_width="match_parent" android:layout_height="wrap_content" app:header="Geolocator status" />
+	<MADE.App.Views.HeaderedTextBlock android:id="@+id/current_position" android:layout_width="match_parent" android:layout_height="wrap_content" app:header="Current position" />
+
+</LinearLayout>

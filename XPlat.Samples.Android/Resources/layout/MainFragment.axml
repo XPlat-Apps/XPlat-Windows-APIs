@@ -8,5 +8,6 @@
 
 	<Button android:id="@+id/navigate_to_camera_capture" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CameraCaptureUI Sample" />
 	<Button android:id="@+id/navigate_to_display_request" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="DisplayRequest Sample" />
+	<Button android:id="@+id/navigate_to_geolocator" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Geolocator Sample" />
 
 </LinearLayout>
