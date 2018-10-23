@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices
+﻿namespace XPlat.Device
 {
     /// <summary>Specifies whether an app is available that supports activation.</summary>
     public enum LaunchQuerySupportStatus

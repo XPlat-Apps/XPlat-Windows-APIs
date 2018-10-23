@@ -1,9 +1,9 @@
 ﻿#if WINDOWS_UWP
-namespace XPlat.Devices.Power
+namespace XPlat.Device.Power
 {
     using System;
     using System.Threading;
-    using XPlat.Devices.Power.Extensions;
+    using XPlat.Device.Power.Extensions;
 
     /// <summary>Provides access to information about a device's battery and power supply status.</summary>
     public sealed class PowerManager : IPowerManager, IDisposable

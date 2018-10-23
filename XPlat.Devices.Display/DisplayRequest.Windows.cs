@@ -1,5 +1,5 @@
 ﻿#if WINDOWS_UWP
-namespace XPlat.Devices.Display
+namespace XPlat.Device.Display
 {
     /// <summary>Represents a display request.</summary>
     public class DisplayRequest : IDisplayRequest

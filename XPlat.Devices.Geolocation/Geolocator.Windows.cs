@@ -1,10 +1,10 @@
 ﻿#if WINDOWS_UWP
-namespace XPlat.Devices.Geolocation
+namespace XPlat.Device.Geolocation
 {
     using System;
     using System.Threading.Tasks;
     using Windows.Foundation;
-    using XPlat.Devices.Geolocation.Extensions;
+    using XPlat.Device.Geolocation.Extensions;
     using XPlat.Threading.Tasks;
 
     public class Geolocator : IGeolocator

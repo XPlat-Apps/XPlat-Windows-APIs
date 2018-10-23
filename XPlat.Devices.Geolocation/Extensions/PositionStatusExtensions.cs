@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Geolocation.Extensions
+﻿namespace XPlat.Device.Geolocation.Extensions
 {
     using System;
 

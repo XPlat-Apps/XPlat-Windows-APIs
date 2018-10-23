@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Device.Geolocation
 {
     /// <summary>Represents a location that may contain latitude and longitude data.</summary>
     public interface IGeoposition

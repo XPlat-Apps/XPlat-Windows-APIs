@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Power
+﻿namespace XPlat.Device.Power
 {
     /// <summary>Indicates the status of the battery.</summary>
     public enum BatteryStatus

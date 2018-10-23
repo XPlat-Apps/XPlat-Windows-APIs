@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Power
+﻿namespace XPlat.Device.Power
 {
     using System;
 

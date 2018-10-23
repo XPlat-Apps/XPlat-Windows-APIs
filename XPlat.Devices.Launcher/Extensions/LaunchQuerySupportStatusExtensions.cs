@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Extensions
+﻿namespace XPlat.Device.Extensions
 {
     using System;
 

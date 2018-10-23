@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Device.Geolocation
 {
     /// <summary>Indicates the requested accuracy level for the location data that the application uses.</summary>
     public enum PositionAccuracy

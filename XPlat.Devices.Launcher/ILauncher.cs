@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices
+﻿namespace XPlat.Device
 {
     using System;
     using System.Threading.Tasks;

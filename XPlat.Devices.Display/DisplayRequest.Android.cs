@@ -1,5 +1,5 @@
 ﻿#if __ANDROID__
-namespace XPlat.Devices.Display
+namespace XPlat.Device.Display
 {
     using System;
     using Android.Views;

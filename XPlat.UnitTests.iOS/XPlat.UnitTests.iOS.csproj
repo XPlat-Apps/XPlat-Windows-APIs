@@ -156,21 +156,21 @@
       <Project>{77a76f2f-5226-4454-b030-d4dfdec6573b}</Project>
       <Name>XPlat.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Devices.Display\XPlat.Devices.Display.csproj">
+    <ProjectReference Include="..\XPlat.Devices.Display\XPlat.Device.Display.csproj">
       <Project>{ca8bd9a9-288f-4af7-8cfc-3b65d2776b0c}</Project>
-      <Name>XPlat.Devices.Display</Name>
+      <Name>XPlat.Device.Display</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Devices.Geolocation\XPlat.Devices.Geolocation.csproj">
+    <ProjectReference Include="..\XPlat.Devices.Geolocation\XPlat.Device.Geolocation.csproj">
       <Project>{43d61348-7b9c-4e96-b4e6-9ab34537ef3c}</Project>
-      <Name>XPlat.Devices.Geolocation</Name>
+      <Name>XPlat.Device.Geolocation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Devices.Launcher\XPlat.Devices.Launcher.csproj">
+    <ProjectReference Include="..\XPlat.Devices.Launcher\XPlat.Device.Launcher.csproj">
       <Project>{75fbcf99-a80e-4a3e-9bd2-94faf0fc9022}</Project>
-      <Name>XPlat.Devices.Launcher</Name>
+      <Name>XPlat.Device.Launcher</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XPlat.Devices.Power\XPlat.Devices.Power.csproj">
+    <ProjectReference Include="..\XPlat.Devices.Power\XPlat.Device.Power.csproj">
       <Project>{b094382d-916b-49bc-93f5-3e06e464a008}</Project>
-      <Name>XPlat.Devices.Power</Name>
+      <Name>XPlat.Device.Power</Name>
     </ProjectReference>
     <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj">
       <Project>{32e91160-ad0a-4ae1-944b-0f39305bc65c}</Project>

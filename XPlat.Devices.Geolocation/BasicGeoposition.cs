@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Device.Geolocation
 {
     /// <summary>The basic information to describe a geographic position.</summary>
     public struct BasicGeoposition

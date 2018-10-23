@@ -1,5 +1,5 @@
 ﻿#if __IOS__
-namespace XPlat.Devices.Power
+namespace XPlat.Device.Power
 {
     using System;
     using System.Threading;

@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Display
+﻿namespace XPlat.Device.Display
 {
     /// <summary>Represents a display request.</summary>
     public interface IDisplayRequest

@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Device.Geolocation
 {
     /// <summary>Indicates the ability of the Geolocator object to provide location data.</summary>
     public enum PositionStatus

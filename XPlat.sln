@@ -7,21 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{D1AEF003-632
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D999DCBF-510C-47AC-8B80-3995DDEB9855}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Devices.Geolocation", "XPlat.Devices.Geolocation\XPlat.Devices.Geolocation.csproj", "{43D61348-7B9C-4E96-B4E6-9AB34537EF3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Device.Geolocation", "XPlat.Devices.Geolocation\XPlat.Device.Geolocation.csproj", "{43D61348-7B9C-4E96-B4E6-9AB34537EF3C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Devices.Display", "XPlat.Devices.Display\XPlat.Devices.Display.csproj", "{CA8BD9A9-288F-4AF7-8CFC-3B65D2776B0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Device.Display", "XPlat.Devices.Display\XPlat.Device.Display.csproj", "{CA8BD9A9-288F-4AF7-8CFC-3B65D2776B0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Foundation", "XPlat.Foundation\XPlat.Foundation.csproj", "{32E91160-AD0A-4AE1-944B-0F39305BC65C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Core", "XPlat.Core\XPlat.Core.csproj", "{77A76F2F-5226-4454-B030-D4DFDEC6573B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Devices.Launcher", "XPlat.Devices.Launcher\XPlat.Devices.Launcher.csproj", "{75FBCF99-A80E-4A3E-9BD2-94FAF0FC9022}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Device.Launcher", "XPlat.Devices.Launcher\XPlat.Device.Launcher.csproj", "{75FBCF99-A80E-4A3E-9BD2-94FAF0FC9022}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Storage", "XPlat.Storage\XPlat.Storage.csproj", "{212B0428-3E12-4490-A3CA-7609D26FED19}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.UnitTests", "XPlat.UnitTests\XPlat.UnitTests.csproj", "{873A2FF4-B5EB-49BB-AA06-557E0E2BDBD0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Devices.Power", "XPlat.Devices.Power\XPlat.Devices.Power.csproj", "{B094382D-916B-49BC-93F5-3E06E464A008}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Device.Power", "XPlat.Devices.Power\XPlat.Device.Power.csproj", "{B094382D-916B-49BC-93F5-3E06E464A008}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.Media.Capture", "XPlat.Media.Capture\XPlat.Media.Capture.csproj", "{C4504BBD-E3D3-4D2E-BE83-865EAF558AA9}"
 EndProject
