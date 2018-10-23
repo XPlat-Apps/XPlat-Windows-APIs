@@ -18,6 +18,8 @@
 
         private Button navigateToGeolocatorButton;
 
+        private Button navigateToLauncherButton;
+
         public MainFragment()
         {
             this.DataContext = ServiceLocator.Current.GetInstance<MainFragmentViewModel>();
@@ -44,11 +46,17 @@
                 this.navigateToGeolocatorButton.Click -= this.OnNavigateToGeolocatorClick;
             }
 
+            if (this.navigateToLauncherButton != null)
+            {
+                this.navigateToLauncherButton.Click -= this.OnNavigateToLauncherClick;
+            }
+
             base.OnResume();
 
             this.navigateToCameraCaptureButton = this.GetChildView<Button>(Resource.Id.navigate_to_camera_capture);
             this.navigateToDisplayRequestButton = this.GetChildView<Button>(Resource.Id.navigate_to_display_request);
             this.navigateToGeolocatorButton = this.GetChildView<Button>(Resource.Id.navigate_to_geolocator);
+            this.navigateToLauncherButton = this.GetChildView<Button>(Resource.Id.navigate_to_launcher);
 
             if (this.navigateToCameraCaptureButton != null)
             {
@@ -64,6 +72,16 @@
             {
                 this.navigateToGeolocatorButton.Click += this.OnNavigateToGeolocatorClick;
             }
+
+            if (this.navigateToLauncherButton != null)
+            {
+                this.navigateToLauncherButton.Click += this.OnNavigateToLauncherClick;
+            }
+        }
+
+        private void OnNavigateToLauncherClick(object sender, EventArgs e)
+        {
+            this.ViewModel?.NavigateToSample(typeof(LauncherFragment), null);
         }
 
         private void OnNavigateToDisplayRequestClick(object sender, EventArgs e)
