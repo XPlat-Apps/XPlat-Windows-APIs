@@ -1,12 +1,16 @@
-﻿using System;
-using Android.Widget;
-using CommonServiceLocator;
-using MADE.App.Views.Navigation.Pages;
-using XPlat.Media.Capture;
-using XPlat.Samples.Android.ViewModels;
-
-namespace XPlat.Samples.Android.Fragments
+﻿namespace XPlat.Samples.Android.Fragments
 {
+    using System;
+
+    using CommonServiceLocator;
+
+    using global::Android.Widget;
+
+    using MADE.App.Views.Navigation.Pages;
+
+    using XPlat.Media.Capture;
+    using XPlat.Samples.Android.ViewModels;
+
     public class CameraCaptureFragment : MvvmPage
     {
         private Button captureImageButton;
@@ -35,7 +39,7 @@ namespace XPlat.Samples.Android.Fragments
 
             base.OnResume();
 
-            ViewModel.CameraCaptureUI = new CameraCaptureUI(this.Context);
+            this.ViewModel.CameraCaptureUI = new CameraCaptureUI(this.Context);
 
             this.captureImageButton = this.GetChildView<Button>(Resource.Id.capture_image);
             this.captureVideoButton = this.GetChildView<Button>(Resource.Id.capture_video);
