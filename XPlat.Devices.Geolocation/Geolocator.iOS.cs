@@ -1,5 +1,5 @@
 ﻿#if __IOS__
-namespace XPlat.Devices.Geolocation
+namespace XPlat.Device.Geolocation
 {
     using System;
     using System.Threading.Tasks;

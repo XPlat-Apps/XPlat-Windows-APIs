@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Device.Geolocation
 {
     /// <summary>Describes a geographic point.</summary>
     public class Geopoint : IGeopoint

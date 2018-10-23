@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Device.Geolocation
 {
     /// <summary>Provides information for the StatusChanged event.</summary>
     public interface IStatusChangedEventArgs

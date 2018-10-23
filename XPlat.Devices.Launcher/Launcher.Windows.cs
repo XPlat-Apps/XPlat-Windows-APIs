@@ -1,10 +1,10 @@
 ﻿#if WINDOWS_UWP
-namespace XPlat.Devices
+namespace XPlat.Device
 {
     using System;
     using System.Threading.Tasks;
     using Windows.System;
-    using XPlat.Devices.Extensions;
+    using XPlat.Device.Extensions;
     using XPlat.Storage;
 
     /// <summary>Starts the default app associated with the specified file or URI.</summary>

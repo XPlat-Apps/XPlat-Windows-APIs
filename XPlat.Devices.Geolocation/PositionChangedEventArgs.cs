@@ -1,4 +1,4 @@
-﻿namespace XPlat.Devices.Geolocation
+﻿namespace XPlat.Device.Geolocation
 {
     /// <summary>Provides data for the PositionChanged event.</summary>
     public class PositionChangedEventArgs

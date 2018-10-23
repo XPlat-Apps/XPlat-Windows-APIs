@@ -1,5 +1,5 @@
 ﻿#if __ANDROID__
-namespace XPlat.Devices.Power
+namespace XPlat.Device.Power
 {
     using System;
 

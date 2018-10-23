@@ -14,10 +14,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
-    <ProjectReference Include="..\XPlat.Devices.Display\XPlat.Devices.Display.csproj" />
-    <ProjectReference Include="..\XPlat.Devices.Geolocation\XPlat.Devices.Geolocation.csproj" />
-    <ProjectReference Include="..\XPlat.Devices.Launcher\XPlat.Devices.Launcher.csproj" />
-    <ProjectReference Include="..\XPlat.Devices.Power\XPlat.Devices.Power.csproj" />
+    <ProjectReference Include="..\XPlat.Devices.Display\XPlat.Device.Display.csproj" />
+    <ProjectReference Include="..\XPlat.Devices.Geolocation\XPlat.Device.Geolocation.csproj" />
+    <ProjectReference Include="..\XPlat.Devices.Launcher\XPlat.Device.Launcher.csproj" />
+    <ProjectReference Include="..\XPlat.Devices.Power\XPlat.Device.Power.csproj" />
     <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj" />
     <ProjectReference Include="..\XPlat.Media.Capture\XPlat.Media.Capture.csproj" />
     <ProjectReference Include="..\XPlat.Storage.Pickers\XPlat.Storage.Pickers.csproj" />

@@ -7,21 +7,21 @@
     <Version>1.0.0.0</Version>
     <Authors>James Croft</Authors>
     <Company>James Croft</Company>
-    <Product>XPlat - Windows.System.Power APIs</Product>
-    <Description>Brings the functionality of the Windows.System.Power APIs cross-platform with support for Windows, Android and iOS.</Description>
+    <Product>XPlat - Windows.System.Display APIs</Product>
+    <Description>Brings the functionality of the Windows.System.Display APIs cross-platform with support for Windows, Android and iOS.</Description>
     <Copyright>Copyright (C) James Croft. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</PackageProjectUrl>
     <PackageIconUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/develop/Assets/ProjectIcon.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Power PowerManager</PackageTags>
+    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Display DisplayRequest</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageId>XPlat.Devices.Power</PackageId>
+    <PackageId>XPlat.Device.Display</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Devices.Power.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Device.Display.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

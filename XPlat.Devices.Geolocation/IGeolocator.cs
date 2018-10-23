@@ -2,7 +2,7 @@
 // Copyright (c) James Croft. All rights reserved.
 // </copyright>
 
-namespace XPlat.Devices.Geolocation
+namespace XPlat.Device.Geolocation
 {
     using System;
     using System.Threading.Tasks;
