@@ -58,6 +58,9 @@
   <ItemGroup>
     <Compile Include="AndroidLocator.cs" />
     <Compile Include="Fragments\CameraCaptureFragment.cs" />
+    <Compile Include="Fragments\DisplayRequestFragment.cs" />
+    <Compile Include="Fragments\GeolocatorFragment.cs" />
+    <Compile Include="Fragments\LauncherFragment.cs" />
     <Compile Include="Fragments\MainFragment.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
@@ -204,6 +207,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\CameraCaptureFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DisplayRequestFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\GeolocatorFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\LauncherFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
