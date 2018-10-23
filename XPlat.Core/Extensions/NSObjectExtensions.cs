@@ -5,8 +5,16 @@ namespace XPlat.Extensions
     using System.Globalization;
     using Foundation;
 
+    /// <summary>
+    /// Defines a collection of extensions for NSObject objects.
+    /// </summary>
     public static class NSObjectExtensions
     {
+        /// <summary>
+        /// Takes a base NSObject and, depending on it's actual type, will convert the iOS object to a .NET equivalent.
+        /// </summary>
+        /// <param name="obj">The iOS object to convert to a .NET object.</param>
+        /// <returns>Returns the converted .NET object value.</returns>
         public static object ToObject(this NSObject obj)
         {
             object val = null;

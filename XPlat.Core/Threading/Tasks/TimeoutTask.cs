@@ -22,7 +22,7 @@ namespace XPlat.Threading.Tasks
         /// Initializes a new instance of the <see cref="TimeoutTask"/> class.
         /// </summary>
         /// <param name="timeout">
-        /// The timeout perioud.
+        /// The timeout period.
         /// </param>
         /// <param name="timeoutAction">
         /// The action to perform when the timeout occurs.
