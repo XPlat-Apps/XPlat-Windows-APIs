@@ -12,6 +12,18 @@
         /// <summary>The altitude of the geographic position in meters.</summary>
         public double Altitude;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BasicGeoposition"/> struct.
+        /// </summary>
+        /// <param name="latitude">
+        /// The latitude of the geographic position.
+        /// </param>
+        /// <param name="longitude">
+        /// The longitude of the geographic position.
+        /// </param>
+        /// <param name="altitude">
+        /// The altitude of the geographic position.
+        /// </param>
         public BasicGeoposition(double latitude, double longitude, double altitude)
         {
             this.Latitude = latitude;
@@ -20,6 +32,12 @@
         }
 
 #if WINDOWS_UWP
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BasicGeoposition"/> struct.
+        /// </summary>
+        /// <param name="geoposition">
+        /// The Windows BasicGeoposition which will be used to populate the field values.
+        /// </param>
         public BasicGeoposition(Windows.Devices.Geolocation.BasicGeoposition geoposition)
         {
             this.Latitude = geoposition.Latitude;
@@ -27,6 +45,12 @@
             this.Altitude = geoposition.Altitude;
         }
 #elif __ANDROID__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BasicGeoposition"/> struct.
+        /// </summary>
+        /// <param name="location">
+        /// The Android Location which will be used to populate the field values.
+        /// </param>
         public BasicGeoposition(Android.Locations.Location location)
         {
             this.Latitude = location.Latitude;
@@ -34,6 +58,12 @@
             this.Altitude = location.HasAltitude ? location.Altitude : 0;
         }
 #elif __IOS__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BasicGeoposition"/> struct.
+        /// </summary>
+        /// <param name="location">
+        /// The iOS CLLocation which will be used to populate the field values.
+        /// </param>
         public BasicGeoposition(CoreLocation.CLLocation location)
         {
             this.Latitude = location.HorizontalAccuracy > -1 ? location.Coordinate.Latitude : 0;

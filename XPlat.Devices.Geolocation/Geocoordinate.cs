@@ -5,11 +5,20 @@
     /// <summary>Contains the information for identifying a geographic location.</summary>
     public class Geocoordinate : IGeocoordinate
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Geocoordinate"/> class.
+        /// </summary>
         public Geocoordinate()
         {
         }
 
 #if WINDOWS_UWP
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Geocoordinate"/> class.
+        /// </summary>
+        /// <param name="coordinate">
+        /// The Windows Geocoordinate which will be used to populate the field values.
+        /// </param>
         public Geocoordinate(Windows.Devices.Geolocation.Geocoordinate coordinate)
         {
             this.Latitude = coordinate.Latitude;
@@ -22,6 +31,12 @@
             this.Point = new Geopoint(coordinate.Point);
         }
 #elif __ANDROID__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Geocoordinate"/> class.
+        /// </summary>
+        /// <param name="location">
+        /// The Android Location which will be used to populate the field values.
+        /// </param>
         public Geocoordinate(Android.Locations.Location location)
         {
             this.Latitude = location.Latitude;
@@ -34,6 +49,12 @@
             this.Point = new Geopoint(location);
         }
 #elif __IOS__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Geocoordinate"/> class.
+        /// </summary>
+        /// <param name="location">
+        /// The iOS CLLocation which will be used to populate the field values.
+        /// </param>
         public Geocoordinate(CoreLocation.CLLocation location)
         {
             if (location.HorizontalAccuracy > -1)
