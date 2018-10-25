@@ -3,7 +3,12 @@
     /// <summary>Describes a geographic point.</summary>
     public class Geopoint : IGeopoint
     {
-        /// <summary>Initializes a new instance of the <see cref="Geopoint"/> class.</summary>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Geopoint"/> class.
+        /// </summary>
+        /// <param name="position">
+        /// The position.
+        /// </param>
         public Geopoint(BasicGeoposition position)
         {
             this.Position = position;
@@ -22,11 +27,13 @@
             this.Position = new BasicGeoposition(geoposition);
         }
 #elif __ANDROID__
+        /// <summary>Initializes a new instance of the <see cref="Geopoint"/> class.</summary>
         public Geopoint(Android.Locations.Location location)
         {
             this.Position = new BasicGeoposition(location);
         }
 #elif __IOS__
+        /// <summary>Initializes a new instance of the <see cref="Geopoint"/> class.</summary>
         public Geopoint(CoreLocation.CLLocation location)
         {
             this.Position = new BasicGeoposition(location);
