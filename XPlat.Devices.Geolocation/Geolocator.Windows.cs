@@ -73,8 +73,18 @@ namespace XPlat.Device.Geolocation
             return new Geoposition(pos);
         }
 
-        /// <summary>Starts an asynchronous operation to retrieve the current location of the device.</summary>
-        /// <returns>An asynchronous operation that, upon completion, returns a Geoposition marking the found location.</returns>
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location of the device.
+        /// </summary>
+        /// <param name="maximumAge">
+        /// The maximum acceptable age of cached location data.
+        /// </param>
+        /// <param name="timeout">
+        /// The timeout.
+        /// </param>
+        /// <returns>
+        /// An asynchronous operation that, upon completion, returns a Geoposition marking the found location.
+        /// </returns>
         public Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
             // Setting the timeout on the Windows API to a year as an exception is thrown when it times out.
