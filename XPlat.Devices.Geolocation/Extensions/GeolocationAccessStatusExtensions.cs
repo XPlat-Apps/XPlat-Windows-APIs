@@ -2,9 +2,17 @@
 {
     using System;
 
+    /// <summary>
+    /// Defines a collection of extensions for the GeolocationAccessStatus enum.
+    /// </summary>
     public static class GeolocationAccessStatusExtensions
     {
 #if WINDOWS_UWP
+        /// <summary>
+        /// Converts the Windows GeolocationAccessStatus enum to the internal XPlat equivalent.
+        /// </summary>
+        /// <param name="status">The Windows GeolocationAccessStatus to convert.</param>
+        /// <returns>Returns the equivalent XPlat GeolocationAccessStatus value.</returns>
         public static GeolocationAccessStatus ToInternalGeolocationAccessStatus(
             this Windows.Devices.Geolocation.GeolocationAccessStatus status)
         {
@@ -21,6 +29,11 @@
             }
         }
 
+        /// <summary>
+        /// Converts the XPlat GeolocationAccessStatus enum to the Windows equivalent.
+        /// </summary>
+        /// <param name="status">The XPlat GeolocationAccessStatus to convert.</param>
+        /// <returns>Returns the equivalent Windows GeolocationAccessStatus value.</returns>
         public static Windows.Devices.Geolocation.GeolocationAccessStatus ToWindowsGeolocationAccessStatus(
             this GeolocationAccessStatus status)
         {
