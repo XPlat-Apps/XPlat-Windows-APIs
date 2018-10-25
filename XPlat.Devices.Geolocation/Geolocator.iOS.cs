@@ -9,9 +9,7 @@ namespace XPlat.Device.Geolocation
     using XPlat.Exceptions;
     using XPlat.Foundation;
 
-    /// <summary>
-    /// Defines a service to access the current geographic location.
-    /// </summary>
+    /// <summary>Provides access to the current geographic location.</summary>
     public class Geolocator : IGeolocator
     {
         private readonly CLLocationManager locationManager;

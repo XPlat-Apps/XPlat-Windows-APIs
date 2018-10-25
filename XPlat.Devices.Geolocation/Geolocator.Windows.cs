@@ -7,6 +7,7 @@ namespace XPlat.Device.Geolocation
     using XPlat.Device.Geolocation.Extensions;
     using XPlat.Threading.Tasks;
 
+    /// <summary>Provides access to the current geographic location.</summary>
     public class Geolocator : IGeolocator
     {
         /// <summary>

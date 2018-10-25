@@ -50,10 +50,7 @@ namespace XPlat.Device.Geolocation
             this.activeLocationProviders = new HashSet<string>(activeLocationProviders);
             this.completedAction = completedAction;
 
-            if (timeout != TimeSpan.MaxValue)
-            {
-                this.timer = new Timer(this.OnTimeout, null, timeout, TimeSpan.Zero);
-            }
+            this.timer = new Timer(this.OnTimeout, null, timeout, TimeSpan.Zero);
         }
 
         /// <summary>

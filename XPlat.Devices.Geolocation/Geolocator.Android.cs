@@ -15,6 +15,7 @@ namespace XPlat.Device.Geolocation
 
     using Exception = System.Exception;
 
+    /// <summary>Provides access to the current geographic location.</summary>
     public class Geolocator : IGeolocator
     {
         private readonly object obj = new object();
@@ -25,7 +26,7 @@ namespace XPlat.Device.Geolocation
 
         private GeolocatorLocationListener locationListener;
 
-        private uint reportInterval;
+        private uint reportInterval = 1;
 
         private PositionAccuracy desiredAccuracy;
 
@@ -110,7 +111,7 @@ namespace XPlat.Device.Geolocation
         /// <returns>An asynchronous operation that, upon completion, returns a Geoposition marking the found location.</returns>
         public Task<Geoposition> GetGeopositionAsync()
         {
-            return this.GetGeopositionAsync(TimeSpan.MaxValue, TimeSpan.MaxValue);
+            return this.GetGeopositionAsync(TimeSpan.MaxValue, TimeSpan.FromMinutes(1));
         }
 
         /// <summary>Starts an asynchronous operation to retrieve the current location of the device.</summary>
@@ -229,7 +230,7 @@ namespace XPlat.Device.Geolocation
                     this.locationManager.RequestLocationUpdates(
                         provider,
                         this.reportInterval,
-                        this.DesiredAccuracyInMeters,
+                        (float)this.MovementThreshold,
                         this.locationListener,
                         looperThread);
                 }
