@@ -11,10 +11,19 @@ namespace XPlat.Device
     /// <summary>Starts the default app associated with the specified file or URI.</summary>
     public class Launcher : ILauncher
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Launcher"/> class.
+        /// </summary>
         public Launcher()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Launcher"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The Android context.
+        /// </param>
         public Launcher(Context context)
         {
             this.Context = context;
