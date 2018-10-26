@@ -3,18 +3,30 @@
     /// <summary>Provides information for the StatusChanged event.</summary>
     public class StatusChangedEventArgs : IStatusChangedEventArgs
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StatusChangedEventArgs"/> class.
+        /// </summary>
+        /// <param name="status">
+        /// The position status.
+        /// </param>
         public StatusChangedEventArgs(PositionStatus status)
         {
             this.Status = status;
         }
 
 #if WINDOWS_UWP
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StatusChangedEventArgs"/> class.
+        /// </summary>
         public StatusChangedEventArgs(Windows.Devices.Geolocation.PositionStatus status)
         {
             this.Status =
                 XPlat.Device.Geolocation.Extensions.PositionStatusExtensions.ToInternalPositionStatus(status);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StatusChangedEventArgs"/> class.
+        /// </summary>
         public StatusChangedEventArgs(Windows.Devices.Geolocation.StatusChangedEventArgs eventArgs)
         {
             this.Status =
