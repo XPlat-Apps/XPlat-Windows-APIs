@@ -42,7 +42,7 @@
 
             this.geolocator = new Geolocator(this.Context)
                                   {
-                                      DesiredAccuracy = PositionAccuracy.High, MovementThreshold = 25
+                                      DesiredAccuracy = PositionAccuracy.Default, MovementThreshold = 25
                                   };
 
             if (this.geolocator != null)
@@ -99,11 +99,9 @@
 
                 if (access == GeolocationAccessStatus.Allowed)
                 {
-                    Geoposition currentPos = await this.geolocator.GetGeopositionAsync(
-                                                 new TimeSpan(0, 10, 0),
-                                                 new TimeSpan(0, 5, 0));
+                    Geoposition currentPos = await this.geolocator.GetGeopositionAsync();
 
-                    this.currentPosition.Text = $"{currentPos.Coordinate.Latitude}, {currentPos.Coordinate.Longitude}";
+                    this.currentPosition.Text = currentPos != null ? $"{currentPos.Coordinate.Latitude}, {currentPos.Coordinate.Longitude}" : "NULL location information returned.";
                 }
             }
         }

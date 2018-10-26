@@ -9,9 +9,7 @@ namespace XPlat.Device.Geolocation
     using XPlat.Exceptions;
     using XPlat.Foundation;
 
-    /// <summary>
-    /// Defines a service to access the current geographic location.
-    /// </summary>
+    /// <summary>Provides access to the current geographic location.</summary>
     public class Geolocator : IGeolocator
     {
         private readonly CLLocationManager locationManager;
@@ -93,11 +91,21 @@ namespace XPlat.Device.Geolocation
         /// <returns>An asynchronous operation that, upon completion, returns a Geoposition marking the found location.</returns>
         public Task<Geoposition> GetGeopositionAsync()
         {
-            return this.GetGeopositionAsync(TimeSpan.MaxValue, TimeSpan.MaxValue);
+            return this.GetGeopositionAsync(TimeSpan.MaxValue, TimeSpan.FromMinutes(1));
         }
 
-        /// <summary>Starts an asynchronous operation to retrieve the current location of the device.</summary>
-        /// <returns>An asynchronous operation that, upon completion, returns a Geoposition marking the found location.</returns>
+        /// <summary>
+        /// Starts an asynchronous operation to retrieve the current location of the device.
+        /// </summary>
+        /// <param name="maximumAge">
+        /// The maximum acceptable age of cached location data.
+        /// </param>
+        /// <param name="timeout">
+        /// The timeout.
+        /// </param>
+        /// <returns>
+        /// An asynchronous operation that, upon completion, returns a Geoposition marking the found location.
+        /// </returns>
         public async Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
             TaskCompletionSource<Geoposition> tcs = new TaskCompletionSource<Geoposition>();
