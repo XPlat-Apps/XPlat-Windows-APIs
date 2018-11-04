@@ -39,7 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{DF04
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.Samples.Android", "XPlat.Samples.Android\XPlat.Samples.Android.csproj", "{9A5B48A7-4615-4D21-B550-51F882B5AE26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.UI", "XPlat.UI\XPlat.UI.csproj", "{83C1ABF0-63A8-405D-B0B1-6559C5930EC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.UI", "XPlat.UI\XPlat.UI.csproj", "{83C1ABF0-63A8-405D-B0B1-6559C5930EC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

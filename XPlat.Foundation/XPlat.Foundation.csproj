@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.0.0</Version>
     <Authors>James Croft</Authors>
@@ -13,8 +16,6 @@
     <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</PackageProjectUrl>
     <PackageIconUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/develop/Assets/ProjectIcon.png</PackageIconUrl>
-    <RepositoryUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Foundation Size</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageId>XPlat.Foundation</PackageId>
@@ -25,18 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>

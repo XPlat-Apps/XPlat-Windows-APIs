@@ -13,7 +13,9 @@
             this.G = color.G;
             this.B = color.B;
         }
-#elif __ANDROID__
+#endif
+
+#if __ANDROID__ || NETSTANDARD2_0
         public Color(System.Drawing.Color color)
         {
             this.A = color.A;
@@ -21,7 +23,9 @@
             this.G = color.G;
             this.B = color.B;
         }
+#endif
 
+#if __ANDROID__
         public Color(Android.Graphics.Color color)
         {
             this.A = color.A;
@@ -29,7 +33,9 @@
             this.G = color.G;
             this.B = color.B;
         }
-#elif __IOS__
+#endif
+
+#if __IOS__
         public Color(UIKit.UIColor color)
         {
             if (color != null && color.CGColor != null)
@@ -116,7 +122,9 @@
         {
             return new Windows.UI.Xaml.Media.SolidColorBrush(color);
         }
-#elif __ANDROID__
+#endif
+
+#if __ANDROID__ || NETSTANDARD2_0
         public static implicit operator Color(System.Drawing.Color color)
         {
             return new Color(color);
@@ -126,6 +134,9 @@
         {
             return System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
         }
+#endif
+
+#if __ANDROID__
 
         public static implicit operator Color(Android.Graphics.Color color)
         {
@@ -136,7 +147,9 @@
         {
             return new Android.Graphics.Color(color.R, color.G, color.B, color.A);
         }
-#elif __IOS__
+#endif
+
+#if __IOS__
         public static implicit operator Color(UIKit.UIColor color)
         {
             return new Color(color);
