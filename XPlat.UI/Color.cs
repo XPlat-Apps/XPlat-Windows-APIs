@@ -1,5 +1,7 @@
 ﻿namespace XPlat.UI
 {
+    using System.Globalization;
+
     /// <summary>Describes a color in terms of alpha, red, green, and blue channels.</summary>
     public struct Color
     {
@@ -65,6 +67,33 @@
             this.R = r;
             this.G = g;
             this.B = b;
+        }
+
+        internal Color(string hexValue)
+        {
+            string val = hexValue.ToUpper();
+
+            switch (val.Length)
+            {
+                case 7:
+                    this.A = 255;
+                    this.R = byte.Parse(val.Substring(1, 2), NumberStyles.AllowHexSpecifier);
+                    this.G = byte.Parse(val.Substring(3, 2), NumberStyles.AllowHexSpecifier);
+                    this.B = byte.Parse(val.Substring(5, 2), NumberStyles.AllowHexSpecifier);
+                    break;
+                case 9:
+                    this.A = byte.Parse(val.Substring(1, 2), NumberStyles.AllowHexSpecifier);
+                    this.R = byte.Parse(val.Substring(3, 2), NumberStyles.AllowHexSpecifier);
+                    this.G = byte.Parse(val.Substring(5, 2), NumberStyles.AllowHexSpecifier);
+                    this.B = byte.Parse(val.Substring(7, 2), NumberStyles.AllowHexSpecifier);
+                    break;
+                default:
+                    this.A = 0;
+                    this.R = 0;
+                    this.G = 0;
+                    this.B = 0;
+                    break;
+            }
         }
 
 #if WINDOWS_UWP
