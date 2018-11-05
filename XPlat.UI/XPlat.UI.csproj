@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.4;xamarin.ios10;monoandroid81;uap10.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard1.4;xamarin.ios10;monoandroid81;uap10.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -10,19 +10,19 @@
     <Version>1.0.0.0</Version>
     <Authors>James Croft</Authors>
     <Company>James Croft</Company>
-    <Product>XPlat - Windows.Devices.Geolocation APIs</Product>
-    <Description>Brings the functionality of the Windows.Devices.Geolocation APIs cross-platform with support for Windows, Android and iOS.</Description>
+    <Product>XPlat - Windows.UI APIs</Product>
+    <Description>Brings the functionality of the Windows.UI APIs cross-platform with support for Windows, Android and iOS.</Description>
     <Copyright>Copyright (C) James Croft. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</PackageProjectUrl>
     <PackageIconUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/develop/Assets/ProjectIcon.png</PackageIconUrl>
-    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Geolocation Geolocator</PackageTags>
+    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Color</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageId>XPlat.Device.Geolocation</PackageId>
+    <PackageId>XPlat.UI</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Device.Geolocation.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\XPlat.UI.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,15 +32,6 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" PrivateAssets="All" />
-    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
-    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
