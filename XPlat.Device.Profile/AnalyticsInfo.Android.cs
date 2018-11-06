@@ -26,10 +26,14 @@ namespace XPlat.Device.Profile
                 return "Car";
             }
 
-            if (deviceFamily.Equals(AnalyticsVersionInfo.DeviceFamilyMobile)
-                || deviceFamily.Equals(AnalyticsVersionInfo.DeviceFamilyTablet))
+            if (deviceFamily.Equals(AnalyticsVersionInfo.DeviceFamilyMobile))
             {
                 return "Mobile";
+            }
+
+            if (deviceFamily.Equals(AnalyticsVersionInfo.DeviceFamilyTablet))
+            {
+                return "Tablet";
             }
 
             if (deviceFamily.Equals(AnalyticsVersionInfo.DeviceFamilyTelevision))
