@@ -1,12 +1,11 @@
-﻿#if __ANDROID__
+﻿#if __IOS__
 namespace XPlat.UI.Popups
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Android.App;
-    using Android.Content;
+    using UIKit;
 
     /// <summary>Represents a dialog for showing messages to the user.</summary>
     public class MessageDialog : IMessageDialog
@@ -30,9 +29,9 @@ namespace XPlat.UI.Popups
         }
 
         /// <summary>
-        /// Gets the Android context for the dialog.
+        /// Gets the iOS controller for the dialog.
         /// </summary>
-        public Context Context { get; set; }
+        public UIViewController Controller { get; set; } = UIApplication.SharedApplication.KeyWindow.RootViewController;
 
         /// <summary>Gets or sets the title to display on the dialog, if any.</summary>
         public string Title { get; set; }
@@ -57,9 +56,9 @@ namespace XPlat.UI.Popups
 
             try
             {
-                if (this.Context == null)
+                if (this.Controller == null)
                 {
-                    throw new ArgumentNullException(nameof(this.Context), "The Android Context cannot be null.");
+                    throw new ArgumentNullException(nameof(this.Controller), "The iOS Controller cannot be null.");
                 }
 
                 if (string.IsNullOrEmpty(this.Title))
@@ -69,9 +68,9 @@ namespace XPlat.UI.Popups
 
                 IList<IUICommand> uiCommands = this.Commands;
 
-                if (uiCommands.Count > 3)
+                if (uiCommands.Count > 2)
                 {
-                    throw new ArgumentException("The dialog can only contain 3 buttons.", nameof(this.Commands));
+                    throw new ArgumentException("The dialog can only contain 2 buttons.", nameof(this.Commands));
                 }
 
                 if (uiCommands.Count < 1)
@@ -79,13 +78,7 @@ namespace XPlat.UI.Popups
                     throw new ArgumentException("The dialog must contain at least one button.", nameof(this.Commands));
                 }
 
-                AlertDialog dialog = new AlertDialog.Builder(this.Context).Create();
-                dialog.SetTitle(this.Title);
-
-                if (!string.IsNullOrEmpty(this.Content))
-                {
-                    dialog.SetMessage(this.Content);
-                }
+                UIAlertController alertController = UIAlertController.Create(this.Title, this.Content, UIAlertControllerStyle.Alert);
 
                 if (uiCommands != null)
                 {
@@ -94,36 +87,27 @@ namespace XPlat.UI.Popups
                         IUICommand command = uiCommands[i];
                         if (i == this.CancelCommandIndex)
                         {
-                            dialog.SetButton(
-                                (int)Android.Content.DialogButtonType.Negative,
-                                command.Label,
-                                (sender, args) =>
-                                    {
-                                        command.Invoked?.Invoke(command);
-                                        tcs.SetResult(command);
-                                    });
-                        }
-                        else if (i == this.DefaultCommandIndex)
-                        {
-                            dialog.SetButton(
-                                (int)Android.Content.DialogButtonType.Positive,
-                                command.Label,
-                                (sender, args) =>
-                                    {
-                                        command.Invoked?.Invoke(command);
-                                        tcs.SetResult(command);
-                                    });
+                            alertController.AddAction(
+                                UIAlertAction.Create(
+                                    command.Label,
+                                    UIAlertActionStyle.Cancel,
+                                    alert =>
+                                        {
+                                            command.Invoked?.Invoke(command);
+                                            tcs.SetResult(command);
+                                        }));
                         }
                         else
                         {
-                            dialog.SetButton(
-                                (int)Android.Content.DialogButtonType.Neutral,
-                                command.Label,
-                                (sender, args) =>
-                                    {
-                                        command.Invoked?.Invoke(command);
-                                        tcs.SetResult(command);
-                                    });
+                            alertController.AddAction(
+                                UIAlertAction.Create(
+                                    command.Label,
+                                    UIAlertActionStyle.Default,
+                                    alert =>
+                                        {
+                                            command.Invoked?.Invoke(command);
+                                            tcs.SetResult(command);
+                                        }));
                         }
                     }
                 }
@@ -135,17 +119,18 @@ namespace XPlat.UI.Popups
                         nameof(this.CancelCommandIndex));
                 }
 
-                dialog.CancelEvent += (sender, args) =>
-                    {
-                        IUICommand command = uiCommands[(int)this.CancelCommandIndex];
-                        command?.Invoked?.Invoke(command);
-                    };
-                dialog.DismissEvent += (sender, args) =>
-                    {
-                        tcs.TrySetResult(null);
-                    };
-
-                dialog.Show();
+                this.Controller.PresentViewController(
+                    alertController,
+                    true,
+                    () =>
+                        {
+                            bool cancelled = tcs.TrySetResult(null);
+                            if (cancelled)
+                            {
+                                IUICommand command = uiCommands[(int)this.CancelCommandIndex];
+                                command?.Invoked?.Invoke(command);
+                            }
+                        });
             }
             catch (Exception ex)
             {
