@@ -35,6 +35,7 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <AndroidSupportedAbis />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -160,6 +161,10 @@
       <Project>{77a76f2f-5226-4454-b030-d4dfdec6573b}</Project>
       <Name>XPlat.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XPlat.Device.Profile\XPlat.Device.Profile.csproj">
+      <Project>{cb55ce89-e7a4-4ce8-a52c-19731d73a563}</Project>
+      <Name>XPlat.Device.Profile</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.Devices.Display\XPlat.Device.Display.csproj">
       <Project>{ca8bd9a9-288f-4af7-8cfc-3b65d2776b0c}</Project>
       <Name>XPlat.Device.Display</Name>
@@ -195,6 +200,10 @@
     <ProjectReference Include="..\XPlat.UI.Core\XPlat.UI.Core.csproj">
       <Project>{fc1117f0-1777-4f8a-b0fc-a5a7873b3a57}</Project>
       <Name>XPlat.UI.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.UI\XPlat.UI.csproj">
+      <Project>{83c1abf0-63a8-405d-b0b1-6559c5930ec8}</Project>
+      <Name>XPlat.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
