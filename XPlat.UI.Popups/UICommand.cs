@@ -1,8 +1,14 @@
 ﻿namespace XPlat.UI.Popups
 {
+    using System;
+
     /// <summary>Represents a command in a context menu.</summary>
     public sealed class UICommand : IUICommand
     {
+#if WINDOWS_UWP
+        internal WeakReference originator;
+#endif
+
         /// <summary>Creates a new instance of the UICommand class using the specified label.</summary>
         /// <param name="label">The label for the UICommand.</param>
         public UICommand(string label)
@@ -35,6 +41,32 @@
         {
         }
 
+#if WINDOWS_UWP
+        public UICommand(Windows.UI.Popups.IUICommand command)
+        {
+            this.originator = new WeakReference(command);
+
+            if (command != null)
+            {
+                this.Id = command.Id;
+                this.Label = command.Label;
+                this.Invoked += uiCommand => { command.Invoked?.Invoke(this.Originator); };
+            }
+        }
+#endif
+
+#if WINDOWS_UWP
+        public static implicit operator UICommand(Windows.UI.Popups.UICommand command)
+        {
+            return new UICommand(command);
+        }
+
+        public static implicit operator Windows.UI.Popups.UICommand(UICommand command)
+        {
+            return new Windows.UI.Popups.UICommand();
+        }
+#endif
+
         /// <summary>Gets or sets the label for the command.</summary>
         public string Label { get; set; }
 
@@ -43,5 +75,11 @@
 
         /// <summary>Gets or sets the identifier of the command.</summary>
         public object Id { get; set; }
+
+#if WINDOWS_UWP
+        public Windows.UI.Popups.IUICommand Originator => this.originator != null && this.originator.IsAlive
+                                          ? this.originator.Target as Windows.UI.Popups.IUICommand
+                                          : null;
+#endif
     }
 }
