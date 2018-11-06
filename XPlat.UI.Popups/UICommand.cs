@@ -6,7 +6,7 @@
     public sealed class UICommand : IUICommand
     {
 #if WINDOWS_UWP
-        internal WeakReference originator;
+        private readonly WeakReference originator;
 #endif
 
         /// <summary>Creates a new instance of the UICommand class using the specified label.</summary>
@@ -77,7 +77,7 @@
         public object Id { get; set; }
 
 #if WINDOWS_UWP
-        public Windows.UI.Popups.IUICommand Originator => this.originator != null && this.originator.IsAlive
+        private Windows.UI.Popups.IUICommand Originator => this.originator != null && this.originator.IsAlive
                                           ? this.originator.Target as Windows.UI.Popups.IUICommand
                                           : null;
 #endif
