@@ -176,6 +176,10 @@
       <Project>{fc1117f0-1777-4f8a-b0fc-a5a7873b3a57}</Project>
       <Name>XPlat.UI.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XPlat.UI.Popups\XPlat.UI.Popups.csproj">
+      <Project>{fcf6a9e8-650a-4225-a8e6-bdff4b4cee5f}</Project>
+      <Name>XPlat.UI.Popups</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.UI\XPlat.UI.csproj">
       <Project>{83c1abf0-63a8-405d-b0b1-6559c5930ec8}</Project>
       <Name>XPlat.UI</Name>
