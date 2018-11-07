@@ -31,7 +31,7 @@ namespace XPlat.UI.Popups
         /// <summary>
         /// Gets the iOS controller for the dialog.
         /// </summary>
-        public UIViewController Controller { get; set; } = UIApplication.SharedApplication.KeyWindow.RootViewController;
+        public UIViewController Controller { get; set; }
 
         /// <summary>Gets or sets the title to display on the dialog, if any.</summary>
         public string Title { get; set; }
@@ -121,16 +121,7 @@ namespace XPlat.UI.Popups
 
                 this.Controller.PresentViewController(
                     alertController,
-                    true,
-                    () =>
-                        {
-                            bool cancelled = tcs.TrySetResult(null);
-                            if (cancelled)
-                            {
-                                IUICommand command = uiCommands[(int)this.CancelCommandIndex];
-                                command?.Invoked?.Invoke(command);
-                            }
-                        });
+                    true, null);
             }
             catch (Exception ex)
             {
