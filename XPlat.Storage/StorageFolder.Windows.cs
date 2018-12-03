@@ -19,7 +19,7 @@ namespace XPlat.Storage
         /// <param name="folder">
         /// The associated <see cref="StorageFolder"/>
         /// </param>
-        internal StorageFolder(Windows.Storage.StorageFolder folder)
+        public StorageFolder(Windows.Storage.StorageFolder folder)
         {
             this.Originator = folder ?? throw new ArgumentNullException(nameof(folder));
         }
