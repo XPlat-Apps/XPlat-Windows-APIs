@@ -12,20 +12,27 @@ namespace XPlat.ApplicationModel
     {
         private static Package current;
 
+        private readonly WeakReference originatorReference;
+
         private List<IPackage> dependencies;
 
         private IPackageId id;
 
         public Package(Windows.ApplicationModel.Package package)
         {
-            this.Originator = package ?? throw new ArgumentNullException(nameof(package));
+            if (package == null)
+            {
+                throw new ArgumentNullException(nameof(package));
+            }
+
+            this.originatorReference = new WeakReference(package);
         }
 
         /// <summary>Gets the package for the current app.</summary>
-        public static Package Current => current ?? (current = Windows.ApplicationModel.Package.Current);
+        public static Package Current => current != null && current.originatorReference.IsAlive ? current : (current = Windows.ApplicationModel.Package.Current);
 
         /// <summary>Gets the package identity of the current package.</summary>
-        public IPackageId Id => id ?? (id = new PackageId(this.Originator.Id));
+        public IPackageId Id => this.id ?? (this.id = new PackageId(this.Originator.Id));
 
         /// <summary>Gets the location of the installed package.</summary>
         public IStorageFolder InstalledLocation => new StorageFolder(this.Originator.InstalledLocation);
@@ -48,7 +55,10 @@ namespace XPlat.ApplicationModel
         public DateTimeOffset InstalledDate => this.Originator.InstalledDate;
 
         /// <summary>Gets the original Windows Package reference object.</summary>
-        public Windows.ApplicationModel.Package Originator { get; }
+        public Windows.ApplicationModel.Package Originator =>
+            this.originatorReference != null && this.originatorReference.IsAlive
+                ? this.originatorReference.Target as Windows.ApplicationModel.Package
+                : null;
 
         public static implicit operator Package(Windows.ApplicationModel.Package package)
         {

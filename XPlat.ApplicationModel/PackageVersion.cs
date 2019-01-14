@@ -1,6 +1,7 @@
 ﻿namespace XPlat.ApplicationModel
 {
     using System;
+    using System.Text.RegularExpressions;
 
     /// <summary>Represents the package version info.</summary>
     public struct PackageVersion
@@ -54,6 +55,18 @@
                            Build = version.Build,
                            Revision = version.Revision
                        };
+        }
+#elif __IOS__
+        public static implicit operator PackageVersion(global::Foundation.NSBundle bundle)
+        {
+            string versionNumber = bundle?.ObjectForInfoDictionary("CFBundleShortVersionString")?.ToString() ?? "0.0";
+            string buildNumber = bundle?.ObjectForInfoDictionary("CFBundleVersion")?.ToString() ?? "0.0";
+
+            string buildNumberStripped = Regex.Replace(buildNumber, "[^0-9.+-]", string.Empty);
+
+            versionNumber = $"{versionNumber}.{buildNumberStripped}";
+
+            return Version.Parse(versionNumber);
         }
 #endif
     }

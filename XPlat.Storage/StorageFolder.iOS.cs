@@ -19,7 +19,7 @@ namespace XPlat.Storage
         /// <param name="path">
         /// The path to the folder.
         /// </param>
-        internal StorageFolder(string path)
+        public StorageFolder(string path)
         {
             this.Path = path;
         }

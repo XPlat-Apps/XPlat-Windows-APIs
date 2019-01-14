@@ -6,9 +6,16 @@ namespace XPlat.ApplicationModel
     /// <summary>Provides package identification info, such as name, version, and publisher.</summary>
     public class PackageId : IPackageId
     {
+        private readonly WeakReference originatorReference;
+
         public PackageId(Android.Content.PM.PackageInfo packageInfo)
         {
-            this.Originator = packageInfo ?? throw new ArgumentNullException(nameof(packageInfo));
+            if (packageInfo == null)
+            {
+                throw new ArgumentNullException(nameof(packageInfo));
+            }
+
+            this.originatorReference = new WeakReference(packageInfo);
         }
 
         /// <summary>Gets the name of the package.</summary>
@@ -21,7 +28,9 @@ namespace XPlat.ApplicationModel
         public string FullName => Android.App.Application.Context.PackageName;
 
         /// <summary>Gets the original Android PackageInfo reference object.</summary>
-        public Android.Content.PM.PackageInfo Originator { get; }
+        public Android.Content.PM.PackageInfo Originator => this.originatorReference != null && this.originatorReference.IsAlive
+                                                                ? this.originatorReference.Target as Android.Content.PM.PackageInfo
+                                                                : null;
 
         public static implicit operator PackageId(Android.Content.PM.PackageInfo packageId)
         {
