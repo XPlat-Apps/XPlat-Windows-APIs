@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\XPlat.ApplicationModel\XPlat.ApplicationModel.csproj" />
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
+    <ProjectReference Include="..\XPlat.Device.Profile\XPlat.Device.Profile.csproj" />
     <ProjectReference Include="..\XPlat.Devices.Display\XPlat.Device.Display.csproj" />
     <ProjectReference Include="..\XPlat.Devices.Geolocation\XPlat.Device.Geolocation.csproj" />
     <ProjectReference Include="..\XPlat.Devices.Launcher\XPlat.Device.Launcher.csproj" />
@@ -23,6 +25,8 @@
     <ProjectReference Include="..\XPlat.Storage.Pickers\XPlat.Storage.Pickers.csproj" />
     <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj" />
     <ProjectReference Include="..\XPlat.UI.Core\XPlat.UI.Core.csproj" />
+    <ProjectReference Include="..\XPlat.UI.Popups\XPlat.UI.Popups.csproj" />
+    <ProjectReference Include="..\XPlat.UI\XPlat.UI.csproj" />
   </ItemGroup>
 
 </Project>

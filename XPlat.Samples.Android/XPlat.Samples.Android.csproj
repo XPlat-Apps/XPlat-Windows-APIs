@@ -157,6 +157,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XPlat.ApplicationModel\XPlat.ApplicationModel.csproj">
+      <Project>{08e1fd7a-db1f-416b-aff8-1acec7525419}</Project>
+      <Name>XPlat.ApplicationModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj">
       <Project>{77a76f2f-5226-4454-b030-d4dfdec6573b}</Project>
       <Name>XPlat.Core</Name>
