@@ -18,6 +18,8 @@ namespace XPlat.ApplicationModel
 
         private Uri logo;
 
+        private IStorageFolder installedLocation;
+
         public Package()
         {
             this.Originator = Android.App.Application.Context.PackageManager.GetPackageInfo(
@@ -32,7 +34,7 @@ namespace XPlat.ApplicationModel
         public IPackageId Id => this.id ?? (this.id = new PackageId(this.Originator));
 
         /// <summary>Gets the location of the installed package.</summary>
-        public IStorageFolder InstalledLocation => new StorageFolder(Android.App.Application.Context.PackageCodePath);
+        public IStorageFolder InstalledLocation => installedLocation ?? (installedLocation = new StorageFolder(Android.App.Application.Context.PackageCodePath));
 
         /// <summary>Gets the packages on which the current package depends.</summary>
         public IReadOnlyList<IPackage> Dependencies => new List<IPackage>();

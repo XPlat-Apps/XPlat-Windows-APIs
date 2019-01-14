@@ -6,9 +6,16 @@ namespace XPlat.ApplicationModel
     /// <summary>Provides package identification info, such as name, version, and publisher.</summary>
     public class PackageId : IPackageId
     {
+        private readonly WeakReference originatorReference;
+
         public PackageId(Windows.ApplicationModel.PackageId packageId)
         {
-            this.Originator = packageId ?? throw new ArgumentNullException(nameof(packageId));
+            if (packageId == null)
+            {
+                throw new ArgumentNullException(nameof(packageId));
+            }
+
+            this.originatorReference = new WeakReference(packageId);
         }
 
         /// <summary>Gets the name of the package.</summary>
@@ -21,7 +28,9 @@ namespace XPlat.ApplicationModel
         public string FullName => this.Originator.FullName;
 
         /// <summary>Gets the originating Windows PackageId instance.</summary>
-        public Windows.ApplicationModel.PackageId Originator { get; }
+        public Windows.ApplicationModel.PackageId Originator => this.originatorReference != null && this.originatorReference.IsAlive
+                                                                    ? this.originatorReference.Target as Windows.ApplicationModel.PackageId
+                                                                    : null;
 
         public static implicit operator PackageId(Windows.ApplicationModel.PackageId packageId)
         {
