@@ -20,10 +20,13 @@ namespace XPlat.ApplicationModel
             this.originatorReference = new WeakReference(bundle);
         }
 
+        /// <summary>Gets the name of the package.</summary>
         public string Name => this.Originator?.ObjectForInfoDictionary("CFBundleDisplayName")?.ToString();
 
+        /// <summary>Gets the package version info.</summary>
         public PackageVersion Version => this.Originator;
 
+        /// <summary>Gets the full name of the package.</summary>
         public string FullName => this.Originator?.ObjectForInfoDictionary("CFBundleName")?.ToString();
 
         /// <summary>Gets the original iOS NSBundle reference object.</summary>
