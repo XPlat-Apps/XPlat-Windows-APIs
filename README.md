@@ -25,16 +25,20 @@ You can also see what's included in XPlat through our in progress [API docs](htt
 
 | Package | Version |
 | ------ | ------ |
+| XPlat.ApplicationModel | [![NuGet](https://img.shields.io/nuget/v/XPlat.ApplicationModel.svg)](https://www.nuget.org/packages/XPlat.ApplicationModel/) |
 | XPlat.Core | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
 | XPlat.Device.Display | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) |
 | XPlat.Device.Geolocation | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) |
 | XPlat.Device.Launcher | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Launcher.svg)](https://www.nuget.org/packages/XPlat.Device.Launcher/) |
 | XPlat.Device.Power | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Power.svg)](https://www.nuget.org/packages/XPlat.Device.Power/) |
+| XPlat.Device.Profile | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Profile.svg)](https://www.nuget.org/packages/XPlat.Device.Profile/) |
 | XPlat.Foundation | [![NuGet](https://img.shields.io/nuget/v/XPlat.Foundation.svg)](https://www.nuget.org/packages/XPlat.Foundation/) |
 | XPlat.Media.Capture | [![NuGet](https://img.shields.io/nuget/v/XPlat.Media.Capture.svg)](https://www.nuget.org/packages/XPlat.Media.Capture/) |
 | XPlat.Storage | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) |
 | XPlat.Storage.Pickers | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.Pickers.svg)](https://www.nuget.org/packages/XPlat.Storage.Pickers/) |
+| XPlat.UI | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.svg)](https://www.nuget.org/packages/XPlat.UI/) |
 | XPlat.UI.Core | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
+| XPlat.UI.Popups | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) |
 
 ## Feature requests and issue tracking
 
