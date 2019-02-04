@@ -1,6 +1,7 @@
 ﻿namespace XPlat.ApplicationModel
 {
     using System;
+    using System.Globalization;
     using System.Text.RegularExpressions;
 
     /// <summary>Represents the package version info.</summary>
@@ -20,7 +21,7 @@
 
         public static implicit operator PackageVersion(string versionString)
         {
-            return Version.Parse(versionString);
+            return Parse(versionString);
         }
 
         public static implicit operator PackageVersion(Version version)
@@ -56,6 +57,7 @@
                            Revision = version.Revision
                        };
         }
+
 #elif __IOS__
         public static implicit operator PackageVersion(global::Foundation.NSBundle bundle)
         {
@@ -69,5 +71,62 @@
             return Version.Parse(versionNumber);
         }
 #endif
+
+        public static PackageVersion Parse(string input)
+        {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
+
+            var split = input.Split('.');
+
+            int length = split.Length;
+            if (length < 2)
+            {
+                throw new ArgumentException(
+                    "An error occured while attempting to parse version string. The value must contain a minimum of major and minor.",
+                    nameof(split));
+            }
+
+            int major;
+            int minor = 0;
+            int build = 0;
+            int revision = 0;
+
+            switch (length)
+            {
+                case 2:
+                    major = ParseComponent(split[0]);
+                    minor = ParseComponent(split[1]);
+                    break;
+                case 3:
+                    major = ParseComponent(split[0]);
+                    minor = ParseComponent(split[1]);
+                    build = ParseComponent(split[2]);
+                    break;
+                default:
+                    major = ParseComponent(split[0]);
+                    minor = ParseComponent(split[1]);
+                    build = ParseComponent(split[2]);
+                    revision = ParseComponent(split[3]);
+                    break;
+            }
+
+            return new Version(major, minor, build, revision);
+        }
+
+        private static int ParseComponent(string component)
+        {
+            return int.Parse(component, NumberStyles.Integer, (IFormatProvider)CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>Returns the fully qualified type name of this instance.</summary>
+        /// <returns>A <see cref="T:System.String" /> containing a fully qualified type name.</returns>
+        /// <filterpriority>2</filterpriority>
+        public override string ToString()
+        {
+            return $"{this.Major}.{this.Minor}.{this.Build}.{this.Revision}";
+        }
     }
 }
