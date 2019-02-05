@@ -15,7 +15,7 @@
     <Copyright>Copyright (C) James Croft. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/develop/Assets/ProjectIcon.png</PackageIconUrl>
+    <PackageIconUrl>https://i.imgur.com/tkagpGy.png</PackageIconUrl>
     <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components CoreDispatcher</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageId>XPlat.UI.Core</PackageId>
