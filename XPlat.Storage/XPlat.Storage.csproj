@@ -35,12 +35,12 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
   </ItemGroup>
 
