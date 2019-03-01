@@ -4,6 +4,8 @@ namespace XPlat.Device
     using System;
     using System.Threading.Tasks;
 
+    using global::Foundation;
+
     using UIKit;
 
     using XPlat.Storage;
@@ -16,7 +18,7 @@ namespace XPlat.Device
         /// <param name="folder">The folder to display in a file explorer.</param>
         public Task<bool> LaunchFolderAsync(IStorageFolder folder)
         {
-            throw new NotImplementedException();
+            return this.LaunchUriAsync(new Uri(folder.Path));
         }
 
         /// <summary>
@@ -30,7 +32,22 @@ namespace XPlat.Device
         /// </returns>
         public Task<bool> LaunchUriAsync(Uri uri)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            try
+            {
+                UIApplication.SharedApplication.InvokeOnMainThread(
+                    () => result = UIApplication.SharedApplication.OpenUrl(new NSUrl(uri.ToString())));
+            }
+            catch (Exception ex)
+            {
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.ToString());
+                }
+            }
+
+            return Task.FromResult(result);
         }
 
         /// <summary>
@@ -67,7 +84,7 @@ namespace XPlat.Device
         /// <param name="file">The file.</param>
         public Task<bool> LaunchFileAsync(IStorageFile file)
         {
-            throw new NotImplementedException();
+            return this.LaunchUriAsync(new Uri(file.Path));
         }
     }
 }
