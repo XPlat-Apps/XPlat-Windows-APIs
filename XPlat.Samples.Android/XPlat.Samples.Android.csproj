@@ -104,7 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator">
-      <Version>2.0.3</Version>
+      <Version>2.0.4</Version>
     </PackageReference>
     <PackageReference Include="MADE.App">
       <Version>0.2.19058.1</Version>
