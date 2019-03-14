@@ -10,9 +10,9 @@ For example, if your application takes advantage of the Windows.Storage (e.g. Wi
 
 ## Build status
 
-| Packages | Status | Version |
-| ------ | ------ | ------ |
-| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat.CI)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+| Packages | Status | Current | Preview |
+| ------ | ------ | ------ | ------ |
+| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat.CI)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
 
 ## Made with XPlat
 
@@ -23,23 +23,23 @@ Looking to get these components in your apps now? Well, you can get your hands o
 
 You can also see what's included in XPlat through our in progress [API docs](https://xplat.gitbook.io/docs/)!
 
-| Package | Version |
-| ------ | ------ |
-| XPlat.ApplicationModel | [![NuGet](https://img.shields.io/nuget/v/XPlat.ApplicationModel.svg)](https://www.nuget.org/packages/XPlat.ApplicationModel/) |
-| XPlat.Core | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
-| XPlat.Device.Display | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) |
-| XPlat.Device.Geolocation | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) |
-| XPlat.Device.Launcher | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Launcher.svg)](https://www.nuget.org/packages/XPlat.Device.Launcher/) |
-| XPlat.Device.Power | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Power.svg)](https://www.nuget.org/packages/XPlat.Device.Power/) |
-| XPlat.Device.Profile | [![NuGet](https://img.shields.io/nuget/v/XPlat.Device.Profile.svg)](https://www.nuget.org/packages/XPlat.Device.Profile/) |
-| XPlat.Foundation | [![NuGet](https://img.shields.io/nuget/v/XPlat.Foundation.svg)](https://www.nuget.org/packages/XPlat.Foundation/) |
-| XPlat.Media.Capture | [![NuGet](https://img.shields.io/nuget/v/XPlat.Media.Capture.svg)](https://www.nuget.org/packages/XPlat.Media.Capture/) |
-| XPlat.Storage | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) |
-| XPlat.Storage.Pickers | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.Pickers.svg)](https://www.nuget.org/packages/XPlat.Storage.Pickers/) |
-| XPlat.UI | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.svg)](https://www.nuget.org/packages/XPlat.UI/) |
-| XPlat.UI.Controls | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Controls.svg)](https://www.nuget.org/packages/XPlat.UI.Controls/) |
-| XPlat.UI.Core | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
-| XPlat.UI.Popups | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) |
+| Package | Current | Preview |
+| ------ | ------ | ------ |
+| XPlat.ApplicationModel | [![Nuget](https://img.shields.io/nuget/v/XPlat.ApplicationModel.svg)](https://www.nuget.org/packages/XPlat.ApplicationModel/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.ApplicationModel.svg)](https://www.nuget.org/packages/XPlat.ApplicationModel/) |
+| XPlat.Core | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+| XPlat.Device.Display | [![Nuget](https://img.shields.io/nuget/v/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) |
+| XPlat.Device.Geolocation | [![Nuget](https://img.shields.io/nuget/v/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) |
+| XPlat.Device.Launcher | [![Nuget](https://img.shields.io/nuget/v/XPlat.Device.Launcher.svg)](https://www.nuget.org/packages/XPlat.Device.Launcher/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Device.Launcher.svg)](https://www.nuget.org/packages/XPlat.Device.Launcher/) |
+| XPlat.Device.Power | [![Nuget](https://img.shields.io/nuget/v/XPlat.Device.Power.svg)](https://www.nuget.org/packages/XPlat.Device.Power/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Device.Power.svg)](https://www.nuget.org/packages/XPlat.Device.Power/) |
+| XPlat.Device.Profile | [![Nuget](https://img.shields.io/nuget/v/XPlat.Device.Profile.svg)](https://www.nuget.org/packages/XPlat.Device.Profile/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Device.Profile.svg)](https://www.nuget.org/packages/XPlat.Device.Profile/) |
+| XPlat.Foundation | [![Nuget](https://img.shields.io/nuget/v/XPlat.Foundation.svg)](https://www.nuget.org/packages/XPlat.Foundation/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Foundation.svg)](https://www.nuget.org/packages/XPlat.Foundation/) |
+| XPlat.Media.Capture | [![Nuget](https://img.shields.io/nuget/v/XPlat.Media.Capture.svg)](https://www.nuget.org/packages/XPlat.Media.Capture/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Media.Capture.svg)](https://www.nuget.org/packages/XPlat.Media.Capture/) |
+| XPlat.Storage | [![Nuget](https://img.shields.io/nuget/v/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) |
+| XPlat.Storage.Pickers | [![Nuget](https://img.shields.io/nuget/v/XPlat.Storage.Pickers.svg)](https://www.nuget.org/packages/XPlat.Storage.Pickers/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Storage.Pickers.svg)](https://www.nuget.org/packages/XPlat.Storage.Pickers/) |
+| XPlat.UI | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.svg)](https://www.nuget.org/packages/XPlat.UI/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.svg)](https://www.nuget.org/packages/XPlat.UI/) |
+| XPlat.UI.Controls | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Controls.svg)](https://www.nuget.org/packages/XPlat.UI.Controls/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Controls.svg)](https://www.nuget.org/packages/XPlat.UI.Controls/) |
+| XPlat.UI.Core | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
+| XPlat.UI.Popups | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) |
 
 ## Feature requests and issue tracking
 
