@@ -12,11 +12,28 @@ namespace XPlat.UI.Core
         private readonly Windows.UI.Core.CoreDispatcher dispatcher;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CoreDispatcher"/> class with the CoreApplication.MainView.CoreWindow.Dispatcher.
+        /// </summary>
+        public CoreDispatcher() : this(CoreApplication.MainView.CoreWindow.Dispatcher)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="CoreDispatcher"/> class.
         /// </summary>
-        public CoreDispatcher()
+        public CoreDispatcher(Windows.UI.Core.CoreDispatcher dispatcher)
         {
-            this.dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
+            this.dispatcher = dispatcher;
+        }
+
+        public static implicit operator CoreDispatcher(Windows.UI.Core.CoreDispatcher dispatcher)
+        {
+            return new CoreDispatcher(dispatcher);
+        }
+
+        public static implicit operator Windows.UI.Core.CoreDispatcher(CoreDispatcher dispatcher)
+        {
+            return dispatcher?.dispatcher;
         }
 
         /// <summary>Schedules the provided callback on the UI thread from a worker thread without waiting for a result.</summary>
