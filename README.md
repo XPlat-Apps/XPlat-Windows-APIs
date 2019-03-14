@@ -37,6 +37,7 @@ You can also see what's included in XPlat through our in progress [API docs](htt
 | XPlat.Storage | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) |
 | XPlat.Storage.Pickers | [![NuGet](https://img.shields.io/nuget/v/XPlat.Storage.Pickers.svg)](https://www.nuget.org/packages/XPlat.Storage.Pickers/) |
 | XPlat.UI | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.svg)](https://www.nuget.org/packages/XPlat.UI/) |
+| XPlat.UI.Controls | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Controls.svg)](https://www.nuget.org/packages/XPlat.UI.Controls/) |
 | XPlat.UI.Core | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
 | XPlat.UI.Popups | [![NuGet](https://img.shields.io/nuget/v/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) |
 
