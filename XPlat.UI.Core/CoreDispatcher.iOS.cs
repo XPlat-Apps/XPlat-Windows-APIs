@@ -5,12 +5,20 @@ namespace XPlat.UI.Core
 
     using Foundation;
 
+    using UIKit;
+
     /// <summary>Provides the core event message dispatcher. Instances of this type are responsible for processing messages and dispatching the events to the UI thread.</summary>
     public sealed class CoreDispatcher : ICoreDispatcher
     {
-        private NSObject obj;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CoreDispatcher"/> class.
+        /// </summary>
+        public CoreDispatcher(UIViewController viewController)
+        {
+            this.ViewController = viewController;
+        }
 
-        private NSObject Obj => this.obj ?? (this.obj = new NSObject());
+        public UIViewController ViewController { get; set; }
 
         /// <summary>Schedules the provided callback on the UI thread from a worker thread without waiting for a result.</summary>
         /// <param name="agileCallback">The callback on which the dispatcher returns when the event is dispatched.</param>
@@ -30,7 +38,7 @@ namespace XPlat.UI.Core
                 return;
             }
 
-            this.Obj.BeginInvokeOnMainThread(() => agileCallback());
+            this.ViewController.BeginInvokeOnMainThread(() => agileCallback());
         }
 
         /// <summary>Schedules the provided callback on the UI thread from a worker thread, and returns the results asynchronously.</summary>
