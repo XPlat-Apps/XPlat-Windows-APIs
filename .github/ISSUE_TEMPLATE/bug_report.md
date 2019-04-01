@@ -1,26 +1,36 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
+title: "[Bug] - "
 labels: bug
 assignees: ''
 
 ---
 
-**Which package(s) and version of XPlat are you using?**
-<!-- e.g. XPlat.Storage 1.5.19024.1 -->
+## What type of issue report is this?
+> Please check one or more that apply
 
-**Which platform is the issue related to?**
-* [ ] Windows (UWP)
-* [ ] Xamarin.Android
-* [ ] Xamarin.iOS
-* [ ] .NET (common)
+- [ ] Bug
+- [ ] Regression
+- [ ] Question/support
+- [ ] Other (include details)
 
-**Repro steps**
-A clear and concise description of what the bug is and how it can be reproduced.
+## Which packages are you using?
+> Please provide the packages and versions affects
 
-**Expected behavior**
-A clear and concise description of what you expected to happen (or code).
+## What is the current behaviour?
+> Please describe the current behaviour with repro steps
 
-**Additional context**
-Add any other context about the problem here, such as logs and/or screenshots.
+## What is the expected behaviour?
+> Please describe the expected behaviour
+
+## What platforms does this affect?
+> Please check one or more that apply
+
+- [ ] Windows (UWP)
+- [ ] Xamarin.Android
+- [ ] Xamarin.iOS
+- [ ] Xamarin.Forms
+
+## Other information
+> If you have other relevant information for this issue, please feel free to add below or remove this section if not
