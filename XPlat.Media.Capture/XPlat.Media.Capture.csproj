@@ -37,10 +37,10 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
     <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.1" />
-    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
     <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj" />
   </ItemGroup>
 

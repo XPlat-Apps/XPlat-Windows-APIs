@@ -51,7 +51,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.Samples.iOS", "XPlat.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.ApplicationModel", "XPlat.ApplicationModel\XPlat.ApplicationModel.csproj", "{08E1FD7A-DB1F-416B-AFF8-1ACEC7525419}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPlat.UI.Controls", "XPlat.UI.Controls\XPlat.UI.Controls.csproj", "{1D3C1D3A-4C5A-4D65-A453-4CFE4F3AA3B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPlat.UI.Controls", "XPlat.UI.Controls\XPlat.UI.Controls.csproj", "{1D3C1D3A-4C5A-4D65-A453-4CFE4F3AA3B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -703,7 +703,7 @@ Global
 		{8396212D-E90A-460B-8FFA-A52BD2FE6D1C}.AppStore|x64.Build.0 = AppStore|Any CPU
 		{8396212D-E90A-460B-8FFA-A52BD2FE6D1C}.AppStore|x86.ActiveCfg = AppStore|Any CPU
 		{8396212D-E90A-460B-8FFA-A52BD2FE6D1C}.AppStore|x86.Build.0 = AppStore|Any CPU
-		{8396212D-E90A-460B-8FFA-A52BD2FE6D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8396212D-E90A-460B-8FFA-A52BD2FE6D1C}.Debug|Any CPU.ActiveCfg = Debug|iPhone
 		{8396212D-E90A-460B-8FFA-A52BD2FE6D1C}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{8396212D-E90A-460B-8FFA-A52BD2FE6D1C}.Debug|ARM.Build.0 = Debug|Any CPU
 		{8396212D-E90A-460B-8FFA-A52BD2FE6D1C}.Debug|iPhone.ActiveCfg = Debug|iPhone
