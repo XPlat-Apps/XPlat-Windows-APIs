@@ -34,12 +34,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" PrivateAssets="All" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
-    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj" />
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
     <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj" />
   </ItemGroup>
 

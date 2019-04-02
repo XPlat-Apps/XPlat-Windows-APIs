@@ -60,6 +60,7 @@
     <Compile Include="AndroidLocator.cs" />
     <Compile Include="Fragments\CameraCaptureFragment.cs" />
     <Compile Include="Fragments\DisplayRequestFragment.cs" />
+    <Compile Include="Fragments\FileCaptureFragment.cs" />
     <Compile Include="Fragments\GeolocatorFragment.cs" />
     <Compile Include="Fragments\LauncherFragment.cs" />
     <Compile Include="Fragments\MainFragment.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\CameraCaptureFragmentViewModel.cs" />
+    <Compile Include="ViewModels\FileCaptureFragmentViewModel.cs" />
     <Compile Include="ViewModels\MainFragmentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +241,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\LauncherFragment.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\FileCaptureFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

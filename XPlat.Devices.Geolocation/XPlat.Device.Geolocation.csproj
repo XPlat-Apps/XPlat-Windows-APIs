@@ -32,15 +32,11 @@
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" PrivateAssets="All" />
-    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
-    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\XPlat.Foundation\XPlat.Foundation.csproj" />
+    <ProjectReference Include="..\XPlat.Core\XPlat.Core.csproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
