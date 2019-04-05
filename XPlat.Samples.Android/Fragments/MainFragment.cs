@@ -23,6 +23,8 @@
 
         private Button navigateToLauncherButton;
 
+        private Button navigateToOpenFileButton;
+
         private Package package;
 
         public MainFragment()
@@ -60,12 +62,18 @@
                 this.navigateToLauncherButton.Click -= this.OnNavigateToLauncherClick;
             }
 
+            if (this.navigateToOpenFileButton != null)
+            {
+                this.navigateToOpenFileButton.Click -= this.OnNavigateToOpenFileClick;
+            }
+
             base.OnResume();
 
             this.navigateToCameraCaptureButton = this.GetChildView<Button>(Resource.Id.navigate_to_camera_capture);
             this.navigateToDisplayRequestButton = this.GetChildView<Button>(Resource.Id.navigate_to_display_request);
             this.navigateToGeolocatorButton = this.GetChildView<Button>(Resource.Id.navigate_to_geolocator);
             this.navigateToLauncherButton = this.GetChildView<Button>(Resource.Id.navigate_to_launcher);
+            this.navigateToOpenFileButton = this.GetChildView<Button>(Resource.Id.navigate_to_open_file);
 
             if (this.navigateToCameraCaptureButton != null)
             {
@@ -87,6 +95,11 @@
                 this.navigateToLauncherButton.Click += this.OnNavigateToLauncherClick;
             }
 
+            if (this.navigateToOpenFileButton != null)
+            {
+                this.navigateToOpenFileButton.Click += this.OnNavigateToOpenFileClick;
+            }
+
             MessageDialog message = new MessageDialog("Hello, World", "Title")
                               {
                                   Context = this.Context, DefaultCommandIndex = 0, CancelCommandIndex = 1
@@ -96,6 +109,11 @@
             IUICommand result = await message.ShowAsync();
 
             Debug.WriteLine(result == null ? "Dismissed without choosing a result" : result.Label);
+        }
+
+        private void OnNavigateToOpenFileClick(object sender, EventArgs e)
+        {
+            this.ViewModel?.NavigateToSample(typeof(FileCaptureFragment), null);
         }
 
         private void OnNavigateToLauncherClick(object sender, EventArgs e)

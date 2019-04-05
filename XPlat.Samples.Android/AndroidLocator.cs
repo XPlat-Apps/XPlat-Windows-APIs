@@ -28,6 +28,7 @@ namespace XPlat.Samples.Android
 
             SimpleIoc.Default.Register<MainFragmentViewModel>();
             SimpleIoc.Default.Register<CameraCaptureFragmentViewModel>();
+            SimpleIoc.Default.Register<FileCaptureFragmentViewModel>();
         }
     }
 }

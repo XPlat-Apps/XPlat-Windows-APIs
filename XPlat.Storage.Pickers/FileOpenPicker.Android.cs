@@ -129,7 +129,7 @@ namespace XPlat.Storage.Pickers
 
             fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentType, "*/*");
             fileOpenPickerIntent.PutExtra(Intent.ExtraMimeTypes, mimeTypes.ToArray());
-            fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentAction, Intent.ActionGetContent);
+            fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentAction, Intent.ActionOpenDocument);
 
             if (allowMultiple)
             {
