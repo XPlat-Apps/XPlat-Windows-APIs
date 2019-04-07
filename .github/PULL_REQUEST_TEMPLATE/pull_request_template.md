@@ -27,6 +27,8 @@
 
 - [ ] Tests have been added (where applicable)
 - [ ] Code styling has been run on all new source file changes
+- [ ] Documentation has been added
+- [ ] Code sample has been added
 - [ ] Contains **NO** breaking changes
 
 > If this PR contains a breaking change, please describe the impact and migration path below. Please note that breaking changes are likely to be rejected
