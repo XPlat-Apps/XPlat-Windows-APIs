@@ -8,14 +8,24 @@
     {
         private Timer timer;
 
+#if WINDOWS_UWP
         /// <summary>
-        /// Initializes a new instance of the <see cref="DispatcherTimer"/> class.
+        /// Initializes a new instance of the <see cref="DispatcherTimer"/> class with the CoreApplication.MainView.CoreWindow.Dispatcher.
         /// </summary>
-        public DispatcherTimer()
+        public DispatcherTimer() : this(Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher)
         {
         }
 
-#if __IOS__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DispatcherTimer"/> class.
+        /// </summary>
+        public DispatcherTimer(Windows.UI.Core.CoreDispatcher dispatcher)
+        {
+            this.Dispatcher = dispatcher;
+        }
+
+        public Windows.UI.Core.CoreDispatcher Dispatcher { get; set; }
+#elif __IOS__
         /// <summary>
         /// Initializes a new instance of the <see cref="DispatcherTimer"/> class.
         /// </summary>
@@ -83,7 +93,7 @@
             this.Activity.RunOnUiThread(() =>
             {
 #elif WINDOWS_UWP
-            Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
 #endif
                 Tick?.Invoke(this, null);
