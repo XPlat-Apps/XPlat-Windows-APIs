@@ -2,7 +2,7 @@
 
 # Contributing
 
-These guidelines are designed to help you as a contributor to bring your code and skills to the XPlat Windows API project to make it better.  
+These guidelines are designed to help you as a contributor to bring your code and skills to the XPlat Windows APIs project to make it better.
 
 ## What can I contribute to?
 
