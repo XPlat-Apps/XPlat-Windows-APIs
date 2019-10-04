@@ -37,7 +37,7 @@ We have purposefully split the XPlat Windows APIs to allow you to pick and choos
 | XPlat.UI.Core | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
 | XPlat.UI.Popups | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) |
 
-Take a look at our '[Getting started with XPlat guide](https://xplat.gitbook.io/docs/)' for help getting up and running!
+Take a look at our '[Getting started with XPlat Windows APIs guide](https://xplat.gitbook.io/docs/)' for help getting up and running!
 
 ## Made with XPlat
 
