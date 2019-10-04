@@ -14,7 +14,7 @@ assignees: ''
 <!-- Please describe what benefit the introduction of the feature will bring to your project -->
 
 ## What is the expected API coverage?
-<!-- Please provide a list of the events and methods expected in the covered API you'd expect to see implemented -->
+<!-- Please provide a list of the events, properties and methods expected in the covered API you'd expect to see implemented -->
 
 ### Events
 <!-- e.g. `ItemSelectedEventArgs ItemSelected` -->
