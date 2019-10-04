@@ -12,3 +12,15 @@ assignees: ''
 
 ## How will this benefit you and others?
 <!-- Please describe what benefit the introduction of the feature will bring to your project -->
+
+## What is the expected API coverage?
+<!-- Please provide a list of the events and methods expected in the covered API you'd expect to see implemented -->
+
+### Events
+<!-- e.g. `ItemSelectedEventArgs ItemSelected` -->
+
+### Properties
+<!-- e.g. `string FileName { get; set; }` -->
+
+### Methods
+<!-- e.g. `Task<IStorageFile> CaptureFileAsync()` -->
