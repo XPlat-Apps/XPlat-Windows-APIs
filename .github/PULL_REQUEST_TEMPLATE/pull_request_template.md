@@ -1,37 +1,23 @@
-## What kind of change does this PR introduce?
-> Please check one or more that apply to this PR
+## PR summary
+<!-- Please provide a description below of the changes made and how it was tested -->
 
-- [ ] Bug fix
-- [ ] Feature
-- [ ] Code style update (formatting)
-- [ ] Refactoring (no functional changes, no API changes)
-- [ ] Build or CI related changes
-- [ ] Other (include details)
+## Areas affected
+> Please check one or more that apply
 
-## What is the current behaviour?
-> Please describe the current behaviour that you are modifying
-
-## What is the new behaviour?
-> Please describe the new behaviour that you have created
-
-## What platforms does this change affect?
-> Please check one or more that apply for this PR
-
-- [ ] Windows (UWP)
-- [ ] Xamarin.Android
-- [ ] Xamarin.iOS
-- [ ] Xamarin.Forms
+- [ ] UWP
+- [ ] Android
+- [ ] iOS
+- [ ] CI/CD
 
 ## PR checklist
-> Please check if your PR fulfils the following requirements:
 
-- [ ] Tests have been added (where applicable)
+- [ ] Tests have been added/updated and pass
 - [ ] Code styling has been run on all new source file changes
-- [ ] Documentation has been added
+- [ ] Wiki documentation has been added
 - [ ] Code sample has been added
 - [ ] Contains **NO** breaking changes
 
-> If this PR contains a breaking change, please describe the impact and migration path below. Please note that breaking changes are likely to be rejected
+<!-- If a breaking change has been made, please provide a detailed description below of the impact and the migration path -->
 
-## Other information
-> If you have other relevant information for this PR, please feel free to add below or remove this section if not
+## References
+<!-- Please provide any additional references below that are relevant to the changes made (i.e. another work item, existing PR) -->
