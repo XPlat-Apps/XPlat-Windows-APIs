@@ -2,11 +2,11 @@
 
 # XPlat Windows APIs
 
-XPlat Windows APIs are designed to make it easier for Universal Windows Platform (UWP) developers to share their knowledge of the platform APIs across Android and iOS. 
+XPlat Windows APIs are designed to make it easier for developers adjusted to developing with the Windows UWP APIs to take those skills cross-platform with their  applications.
 
-XPlat also appeals to developers looking to migrate their existing code bases to Xamarin with minimal code change by mimicking Windows APIs allowing an easy transition to the equivalent XPlat API.
+As each application platform offers their own unique platform-specific APIs, XPlat attempts to bring all of those APIs under one umbrella using a Windows UWP like API, allowing a developer to learn a single API which works with any application built with UWP or Xamarin for Android and iOS. 
 
-For example, if your application takes advantage of the Windows.Storage (e.g. Windows.Storage.ApplicationData.Current.LocalFolder), we provide a XPlat.Storage API for those (e.g. XPlat.Storage.ApplicationData.Current.LocalFolder) which you can use in your iOS and Android applications. 
+For a UWP developer, this is appealing as it allows you to easily migrate your existing UWP code to Xamarin shared code with minimal changes through the use of XPlat Windows APIs which mimic the Windows UWP alternatives.
 
 ## Build status
 
@@ -14,14 +14,10 @@ For example, if your application takes advantage of the Windows.Storage (e.g. Wi
 | ------ | ------ | ------ | ------ |
 | NuGet | [![Build status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat.CI)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
 
-## Made with XPlat
+## Installation
+XPlat Windows APIs are available via NuGet. Each available package is detailed below. 
 
-Got a great project you've built with XPlat? [*Add your projects to our collection!*](PROJECTS.md)
-
-## Hands on with XPlat
-Looking to get these components in your apps now? Well, you can get your hands on the components via NuGet.
-
-You can also see what's included in XPlat through our in progress [API docs](https://xplat.gitbook.io/docs/)!
+We have purposefully split the XPlat Windows APIs to allow you to pick and choose the specific components that your app needs to prevent bloat!
 
 | Package | Current | Preview |
 | ------ | ------ | ------ |
@@ -41,16 +37,42 @@ You can also see what's included in XPlat through our in progress [API docs](htt
 | XPlat.UI.Core | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
 | XPlat.UI.Popups | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) |
 
-## Feature requests and issue tracking
+Take a look at our '[Getting started with XPlat guide](https://xplat.gitbook.io/docs/)' for help getting up and running!
 
-XPlat takes advantage of GitHub's issue tracking system to track both feature requests and issues. 
+## Made with XPlat
 
-So whether you've got an API you'd like to see made cross-platform or want to call us out on a mistake we've made, please use log them in [XPlat issues](https://github.com/jamesmcroft/XPlat-Windows-APIs/issues).
+Got a great project you've built with XPlat? We'd love for you to share your awesome creations with the community!
 
-## Contributing to XPlat
+[*Add your projects to the Made with XPlat collection!*](YOUR-PROJECTS.md)
 
-Want to get hands on with XPlat's code? Check out our [contribution guidelines](CONTRIBUTING.md).
+## Documentation
+
+If you want to deep dive into the APIs with details on how to use the features, you can browse the [GitBooks documentation for XPlat Windows APIs](https://xplat.gitbook.io/docs/)!
+
+## Supported platforms
+
+XPlat Windows APIs is currently being developed for the following platforms:
+
+- Windows UWP
+- iOS
+- Android
+
+## Contributing 
+
+Looking to help build our XPlat Windows APIs? Take a look through our [contribution guidelines](CONTRIBUTING.md).
+
+We actively encourage you to jump in and help with any issues!
+
+## Building XPlat Windows APIs
+
+XPlat Windows APIs have been built using .NET Standard, taking advantage of the new SDK-style projects and multi-targeting enabled with the help of [MSBuild.Sdk.Extras](https://github.com/onovotny/MSBuildSdkExtras).
+
+You can build the solution using Visual Studio with the following workloads installed:
+- .NET desktop development
+- Universal Windows Platform development
+- Mobile Development with .NET
+- .NET Core cross-platform development
 
 ## License
 
-XPlat's source code is made available under the terms and conditions of the [MIT license](LICENSE).
+XPlat Windows APIs are made available under the terms and conditions of the [MIT license](LICENSE).
