@@ -1,32 +1,26 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: "[Feature] - "
-labels: feature
+about: Suggest an idea for XPlat
+title: "[Feature] "
+labels: feature-request
 assignees: ''
 
 ---
 
-## What type of feature report is this?
-> Please check one or more that apply
+## Description
+<!-- Please describe the idea you'd like to see implemented -->
 
-- [ ] New feature
-- [ ] Improvement to existing feature
-- [ ] Other (include details)
+## How will this benefit you and others?
+<!-- Please describe what benefit the introduction of the feature will bring to your project -->
 
-## What is the behaviour that will be introduced?
-> Please describe the change you'd like to see introduced
+## What is the expected API coverage?
+<!-- Please provide a list of the events, properties and methods expected in the covered API you'd expect to see implemented -->
 
-## What is the benefit of this feature?
-> Please describe what benefit the introduction of the feature will bring to your project
+### Events
+<!-- e.g. `ItemSelectedEventArgs ItemSelected` -->
 
-## What platforms will be supported?
-> Please check one or more that apply
+### Properties
+<!-- e.g. `string FileName { get; set; }` -->
 
-- [ ] Windows (UWP)
-- [ ] Xamarin.Android
-- [ ] Xamarin.iOS
-- [ ] Xamarin.Forms
-
-## Other information
-> If you have other relevant information for this feature, please feel free to add below or remove this section if not
+### Methods
+<!-- e.g. `Task<IStorageFile> CaptureFileAsync()` -->

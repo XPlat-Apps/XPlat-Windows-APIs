@@ -1,10 +1,10 @@
 <img src="Assets/ProjectBanner.png" alt="XPlat Windows APIs" />
 
-# Contributing to XPlat Windows APIs
+# Contributing
 
-These guidelines are designed to help you as a contributor to bring your code and skills to the project to make it better.  
+These guidelines are designed to help you as a contributor to bring your code and skills to the XPlat Windows APIs project to make it better.
 
-## What Can I Contribute To?
+## What can I contribute to?
 
 Our [issue tracker](https://github.com/jamesmcroft/XPlat-Windows-APIs/issues) contains a collection of features and issues waiting to be worked on! If you see any item marked with **Help Wanted**, we'd like to see you put your skills to use and contribute whatever you can to help develop the feature.
 

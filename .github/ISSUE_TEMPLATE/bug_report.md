@@ -1,36 +1,30 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[Bug] - "
+title: "[Bug] "
 labels: bug
 assignees: ''
 
 ---
 
-## What type of issue report is this?
-> Please check one or more that apply
-
-- [ ] Bug
-- [ ] Regression
-- [ ] Question/support
-- [ ] Other (include details)
+## Steps to reproduce
+<!-- Please describe below the details of the issue and steps taken to reproduce -->
 
 ## Which packages are you using?
-> Please provide the packages and versions affects
-
-## What is the current behaviour?
-> Please describe the current behaviour with repro steps
+<!-- Please provide the packages and versions affected -->
 
 ## What is the expected behaviour?
-> Please describe the expected behaviour
+<!-- Please describe below the expected behaviour -->
+
+## What is the actual behaviour?
+<!-- Please describe below the actual behaviour -->
 
 ## What platforms does this affect?
-> Please check one or more that apply
+<!-- Please provide enough applicable information -->
 
-- [ ] Windows (UWP)
-- [ ] Xamarin.Android
-- [ ] Xamarin.iOS
-- [ ] Xamarin.Forms
+- UWP: <!-- SDK version, e.g. 10240 -->
+- Android: <!-- SDK version, e.g. 6.0 -->
+- iOS: <!-- SDK version, e.g. 10.0 -->
 
 ## Other information
-> If you have other relevant information for this issue, please feel free to add below or remove this section if not
+<!-- Please provide any additional information, links, screenshots or projects with reproduced issues below if applicable -->
