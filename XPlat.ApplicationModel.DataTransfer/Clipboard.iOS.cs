@@ -1,25 +1,21 @@
-#if __ANDROID__
+#if __IOS__
 namespace XPlat.ApplicationModel.DataTransfer
 {
     using System;
     using System.Threading.Tasks;
-    using Android.App;
-    using Android.Content;
+
+    using UIKit;
 
     /// <summary>Gets and sets information from the clipboard object.</summary>
     public static class Clipboard
     {
-        private const string PrimaryClipKey = "XPlat.ClipboardText";
-
         public static event EventHandler<object> ContentChanged;
-
-        internal static ClipboardManager Originator => Application.Context.GetSystemService(Context.ClipboardService) as ClipboardManager;
 
         /// <summary>Gets the current content that is stored in the clipboard object.</summary>
         /// <returns>Contains the content of the Clipboard.</returns>
         public static DataPackageView GetContent()
         {
-            string text = Originator.PrimaryClip?.GetItemAt(0)?.Text;
+            string text = UIPasteboard.General.String;
 
             var dataPackageView = new DataPackageView();
             dataPackageView.SetText(text);
@@ -38,7 +34,7 @@ namespace XPlat.ApplicationModel.DataTransfer
         /// <param name="content">Contains the content of the clipboard. If NULL, the clipboard is emptied.</param>
         public static void SetContent(DataPackage content)
         {
-            Originator.PrimaryClip = ClipData.NewPlainText(PrimaryClipKey, content.Text);
+            UIPasteboard.General.String = content.Text;
             ContentChanged?.Invoke(typeof(Clipboard), content);
         }
 

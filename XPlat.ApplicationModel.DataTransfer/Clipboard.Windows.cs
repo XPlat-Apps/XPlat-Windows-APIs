@@ -32,7 +32,7 @@ namespace XPlat.ApplicationModel.DataTransfer
         }
 
         /// <summary>Sets the current text that is stored in the clipboard object.</summary>
-        /// <param name="value">The text.</param>
+        /// <param name="text">The text.</param>
         public static void SetText(string text)
         {
             var dataPackage = new DataPackage();
