@@ -34,6 +34,8 @@ namespace XPlat.Samples.Windows
             message.Commands.Add(new UICommand("Close", command => Debug.WriteLine("Said close!")) { Id = 2 });
             IUICommand result = await message.ShowAsync();
 
+            Debug.WriteLine(result == null ? "Dismissed without choosing a result" : result.Label);
+
             var dataPackage = new DataPackage();
             dataPackage.SetText("This was copied to the clipboard. Try pasting in another app.");
             XPlat.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
@@ -42,8 +44,6 @@ namespace XPlat.Samples.Windows
 
             var clipboardTextDialog = new XPlat.UI.Popups.MessageDialog(clipboardText, "Clipboard dialog");
             await clipboardTextDialog.ShowAsync();
-
-            Debug.WriteLine(result.Label);
         }
     }
 }
