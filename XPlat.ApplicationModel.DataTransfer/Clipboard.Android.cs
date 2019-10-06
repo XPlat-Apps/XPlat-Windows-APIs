@@ -11,6 +11,7 @@ namespace XPlat.ApplicationModel.DataTransfer
     {
         private const string PrimaryClipKey = "XPlat.ClipboardText";
 
+        /// <summary>Occurs when the data stored in the Clipboard changes.</summary>
         public static event EventHandler<object> ContentChanged;
 
         internal static ClipboardManager Originator => Application.Context.GetSystemService(Context.ClipboardService) as ClipboardManager;

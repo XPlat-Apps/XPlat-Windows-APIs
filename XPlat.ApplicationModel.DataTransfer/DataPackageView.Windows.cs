@@ -20,6 +20,7 @@ namespace XPlat.ApplicationModel.DataTransfer
             return new DataPackageView(dataPackageView);
         }
 
+        /// <summary>Gets the originating Windows DataPackageView instance.</summary>
         public Windows.ApplicationModel.DataTransfer.DataPackageView Originator { get; }
 
         /// <summary>Gets the text in the DataPackageView object.</summary>

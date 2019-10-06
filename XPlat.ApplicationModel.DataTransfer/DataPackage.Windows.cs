@@ -17,9 +17,7 @@ namespace XPlat.ApplicationModel.DataTransfer
             return dataPackage?.Originator;
         }
 
-        /// <summary>
-        /// Gets the original Windows DataPackage.
-        /// </summary>
+        /// <summary>Gets the originating Windows DataPackage instance.</summary>
         public Windows.ApplicationModel.DataTransfer.DataPackage Originator { get; }
 
         /// <summary>Sets the text that a DataPackage contains.</summary>

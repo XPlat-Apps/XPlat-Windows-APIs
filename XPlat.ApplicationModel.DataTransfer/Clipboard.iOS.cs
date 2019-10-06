@@ -9,6 +9,7 @@ namespace XPlat.ApplicationModel.DataTransfer
     /// <summary>Gets and sets information from the clipboard object.</summary>
     public static class Clipboard
     {
+        /// <summary>Occurs when the data stored in the Clipboard changes.</summary>
         public static event EventHandler<object> ContentChanged;
 
         /// <summary>Gets the current content that is stored in the clipboard object.</summary>
