@@ -1,4 +1,4 @@
-﻿namespace XPlat.Samples.Android.Fragments
+namespace XPlat.Samples.Android.Fragments
 {
     using System;
     using System.Diagnostics;
@@ -10,6 +10,7 @@
     using MADE.App.Views.Navigation.Pages;
 
     using XPlat.ApplicationModel;
+    using XPlat.ApplicationModel.DataTransfer;
     using XPlat.Samples.Android.ViewModels;
     using XPlat.UI.Popups;
 
@@ -109,6 +110,24 @@
             IUICommand result = await message.ShowAsync();
 
             Debug.WriteLine(result == null ? "Dismissed without choosing a result" : result.Label);
+
+            var dataPackage = new DataPackage();
+            dataPackage.SetText("This was copied to the clipboard. Try pasting in another app.");
+            XPlat.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
+
+            string clipboardText = await XPlat.ApplicationModel.DataTransfer.Clipboard.GetContent().GetTextAsync();
+
+            var clipboardTextDialog =
+                new XPlat.UI.Popups.MessageDialog(clipboardText, "Clipboard dialog")
+                {
+                    Context = this.Context,
+                    DefaultCommandIndex = 0,
+                    CancelCommandIndex = 1
+                };
+            clipboardTextDialog.Commands.Add(new UICommand("Okay", command => Debug.WriteLine("Said okay!")) { Id = 1 });
+            clipboardTextDialog.Commands.Add(new UICommand("Close", command => Debug.WriteLine("Said close!")) { Id = 2 });
+
+            await clipboardTextDialog.ShowAsync();
         }
 
         private void OnNavigateToOpenFileClick(object sender, EventArgs e)

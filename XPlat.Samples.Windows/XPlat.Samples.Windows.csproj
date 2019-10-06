@@ -132,6 +132,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XPlat.ApplicationModel.DataTransfer\XPlat.ApplicationModel.DataTransfer.csproj">
+      <Project>{d4f7c2fe-10db-4a2d-9b30-a40180725a51}</Project>
+      <Name>XPlat.ApplicationModel.DataTransfer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.ApplicationModel\XPlat.ApplicationModel.csproj">
       <Project>{08e1fd7a-db1f-416b-aff8-1acec7525419}</Project>
       <Name>XPlat.ApplicationModel</Name>
