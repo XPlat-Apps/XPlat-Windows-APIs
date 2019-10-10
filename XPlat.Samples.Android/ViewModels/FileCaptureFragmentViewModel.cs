@@ -1,4 +1,4 @@
-﻿namespace XPlat.Samples.Android.ViewModels
+namespace XPlat.Samples.Android.ViewModels
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -46,9 +46,9 @@
                                  };
         }
 
-        public async Task<object> CaptureFileAsync(Context context)
+        public async Task<object> CaptureFileAsync()
         {
-            FileOpenPicker picker = new FileOpenPicker(context);
+            FileOpenPicker picker = new FileOpenPicker();
 
             foreach (var fileType in this.fileTypes)
             {

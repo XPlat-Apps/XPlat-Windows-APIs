@@ -1,4 +1,4 @@
-﻿namespace XPlat.Samples.Android.Fragments
+namespace XPlat.Samples.Android.Fragments
 {
     using System;
 
@@ -39,7 +39,7 @@
 
             base.OnResume();
 
-            this.ViewModel.CameraCaptureUI = new CameraCaptureUI(this.Context);
+            this.ViewModel.CameraCaptureUI = new CameraCaptureUI();
 
             this.captureImageButton = this.GetChildView<Button>(Resource.Id.capture_image);
             this.captureVideoButton = this.GetChildView<Button>(Resource.Id.capture_video);

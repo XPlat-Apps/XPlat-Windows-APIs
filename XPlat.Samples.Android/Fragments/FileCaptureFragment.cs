@@ -1,4 +1,4 @@
-﻿namespace XPlat.Samples.Android.Fragments
+namespace XPlat.Samples.Android.Fragments
 {
     using CommonServiceLocator;
 
@@ -40,7 +40,7 @@
 
         private async void OnOpenFileClick(object sender, System.EventArgs e)
         {
-            object storageFile = await this.ViewModel.CaptureFileAsync(this.Context);
+            object storageFile = await this.ViewModel.CaptureFileAsync();
         }
     }
 }

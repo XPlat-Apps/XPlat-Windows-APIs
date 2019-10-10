@@ -1,4 +1,4 @@
-﻿namespace XPlat.Samples.Android.Fragments
+namespace XPlat.Samples.Android.Fragments
 {
     using System;
     using System.Threading.Tasks;
@@ -40,7 +40,7 @@
 
             base.OnResume();
 
-            this.geolocator = new Geolocator(this.Context)
+            this.geolocator = new Geolocator()
                                   {
                                       DesiredAccuracy = PositionAccuracy.Default, MovementThreshold = 25
                                   };

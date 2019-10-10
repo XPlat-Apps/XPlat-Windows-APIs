@@ -1,4 +1,4 @@
-﻿namespace XPlat.Samples.Android.Fragments
+namespace XPlat.Samples.Android.Fragments
 {
     using System;
 
@@ -25,7 +25,7 @@
 
             base.OnResume();
 
-            this.launcher = new Launcher(this.Context);
+            this.launcher = new Launcher();
 
             this.launchUriButton = this.GetChildView<Button>(Resource.Id.launch_uri);
 
