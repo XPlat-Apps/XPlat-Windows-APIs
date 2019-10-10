@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Device
 {
     using System;
@@ -11,26 +11,14 @@ namespace XPlat.Device
     /// <summary>Starts the default app associated with the specified file or URI.</summary>
     public class Launcher : ILauncher
     {
+        private static Context AppContext => Android.App.Application.Context;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Launcher"/> class.
         /// </summary>
         public Launcher()
         {
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Launcher"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The Android context.
-        /// </param>
-        public Launcher(Context context)
-        {
-            this.Context = context;
-        }
-
-        /// <summary>Gets or sets the Android context to be used for launching an Activity with.</summary>
-        public Context Context { get; set; }
 
         /// <summary>Launches a file explorer and displays the contents of the specified folder.</summary>
         /// <returns>The result of the operation.</returns>
@@ -49,7 +37,7 @@ namespace XPlat.Device
                                 Intent intent = new Intent(Intent.ActionView);
                                 intent.SetDataAndType(Android.Net.Uri.Parse(folder.Path), "*/*");
                                 intent.SetFlags(ActivityFlags.ClearTop);
-                                this.Context.StartActivity(intent);
+                                this.AppContext.StartActivity(intent);
                                 result = true;
                             }
                         }
@@ -73,7 +61,7 @@ namespace XPlat.Device
                         {
                             Intent intent = new Intent(Intent.ActionView);
                             intent.SetData(Android.Net.Uri.Parse(uri.ToString()));
-                            this.Context.StartActivity(intent);
+                            this.AppContext.StartActivity(intent);
                             result = true;
                         }
                         catch (Exception ex)
@@ -96,7 +84,7 @@ namespace XPlat.Device
                         {
                             Intent intent = new Intent(Intent.ActionRun);
                             intent.SetData(Android.Net.Uri.Parse(uri.ToString()));
-                            result = intent.ResolveActivity(this.Context.PackageManager) != null
+                            result = intent.ResolveActivity(this.AppContext.PackageManager) != null
                                          ? LaunchQuerySupportStatus.Available
                                          : LaunchQuerySupportStatus.AppNotInstalled;
                         }
@@ -136,8 +124,8 @@ namespace XPlat.Device
                                 javaFile.SetReadable(true);
 
                                 Android.Net.Uri uri = Android.Support.V4.Content.FileProvider.GetUriForFile(
-                                    this.Context,
-                                    $"{this.Context.PackageName}",
+                                    this.AppContext,
+                                    $"{this.AppContext.PackageName}",
                                     javaFile);
 
                                 Intent intent = new Intent(Intent.ActionView)
@@ -147,9 +135,9 @@ namespace XPlat.Device
                                         uri,
                                         fileContentType);
 
-                                if (intent.ResolveActivity(this.Context.PackageManager) != null)
+                                if (intent.ResolveActivity(this.AppContext.PackageManager) != null)
                                 {
-                                    this.Context.StartActivity(intent);
+                                    this.AppContext.StartActivity(intent);
                                     result = true;
                                 }
                             }

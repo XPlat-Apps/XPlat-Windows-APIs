@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Storage.Pickers
 {
     using System;
@@ -15,7 +15,7 @@ namespace XPlat.Storage.Pickers
     /// <summary>Represents a UI element that lets the user choose and open files.</summary>
     public class FileOpenPicker : IFileOpenPicker
     {
-        private readonly Context context;
+        private static Context AppContext => Android.App.Application.Context;
 
         private TaskCompletionSource<IStorageFile> currentSingleTcs;
 
@@ -26,12 +26,8 @@ namespace XPlat.Storage.Pickers
         /// <summary>
         /// Initializes a new instance of the <see cref="FileOpenPicker"/> class.
         /// </summary>
-        /// <param name="context">
-        /// The Android context.
-        /// </param>
-        public FileOpenPicker(Context context)
+        public FileOpenPicker()
         {
-            this.context = context;
             this.FileTypeFilter = new List<string>();
         }
 
@@ -52,7 +48,7 @@ namespace XPlat.Storage.Pickers
 
             this.requestCode = newRequestCode;
 
-            this.context.StartActivity(this.GenerateIntent(this.requestCode, false));
+            this.AppContext.StartActivity(this.GenerateIntent(this.requestCode, false));
 
             TypedEventHandler<Activity, FileOpenPickerFilesReceived> handler = null;
             handler = (sender, args) =>
@@ -89,7 +85,7 @@ namespace XPlat.Storage.Pickers
 
             this.requestCode = newRequestCode;
 
-            this.context.StartActivity(this.GenerateIntent(this.requestCode, true));
+            this.AppContext.StartActivity(this.GenerateIntent(this.requestCode, true));
 
             TypedEventHandler<Activity, FileOpenPickerFilesReceived> handler = null;
             handler = (sender, args) =>
@@ -122,7 +118,7 @@ namespace XPlat.Storage.Pickers
 
         private Intent GenerateIntent(int id, bool allowMultiple)
         {
-            Intent fileOpenPickerIntent = new Intent(this.context, typeof(FileOpenPickerActivity));
+            Intent fileOpenPickerIntent = new Intent(this.AppContext, typeof(FileOpenPickerActivity));
             fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentId, id);
 
             IEnumerable<string> mimeTypes = MimeTypeHelper.GetMimeTypes(this.FileTypeFilter);

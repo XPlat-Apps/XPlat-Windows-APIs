@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Device.Geolocation
 {
     using System;
@@ -7,7 +7,7 @@ namespace XPlat.Device.Geolocation
 
     using Android.Content;
     using Android.Locations;
-    using Android.OS;
+    using Android.OS;    
 
     using Java.Lang;
 
@@ -33,12 +33,9 @@ namespace XPlat.Device.Geolocation
         /// <summary>
         /// Initializes a new instance of the <see cref="Geolocator"/> class.
         /// </summary>
-        /// <param name="context">
-        /// The Android context.
-        /// </param>
-        public Geolocator(Context context)
+        public Geolocator()
         {
-            this.locationManager = (LocationManager)context.GetSystemService(Context.LocationService);
+            this.locationManager = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
             this.locationProviders =
                 this.locationManager.GetProviders(false).Where(p => p != LocationManager.PassiveProvider).ToArray();
         }

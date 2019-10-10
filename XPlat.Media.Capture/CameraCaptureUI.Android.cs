@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Media.Capture
 {
     using System;
@@ -18,7 +18,7 @@ namespace XPlat.Media.Capture
     /// <summary>Provides a full window UI for capturing video and photos from a camera.</summary>
     public class CameraCaptureUI : ICameraCaptureUI
     {
-        private readonly Context context;
+        private static Context AppContext => Android.App.Application.Context;
 
         private int requestId;
 
@@ -29,12 +29,8 @@ namespace XPlat.Media.Capture
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraCaptureUI"/> class.
         /// </summary>
-        /// <param name="context">
-        /// The application context.
-        /// </param>
-        public CameraCaptureUI(Context context)
+        public CameraCaptureUI()
         {
-            this.context = context;
             this.PhotoSettings = new CameraCaptureUIPhotoCaptureSettings();
             this.VideoSettings = new CameraCaptureUIVideoCaptureSettings();
         }
@@ -60,7 +56,7 @@ namespace XPlat.Media.Capture
 
             this.requestCode = newRequestCode;
 
-            this.context.StartActivity(this.GenerateIntent(this.requestCode, mode));
+            this.AppContext.StartActivity(this.GenerateIntent(this.requestCode, mode));
 
             TypedEventHandler<Activity, CameraFileCaptured> handler = null;
             handler = async (sender, args) =>
@@ -115,7 +111,7 @@ namespace XPlat.Media.Capture
 
         private Intent GenerateIntent(int id, CameraCaptureUIMode mode)
         {
-            Intent cameraCaptureIntent = new Intent(this.context, typeof(CameraCaptureUIActivity));
+            Intent cameraCaptureIntent = new Intent(this.AppContext, typeof(CameraCaptureUIActivity));
             cameraCaptureIntent.PutExtra(CameraCaptureUIActivity.IntentId, id);
 
             switch (mode)

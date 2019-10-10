@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.UI.Popups
 {
     using System;
@@ -32,7 +32,7 @@ namespace XPlat.UI.Popups
         /// <summary>
         /// Gets the Android context for the dialog.
         /// </summary>
-        public Context Context { get; set; }
+        private static Context AppContext => Android.App.Application.Context;
 
         /// <summary>Gets or sets the title to display on the dialog, if any.</summary>
         public string Title { get; set; }
@@ -57,9 +57,9 @@ namespace XPlat.UI.Popups
 
             try
             {
-                if (this.Context == null)
+                if (this.AppContext == null)
                 {
-                    throw new ArgumentNullException(nameof(this.Context), "The Android Context cannot be null.");
+                    throw new ArgumentNullException(nameof(this.AppContext), "The Android Context cannot be null.");
                 }
 
                 if (string.IsNullOrEmpty(this.Title))
@@ -79,7 +79,7 @@ namespace XPlat.UI.Popups
                     throw new ArgumentException("The dialog must contain at least one button.", nameof(this.Commands));
                 }
 
-                AlertDialog dialog = new AlertDialog.Builder(this.Context).Create();
+                AlertDialog dialog = new AlertDialog.Builder(this.AppContext).Create();
                 dialog.SetTitle(this.Title);
 
                 if (!string.IsNullOrEmpty(this.Content))
