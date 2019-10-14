@@ -31,6 +31,16 @@ namespace XPlat.Media.Capture
         /// </summary>
         public CameraCaptureUI()
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CameraCaptureUI"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The application context.
+        /// </param>
+        public CameraCaptureUI(Context context)
+        {
             this.PhotoSettings = new CameraCaptureUIPhotoCaptureSettings();
             this.VideoSettings = new CameraCaptureUIVideoCaptureSettings();
         }

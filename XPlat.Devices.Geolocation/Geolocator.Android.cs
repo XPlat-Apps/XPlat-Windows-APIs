@@ -7,7 +7,7 @@ namespace XPlat.Device.Geolocation
 
     using Android.Content;
     using Android.Locations;
-    using Android.OS;    
+    using Android.OS;
 
     using Java.Lang;
 
@@ -33,7 +33,17 @@ namespace XPlat.Device.Geolocation
         /// <summary>
         /// Initializes a new instance of the <see cref="Geolocator"/> class.
         /// </summary>
-        public Geolocator()
+        public Geolocator() : this(Android.App.Application.Context)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Geolocator"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The Android context.
+        /// </param>
+        public Geolocator(Context context)
         {
             this.locationManager = (LocationManager)Android.App.Application.Context.GetSystemService(Context.LocationService);
             this.locationProviders =
@@ -90,6 +100,7 @@ namespace XPlat.Device.Geolocation
                         }
 
                         break;
+
                     case PositionAccuracy.High:
                         if (this.DesiredAccuracyInMeters != 10)
                         {

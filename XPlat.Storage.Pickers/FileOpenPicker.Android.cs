@@ -26,7 +26,17 @@ namespace XPlat.Storage.Pickers
         /// <summary>
         /// Initializes a new instance of the <see cref="FileOpenPicker"/> class.
         /// </summary>
-        public FileOpenPicker()
+        public FileOpenPicker() : this(Android.App.Application.Context)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileOpenPicker"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The Android context.
+        /// </param>
+        public FileOpenPicker(Context context)
         {
             this.FileTypeFilter = new List<string>();
         }

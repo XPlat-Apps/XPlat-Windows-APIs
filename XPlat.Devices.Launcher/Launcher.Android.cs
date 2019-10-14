@@ -16,7 +16,17 @@ namespace XPlat.Device
         /// <summary>
         /// Initializes a new instance of the <see cref="Launcher"/> class.
         /// </summary>
-        public Launcher()
+        public Launcher() : this(Android.App.Application.Context)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Launcher"/> class.
+        /// </summary>
+        /// <param name="context">
+        /// The Android context.
+        /// </param>
+        public Launcher(Context context)
         {
         }
 
