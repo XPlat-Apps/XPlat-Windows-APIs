@@ -1,12 +1,16 @@
 namespace XPlat.Samples.Windows
 {
+    using System;
     using System.Diagnostics;
+    using System.Linq;
 
+    using global::Windows.Services.Maps;
     using global::Windows.System.Profile;
     using global::Windows.UI.Xaml.Controls;
     using global::Windows.UI.Xaml.Navigation;
 
     using XPlat.ApplicationModel.DataTransfer;
+    using XPlat.Device.Geolocation;
     using XPlat.UI.Popups;
 
     /// <summary>
@@ -18,6 +22,8 @@ namespace XPlat.Samples.Windows
         {
             this.InitializeComponent();
 
+            MapService.ServiceToken = "{InsertBingMapsApiToken}";
+
             AnalyticsVersionInfo versionInfo = AnalyticsInfo.VersionInfo;
             string device = AnalyticsInfo.DeviceForm;
         }
@@ -26,7 +32,26 @@ namespace XPlat.Samples.Windows
         {
             base.OnNavigatedTo(e);
 
-            var message = new XPlat.UI.Popups.MessageDialog("Hello, World", "Title")
+            global::XPlat.Services.Maps.MapLocationFinderResult mapFinderResult = null;
+            try
+            {
+                mapFinderResult =
+                    await global::XPlat.Services.Maps.MapLocationFinder.FindLocationsAtAsync(
+                        new Geopoint(new BasicGeoposition(51.530164, -0.124007, 0)));
+            }
+            catch (Exception)
+            {
+                // Ignored
+            }
+
+            string messageBody = "Hello, World!";
+
+            if (mapFinderResult?.Locations != null && mapFinderResult.Locations.Any())
+            {
+                messageBody += $" {mapFinderResult.Locations[0].Address}";
+            }
+
+            var message = new XPlat.UI.Popups.MessageDialog(messageBody, "Title")
                           {
                               DefaultCommandIndex = 0, CancelCommandIndex = 1
                           };

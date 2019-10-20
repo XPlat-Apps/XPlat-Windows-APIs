@@ -1,4 +1,4 @@
-﻿namespace XPlat.Device.Geolocation
+namespace XPlat.Device.Geolocation
 {
     /// <summary>The basic information to describe a geographic position.</summary>
     public struct BasicGeoposition
@@ -43,6 +43,16 @@
             this.Latitude = geoposition.Latitude;
             this.Longitude = geoposition.Longitude;
             this.Altitude = geoposition.Altitude;
+        }
+
+        public static implicit operator BasicGeoposition(Windows.Devices.Geolocation.BasicGeoposition geoposition)
+        {
+            return new BasicGeoposition(geoposition);
+        }
+
+        public static implicit operator Windows.Devices.Geolocation.BasicGeoposition(BasicGeoposition geoposition)
+        {
+            return new Windows.Devices.Geolocation.BasicGeoposition { Latitude = geoposition.Latitude, Longitude = geoposition.Longitude, Altitude = geoposition.Altitude };
         }
 #elif __ANDROID__
         /// <summary>

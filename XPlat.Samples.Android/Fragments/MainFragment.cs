@@ -2,17 +2,23 @@ namespace XPlat.Samples.Android.Fragments
 {
     using System;
     using System.Diagnostics;
+    using System.Linq;
 
     using CommonServiceLocator;
 
     using global::Android.Widget;
 
+    using Java.Lang;
+
     using MADE.App.Views.Navigation.Pages;
 
     using XPlat.ApplicationModel;
     using XPlat.ApplicationModel.DataTransfer;
+    using XPlat.Device.Geolocation;
     using XPlat.Samples.Android.ViewModels;
     using XPlat.UI.Popups;
+
+    using Exception = System.Exception;
 
     public class MainFragment : MvvmPage
     {
@@ -26,7 +32,7 @@ namespace XPlat.Samples.Android.Fragments
 
         private Button navigateToOpenFileButton;
 
-        private Package package;
+        private XPlat.ApplicationModel.Package package;
 
         public MainFragment()
         {
@@ -39,7 +45,7 @@ namespace XPlat.Samples.Android.Fragments
 
         public override async void OnResume()
         {
-            this.package = Package.Current;
+            this.package = XPlat.ApplicationModel.Package.Current;
 
             Uri packageLogo = this.package.Logo;
 
@@ -101,10 +107,31 @@ namespace XPlat.Samples.Android.Fragments
                 this.navigateToOpenFileButton.Click += this.OnNavigateToOpenFileClick;
             }
 
-            MessageDialog message = new MessageDialog("Hello, World", "Title")
-                              {
-                                  Context = this.Context, DefaultCommandIndex = 0, CancelCommandIndex = 1
-                              };
+            global::XPlat.Services.Maps.MapLocationFinderResult mapFinderResult = null;
+            try
+            {
+                mapFinderResult =
+                    await global::XPlat.Services.Maps.MapLocationFinder.FindLocationsAtAsync(
+                        new Geopoint(new BasicGeoposition(51.530164, -0.124007, 0)));
+            }
+            catch (Exception)
+            {
+                // Ignored
+            }
+
+            string messageBody = "Hello, World!";
+
+            if (mapFinderResult?.Locations != null && mapFinderResult.Locations.Any())
+            {
+                messageBody += $" {mapFinderResult.Locations[0].Address}";
+            }
+
+            var message = new XPlat.UI.Popups.MessageDialog(messageBody, "Title")
+            {
+                Context = this.Context,
+                DefaultCommandIndex = 0,
+                CancelCommandIndex = 1
+            };
             message.Commands.Add(new UICommand("Okay", command => Debug.WriteLine("Said okay!")) { Id = 1 });
             message.Commands.Add(new UICommand("Close", command => Debug.WriteLine("Said close!")) { Id = 2 });
             IUICommand result = await message.ShowAsync();

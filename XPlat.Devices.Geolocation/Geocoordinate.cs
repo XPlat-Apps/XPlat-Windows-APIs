@@ -1,4 +1,4 @@
-﻿namespace XPlat.Device.Geolocation
+namespace XPlat.Device.Geolocation
 {
     using System;
 
@@ -29,6 +29,11 @@
             this.Speed = coordinate.Speed ?? 0;
             this.Timestamp = coordinate.Timestamp;
             this.Point = new Geopoint(coordinate.Point);
+        }
+
+        public static implicit operator Geocoordinate(Windows.Devices.Geolocation.Geocoordinate geocoordinate)
+        {
+            return new Geocoordinate(geocoordinate);
         }
 #elif __ANDROID__
         /// <summary>
