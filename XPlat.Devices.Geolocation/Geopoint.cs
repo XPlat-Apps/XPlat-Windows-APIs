@@ -1,4 +1,4 @@
-﻿namespace XPlat.Device.Geolocation
+namespace XPlat.Device.Geolocation
 {
     /// <summary>Describes a geographic point.</summary>
     public class Geopoint : IGeopoint
@@ -25,6 +25,21 @@
         public Geopoint(Windows.Devices.Geolocation.BasicGeoposition geoposition)
         {
             this.Position = new BasicGeoposition(geoposition);
+        }
+
+        public static implicit operator Geopoint(Windows.Devices.Geolocation.Geopoint geopoint)
+        {
+            return new Geopoint(geopoint);
+        }
+
+        public static implicit operator Geopoint(Windows.Devices.Geolocation.BasicGeoposition geoposition)
+        {
+            return new Geopoint(geoposition);
+        }
+
+        public static implicit operator Windows.Devices.Geolocation.Geopoint(Geopoint geopoint)
+        {
+            return new Windows.Devices.Geolocation.Geopoint(geopoint.Position);
         }
 #elif __ANDROID__
         /// <summary>Initializes a new instance of the <see cref="Geopoint"/> class.</summary>

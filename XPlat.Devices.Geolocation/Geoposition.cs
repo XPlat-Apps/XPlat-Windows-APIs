@@ -1,4 +1,4 @@
-﻿namespace XPlat.Device.Geolocation
+namespace XPlat.Device.Geolocation
 {
     /// <summary>Represents a location that may contain latitude and longitude data.</summary>
     public class Geoposition : IGeoposition
@@ -36,6 +36,16 @@
         public Geoposition(Windows.Devices.Geolocation.Geoposition position)
         {
             this.Coordinate = new Geocoordinate(position.Coordinate);
+        }
+
+        public static implicit operator Geoposition(Windows.Devices.Geolocation.Geocoordinate geocoordinate)
+        {
+            return new Geoposition(geocoordinate);
+        }
+
+        public static implicit operator Geoposition(Windows.Devices.Geolocation.Geoposition geoposition)
+        {
+            return new Geoposition(geoposition);
         }
 #elif __ANDROID__
         /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace XPlat.Device.Geolocation
+namespace XPlat.Device.Geolocation
 {
     /// <summary>Provides information for the StatusChanged event.</summary>
     public class StatusChangedEventArgs : IStatusChangedEventArgs
@@ -32,6 +32,11 @@
             this.Status =
                 XPlat.Device.Geolocation.Extensions.PositionStatusExtensions
                     .ToInternalPositionStatus(eventArgs.Status);
+        }
+
+        public static implicit operator StatusChangedEventArgs(Windows.Devices.Geolocation.StatusChangedEventArgs eventArgs)
+        {
+            return new StatusChangedEventArgs(eventArgs);
         }
 #endif
 

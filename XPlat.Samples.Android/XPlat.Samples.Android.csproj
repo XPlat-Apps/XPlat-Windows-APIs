@@ -199,6 +199,10 @@
       <Project>{c4504bbd-e3d3-4d2e-be83-865eaf558aa9}</Project>
       <Name>XPlat.Media.Capture</Name>
     </ProjectReference>
+    <ProjectReference Include="..\XPlat.Services.Maps\XPlat.Services.Maps.csproj">
+      <Project>{6abaf59e-3ef5-4c94-92d8-bec9493f045c}</Project>
+      <Name>XPlat.Services.Maps</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XPlat.Storage.Pickers\XPlat.Storage.Pickers.csproj">
       <Project>{23e4798b-8f59-408a-a714-ffb8cbd0b3fe}</Project>
       <Name>XPlat.Storage.Pickers</Name>
@@ -206,6 +210,10 @@
     <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj">
       <Project>{212b0428-3e12-4490-a3ca-7609d26fed19}</Project>
       <Name>XPlat.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XPlat.UI.Controls\XPlat.UI.Controls.csproj">
+      <Project>{1d3c1d3a-4c5a-4d65-a453-4cfe4f3aa3b6}</Project>
+      <Name>XPlat.UI.Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\XPlat.UI.Core\XPlat.UI.Core.csproj">
       <Project>{fc1117f0-1777-4f8a-b0fc-a5a7873b3a57}</Project>
