@@ -8,11 +8,11 @@ As each application platform offers their own unique platform-specific APIs, XPl
 
 For a UWP developer, this is appealing as it allows you to easily migrate your existing UWP code to Xamarin shared code with minimal changes through the use of XPlat Windows APIs which mimic the Windows UWP alternatives.
 
-## Build status
+## Package status
 
-| Packages | Status | Current | Preview |
-| ------ | ------ | ------ | ------ |
-| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat.CI)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+| Source | Build | Release | Current | Preview |
+| ------ | ------ | ------ | ------ | ------ |
+| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat.CI)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Release status](https://vsrm.dev.azure.com/jamesmcroft/_apis/public/Release/badge/ec86cd27-ab77-46ad-8b77-66259dd5a477/1/4)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
 
 ## Installation
 XPlat Windows APIs are available via NuGet. Each available package is detailed below. 
@@ -22,6 +22,7 @@ We have purposefully split the XPlat Windows APIs to allow you to pick and choos
 | Package | Current | Preview |
 | ------ | ------ | ------ |
 | XPlat.ApplicationModel | [![Nuget](https://img.shields.io/nuget/v/XPlat.ApplicationModel.svg)](https://www.nuget.org/packages/XPlat.ApplicationModel/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.ApplicationModel.svg)](https://www.nuget.org/packages/XPlat.ApplicationModel/) |
+| XPlat.ApplicationModel.DataTransfer | [![Nuget](https://img.shields.io/nuget/v/XPlat.ApplicationModel.DataTransfer.svg)](https://www.nuget.org/packages/XPlat.ApplicationModel.DataTransfer/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.ApplicationModel.DataTransfer.svg)](https://www.nuget.org/packages/XPlat.ApplicationModel.DataTransfer/) |
 | XPlat.Core | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
 | XPlat.Device.Display | [![Nuget](https://img.shields.io/nuget/v/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Device.Display.svg)](https://www.nuget.org/packages/XPlat.Device.Display/) |
 | XPlat.Device.Geolocation | [![Nuget](https://img.shields.io/nuget/v/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Device.Geolocation.svg)](https://www.nuget.org/packages/XPlat.Device.Geolocation/) |
@@ -30,6 +31,7 @@ We have purposefully split the XPlat Windows APIs to allow you to pick and choos
 | XPlat.Device.Profile | [![Nuget](https://img.shields.io/nuget/v/XPlat.Device.Profile.svg)](https://www.nuget.org/packages/XPlat.Device.Profile/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Device.Profile.svg)](https://www.nuget.org/packages/XPlat.Device.Profile/) |
 | XPlat.Foundation | [![Nuget](https://img.shields.io/nuget/v/XPlat.Foundation.svg)](https://www.nuget.org/packages/XPlat.Foundation/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Foundation.svg)](https://www.nuget.org/packages/XPlat.Foundation/) |
 | XPlat.Media.Capture | [![Nuget](https://img.shields.io/nuget/v/XPlat.Media.Capture.svg)](https://www.nuget.org/packages/XPlat.Media.Capture/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Media.Capture.svg)](https://www.nuget.org/packages/XPlat.Media.Capture/) |
+| XPlat.Services.Maps | [![Nuget](https://img.shields.io/nuget/v/XPlat.Services.Maps.svg)](https://www.nuget.org/packages/XPlat.Services.Maps/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Services.Maps.svg)](https://www.nuget.org/packages/XPlat.Services.Maps/) |
 | XPlat.Storage | [![Nuget](https://img.shields.io/nuget/v/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Storage.svg)](https://www.nuget.org/packages/XPlat.Storage/) |
 | XPlat.Storage.Pickers | [![Nuget](https://img.shields.io/nuget/v/XPlat.Storage.Pickers.svg)](https://www.nuget.org/packages/XPlat.Storage.Pickers/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Storage.Pickers.svg)](https://www.nuget.org/packages/XPlat.Storage.Pickers/) |
 | XPlat.UI | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.svg)](https://www.nuget.org/packages/XPlat.UI/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.svg)](https://www.nuget.org/packages/XPlat.UI/) |
