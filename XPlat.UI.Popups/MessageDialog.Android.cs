@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.UI.Popups
 {
     using System;
@@ -13,20 +13,34 @@ namespace XPlat.UI.Popups
     {
         /// <summary>Initializes a new instance of the MessageDialog class to display an untitled message dialog that can be used to ask your user simple questions.</summary>
         /// <param name="content">The message displayed to the user.</param>
-        public MessageDialog(string content)
+        public MessageDialog(string content) : this(content, string.Empty, Android.App.Application.Context)
         {
-            this.Content = content;
-            this.Commands = new List<IUICommand>();
+        }
+
+        /// <summary>Initializes a new instance of the MessageDialog class to display an untitled message dialog that can be used to ask your user simple questions.</summary>
+        /// <param name="content">The message displayed to the user.</param>
+        /// <param name="context">The Android context.</param>
+        public MessageDialog(string content, Android.Content.Context context) : this(content, string.Empty, context)
+        {
         }
 
         /// <summary>Initializes a new instance of the MessageDialog class to display a titled message dialog that can be used to ask your user simple questions.</summary>
         /// <param name="content">The message displayed to the user.</param>
         /// <param name="title">The title you want displayed on the dialog.</param>
-        public MessageDialog(string content, string title)
+        public MessageDialog(string content, string title) : this(content, title, Android.App.Application.Context)
+        {
+        }
+
+        /// <summary>Initializes a new instance of the MessageDialog class to display a titled message dialog that can be used to ask your user simple questions.</summary>
+        /// <param name="content">The message displayed to the user.</param>
+        /// <param name="title">The title you want displayed on the dialog.</param>
+        /// <param name="context">The Android context.</param>
+        public MessageDialog(string content, string title, Android.Content.Context context)
         {
             this.Content = content;
             this.Title = title;
             this.Commands = new List<IUICommand>();
+            this.Context = context;
         }
 
         /// <summary>

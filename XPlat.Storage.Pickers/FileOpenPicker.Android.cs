@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Storage.Pickers
 {
     using System;
@@ -15,13 +15,18 @@ namespace XPlat.Storage.Pickers
     /// <summary>Represents a UI element that lets the user choose and open files.</summary>
     public class FileOpenPicker : IFileOpenPicker
     {
-        private readonly Context context;
-
         private TaskCompletionSource<IStorageFile> currentSingleTcs;
 
         private TaskCompletionSource<IReadOnlyList<IStorageFile>> currentMultiTcs;
 
         private int requestCode;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileOpenPicker"/> class using the default <see cref="Android.App.Application.Context"/>.
+        /// </summary>
+        public FileOpenPicker() : this(Android.App.Application.Context)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FileOpenPicker"/> class.
@@ -31,9 +36,12 @@ namespace XPlat.Storage.Pickers
         /// </param>
         public FileOpenPicker(Context context)
         {
-            this.context = context;
+            this.Context = context;
             this.FileTypeFilter = new List<string>();
         }
+
+        /// <summary>Gets or sets the Android context to be used for handling activity and intent events.</summary>
+        public Context Context { get; set; }
 
         /// <summary>Gets the collection of file types that the file open picker displays.</summary>
         public IList<string> FileTypeFilter { get; }
@@ -52,7 +60,7 @@ namespace XPlat.Storage.Pickers
 
             this.requestCode = newRequestCode;
 
-            this.context.StartActivity(this.GenerateIntent(this.requestCode, false));
+            this.Context.StartActivity(this.GenerateIntent(this.requestCode, false));
 
             TypedEventHandler<Activity, FileOpenPickerFilesReceived> handler = null;
             handler = (sender, args) =>
@@ -89,7 +97,7 @@ namespace XPlat.Storage.Pickers
 
             this.requestCode = newRequestCode;
 
-            this.context.StartActivity(this.GenerateIntent(this.requestCode, true));
+            this.Context.StartActivity(this.GenerateIntent(this.requestCode, true));
 
             TypedEventHandler<Activity, FileOpenPickerFilesReceived> handler = null;
             handler = (sender, args) =>
@@ -122,7 +130,7 @@ namespace XPlat.Storage.Pickers
 
         private Intent GenerateIntent(int id, bool allowMultiple)
         {
-            Intent fileOpenPickerIntent = new Intent(this.context, typeof(FileOpenPickerActivity));
+            Intent fileOpenPickerIntent = new Intent(this.Context, typeof(FileOpenPickerActivity));
             fileOpenPickerIntent.PutExtra(FileOpenPickerActivity.IntentId, id);
 
             IEnumerable<string> mimeTypes = MimeTypeHelper.GetMimeTypes(this.FileTypeFilter);
