@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Device
 {
     using System;
@@ -12,9 +12,9 @@ namespace XPlat.Device
     public class Launcher : ILauncher
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Launcher"/> class.
+        /// Initializes a new instance of the <see cref="Launcher"/> class using the default <see cref="Android.App.Application.Context"/>.
         /// </summary>
-        public Launcher()
+        public Launcher() : this(Android.App.Application.Context)
         {
         }
 

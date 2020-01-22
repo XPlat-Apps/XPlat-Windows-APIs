@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Media.Capture
 {
     using System;
@@ -18,13 +18,18 @@ namespace XPlat.Media.Capture
     /// <summary>Provides a full window UI for capturing video and photos from a camera.</summary>
     public class CameraCaptureUI : ICameraCaptureUI
     {
-        private readonly Context context;
-
         private int requestId;
 
         private TaskCompletionSource<IStorageFile> currentSingleTcs;
 
         private int requestCode;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CameraCaptureUI"/> class using the default <see cref="Android.App.Application.Context"/>.
+        /// </summary>
+        public CameraCaptureUI() : this(Android.App.Application.Context)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraCaptureUI"/> class.
@@ -34,10 +39,13 @@ namespace XPlat.Media.Capture
         /// </param>
         public CameraCaptureUI(Context context)
         {
-            this.context = context;
+            this.Context = context;
             this.PhotoSettings = new CameraCaptureUIPhotoCaptureSettings();
             this.VideoSettings = new CameraCaptureUIVideoCaptureSettings();
         }
+
+        /// <summary>Gets or sets the Android context to be used for handling activity and intent events.</summary>
+        public Context Context { get; set; }
 
         /// <summary>Provides settings for capturing photos.</summary>
         public CameraCaptureUIPhotoCaptureSettings PhotoSettings { get; }
@@ -60,7 +68,7 @@ namespace XPlat.Media.Capture
 
             this.requestCode = newRequestCode;
 
-            this.context.StartActivity(this.GenerateIntent(this.requestCode, mode));
+            this.Context.StartActivity(this.GenerateIntent(this.requestCode, mode));
 
             TypedEventHandler<Activity, CameraFileCaptured> handler = null;
             handler = async (sender, args) =>
@@ -115,7 +123,7 @@ namespace XPlat.Media.Capture
 
         private Intent GenerateIntent(int id, CameraCaptureUIMode mode)
         {
-            Intent cameraCaptureIntent = new Intent(this.context, typeof(CameraCaptureUIActivity));
+            Intent cameraCaptureIntent = new Intent(this.Context, typeof(CameraCaptureUIActivity));
             cameraCaptureIntent.PutExtra(CameraCaptureUIActivity.IntentId, id);
 
             switch (mode)

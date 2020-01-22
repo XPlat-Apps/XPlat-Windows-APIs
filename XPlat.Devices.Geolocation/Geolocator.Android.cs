@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Device.Geolocation
 {
     using System;
@@ -29,6 +29,13 @@ namespace XPlat.Device.Geolocation
         private uint reportInterval = 1;
 
         private PositionAccuracy desiredAccuracy;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Geolocator"/> class using the default <see cref="Android.App.Application.Context"/>.
+        /// </summary>
+        public Geolocator() : this(Android.App.Application.Context)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Geolocator"/> class.
