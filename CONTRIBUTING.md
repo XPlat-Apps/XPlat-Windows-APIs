@@ -1,4 +1,4 @@
-<img src="Assets/ProjectBanner.png" alt="XPlat Windows APIs" />
+<img src="assets/ProjectBanner.png" alt="XPlat Windows APIs project banner" />
 
 # Contributing
 

@@ -1,12 +1,12 @@
-<img src="Assets/ProjectBanner.png" alt="XPlat Windows APIs" />
+<img src="assets/ProjectBanner.png" alt="XPlat Windows APIs project banner" />
 
 # XPlat Windows APIs
 
-XPlat Windows APIs are designed to make it easier for developers adjusted to developing with the Windows UWP APIs to take those skills cross-platform with their  applications.
+XPlat Windows APIs are designed to make it easier for developers adjusted to developing with the Windows Runtime APIs (UWP) to take those skills cross-platform with their applications in .NET.
 
-As each application platform offers their own unique platform-specific APIs, XPlat attempts to bring all of those APIs under one umbrella using a Windows UWP like API, allowing a developer to learn a single API which works with any application built with UWP or Xamarin for Android and iOS. 
+As each application platform offers their own unique platform-specific APIs, XPlat attempts to bring all of those APIs under one umbrella using a UWP like API, allowing a developer to learn a single API which works with any application built for Windows and Xamarin for Android and iOS. 
 
-For a UWP developer, this is appealing as it allows you to easily migrate your existing UWP code to Xamarin shared code with minimal changes through the use of XPlat Windows APIs which mimic the Windows UWP alternatives.
+For a Windows developer, this is appealing as it allows you to easily migrate your existing Windows code to Xamarin shared code with minimal changes through the use of XPlat Windows APIs which mimic the UWP API alternatives.
 
 ## Package status
 
@@ -55,7 +55,7 @@ If you want to deep dive into the APIs with details on how to use the features, 
 
 XPlat Windows APIs is currently being developed for the following platforms:
 
-- Windows UWP
+- Windows
 - iOS
 - Android
 
