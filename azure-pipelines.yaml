@@ -4,23 +4,11 @@ trigger:
   branches:
       include:
       - develop
-  paths:
-    include:
-    - src/*
-    - test/*
-    exclude:
-    - *.md
 
 pr:
   branches:
     include:
     - master
-  paths:
-    include:
-    - src/*
-    - test/*
-    exclude:
-    - *.md
 
 stages:
 
