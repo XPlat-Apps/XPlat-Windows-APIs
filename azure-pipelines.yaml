@@ -1,0 +1,98 @@
+trigger:
+- develop
+
+stages:
+
+- stage: 'Build'
+  variables:
+    solution: '**/*.sln'
+    buildConfiguration: 'Release'
+
+  jobs:
+  - job:
+    pool:
+      vmImage: 'windows-latest'
+
+    workspace:
+      clean: all
+
+    steps:
+    - task: NuGetToolInstaller@1
+      inputs:
+        versionSpec: '5.4.0'
+    
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: '$(solution)'
+
+    - task: VersionDotNetCoreAssemblies@2
+      inputs:
+        Path: '$(Build.SourcesDirectory)'
+        VersionNumber: '$(Build.BuildNumber)'
+        Injectversion: False
+        VersionRegex: '\d+\.\d+\.\d+\.\d+(\-[a-z]+)?'
+        FilenamePattern: '.csproj'
+        SDKNames: 'Microsoft.NET.Sdk,MSBuild.Sdk.Extras'
+        OutputVersion: 'OutputedVersion'
+
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: build
+        projects: '$(solution)'
+        arguments: '--configuration $(buildConfiguration)'
+
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: test
+        projects: '**/*[Tt]ests/*.csproj'
+        arguments: '--configuration $(buildConfiguration) --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="$(Build.SourcesDirectory)/TestResults/Coverage"'
+
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: pack
+        packagesToPack: '$(solution)'
+        packDirectory: '$(Build.ArtifactStagingDirectory)/artifacts'
+        arguments: '--configuration $(buildConfiguration)'
+        nobuild: true
+        versioningScheme: 'off'
+
+    - publish: '$(Build.ArtifactStagingDirectory)/artifacts'
+      artifact: 'artifacts'
+
+- stage: 'InternalPublish'
+  dependsOn: 'Build'
+  condition: succeeded()
+  jobs:
+    - job:
+      pool:
+        vmImage: 'windows-latest'
+      
+      steps:
+      - checkout: none
+
+      - download: current
+        artifact: 'artifacts'
+
+      - task: NuGetCommand@2
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Pipeline.Workspace)/artifacts/*.nupkg'
+          nuGetFeedType: 'internal'
+          publishVstsFeed: 'NuGet-PreRelease'
+
+- stage: 'NuGetPublish'
+  dependsOn: 'InternalPublish'
+  condition: succeeded()
+  jobs:
+    - job:
+      pool:
+        vmImage: 'windows-latest'
+
+      steps:
+      - task: NuGetCommand@2
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Pipeline.Workspace)/artifacts/*.nupkg;$(Pipeline.Workspace)/artifacts/*.snupkg'
+          nuGetFeedType: 'external'
+          publishFeedCredentials: 'NuGet - JamesCroft'
