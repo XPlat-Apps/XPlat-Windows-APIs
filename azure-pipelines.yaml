@@ -41,7 +41,7 @@ stages:
     - task: MSBuild@1
       inputs:
         solution: '$(solution)'
-        platform: 'AnyCPU'
+        platform: 'Any CPU'
         configuration: $(buildConfiguration)
         maximumCpuCount: true
 
