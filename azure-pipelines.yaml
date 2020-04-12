@@ -1,7 +1,28 @@
 name: $(Major).$(Minor).$(Year:yy)$(DayOfYear).$(Rev:r)$(PreRelease)
 
 trigger:
-- develop
+  branches:
+      include:
+      - develop
+  paths:
+    include:
+    - *.sln
+    - src/*
+    - test/*
+    exclude:
+    - **/*.md
+
+pr:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - *.sln
+    - src/*
+    - test/*
+    exclude:
+    - **/*.md
 
 stages:
 
