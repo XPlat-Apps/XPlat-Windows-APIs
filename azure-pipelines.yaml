@@ -1,3 +1,5 @@
+name: $(Major).$(Minor).$(Year:yy)$(DayOfYear).$(Rev:.r)$(PreRelease)
+
 trigger:
 - develop
 
