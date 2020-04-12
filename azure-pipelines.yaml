@@ -6,11 +6,10 @@ trigger:
       - develop
   paths:
     include:
-    - *.sln
     - src/*
     - test/*
     exclude:
-    - **/*.md
+    - *.md
 
 pr:
   branches:
@@ -18,11 +17,10 @@ pr:
     - master
   paths:
     include:
-    - *.sln
     - src/*
     - test/*
     exclude:
-    - **/*.md
+    - *.md
 
 stages:
 
