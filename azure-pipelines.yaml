@@ -51,6 +51,14 @@ stages:
         projects: '**/*[Tt]ests/*.csproj'
         arguments: '--configuration $(buildConfiguration) --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="$(Build.SourcesDirectory)/TestResults/Coverage"'
 
+        - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.ArtifactStagingDirectory)/src'
+        Contents: |
+          **/*.nupkg
+          **/*.snupkg
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/artifacts'
+
     - publish: '$(Build.ArtifactStagingDirectory)/artifacts'
       artifact: 'artifacts'
 
