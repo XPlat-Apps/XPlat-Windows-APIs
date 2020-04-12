@@ -79,7 +79,7 @@ stages:
       - task: NuGetCommand@2
         inputs:
           command: 'push'
-          packagesToPush: '$(Pipeline.Workspace)/artifacts/*.nupkg'
+          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
           nuGetFeedType: 'internal'
           publishVstsFeed: 'NuGet-PreRelease'
 
@@ -95,6 +95,6 @@ stages:
       - task: NuGetCommand@2
         inputs:
           command: 'push'
-          packagesToPush: '$(Pipeline.Workspace)/artifacts/*.nupkg;$(Pipeline.Workspace)/artifacts/*.snupkg'
+          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg;$(Pipeline.Workspace)/**/*.snupkg'
           nuGetFeedType: 'external'
           publishFeedCredentials: 'NuGet - JamesCroft'
