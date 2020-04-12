@@ -1,32 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.0.0</Version>
-    <Authors>James Croft</Authors>
-    <Company>James Croft</Company>
+    <Authors>XPlat Apps</Authors>
+    <Company>XPlat Apps</Company>
     <Product>XPlat - Windows.Foundation APIs</Product>
     <Description>Brings the functionality of the Windows.Foundation APIs cross-platform with support for Windows, Android and iOS.</Description>
-    <Copyright>Copyright (C) James Croft. All rights reserved.</Copyright>
-    <PackageLicenseUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/jamesmcroft/XPlat-Windows-APIs</PackageProjectUrl>
-    <PackageIconUrl>https://i.imgur.com/tkagpGy.png</PackageIconUrl>
+    <Copyright>Copyright (C) XPlat. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/XPlat-Apps/XPlat-Windows-APIs</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>ProjectIcon.png</PackageIcon>
     <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Foundation Size</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageId>XPlat.Foundation</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.4\XPlat.Foundation.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\XPlat.Foundation.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
+    <None Include="..\..\assets\ProjectIcon.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
 </Project>
