@@ -116,4 +116,4 @@ stages:
           command: 'push'
           packagesToPush: '$(Pipeline.Workspace)/**/*.snupkg'
           nuGetFeedType: 'external'
-          publishFeedCredentials: 'NuGet - JamesCroft
+          publishFeedCredentials: 'NuGet - JamesCroft'
