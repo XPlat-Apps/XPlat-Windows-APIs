@@ -92,7 +92,7 @@ stages:
 
 - stage: 'NuGetPublish'
   dependsOn: 'InternalPublish'
-  condition: and(succeeded(), and(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), ne(variables['Build.Reason'], 'PullRequest')))
+  condition: and(succeeded(), eq(variables['NuGetPublish'], 'true'))
   jobs:
     - job:
       pool:
