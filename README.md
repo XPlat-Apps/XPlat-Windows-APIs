@@ -10,9 +10,9 @@ For a Windows developer, this is appealing as it allows you to easily migrate yo
 
 ## Package status
 
-| Source | Build | Release | Current | Preview |
-| ------ | ------ | ------ | ------ | ------ |
-| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat.CI)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Release status](https://vsrm.dev.azure.com/jamesmcroft/_apis/public/Release/badge/ec86cd27-ab77-46ad-8b77-66259dd5a477/1/4)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+| Source | Build | Current | Preview |
+| ------ | ------ | ------ | ------ |
+| NuGet | [![Build Status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat-Apps.XPlat-Windows-APIs?branchName=develop)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=34&branchName=develop) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
 
 ## Installation
 XPlat Windows APIs are available via NuGet. Each available package is detailed below. 
