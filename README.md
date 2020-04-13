@@ -1,18 +1,18 @@
-<img src="Assets/ProjectBanner.png" alt="XPlat Windows APIs" />
+<img src="assets/ProjectBanner.png" alt="XPlat Windows APIs project banner" />
 
 # XPlat Windows APIs
 
-XPlat Windows APIs are designed to make it easier for developers adjusted to developing with the Windows UWP APIs to take those skills cross-platform with their  applications.
+XPlat Windows APIs are designed to make it easier for developers adjusted to developing with the Windows Runtime APIs (UWP) to take those skills cross-platform with their applications in .NET.
 
-As each application platform offers their own unique platform-specific APIs, XPlat attempts to bring all of those APIs under one umbrella using a Windows UWP like API, allowing a developer to learn a single API which works with any application built with UWP or Xamarin for Android and iOS. 
+As each application platform offers their own unique platform-specific APIs, XPlat attempts to bring all of those APIs under one umbrella using a UWP like API, allowing a developer to learn a single API which works with any application built for Windows and Xamarin for Android and iOS. 
 
-For a UWP developer, this is appealing as it allows you to easily migrate your existing UWP code to Xamarin shared code with minimal changes through the use of XPlat Windows APIs which mimic the Windows UWP alternatives.
+For a Windows developer, this is appealing as it allows you to easily migrate your existing Windows code to Xamarin shared code with minimal changes through the use of XPlat Windows APIs which mimic the UWP API alternatives.
 
 ## Package status
 
-| Source | Build | Release | Current | Preview |
-| ------ | ------ | ------ | ------ | ------ |
-| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat.CI)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Release status](https://vsrm.dev.azure.com/jamesmcroft/_apis/public/Release/badge/ec86cd27-ab77-46ad-8b77-66259dd5a477/1/4)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=24) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+| Source | Build | Current | Preview |
+| ------ | ------ | ------ | ------ |
+| NuGet | [![Build Status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat-Apps.XPlat-Windows-APIs?branchName=develop)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=34&branchName=develop) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
 
 ## Installation
 XPlat Windows APIs are available via NuGet. Each available package is detailed below. 
@@ -55,7 +55,7 @@ If you want to deep dive into the APIs with details on how to use the features, 
 
 XPlat Windows APIs is currently being developed for the following platforms:
 
-- Windows UWP
+- Windows
 - iOS
 - Android
 
