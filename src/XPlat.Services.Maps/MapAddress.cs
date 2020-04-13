@@ -61,6 +61,27 @@ namespace XPlat.Services.Maps
         {
             return new MapAddress(mapAddress);
         }
+#elif __IOS__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MapAddress"/> class.
+        /// </summary>
+        public MapAddress(CoreLocation.CLPlacemark mapLocation)
+        {
+            this.StreetNumber = mapLocation.SubThoroughfare;
+            this.Street = mapLocation.Thoroughfare;
+            this.Neighborhood = mapLocation.SubLocality;
+            this.District = mapLocation.SubAdministrativeArea;
+            this.Town = mapLocation.Locality;
+            this.Region = mapLocation.AdministrativeArea;
+            this.Country = mapLocation.Country;
+            this.CountryCode = mapLocation.IsoCountryCode;
+            this.PostCode = mapLocation.PostalCode;
+        }
+
+        public static implicit operator MapAddress(CoreLocation.CLPlacemark mapAddress)
+        {
+            return new MapAddress(mapAddress);
+        }
 #endif
 
         /// <summary>Gets the building name of an address.</summary>
