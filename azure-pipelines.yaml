@@ -2,13 +2,13 @@ name: $(Major).$(Minor).$(Year:yy)$(DayOfYear).$(Rev:r)$(PreRelease)
 
 trigger:
   branches:
-      include:
-      - develop
+    include:
+    - develop
 
 pr:
   branches:
     include:
-    - master
+    - develop
 
 stages:
 
@@ -92,7 +92,7 @@ stages:
 
 - stage: 'NuGetPublish'
   dependsOn: 'InternalPublish'
-  condition: and(succeeded(), and(eq(variables['Build.SourceBranch'], 'refs/heads/master'), ne(variables['Build.Reason'], 'PullRequest')))
+  condition: and(succeeded(), and(eq(variables['Build.SourceBranch'], 'refs/heads/develop'), ne(variables['Build.Reason'], 'PullRequest')))
   jobs:
     - job:
       pool:
