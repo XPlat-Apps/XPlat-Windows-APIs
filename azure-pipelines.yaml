@@ -99,6 +99,11 @@ stages:
         vmImage: 'windows-latest'
 
       steps:
+      - checkout: none
+
+      - download: current
+        artifact: 'artifacts'
+
       - task: NuGetCommand@2
         inputs:
           command: 'push'
