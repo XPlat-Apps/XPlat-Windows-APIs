@@ -53,6 +53,16 @@ namespace XPlat.Device.Geolocation
         {
             this.Position = new BasicGeoposition(location);
         }
+
+        public static implicit operator Geopoint(CoreLocation.CLLocation location)
+        {
+            return new Geopoint(location);
+        }
+
+        public static implicit operator CoreLocation.CLLocation(Geopoint geopoint)
+        {
+            return new CoreLocation.CLLocation(geopoint.Position.Latitude, geopoint.Position.Longitude);
+        }
 #endif
 
         /// <summary>Gets or sets the position of a geographic point.</summary>

@@ -61,6 +61,24 @@ namespace XPlat.Services.Maps
 
             this.Status = status;
         }
+#elif __IOS__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MapLocationFinderResult"/> class.
+        /// </summary>
+        public MapLocationFinderResult(CoreLocation.CLPlacemark[] result, MapLocationFinderStatus status)
+        {
+            this.locations = new List<MapLocation>();
+
+            if (result != null)
+            {
+                foreach (CoreLocation.CLPlacemark location in result)
+                {
+                    this.locations.Add(location);
+                }
+            }
+
+            this.Status = status;
+        }
 #endif
 
         /// <summary>Gets the list of locations found by a MapLocationFinder query.</summary>

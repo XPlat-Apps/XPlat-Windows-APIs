@@ -36,6 +36,21 @@ namespace XPlat.Services.Maps
         {
             return new MapLocation(mapAddress);
         }
+#elif __IOS__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MapLocation"/> class.
+        /// </summary>
+        public MapLocation(CoreLocation.CLPlacemark mapLocation)
+        {
+            this.Point = new Geopoint(new BasicGeoposition(mapLocation.Location.Coordinate.Latitude, mapLocation.Location.Coordinate.Longitude, mapLocation.Location.Altitude));
+            this.DisplayName = mapLocation.Name;
+            this.Address = mapLocation;
+        }
+
+        public static implicit operator MapLocation(CoreLocation.CLPlacemark mapAddress)
+        {
+            return new MapLocation(mapAddress);
+        }
 #endif
 
         /// <summary>Gets the coordinates of a geographic location.</summary>
