@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid90' ">
