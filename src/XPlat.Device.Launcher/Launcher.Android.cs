@@ -5,7 +5,7 @@ namespace XPlat.Device
     using System.Threading.Tasks;
 
     using Android.Content;
-
+    using AndroidX.Core.Content;
     using XPlat.Storage;
 
     /// <summary>Starts the default app associated with the specified file or URI.</summary>
@@ -14,7 +14,8 @@ namespace XPlat.Device
         /// <summary>
         /// Initializes a new instance of the <see cref="Launcher"/> class using the default <see cref="Android.App.Application.Context"/>.
         /// </summary>
-        public Launcher() : this(Android.App.Application.Context)
+        public Launcher()
+            : this(Android.App.Application.Context)
         {
         }
 
@@ -46,7 +47,7 @@ namespace XPlat.Device
                         {
                             if (folder != null && folder.Exists)
                             {
-                                Intent intent = new Intent(Intent.ActionView);
+                                var intent = new Intent(Intent.ActionView);
                                 intent.SetDataAndType(Android.Net.Uri.Parse(folder.Path), "*/*");
                                 intent.SetFlags(ActivityFlags.ClearTop);
                                 this.Context.StartActivity(intent);
@@ -62,6 +63,15 @@ namespace XPlat.Device
                     });
         }
 
+        /// <summary>
+        /// Starts the default app associated with the URI scheme name for the specified URI.
+        /// </summary>
+        /// <param name="uri">
+        /// The URI.
+        /// </param>
+        /// <returns>
+        /// Returns true if the default app for the URI scheme was launched; false otherwise.
+        /// </returns>
         public Task<bool> LaunchUriAsync(Uri uri)
         {
             return Task.Run(
@@ -71,7 +81,7 @@ namespace XPlat.Device
 
                         try
                         {
-                            Intent intent = new Intent(Intent.ActionView);
+                            var intent = new Intent(Intent.ActionView);
                             intent.SetData(Android.Net.Uri.Parse(uri.ToString()));
                             this.Context.StartActivity(intent);
                             result = true;
@@ -85,6 +95,15 @@ namespace XPlat.Device
                     });
         }
 
+        /// <summary>
+        /// Asynchronously query whether an app can be activated for the specified URI.
+        /// </summary>
+        /// <param name="uri">
+        /// The URI for which to query support.
+        /// </param>
+        /// <returns>
+        /// A value that indicates whether an application is available to launch the URI.
+        /// </returns>
         public Task<LaunchQuerySupportStatus> QueryUriSupportAsync(Uri uri)
         {
             return Task.Run(
@@ -94,7 +113,7 @@ namespace XPlat.Device
 
                         try
                         {
-                            Intent intent = new Intent(Intent.ActionRun);
+                            var intent = new Intent(Intent.ActionRun);
                             intent.SetData(Android.Net.Uri.Parse(uri.ToString()));
                             result = intent.ResolveActivity(this.Context.PackageManager) != null
                                          ? LaunchQuerySupportStatus.Available
@@ -132,10 +151,10 @@ namespace XPlat.Device
                                                              ? "*/*"
                                                              : file.ContentType;
 
-                                Java.IO.File javaFile = new Java.IO.File(file.Path);
+                                var javaFile = new Java.IO.File(file.Path);
                                 javaFile.SetReadable(true);
 
-                                Android.Net.Uri uri = Android.Support.V4.Content.FileProvider.GetUriForFile(
+                                Android.Net.Uri uri = FileProvider.GetUriForFile(
                                     this.Context,
                                     $"{this.Context.PackageName}",
                                     javaFile);

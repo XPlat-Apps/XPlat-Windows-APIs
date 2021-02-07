@@ -1,10 +1,13 @@
-﻿namespace XPlat.Media.Capture.Extensions
+namespace XPlat.Media.Capture.Extensions
 {
     using System;
     using System.IO;
     using System.Threading.Tasks;
     using XPlat.Storage;
 
+    /// <summary>
+    /// Defines a collection of extensions for bitmap objects.
+    /// </summary>
     public static class BitmapExtensions
     {
 #if __ANDROID__
@@ -29,6 +32,7 @@
         /// <example>
         /// IStorageFile imageFile = await this.bitmap.SaveBitmapAsFileAsync(ApplicationData.Current.LocalFolder, "image.jpg", Bitmap.CompressFormat.Jpeg);
         /// </example>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="image"/> or <paramref name="saveLocation"/> is <see langword="null"/>.</exception>
         public static async Task<IStorageFile> SaveBitmapAsFileAsync(
             this Android.Graphics.Bitmap image,
             IStorageFolder saveLocation,
@@ -56,13 +60,9 @@
             {
                 result = await saveLocation.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
 
-                using (Stream imageStream = await image.GetStreamAsync(compressionFormat))
-                {
-                    using (Stream fileStream = await result.OpenAsync(FileAccessMode.ReadWrite))
-                    {
-                        await imageStream.CopyToAsync(fileStream);
-                    }
-                }
+                await using Stream imageStream = await image.GetStreamAsync(compressionFormat);
+                await using Stream fileStream = await result.OpenAsync(FileAccessMode.ReadWrite);
+                await imageStream.CopyToAsync(fileStream);
             }
             catch (Exception ex)
             {
@@ -73,12 +73,14 @@
             return result;
         }
 
-        public static async Task<Stream> GetStreamAsync(this Android.Graphics.Bitmap image,
-            Android.Graphics.Bitmap.CompressFormat compressionFormat, int quality = 100)
+        public static async Task<Stream> GetStreamAsync(
+            this Android.Graphics.Bitmap image,
+            Android.Graphics.Bitmap.CompressFormat compressionFormat,
+            int quality = 100)
         {
             using (image)
             {
-                MemoryStream stream = new MemoryStream();
+                var stream = new MemoryStream();
                 bool result = await image.CompressAsync(compressionFormat, quality, stream);
 
                 image.Recycle();
@@ -91,10 +93,7 @@
                 stream.Position = 0;
                 return stream;
             }
-
-            return null;
         }
-
 #endif
     }
 }

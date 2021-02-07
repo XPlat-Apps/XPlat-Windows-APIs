@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Media.Capture
 {
     using System;
@@ -10,8 +10,8 @@ namespace XPlat.Media.Capture
     using Android.Content.PM;
     using Android.OS;
     using Android.Provider;
-    using Android.Support.V4.App;
-    using Android.Support.V4.Content;
+    using AndroidX.Core.App;
+    using AndroidX.Core.Content;
     using Java.IO;
     using XPlat.Foundation;
     using XPlat.Helpers;
@@ -55,7 +55,7 @@ namespace XPlat.Media.Capture
             this.action = bundle.GetString(IntentAction);
             this.fileName = bundle.GetString(IntentFileName, $"{Guid.NewGuid()}.jpg");
 
-            List<string> permissions = new List<string>();
+            var permissions = new List<string>();
 
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) !=
                 (int)Permission.Granted)
@@ -152,8 +152,7 @@ namespace XPlat.Media.Capture
             }
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
-            Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
             if (requestCode == 0)
             {
@@ -175,7 +174,7 @@ namespace XPlat.Media.Capture
                 }
                 else
                 {
-                    Task<CameraFileCaptured> result =
+                    var result =
                         Task.FromResult(new CameraFileCaptured(this.requestId, null, true, true));
                     result.ContinueWith(x => { CameraFileCaptured?.Invoke(this, x.Result); });
                     this.Finish();
@@ -192,7 +191,7 @@ namespace XPlat.Media.Capture
         {
             if (resultCode == Result.Canceled)
             {
-                Task<CameraFileCaptured>
+                var
                     result = Task.FromResult(new CameraFileCaptured(requestCode, null, true, false));
                 result.ContinueWith(x => { CameraFileCaptured?.Invoke(this, x.Result); });
             }
@@ -211,7 +210,7 @@ namespace XPlat.Media.Capture
                     storageFile = await StorageFile.GetFileFromPathAsync(this.contentProviderFile.AbsolutePath);
                 }
 
-                CameraFileCaptured args = new CameraFileCaptured(requestCode, storageFile, false, false);
+                var args = new CameraFileCaptured(requestCode, storageFile, false, false);
 
                 CameraFileCaptured?.Invoke(this, args);
             }

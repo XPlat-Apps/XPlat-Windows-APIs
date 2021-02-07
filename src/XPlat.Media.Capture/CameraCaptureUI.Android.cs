@@ -56,11 +56,12 @@ namespace XPlat.Media.Capture
         /// <summary>Launches the CameraCaptureUI user interface.</summary>
         /// <returns>When this operation completes, an IStorageFile object is returned.</returns>
         /// <param name="mode">Specifies whether the user interface that will be shown allows the user to capture a photo, capture a video, or capture both photos and videos.</param>
+        /// <exception cref="T:System.InvalidOperationException">Thrown if activating multiple requests for files.</exception>
         public Task<IStorageFile> CaptureFileAsync(CameraCaptureUIMode mode)
         {
             int newRequestCode = RequestCodeHelper.GenerateRequestCode();
 
-            TaskCompletionSource<IStorageFile> newTcs = new TaskCompletionSource<IStorageFile>(newRequestCode);
+            var newTcs = new TaskCompletionSource<IStorageFile>(newRequestCode);
             if (Interlocked.CompareExchange(ref this.currentSingleTcs, newTcs, null) != null)
             {
                 throw new InvalidOperationException("Cannot activate multiple requests for files.");
@@ -84,7 +85,8 @@ namespace XPlat.Media.Capture
 
                 if (args.PermissionDenied)
                 {
-                    tcs.SetException(new AppPermissionInvalidException("android.permission.CAMERA",
+                    tcs.SetException(new AppPermissionInvalidException(
+                        "android.permission.CAMERA",
                         "Camera permission is required in order to use camera function"));
                 }
                 else
@@ -123,7 +125,7 @@ namespace XPlat.Media.Capture
 
         private Intent GenerateIntent(int id, CameraCaptureUIMode mode)
         {
-            Intent cameraCaptureIntent = new Intent(this.Context, typeof(CameraCaptureUIActivity));
+            var cameraCaptureIntent = new Intent(this.Context, typeof(CameraCaptureUIActivity));
             cameraCaptureIntent.PutExtra(CameraCaptureUIActivity.IntentId, id);
 
             switch (mode)

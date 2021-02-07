@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0</TargetFrameworks>
@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid10.0' ">
-    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.AndroidX.Core" Version="1.3.2.1" />
   </ItemGroup>
 
   <ItemGroup>
