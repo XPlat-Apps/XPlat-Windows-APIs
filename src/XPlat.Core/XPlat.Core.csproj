@@ -1,43 +1,17 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid90;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.0</Version>
-    <Authors>XPlat Apps</Authors>
-    <Company>XPlat Apps</Company>
-    <Product>XPlat - Extended APIs</Product>
-    <Description>Brings additional extensions to the Windows APIs cross-platform with support for Windows, Android and iOS.</Description>
-    <Copyright>Copyright (C) XPlat. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/XPlat-Apps/XPlat-Windows-APIs</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectIcon.png</PackageIcon>
-    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Core</PackageTags>
-    <NeutralLanguage>en</NeutralLanguage>
+    <Product>XPlat - Extended Core APIs</Product>
+    <Description>
+      This package includes additional extensions to support common components cross-platform such as:
+      - TimeoutTask for providing a task that is actioned when the timeout occurs unless cancelled.
+      - RequestCodeHelper for providing a helper for generating request codes for Android applications.
+      - CollectionExtensions for providing additional extensions to enumerable objects.
+    </Description>
+    <PackageTags>XPlat API Core Windows UWP iOS Android Xamarin Extensions</PackageTags>
     <PackageId>XPlat.Core</PackageId>
-    <RootNamespace>XPlat.Core</RootNamespace>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\XPlat.Core.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\assets\ProjectIcon.png" Pack="true" PackagePath=""/>
-    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" PrivateAssets="All" />
-  </ItemGroup>
 
 </Project>

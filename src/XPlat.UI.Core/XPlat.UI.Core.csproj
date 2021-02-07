@@ -1,42 +1,15 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid90;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.0</Version>
-    <Authors>XPlat Apps</Authors>
-    <Company>XPlat Apps</Company>
     <Product>XPlat - Windows.UI.Core APIs</Product>
-    <Description>Brings the functionality of the Windows.UI.Core APIs cross-platform with support for Windows, Android and iOS.</Description>
-    <Copyright>Copyright (C) XPlat. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/XPlat-Apps/XPlat-Windows-APIs</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectIcon.png</PackageIcon>
-    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components CoreDispatcher</PackageTags>
-    <NeutralLanguage>en</NeutralLanguage>
+    <Description>
+      This package includes Windows.UI.Core like APIs cross-platform such as:
+      - CoreDispatcher for providing the core event message dispatcher. Instances of this type are responsible for processing messages and dispatching the events to the UI thread.
+    </Description>
+    <PackageTags>XPlat API UI Core Windows UWP iOS Android Xamarin CoreDispatcher</PackageTags>
     <PackageId>XPlat.UI.Core</PackageId>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\XPlat.UI.Core.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\assets\ProjectIcon.png" Pack="true" PackagePath=""/>
-    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" PrivateAssets="All" />
-  </ItemGroup>
 
 </Project>

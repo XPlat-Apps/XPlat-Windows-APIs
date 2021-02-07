@@ -1,49 +1,24 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid90;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.0</Version>
-    <Authors>XPlat Apps</Authors>
-    <Company>XPlat Apps</Company>
     <Product>XPlat - Windows.Storage APIs</Product>
-    <Description>Brings the functionality of the Windows.Storage APIs cross-platform with support for Windows, Android and iOS.</Description>
-    <Copyright>Copyright (C) XPlat. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/XPlat-Apps/XPlat-Windows-APIs</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectIcon.png</PackageIcon>
-    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Storage StorageFile StorageFolder ApplicationData</PackageTags>
-    <NeutralLanguage>en</NeutralLanguage>
+    <Description>
+      This package includes Windows.Storage like APIs cross-platform such as:
+      - ApplicationData for providing access to the application data store.
+      - KnownFolders for providing access to common folder locations that contain user content.
+      - StorageFile for providing information about a file and its contents, and ways to manipulate them.
+      - StorageFolder for manipulating folders and their contents, and provides information about them.
+      - ImageProperties for providing access to the image-related properties of an item (like a file or folder).
+      - MusicProperties for providing access to the music-related properties of an item (like a file or folder).
+      - VideoProperties for providing access to the video-related properties of an item (like a file or folder).
+    </Description>
+    <PackageTags>XPlat API Storage Windows UWP iOS Android Xamarin StorageFile StorageFolder ApplicationData</PackageTags>
     <PackageId>XPlat.Storage</PackageId>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\XPlat.Storage.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\assets\ProjectIcon.png" Pack="true" PackagePath=""/>
-    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid90' ">
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid10.0' OR '$(TargetFramework)' == 'xamarinios10' ">
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 

@@ -1,37 +1,23 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid90;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.0</Version>
-    <Authors>XPlat Apps</Authors>
-    <Company>XPlat Apps</Company>
     <Product>XPlat - Windows.System.Profile APIs</Product>
-    <Description>Brings the functionality of the Windows.System.Profile APIs cross-platform with support for Windows, Android and iOS.</Description>
-    <Copyright>Copyright (C) XPlat. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/XPlat-Apps/XPlat-Windows-APIs</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectIcon.png</PackageIcon>
-    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components AnalyticsInfo</PackageTags>
-    <NeutralLanguage>en</NeutralLanguage>
+    <Description>
+      This package includes Windows.System.Profile like APIs cross-platform such as:
+      - AnalyticsInfo for providing information about the device for profiling purposes.
+      - AnalyticsVersionInfo for providing version information about the device family.
+    </Description>
+    <PackageTags>XPlat API Profile Windows UWP iOS Android Xamarin AnalyticsInfo</PackageTags>
     <PackageId>XPlat.Device.Profile</PackageId>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\XPlat.Device.Profile.xml</DocumentationFile>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0.17763' ">
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\assets\ProjectIcon.png" Pack="true" PackagePath=""/>
-    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
-  </ItemGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'monoandroid90' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'MonoAndroid10.0' ">
     <AndroidUseManagedDesignTimeResourceGenerator>False</AndroidUseManagedDesignTimeResourceGenerator>
   </PropertyGroup>
 
@@ -40,18 +26,7 @@
     <Page Remove="Themes\*.xaml" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid90' ">
-    <Compile Include="Resources\**\*.cs" />
-    <AndroidResource Include="Resources\**\*.axml" />
-    <AndroidResource Include="Resources\**\*.xml" />
-    <AndroidResource Include="Resources\**\*.png" />
-  </ItemGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
-  </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.17763' ">
     <Page Include="Themes\*.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -59,12 +34,11 @@
     </Page>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" PrivateAssets="All" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'MonoAndroid10.0' ">
+    <Compile Include="Resources\**\*.cs" />
+    <AndroidResource Include="Resources\**\*.axml" />
+    <AndroidResource Include="Resources\**\*.xml" />
+    <AndroidResource Include="Resources\**\*.png" />
   </ItemGroup>
 
 </Project>

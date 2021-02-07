@@ -1,42 +1,18 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.0;xamarin.ios10;monoandroid90;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.0</Version>
-    <Authors>XPlat Apps</Authors>
-    <Company>XPlat Apps</Company>
     <Product>XPlat - Windows.UI APIs</Product>
-    <Description>Brings the functionality of the Windows.UI APIs cross-platform with support for Windows, Android and iOS.</Description>
-    <Copyright>Copyright (C) XPlat. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/XPlat-Apps/XPlat-Windows-APIs</PackageProjectUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectIcon.png</PackageIcon>
-    <PackageTags>Xamarin UWP iOS Android Toolkit API Extensions Components Color</PackageTags>
-    <NeutralLanguage>en</NeutralLanguage>
+    <Description>
+      This package includes Windows.UI like APIs cross-platform such as:
+      - Color representing a color in terms of alpha, red, green, and blue channels.
+      - Colors representing a set of predefined colors.
+      - DispatcherTimer providing a timer that is integrated into the Dispatcher queue, which is processed at a specified interval of time and at a specified priority.
+      - Thickness representing the thickness of a frame around a rectangle.
+    </Description>
+    <PackageTags>XPlat API UI Windows UWP iOS Android Xamarin Color DispatcherTimer Thickness</PackageTags>
     <PackageId>XPlat.UI</PackageId>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\XPlat.UI.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\assets\ProjectIcon.png" Pack="true" PackagePath=""/>
-    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" PrivateAssets="All" />
-  </ItemGroup>
 
 </Project>
