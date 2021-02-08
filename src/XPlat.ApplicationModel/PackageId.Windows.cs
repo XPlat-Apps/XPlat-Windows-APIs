@@ -1,4 +1,7 @@
-﻿#if WINDOWS_UWP
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if WINDOWS_UWP
 namespace XPlat.ApplicationModel
 {
     using System;
@@ -8,6 +11,11 @@ namespace XPlat.ApplicationModel
     {
         private readonly WeakReference originatorReference;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PackageId"/> class with the Windows application package identification info.
+        /// </summary>
+        /// <param name="packageId">The Windows application package identification info.</param>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="packageId"/> is <see langword="null"/>.</exception>
         public PackageId(Windows.ApplicationModel.PackageId packageId)
         {
             if (packageId == null)
@@ -32,11 +40,29 @@ namespace XPlat.ApplicationModel
                                                                     ? this.originatorReference.Target as Windows.ApplicationModel.PackageId
                                                                     : null;
 
+        /// <summary>
+        /// Allows conversion of a <see cref="Windows.ApplicationModel.PackageId"/> to the <see cref="PackageId"/> without direct casting.
+        /// </summary>
+        /// <param name="packageId">
+        /// The <see cref="Windows.ApplicationModel.PackageId"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PackageId"/>.
+        /// </returns>
         public static implicit operator PackageId(Windows.ApplicationModel.PackageId packageId)
         {
             return new PackageId(packageId);
         }
 
+        /// <summary>
+        /// Allows conversion of a <see cref="PackageId"/> to the <see cref="Windows.ApplicationModel.PackageId"/> without direct casting.
+        /// </summary>
+        /// <param name="packageId">
+        /// The <see cref="PackageId"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Windows.ApplicationModel.PackageId"/>.
+        /// </returns>
         public static implicit operator Windows.ApplicationModel.PackageId(PackageId packageId)
         {
             return packageId.Originator;

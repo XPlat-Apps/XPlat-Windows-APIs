@@ -1,4 +1,7 @@
-﻿#if __ANDROID__
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if __ANDROID__
 namespace XPlat.ApplicationModel
 {
     using System;
@@ -20,6 +23,9 @@ namespace XPlat.ApplicationModel
 
         private IStorageFolder installedLocation;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Package"/> class.
+        /// </summary>
         public Package()
         {
             this.Originator = Android.App.Application.Context.PackageManager.GetPackageInfo(
@@ -28,13 +34,13 @@ namespace XPlat.ApplicationModel
         }
 
         /// <summary>Gets the package for the current app.</summary>
-        public static Package Current => current ?? (current = new Package());
+        public static Package Current => current ??= new Package();
 
         /// <summary>Gets the package identity of the current package.</summary>
-        public IPackageId Id => this.id ?? (this.id = new PackageId(this.Originator));
+        public IPackageId Id => this.id ??= new PackageId(this.Originator);
 
         /// <summary>Gets the location of the installed package.</summary>
-        public IStorageFolder InstalledLocation => installedLocation ?? (installedLocation = new StorageFolder(Android.App.Application.Context.PackageCodePath));
+        public IStorageFolder InstalledLocation => this.installedLocation ??= new StorageFolder(Android.App.Application.Context.PackageCodePath);
 
         /// <summary>Gets the packages on which the current package depends.</summary>
         public IReadOnlyList<IPackage> Dependencies => new List<IPackage>();
@@ -44,7 +50,7 @@ namespace XPlat.ApplicationModel
             Android.App.Application.Context.PackageManager.GetApplicationLabel(this.Originator.ApplicationInfo);
 
         /// <summary>Gets the logo of the package.</summary>
-        public Uri Logo => this.logo ?? (this.logo = this.GetApplicationLogo());
+        public Uri Logo => this.logo ??= this.GetApplicationLogo();
 
         /// <summary>Indicates whether the package is installed in development mode.</summary>
         public bool IsDevelopmentMode =>
@@ -59,7 +65,7 @@ namespace XPlat.ApplicationModel
         private Uri GetApplicationLogo()
         {
             Resources resources = Android.App.Application.Context.Resources;
-            Android.Net.Uri uri = Android.Net.Uri.Parse(
+            var uri = Android.Net.Uri.Parse(
                 $"{Android.Content.ContentResolver.SchemeAndroidResource}://{resources.GetResourcePackageName(this.Originator.ApplicationInfo.Icon)}/{resources.GetResourceTypeName(this.Originator.ApplicationInfo.Icon)}/{resources.GetResourceEntryName(this.Originator.ApplicationInfo.Icon)}");
 
             return new Uri(uri.Path);

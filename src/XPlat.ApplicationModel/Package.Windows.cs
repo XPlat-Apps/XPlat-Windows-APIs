@@ -1,4 +1,7 @@
-﻿#if WINDOWS_UWP
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if WINDOWS_UWP
 namespace XPlat.ApplicationModel
 {
     using System;
@@ -18,6 +21,11 @@ namespace XPlat.ApplicationModel
 
         private IPackageId id;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Package"/> class with the Windows application package.
+        /// </summary>
+        /// <param name="package">The Windows application package.</param>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="package"/> is <see langword="null"/>.</exception>
         public Package(Windows.ApplicationModel.Package package)
         {
             if (package == null)
@@ -32,15 +40,17 @@ namespace XPlat.ApplicationModel
         public static Package Current => current != null && current.originatorReference.IsAlive ? current : (current = Windows.ApplicationModel.Package.Current);
 
         /// <summary>Gets the package identity of the current package.</summary>
-        public IPackageId Id => this.id ?? (this.id = new PackageId(this.Originator.Id));
+        public IPackageId Id => this.id ??= new PackageId(this.Originator.Id);
 
         /// <summary>Gets the location of the installed package.</summary>
         public IStorageFolder InstalledLocation => new StorageFolder(this.Originator.InstalledLocation);
 
         /// <summary>Gets the packages on which the current package depends.</summary>
         public IReadOnlyList<IPackage> Dependencies =>
-            this.dependencies ?? (this.dependencies = this.Originator.Dependencies.Select(item => new Package(item))
-                                      .Cast<IPackage>().ToList());
+            this.dependencies ??= this.Originator.Dependencies
+                .Select(item => new Package(item))
+                .Cast<IPackage>()
+                .ToList();
 
         /// <summary>Gets the display name of the package.</summary>
         public string DisplayName => this.Originator.DisplayName;
@@ -60,11 +70,29 @@ namespace XPlat.ApplicationModel
                 ? this.originatorReference.Target as Windows.ApplicationModel.Package
                 : null;
 
+        /// <summary>
+        /// Allows conversion of a <see cref="Windows.ApplicationModel.Package"/> to the <see cref="Package"/> without direct casting.
+        /// </summary>
+        /// <param name="package">
+        /// The <see cref="Windows.ApplicationModel.Package"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Package"/>.
+        /// </returns>
         public static implicit operator Package(Windows.ApplicationModel.Package package)
         {
             return new Package(package);
         }
 
+        /// <summary>
+        /// Allows conversion of a <see cref="Package"/> to the <see cref="Windows.ApplicationModel.Package"/> without direct casting.
+        /// </summary>
+        /// <param name="package">
+        /// The <see cref="Package"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Windows.ApplicationModel.Package"/>.
+        /// </returns>
         public static implicit operator Windows.ApplicationModel.Package(Package package)
         {
             return package.Originator;

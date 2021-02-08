@@ -1,4 +1,7 @@
-﻿#if __IOS__
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if __IOS__
 namespace XPlat.ApplicationModel
 {
     using System;
@@ -19,6 +22,11 @@ namespace XPlat.ApplicationModel
 
         private IPackageId id;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Package"/> class with the application bundle.
+        /// </summary>
+        /// <param name="bundle">The application bundle.</param>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="bundle"/> is <see langword="null"/>.</exception>
         public Package(NSBundle bundle)
         {
             if (bundle == null)
@@ -33,10 +41,10 @@ namespace XPlat.ApplicationModel
         public static Package Current => current != null && current.originatorReference.IsAlive ? current : (current = NSBundle.MainBundle);
 
         /// <summary>Gets the package identity of the current package.</summary>
-        public IPackageId Id => this.id ?? (this.id = new PackageId(this.Originator));
+        public IPackageId Id => this.id ??= new PackageId(this.Originator);
 
         /// <summary>Gets the location of the installed package.</summary>
-        public IStorageFolder InstalledLocation => this.installedLocation ?? (this.installedLocation = new StorageFolder(this.Originator.BundlePath));
+        public IStorageFolder InstalledLocation => this.installedLocation ??= new StorageFolder(this.Originator.BundlePath);
 
         /// <summary>Gets the packages on which the current package depends.</summary>
         public IReadOnlyList<IPackage> Dependencies => new List<IPackage>();
@@ -59,11 +67,29 @@ namespace XPlat.ApplicationModel
                 ? this.originatorReference.Target as NSBundle
                 : null;
 
+        /// <summary>
+        /// Allows conversion of a <see cref="NSBundle"/> to the <see cref="Package"/> without direct casting.
+        /// </summary>
+        /// <param name="package">
+        /// The <see cref="NSBundle"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Package"/>.
+        /// </returns>
         public static implicit operator Package(NSBundle package)
         {
             return new Package(package);
         }
 
+        /// <summary>
+        /// Allows conversion of a <see cref="Package"/> to the <see cref="NSBundle"/> without direct casting.
+        /// </summary>
+        /// <param name="package">
+        /// The <see cref="Package"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="NSBundle"/>.
+        /// </returns>
         public static implicit operator NSBundle(Package package)
         {
             return package.Originator;
