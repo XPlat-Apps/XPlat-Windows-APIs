@@ -1,3 +1,6 @@
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 #if __IOS__
 namespace XPlat.ApplicationModel.DataTransfer
 {

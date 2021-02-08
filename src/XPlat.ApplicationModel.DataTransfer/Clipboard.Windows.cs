@@ -1,3 +1,6 @@
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 #if WINDOWS_UWP
 namespace XPlat.ApplicationModel.DataTransfer
 {
@@ -26,6 +29,7 @@ namespace XPlat.ApplicationModel.DataTransfer
 
         /// <summary>Sets the current content that is stored in the clipboard object.</summary>
         /// <param name="content">Contains the content of the clipboard. If NULL, the clipboard is emptied.</param>
+        /// <exception cref="T:System.Exception">Thrown if <see cref="ContentChanged"/> throws an exception.</exception>
         public static void SetContent(DataPackage content)
         {
             Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(content);
@@ -34,6 +38,7 @@ namespace XPlat.ApplicationModel.DataTransfer
 
         /// <summary>Sets the current text that is stored in the clipboard object.</summary>
         /// <param name="text">The text.</param>
+        /// <exception cref="T:System.Exception">Thrown if <see cref="ContentChanged"/> throws an exception.</exception>
         public static void SetText(string text)
         {
             var dataPackage = new DataPackage();
@@ -42,6 +47,8 @@ namespace XPlat.ApplicationModel.DataTransfer
         }
 
         /// <summary>Removes all data from the Clipboard.</summary>
+        /// <remarks>Use the <see cref="Clear"/> method when you want to cancel an action that put data on the clipboard.</remarks>
+        /// <exception cref="T:System.Exception">A delegate callback throws an exception.</exception>
         public static void Clear()
         {
             Windows.ApplicationModel.DataTransfer.Clipboard.Clear();

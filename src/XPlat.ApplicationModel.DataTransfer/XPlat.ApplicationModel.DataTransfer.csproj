@@ -14,8 +14,4 @@
     <PackageId>XPlat.ApplicationModel.DataTransfer</PackageId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\XPlat.Storage\XPlat.Storage.csproj" />
-  </ItemGroup>
-
 </Project>
