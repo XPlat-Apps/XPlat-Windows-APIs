@@ -1,6 +1,5 @@
-﻿// <copyright file="AppPermissionInvalidException.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 namespace XPlat.Exceptions
 {

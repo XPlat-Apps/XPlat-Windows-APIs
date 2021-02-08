@@ -1,12 +1,14 @@
-﻿namespace XPlat.Helpers
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+namespace XPlat.Helpers
 {
     using System;
 
     /// <summary>
     /// Defines a collection of helper methods for parsing.
     /// </summary>
-    [Obsolete(
-        "ParseHelper will no longer be maintained as part of the XPlat project. This API may be removed in future XPlat releases.")]
+    [Obsolete("ParseHelper will no longer be maintained as part of the XPlat project. This API may be removed in future XPlat releases.")]
     public static class ParseHelper
     {
         /// <summary>

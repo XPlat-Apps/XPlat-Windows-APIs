@@ -1,7 +1,13 @@
-﻿namespace XPlat.Extensions
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+namespace XPlat.Extensions
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Defines a collection of extensions for enumerable objects.
+    /// </summary>
     public static class CollectionExtensions
     {
         /// <summary>
@@ -20,11 +26,11 @@
         /// The type of elements in the collection.
         /// </typeparam>
         /// <returns>
-        /// Returns a collection of <see cref="T"/> items.
+        /// A collection of <typeparamref name="T"/> items.
         /// </returns>
         public static IEnumerable<T> Take<T>(this List<T> list, int startingIndex, int takeCount)
         {
-            List<T> results = new List<T>();
+            var results = new List<T>();
 
             int itemsToTake = takeCount;
 
@@ -62,11 +68,11 @@
         /// The type of elements in the collection.
         /// </typeparam>
         /// <returns>
-        /// Returns a collection of <see cref="T"/> items.
+        /// A collection of <typeparamref name="T"/> items.
         /// </returns>
         public static IEnumerable<T> Take<T>(this IReadOnlyList<T> list, int startingIndex, int takeCount)
         {
-            List<T> results = new List<T>();
+            var results = new List<T>();
 
             int itemsToTake = takeCount;
 
@@ -104,11 +110,11 @@
         /// The type of item in the list.
         /// </typeparam>
         /// <returns>
-        /// The range as a collection.
+        /// The range as a collection of <typeparamref name="T"/> items.
         /// </returns>
         public static IEnumerable<T> GetRange<T>(this IReadOnlyList<T> list, int index, int count)
         {
-            List<T> range = new List<T>();
+            var range = new List<T>();
             for (int i = 0; i < count; i++)
             {
                 int j = i + index;

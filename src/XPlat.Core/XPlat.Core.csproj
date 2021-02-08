@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0</TargetFrameworks>
@@ -12,6 +12,7 @@
     </Description>
     <PackageTags>XPlat API Core Windows UWP iOS Android Xamarin Extensions</PackageTags>
     <PackageId>XPlat.Core</PackageId>
+    <RootNamespace>XPlat</RootNamespace>
   </PropertyGroup>
 
 </Project>

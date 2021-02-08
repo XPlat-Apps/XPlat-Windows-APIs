@@ -1,8 +1,14 @@
-﻿namespace XPlat.Helpers
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+namespace XPlat.Helpers
 {
     /// <summary>Represents a helper for generating request codes for applications.</summary>
     public static class RequestCodeHelper
     {
+        /// <summary>
+        /// Gets the previously generated request code.
+        /// </summary>
         public static int LastRequestCode { get; private set; }
 
         /// <summary>Generates an integer request code.</summary>

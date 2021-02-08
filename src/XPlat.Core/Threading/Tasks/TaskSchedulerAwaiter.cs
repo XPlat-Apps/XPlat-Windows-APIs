@@ -1,6 +1,5 @@
-﻿// <copyright file="TaskSchedulerAwaiter.cs" company="James Croft">
-// Copyright (c) James Croft. All rights reserved.
-// </copyright>
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
 
 namespace XPlat.Threading.Tasks
 {
@@ -9,6 +8,9 @@ namespace XPlat.Threading.Tasks
     using System.Threading;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Defines an awaiter returned from a <see cref="TaskScheduler"/>.
+    /// </summary>
     public struct TaskSchedulerAwaiter : INotifyCompletion
     {
         private readonly TaskScheduler taskScheduler;
@@ -33,7 +35,7 @@ namespace XPlat.Threading.Tasks
         /// Gets a new instance of a <see cref="TaskSchedulerAwaiter"/>.
         /// </summary>
         /// <returns>
-        /// Returns an instance of <see cref="TaskSchedulerAwaiter"/>.
+        /// An instance of <see cref="TaskSchedulerAwaiter"/>.
         /// </returns>
         public static TaskSchedulerAwaiter NewTaskSchedulerAwaiter()
         {
@@ -57,6 +59,7 @@ namespace XPlat.Threading.Tasks
         /// <param name="completedAction">
         /// The action to invoke when the operation completes.
         /// </param>
+        /// <exception cref="T:System.InvalidOperationException">Thrown if the task scheduler has been disposed.</exception>
         public void OnCompleted(Action completedAction)
         {
             if (this.taskScheduler == null)

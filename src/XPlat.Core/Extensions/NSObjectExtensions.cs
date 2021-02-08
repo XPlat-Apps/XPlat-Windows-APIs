@@ -1,4 +1,7 @@
-﻿#if __IOS__
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if __IOS__
 namespace XPlat.Extensions
 {
     using System;
@@ -17,31 +20,24 @@ namespace XPlat.Extensions
         /// <returns>Returns the converted .NET object value.</returns>
         public static object ToObject(this NSObject obj)
         {
-            object val = null;
-
-            if (obj != null)
+            if (obj == null)
             {
-                if (obj is NSString)
-                {
+                return null;
+            }
+
+            object val = null;
+            
+            switch (obj)
+            {
+                case NSString _:
                     return obj.ToString();
-                }
-
-                if (obj is NSDate date)
-                {
+                case NSDate date:
                     return date.ToDateTimeOffset();
-                }
-
-                if (obj is NSUuid uuid)
-                {
+                case NSUuid uuid:
                     return new Guid(uuid.GetBytes());
-                }
-
-                if (obj is NSDecimalNumber)
-                {
+                case NSDecimalNumber _:
                     return decimal.Parse(obj.ToString(), CultureInfo.InvariantCulture);
-                }
-
-                if (obj is NSNumber number)
+                case NSNumber number:
                 {
                     NSNumber nsNumber = number;
                     switch (nsNumber.ObjCType)
@@ -62,15 +58,15 @@ namespace XPlat.Extensions
                         default: return nsNumber.ToString();
                     }
                 }
+            }
 
-                if (obj.GetType() == typeof(NSString))
-                {
-                    val = ((NSString)obj).ToString();
-                }
-                else if (obj.GetType() == typeof(NSDate))
-                {
-                    val = ((NSDate)obj).ToDateTimeOffset();
-                }
+            if (obj.GetType() == typeof(NSString))
+            {
+                val = ((NSString)obj).ToString();
+            }
+            else if (obj.GetType() == typeof(NSDate))
+            {
+                val = ((NSDate)obj).ToDateTimeOffset();
             }
 
             return val;
