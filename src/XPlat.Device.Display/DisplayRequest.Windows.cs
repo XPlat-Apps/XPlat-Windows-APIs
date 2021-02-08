@@ -1,4 +1,7 @@
-﻿#if WINDOWS_UWP
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if WINDOWS_UWP
 namespace XPlat.Device.Display
 {
     /// <summary>Represents a display request.</summary>
@@ -10,6 +13,9 @@ namespace XPlat.Device.Display
             this.Originator = new Windows.System.Display.DisplayRequest();
         }
 
+        /// <summary>
+        /// Gets the originating <see cref="Windows.System.Display.DisplayRequest"/>.
+        /// </summary>
         public Windows.System.Display.DisplayRequest Originator { get; }
 
         /// <summary>Activates a display request.</summary>

@@ -1,4 +1,7 @@
-﻿#if __ANDROID__
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if __ANDROID__
 namespace XPlat.Device.Display
 {
     using System;
@@ -9,14 +12,21 @@ namespace XPlat.Device.Display
     public class DisplayRequest : IDisplayRequest
     {
         /// <summary>Initializes a new instance of the <see cref="DisplayRequest"/> class.</summary>
+        /// <param name="currentWindow">
+        /// The current Android window.
+        /// </param>
         public DisplayRequest(Window currentWindow)
         {
             this.Originator = currentWindow;
         }
 
+        /// <summary>
+        /// Gets the Android windows associated with this request.
+        /// </summary>
         public Window Originator { get; }
 
         /// <summary>Activates a display request.</summary>
+        /// <exception cref="T:XPlat.Exceptions.AppPermissionInvalidException">Thrown if android.permission.WAKE_LOCK is not permitted.</exception>
         public void RequestActive()
         {
             try
@@ -30,6 +40,7 @@ namespace XPlat.Device.Display
         }
 
         /// <summary>Deactivates a display request.</summary>
+        /// <exception cref="T:XPlat.Exceptions.AppPermissionInvalidException">Thrown if android.permission.WAKE_LOCK is not permitted.</exception>
         public void RequestRelease()
         {
             try
