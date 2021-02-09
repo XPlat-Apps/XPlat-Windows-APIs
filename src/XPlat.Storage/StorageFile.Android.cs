@@ -1,4 +1,4 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Storage
 {
     using System;
@@ -50,6 +50,12 @@ namespace XPlat.Storage
         /// <summary>Gets an object that provides access to the content-related properties of the item.</summary>
         public IStorageItemContentProperties Properties => new StorageItemContentProperties(new WeakReference(this));
 
+        /// <summary>
+        /// Retrieves a <see cref="IStorageFile"/> by the given <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <returns>The <see cref="IStorageFile"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="path"/> is <see langword="null"/>.</exception>
         public static Task<IStorageFile> GetFileFromPathAsync(string path)
         {
             if (string.IsNullOrWhiteSpace(path))
@@ -64,6 +70,11 @@ namespace XPlat.Storage
         /// <summary>Renames the current item.</summary>
         /// <returns>No object or value is returned by this method when it completes.</returns>
         /// <param name="desiredName">The desired, new name of the item.</param>
+        /// <exception cref="T:XPlat.Storage.StorageItemCreationException">Thrown if a file with the same desired name already exists.</exception>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to rename does not exist.</exception>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if desiredName is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentException">Thrown if the desired new name is the same as the current name.</exception>
+        /// <exception cref="T:System.InvalidOperationException">Thrown if the file cannot be renamed.</exception>
         public Task RenameAsync(string desiredName)
         {
             return this.RenameAsync(desiredName, NameCollisionOption.FailIfExists);
@@ -73,6 +84,11 @@ namespace XPlat.Storage
         /// <returns>No object or value is returned by this method when it completes.</returns>
         /// <param name="desiredName">The desired, new name of the current item. If there is an existing item in the current item's location that already has the specified desiredName, the specified NameCollisionOption determines how Windows responds to the conflict.</param>
         /// <param name="option">The enum value that determines how the system responds if the desiredName is the same as the name of an existing item in the current item's location.</param>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to rename does not exist.</exception>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="desiredName"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.ArgumentException">Thrown if the desired new name is the same as the current name.</exception>
+        /// <exception cref="T:System.InvalidOperationException">Thrown if the file cannot be renamed.</exception>
+        /// <exception cref="T:XPlat.Storage.StorageItemCreationException">Thrown if a file with the same desired name already exists.</exception>
         public Task RenameAsync(string desiredName, NameCollisionOption option)
         {
             if (!this.Exists)
@@ -131,6 +147,7 @@ namespace XPlat.Storage
 
         /// <summary>Deletes the current item.</summary>
         /// <returns>No object or value is returned by this method when it completes.</returns>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to delete does not exist.</exception>
         public Task DeleteAsync()
         {
             if (!this.Exists)
@@ -153,6 +170,7 @@ namespace XPlat.Storage
 
         /// <summary>Gets the basic properties of the current item (like a file or folder).</summary>
         /// <returns>When this method completes successfully, it returns the basic properties of the current item as a BasicProperties object.</returns>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to get basic properties for does not exist.</exception>
         public Task<IBasicProperties> GetBasicPropertiesAsync()
         {
             if (!this.Exists)
@@ -184,6 +202,7 @@ namespace XPlat.Storage
         /// <summary>Indicates whether the current item is the same as the specified item.</summary>
         /// <returns>Returns true if the current storage item is the same as the specified storage item; otherwise false.</returns>
         /// <param name="item">The IStorageItem object that represents a storage item to compare against.</param>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="item"/> is <see langword="null"/>.</exception>
         public bool IsEqual(IStorageItem item)
         {
             if (item == null)
@@ -200,6 +219,8 @@ namespace XPlat.Storage
         /// <returns>
         /// When this method completes, it returns the stream.
         /// </returns>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to open does not exist.</exception>
+        /// <exception cref="T:XPlat.Storage.StorageFileIOException">Thrown if the file could not be opened.</exception>
         public Task<Stream> OpenReadAsync()
         {
             return this.OpenAsync(FileAccessMode.Read);
@@ -208,6 +229,8 @@ namespace XPlat.Storage
         /// <summary>Opens a stream over the file.</summary>
         /// <returns>When this method completes, it returns the stream.</returns>
         /// <param name="accessMode">The type of access to allow.</param>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to open does not exist.</exception>
+        /// <exception cref="T:XPlat.Storage.StorageFileIOException">Thrown if the file could not be opened.</exception>
         public Task<Stream> OpenAsync(FileAccessMode accessMode)
         {
             if (!this.Exists)
@@ -234,6 +257,9 @@ namespace XPlat.Storage
         /// <summary>Creates a copy of the file in the specified folder.</summary>
         /// <returns>When this method completes, it returns a StorageFile that represents the copy.</returns>
         /// <param name="destinationFolder">The destination folder where the copy is created.</param>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to copy or folder to copy to does not exist.</exception>
+        /// <exception cref="T:XPlat.Storage.StorageItemCreationException">Thrown if a file with the same name already exists at the destination.</exception>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="destinationFolder"/> is <see langword="null"/>.</exception>
         public Task<IStorageFile> CopyAsync(IStorageFolder destinationFolder)
         {
             return this.CopyAsync(destinationFolder, this.Name);
@@ -243,6 +269,9 @@ namespace XPlat.Storage
         /// <returns>When this method completes, it returns a StorageFile that represents the copy.</returns>
         /// <param name="destinationFolder">The destination folder where the copy is created.</param>
         /// <param name="desiredNewName">The desired name of the copy. If there is an existing file in the destination folder that already has the specified desiredNewName, Windows generates a unique name for the copy.</param>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to copy or folder to copy to does not exist.</exception>
+        /// <exception cref="T:XPlat.Storage.StorageItemCreationException">Thrown if a file with the same name already exists at the destination.</exception>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="destinationFolder"/> or <paramref name="desiredNewName"/> is <see langword="null"/>.</exception>
         public Task<IStorageFile> CopyAsync(IStorageFolder destinationFolder, string desiredNewName)
         {
             return this.CopyAsync(destinationFolder, desiredNewName, NameCollisionOption.FailIfExists);
@@ -253,6 +282,9 @@ namespace XPlat.Storage
         /// <param name="destinationFolder">The destination folder where the copy is created.</param>
         /// <param name="desiredNewName">The desired name of the copy. If there is an existing file in the destination folder that already has the specified desiredNewName, the specified NameCollisionOption determines how Windows responds to the conflict.</param>
         /// <param name="option">An enum value that determines how Windows responds if the desiredNewName is the same as the name of an existing file in the destination folder.</param>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to copy or folder to copy to does not exist.</exception>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="destinationFolder"/> or <paramref name="desiredNewName"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:XPlat.Storage.StorageItemCreationException">Thrown if a file with the same name already exists at the destination.</exception>
         public Task<IStorageFile> CopyAsync(
             IStorageFolder destinationFolder,
             string desiredNewName,
@@ -316,6 +348,8 @@ namespace XPlat.Storage
         /// <summary>Replaces the specified file with a copy of the current file.</summary>
         /// <returns>No object or value is returned when this method completes.</returns>
         /// <param name="fileToReplace">The file to replace.</param>
+        /// <exception cref="T:XPlat.Storage.StorageItemNotFoundException">Thrown if the file to copy and replace does not exist.</exception>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="fileToReplace"/> is <see langword="null"/>.</exception>
         public Task CopyAndReplaceAsync(IStorageFile fileToReplace)
         {
             if (!this.Exists)

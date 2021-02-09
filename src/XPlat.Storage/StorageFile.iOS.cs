@@ -1,4 +1,4 @@
-﻿#if __IOS__
+#if __IOS__
 namespace XPlat.Storage
 {
     using System;
@@ -50,6 +50,12 @@ namespace XPlat.Storage
         /// <summary>Gets an object that provides access to the content-related properties of the item.</summary>
         public IStorageItemContentProperties Properties { get; }
 
+        /// <summary>
+        /// Retrieves a <see cref="IStorageFile"/> by the given <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <returns>The <see cref="IStorageFile"/>.</returns>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="path"/> is <see langword="null"/>.</exception>
         public static Task<IStorageFile> GetFileFromPathAsync(string path)
         {
             if (string.IsNullOrWhiteSpace(path))

@@ -1,4 +1,4 @@
-﻿#if WINDOWS_UWP
+#if WINDOWS_UWP
 namespace XPlat.Storage
 {
     using System;
@@ -59,6 +59,11 @@ namespace XPlat.Storage
             return new StorageFile(file);
         }
 
+        /// <summary>
+        /// Retrieves a <see cref="IStorageFile"/> by the given <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <returns>The <see cref="IStorageFile"/>.</returns>
         public static async Task<IStorageFile> GetFileFromPathAsync(string path)
         {
             Windows.Storage.StorageFile pathFile;

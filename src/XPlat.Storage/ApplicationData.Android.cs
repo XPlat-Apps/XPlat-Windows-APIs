@@ -1,11 +1,11 @@
-﻿#if __ANDROID__
+#if __ANDROID__
 namespace XPlat.Storage
 {
     using System;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public sealed class ApplicationData : IApplicationData
+    public sealed class ApplicationData : IApplicationData, IApplicationDataExtras
     {
         private static readonly Lazy<ApplicationData> CurrentAppData =
             new Lazy<ApplicationData>(() => new ApplicationData(), LazyThreadSafetyMode.PublicationOnly);
@@ -111,6 +111,16 @@ namespace XPlat.Storage
                             break;
                     }
                 });
+        }
+
+        /// <summary>
+        /// Retrieves a <see cref="IStorageFile"/> by the given <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <returns>The <see cref="IStorageFile"/>.</returns>
+        public Task<IStorageFile> GetFileFromPathAsync(string path)
+        {
+            return StorageFile.GetFileFromPathAsync(path);
         }
 
         private static IApplicationDataContainer CreateRoamingSettings()

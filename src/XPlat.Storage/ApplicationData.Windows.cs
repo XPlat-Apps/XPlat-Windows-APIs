@@ -1,4 +1,4 @@
-﻿#if WINDOWS_UWP
+#if WINDOWS_UWP
 namespace XPlat.Storage
 {
     using System;
@@ -7,7 +7,7 @@ namespace XPlat.Storage
     using XPlat.Storage.Extensions;
 
     /// <summary>Provides access to the application data store.</summary>
-    public sealed class ApplicationData : IApplicationData
+    public sealed class ApplicationData : IApplicationData, IApplicationDataExtras
     {
         private static readonly Lazy<ApplicationData> CurrentAppData =
             new Lazy<ApplicationData>(() => new ApplicationData(), LazyThreadSafetyMode.PublicationOnly);
@@ -63,6 +63,17 @@ namespace XPlat.Storage
         public Task ClearAsync(ApplicationDataLocality locality)
         {
             return Windows.Storage.ApplicationData.Current.ClearAsync(locality.ToWindowsApplicationDataLocality()).AsTask();
+        }
+
+        /// <summary>
+        /// Retrieves a <see cref="IStorageFile"/> by the given <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <returns>The <see cref="IStorageFile"/>.</returns>
+        public async Task<IStorageFile> GetFileFromPathAsync(string path)
+        {
+            StorageFile file = await Windows.Storage.StorageFile.GetFileFromPathAsync(path);
+            return file;
         }
 
         private static IApplicationDataContainer CreateRoamingSettings()
