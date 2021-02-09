@@ -1,4 +1,7 @@
-﻿#if WINDOWS_UWP
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if WINDOWS_UWP
 namespace XPlat.Device.Geolocation
 {
     using System;
@@ -91,9 +94,9 @@ namespace XPlat.Device.Geolocation
             IAsyncOperation<Windows.Devices.Geolocation.Geoposition> getPositionTask = this.Originator.GetGeopositionAsync(maximumAge, TimeSpan.FromDays(365));
 
             // Creating a specific timeout task to handle this in a nicer way.
-            TimeoutTask timeoutTask = new TimeoutTask(timeout, getPositionTask.Cancel);
+            var timeoutTask = new TimeoutTask(timeout, getPositionTask.Cancel);
 
-            TaskCompletionSource<Geoposition> tcs = new TaskCompletionSource<Geoposition>();
+            var tcs = new TaskCompletionSource<Geoposition>();
 
             getPositionTask.Completed = (op, s) =>
             {

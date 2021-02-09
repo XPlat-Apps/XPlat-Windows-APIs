@@ -1,4 +1,7 @@
-﻿#if __IOS__
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if __IOS__
 namespace XPlat.Device.Geolocation
 {
     using System;
@@ -59,6 +62,7 @@ namespace XPlat.Device.Geolocation
 
         /// <summary>Requests permission to access location data.</summary>
         /// <returns>A GeolocationAccessStatus that indicates if permission to location data has been granted.</returns>
+        /// <exception cref="T:XPlat.Exceptions.AppPermissionInvalidException">Thrown if the NSLocationWhenInUseUsageDescription/NSLocationAlwaysUsageDescription permission is not enabled.</exception>
         public Task<GeolocationAccessStatus> RequestAccessAsync()
         {
             NSDictionary info = NSBundle.MainBundle.InfoDictionary;
@@ -89,6 +93,7 @@ namespace XPlat.Device.Geolocation
 
         /// <summary>Starts an asynchronous operation to retrieve the current location of the device.</summary>
         /// <returns>An asynchronous operation that, upon completion, returns a Geoposition marking the found location.</returns>
+        /// <exception cref="T:XPlat.Exceptions.AppPermissionInvalidException">Thrown if the NSLocationWhenInUseUsageDescription/NSLocationAlwaysUsageDescription permission is not enabled.</exception>
         public Task<Geoposition> GetGeopositionAsync()
         {
             return this.GetGeopositionAsync(TimeSpan.MaxValue, TimeSpan.FromMinutes(1));
@@ -106,9 +111,10 @@ namespace XPlat.Device.Geolocation
         /// <returns>
         /// An asynchronous operation that, upon completion, returns a Geoposition marking the found location.
         /// </returns>
+        /// <exception cref="T:XPlat.Exceptions.AppPermissionInvalidException">Thrown if the NSLocationWhenInUseUsageDescription/NSLocationAlwaysUsageDescription permission is not enabled.</exception>
         public async Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
-            TaskCompletionSource<Geoposition> tcs = new TaskCompletionSource<Geoposition>();
+            var tcs = new TaskCompletionSource<Geoposition>();
 
             GeolocationAccessStatus access = await this.RequestAccessAsync();
             if (access == GeolocationAccessStatus.Allowed)
@@ -151,7 +157,7 @@ namespace XPlat.Device.Geolocation
         {
             CLLocation loc = args.NewLocation;
 
-            Geoposition geoposition = new Geoposition(loc);
+            var geoposition = new Geoposition(loc);
 
             this.LastKnownPosition = geoposition;
             this.PositionChanged?.Invoke(this, new PositionChangedEventArgs(geoposition));
@@ -163,7 +169,7 @@ namespace XPlat.Device.Geolocation
         {
             foreach (CLLocation loc in args.Locations)
             {
-                Geoposition geoposition = new Geoposition(loc);
+                var geoposition = new Geoposition(loc);
 
                 this.LastKnownPosition = geoposition;
                 this.PositionChanged?.Invoke(this, new PositionChangedEventArgs(geoposition));
@@ -194,7 +200,7 @@ namespace XPlat.Device.Geolocation
 
         private void LocationManager_OnFailed(object sender, NSErrorEventArgs args)
         {
-            if ((CLError) (int) args.Error.Code != CLError.Network)
+            if ((CLError)(int)args.Error.Code != CLError.Network)
             {
                 return;
             }

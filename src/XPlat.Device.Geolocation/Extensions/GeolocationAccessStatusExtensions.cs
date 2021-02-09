@@ -1,4 +1,7 @@
-﻿namespace XPlat.Device.Geolocation.Extensions
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+namespace XPlat.Device.Geolocation.Extensions
 {
     using System;
 
@@ -13,20 +16,17 @@
         /// </summary>
         /// <param name="status">The Windows GeolocationAccessStatus to convert.</param>
         /// <returns>Returns the equivalent XPlat GeolocationAccessStatus value.</returns>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the <paramref name="status"/> is not supported.</exception>
         public static GeolocationAccessStatus ToInternalGeolocationAccessStatus(
             this Windows.Devices.Geolocation.GeolocationAccessStatus status)
         {
-            switch (status)
+            return status switch
             {
-                case Windows.Devices.Geolocation.GeolocationAccessStatus.Unspecified:
-                    return GeolocationAccessStatus.Unspecified;
-                case Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed:
-                    return GeolocationAccessStatus.Allowed;
-                case Windows.Devices.Geolocation.GeolocationAccessStatus.Denied:
-                    return GeolocationAccessStatus.Denied;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(status), status, null);
-            }
+                Windows.Devices.Geolocation.GeolocationAccessStatus.Unspecified => GeolocationAccessStatus.Unspecified,
+                Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed => GeolocationAccessStatus.Allowed,
+                Windows.Devices.Geolocation.GeolocationAccessStatus.Denied => GeolocationAccessStatus.Denied,
+                _ => throw new ArgumentOutOfRangeException(nameof(status), status, null)
+            };
         }
 
         /// <summary>
@@ -34,20 +34,17 @@
         /// </summary>
         /// <param name="status">The XPlat GeolocationAccessStatus to convert.</param>
         /// <returns>Returns the equivalent Windows GeolocationAccessStatus value.</returns>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the <paramref name="status"/> is not supported.</exception>
         public static Windows.Devices.Geolocation.GeolocationAccessStatus ToWindowsGeolocationAccessStatus(
             this GeolocationAccessStatus status)
         {
-            switch (status)
+            return status switch
             {
-                case GeolocationAccessStatus.Unspecified:
-                    return Windows.Devices.Geolocation.GeolocationAccessStatus.Unspecified;
-                case GeolocationAccessStatus.Allowed:
-                    return Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed;
-                case GeolocationAccessStatus.Denied:
-                    return Windows.Devices.Geolocation.GeolocationAccessStatus.Denied;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(status), status, null);
-            }
+                GeolocationAccessStatus.Unspecified => Windows.Devices.Geolocation.GeolocationAccessStatus.Unspecified,
+                GeolocationAccessStatus.Allowed => Windows.Devices.Geolocation.GeolocationAccessStatus.Allowed,
+                GeolocationAccessStatus.Denied => Windows.Devices.Geolocation.GeolocationAccessStatus.Denied,
+                _ => throw new ArgumentOutOfRangeException(nameof(status), status, null)
+            };
         }
 #endif
     }

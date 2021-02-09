@@ -1,3 +1,6 @@
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 namespace XPlat.Device.Geolocation
 {
     /// <summary>The basic information to describe a geographic position.</summary>
@@ -45,11 +48,29 @@ namespace XPlat.Device.Geolocation
             this.Altitude = geoposition.Altitude;
         }
 
+        /// <summary>
+        /// Allows conversion of a <see cref="Windows.Devices.Geolocation.BasicGeoposition"/> to the <see cref="BasicGeoposition"/> without direct casting.
+        /// </summary>
+        /// <param name="geoposition">
+        /// The <see cref="Windows.Devices.Geolocation.BasicGeoposition"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="BasicGeoposition"/>.
+        /// </returns>
         public static implicit operator BasicGeoposition(Windows.Devices.Geolocation.BasicGeoposition geoposition)
         {
             return new BasicGeoposition(geoposition);
         }
 
+        /// <summary>
+        /// Allows conversion of a <see cref="BasicGeoposition"/> to the <see cref="Windows.Devices.Geolocation.BasicGeoposition"/> without direct casting.
+        /// </summary>
+        /// <param name="geoposition">
+        /// The <see cref="BasicGeoposition"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Windows.Devices.Geolocation.BasicGeoposition"/>.
+        /// </returns>
         public static implicit operator Windows.Devices.Geolocation.BasicGeoposition(BasicGeoposition geoposition)
         {
             return new Windows.Devices.Geolocation.BasicGeoposition { Latitude = geoposition.Latitude, Longitude = geoposition.Longitude, Altitude = geoposition.Altitude };

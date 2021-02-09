@@ -1,4 +1,7 @@
-﻿#if __ANDROID__
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+#if __ANDROID__
 namespace XPlat.Device.Geolocation
 {
     using System;
@@ -9,6 +12,9 @@ namespace XPlat.Device.Geolocation
     using Android.OS;
     using XPlat.Foundation;
 
+    /// <summary>
+    /// Defines an <see cref="ILocationListener"/> instance for providing geolocation information.
+    /// </summary>
     internal class GeolocatorLocationListener : Java.Lang.Object, ILocationListener
     {
         private readonly LocationManager locationManager;
@@ -23,6 +29,12 @@ namespace XPlat.Device.Geolocation
 
         private Location lastLocation;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeolocatorLocationListener"/> class.
+        /// </summary>
+        /// <param name="locationManager">The Android location manager.</param>
+        /// <param name="reportInterval">The interval of location reporting.</param>
+        /// <param name="allLocationProviders">The location providers.</param>
         public GeolocatorLocationListener(
             LocationManager locationManager,
             uint reportInterval,

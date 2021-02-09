@@ -1,3 +1,6 @@
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 namespace XPlat.Device.Geolocation
 {
     using System;
@@ -21,9 +24,9 @@ namespace XPlat.Device.Geolocation
         /// </param>
         public Geocoordinate(Windows.Devices.Geolocation.Geocoordinate coordinate)
         {
-            this.Latitude = coordinate.Latitude;
-            this.Longitude = coordinate.Longitude;
-            this.Altitude = coordinate.Altitude ?? 0;
+            this.Latitude = coordinate.Point.Position.Latitude;
+            this.Longitude = coordinate.Point.Position.Longitude;
+            this.Altitude = coordinate.Point.Position.Altitude;
             this.Accuracy = coordinate.Accuracy;
             this.Heading = coordinate.Heading ?? 0;
             this.Speed = coordinate.Speed ?? 0;
@@ -31,6 +34,15 @@ namespace XPlat.Device.Geolocation
             this.Point = new Geopoint(coordinate.Point);
         }
 
+        /// <summary>
+        /// Allows conversion of a <see cref="Windows.Devices.Geolocation.Geocoordinate"/> to the <see cref="Geocoordinate"/> without direct casting.
+        /// </summary>
+        /// <param name="geocoordinate">
+        /// The <see cref="Windows.Devices.Geolocation.Geocoordinate"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Geocoordinate"/>.
+        /// </returns>
         public static implicit operator Geocoordinate(Windows.Devices.Geolocation.Geocoordinate geocoordinate)
         {
             return new Geocoordinate(geocoordinate);

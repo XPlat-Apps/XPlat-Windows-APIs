@@ -1,3 +1,6 @@
+// XPlat Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 #if __ANDROID__
 namespace XPlat.Device.Geolocation
 {
@@ -135,7 +138,7 @@ namespace XPlat.Device.Geolocation
         /// </returns>
         public async Task<Geoposition> GetGeopositionAsync(TimeSpan maximumAge, TimeSpan timeout)
         {
-            TaskCompletionSource<Geoposition> tcs = new TaskCompletionSource<Geoposition>();
+            var tcs = new TaskCompletionSource<Geoposition>();
 
             GeolocationAccessStatus access = await this.RequestAccessAsync();
             if (access == GeolocationAccessStatus.Allowed)
@@ -231,26 +234,28 @@ namespace XPlat.Device.Geolocation
                              ? GeolocationAccessStatus.Allowed
                              : GeolocationAccessStatus.Denied;
 
-            if (this.locationListener == null && status == GeolocationAccessStatus.Allowed)
+            if (this.locationListener != null || status != GeolocationAccessStatus.Allowed)
             {
-                this.locationListener = new GeolocatorLocationListener(
-                    this.locationManager,
-                    this.ReportInterval,
-                    this.locationProviders);
+                return Task.FromResult(status);
+            }
 
-                this.locationListener.PositionChanged += this.LocationListener_PositionChanged;
-                this.locationListener.StatusChanged += this.LocationListener_StatusChanged;
+            this.locationListener = new GeolocatorLocationListener(
+                this.locationManager,
+                this.ReportInterval,
+                this.locationProviders);
 
-                Looper looperThread = Looper.MyLooper() ?? Looper.MainLooper;
-                foreach (string provider in this.locationProviders)
-                {
-                    this.locationManager.RequestLocationUpdates(
-                        provider,
-                        this.reportInterval,
-                        (float)this.MovementThreshold,
-                        this.locationListener,
-                        looperThread);
-                }
+            this.locationListener.PositionChanged += this.LocationListener_PositionChanged;
+            this.locationListener.StatusChanged += this.LocationListener_StatusChanged;
+
+            Looper looperThread = Looper.MyLooper() ?? Looper.MainLooper;
+            foreach (string provider in this.locationProviders)
+            {
+                this.locationManager.RequestLocationUpdates(
+                    provider,
+                    this.reportInterval,
+                    (float)this.MovementThreshold,
+                    this.locationListener,
+                    looperThread);
             }
 
             return Task.FromResult(status);
