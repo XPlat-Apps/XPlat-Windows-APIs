@@ -83,11 +83,11 @@ stages:
         projects: 'tests/**/*Tests*.csproj'
         testRunTitle: 'Automated Tests'
 
-    - task: reportgenerator@4
-      displayName: Generate code coverage report
-      inputs:
-        reports: '$(Build.SourcesDirectory)/**/*.cobertura.xml'
-        targetdir: '$(Build.SourcesDirectory)/CoverageResults'
+    # - task: reportgenerator@4
+    #   displayName: Generate code coverage report
+    #   inputs:
+    #     reports: '$(Build.SourcesDirectory)/**/*.cobertura.xml'
+    #     targetdir: '$(Build.SourcesDirectory)/CoverageResults'
 
     - task: CopyFiles@2
       displayName: Copy NuGet packages to artifacts
