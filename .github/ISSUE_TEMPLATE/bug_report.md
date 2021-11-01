@@ -1,30 +1,25 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Create a report to help us improve XPlat APIs
 title: "[Bug] "
 labels: bug
 assignees: ''
 
 ---
 
-## Steps to reproduce
+## Describe the bug
 <!-- Please describe below the details of the issue and steps taken to reproduce -->
 
-## Which packages are you using?
-<!-- Please provide the packages and versions affected -->
+## What is the expected behavior?
+<!-- Please describe below the expected behavior -->
 
-## What is the expected behaviour?
-<!-- Please describe below the expected behaviour -->
+## Additional detail
 
-## What is the actual behaviour?
-<!-- Please describe below the actual behaviour -->
+Package(s): 
 
-## What platforms does this affect?
-<!-- Please provide enough applicable information -->
+Package Version(s): 
 
-- UWP: <!-- SDK version, e.g. 10240 -->
-- Android: <!-- SDK version, e.g. 6.0 -->
-- iOS: <!-- SDK version, e.g. 10.0 -->
+Platform(s) affected: 
 
 ## Other information
-<!-- Please provide any additional information, links, screenshots or projects with reproduced issues below if applicable -->
+<!-- Please provide any additional information, links, screenshots, or projects with reproduced issues below if applicable -->

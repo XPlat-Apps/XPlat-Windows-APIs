@@ -2,7 +2,7 @@
 
 # Made with XPlat
 
-We want to showcase all of the awesome apps that have been built with XPlat Windows APIs! 
+We want to showcase all of the awesome apps that have been built with XPlat Windows APIs!
 
 So, if you have a project you want to share with the world, drop it in the list below!
 
