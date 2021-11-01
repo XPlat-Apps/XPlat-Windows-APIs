@@ -1,26 +1,13 @@
 ---
 name: Feature request
-about: Suggest an idea for XPlat
-title: "[Feature] "
+about: Suggest an idea for XPlat APIs
+title: '[Feature] '
 labels: feature-request
 assignees: ''
-
 ---
 
-## Description
+## Describe the feature and how it will be used
 <!-- Please describe the idea you'd like to see implemented -->
 
-## How will this benefit you and others?
-<!-- Please describe what benefit the introduction of the feature will bring to your project -->
-
-## What is the expected API coverage?
-<!-- Please provide a list of the events, properties and methods expected in the covered API you'd expect to see implemented -->
-
-### Events
-<!-- e.g. `ItemSelectedEventArgs ItemSelected` -->
-
-### Properties
-<!-- e.g. `string FileName { get; set; }` -->
-
-### Methods
-<!-- e.g. `Task<IStorageFile> CaptureFileAsync()` -->
+## Other information
+<!-- Please provide any additional information, links, or screenshots below if applicable -->

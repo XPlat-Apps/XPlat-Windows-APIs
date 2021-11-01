@@ -12,7 +12,7 @@
     <Copyright>Copyright (C) XPlat Apps. All rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/XPlat-Apps/XPlat-Windows-APIs</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>ProjectIcon.png</PackageIcon>
+    <PackageIcon>ProjectIcon.jpg</PackageIcon>
     <PackageReleaseNotes>https://github.com/XPlat-Apps/XPlat-Windows-APIs/releases</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\assets\ProjectIcon.png" Pack="true" PackagePath=""/>
+    <None Include="..\..\assets\ProjectIcon.jpg" Pack="true" PackagePath=""/>
     <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 

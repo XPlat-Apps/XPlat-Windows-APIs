@@ -4,18 +4,20 @@
 
 XPlat Windows APIs are designed to make it easier for developers adjusted to developing with the Windows Runtime APIs (UWP) to take those skills cross-platform with their applications in .NET.
 
-As each application platform offers their own unique platform-specific APIs, XPlat attempts to bring all of those APIs under one umbrella using a UWP like API, allowing a developer to learn a single API which works with any application built for Windows and Xamarin for Android and iOS. 
+As each application platform offers their own unique platform-specific APIs, XPlat attempts to bring all of those APIs under one umbrella using a UWP like API, allowing a developer to learn a single API which works with any application built for Windows and Xamarin for Android and iOS.
 
 For a Windows developer, this is appealing as it allows you to easily migrate your existing Windows code to Xamarin shared code with minimal changes through the use of XPlat Windows APIs which mimic the UWP API alternatives.
 
-## Package status
+## Build Status 🏗️
 
-| Source | Build | Current | Preview |
+| Build | Status | Current | Preview |
 | ------ | ------ | ------ | ------ |
-| NuGet | [![Build Status](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_apis/build/status/XPlat-Apps.XPlat-Windows-APIs?branchName=develop)](https://dev.azure.com/jamesmcroft/XPlat%20Windows%20APIs/_build/latest?definitionId=34&branchName=develop) | [![Nuget](https://img.shields.io/nuget/v/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.Core.svg)](https://www.nuget.org/packages/XPlat.Core/) |
+| Packages | [![CI](https://github.com/XPlat-Apps/XPlat-Windows-APIs/actions/workflows/ci.yml/badge.svg)](https://github.com/XPlat-Apps/XPlat-Windows-APIs/actions/workflows/ci.yml) | [![NuGet](https://img.shields.io/nuget/v/XPlat.Core)](https://www.nuget.org/packages/XPlat.Core) | [![NuGet](https://img.shields.io/nuget/vpre/XPlat.Core)](https://www.nuget.org/packages/XPlat.Core) |
+| Docs | [![Docs](https://github.com/XPlat-Apps/XPlat-Windows-APIs/actions/workflows/docs.yml/badge.svg)](https://github.com/XPlat-Apps/XPlat-Windows-APIs/actions/workflows/docs.yml) | N/A | N/A |
 
-## Installation
-XPlat Windows APIs are available via NuGet. Each available package is detailed below. 
+## Installation 💾
+
+XPlat Windows APIs are available via NuGet. Each available package is detailed below.
 
 We have purposefully split the XPlat Windows APIs to allow you to pick and choose the specific components that your app needs to prevent bloat!
 
@@ -41,17 +43,17 @@ We have purposefully split the XPlat Windows APIs to allow you to pick and choos
 
 Take a look at our '[Getting started with XPlat Windows APIs guide](https://xplat.gitbook.io/docs/)' for help getting up and running!
 
-## Made with XPlat
+## Made with XPlat 💻
 
 Got a great project you've built with XPlat? We'd love for you to share your awesome creations with the community!
 
 [*Add your projects to the Made with XPlat collection!*](YOUR-PROJECTS.md)
 
-## Documentation
+## Documentation 📚
 
 If you want to deep dive into the APIs with details on how to use the features, you can browse the [GitBooks documentation for XPlat Windows APIs](https://xplat.gitbook.io/docs/)!
 
-## Supported platforms
+## Supported Platforms 📱
 
 XPlat Windows APIs is currently being developed for the following platforms:
 
@@ -59,17 +61,18 @@ XPlat Windows APIs is currently being developed for the following platforms:
 - iOS
 - Android
 
-## Contributing 
+## Contributing 🚀
 
 Looking to help build our XPlat Windows APIs? Take a look through our [contribution guidelines](CONTRIBUTING.md).
 
 We actively encourage you to jump in and help with any issues!
 
-## Building XPlat Windows APIs
+## Building XPlat Windows APIs ⚒️
 
 XPlat Windows APIs have been built using .NET Standard, taking advantage of the new SDK-style projects and multi-targeting enabled with the help of [MSBuild.Sdk.Extras](https://github.com/onovotny/MSBuildSdkExtras).
 
 You can build the solution using Visual Studio with the following workloads installed:
+
 - .NET desktop development
 - Universal Windows Platform development
 - Mobile Development with .NET
