@@ -41,7 +41,7 @@ We have purposefully split the XPlat Windows APIs to allow you to pick and choos
 | XPlat.UI.Core | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Core.svg)](https://www.nuget.org/packages/XPlat.UI.Core/) |
 | XPlat.UI.Popups | [![Nuget](https://img.shields.io/nuget/v/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) | [![Nuget](https://img.shields.io/nuget/vpre/XPlat.UI.Popups.svg)](https://www.nuget.org/packages/XPlat.UI.Popups/) |
 
-Take a look at our '[Getting started with XPlat Windows APIs guide](https://xplat.gitbook.io/docs/)' for help getting up and running!
+Take a look at our '[Getting started with XPlat Windows APIs guide](https://xplat-apps.github.io/xplat-windows-apis/)' for help getting up and running!
 
 ## Made with XPlat 💻
 
@@ -51,7 +51,7 @@ Got a great project you've built with XPlat? We'd love for you to share your awe
 
 ## Documentation 📚
 
-If you want to deep dive into the APIs with details on how to use the features, you can browse the [GitBooks documentation for XPlat Windows APIs](https://xplat.gitbook.io/docs/)!
+If you want to deep dive into the APIs with details on how to use the features, you can browse the [GitBooks documentation for XPlat Windows APIs](https://xplat-apps.github.io/xplat-windows-apis/)!
 
 ## Supported Platforms 📱
 
