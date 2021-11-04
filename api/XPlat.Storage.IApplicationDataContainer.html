@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IApplicationDataContainer
+   | XPlat Windows APIs </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IApplicationDataContainer
+   | XPlat Windows APIs ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../images/Logo.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/Logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="XPlat.Storage.IApplicationDataContainer">
+  
+  
+  <h1 id="XPlat_Storage_IApplicationDataContainer" data-uid="XPlat.Storage.IApplicationDataContainer" class="text-break">Interface IApplicationDataContainer
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a container for app settings.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="XPlat.Storage.html">XPlat.Storage</a></h6>
+  <h6><strong>Assembly</strong>: XPlat.Storage.dll</h6>
+  <h5 id="XPlat_Storage_IApplicationDataContainer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IApplicationDataContainer</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IApplicationDataContainer_Locality.md&amp;value=---%0Auid%3A%20XPlat.Storage.IApplicationDataContainer.Locality%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IApplicationDataContainer.cs/#L9">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IApplicationDataContainer_Locality_" data-uid="XPlat.Storage.IApplicationDataContainer.Locality*"></a>
+  <h4 id="XPlat_Storage_IApplicationDataContainer_Locality" data-uid="XPlat.Storage.IApplicationDataContainer.Locality">Locality</h4>
+  <div class="markdown level1 summary"><p>Gets the type (local or roaming) of the app data store that is associated with the current settings container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ApplicationDataLocality Locality { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.ApplicationDataLocality.html">ApplicationDataLocality</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IApplicationDataContainer_Name.md&amp;value=---%0Auid%3A%20XPlat.Storage.IApplicationDataContainer.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IApplicationDataContainer.cs/#L12">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IApplicationDataContainer_Name_" data-uid="XPlat.Storage.IApplicationDataContainer.Name*"></a>
+  <h4 id="XPlat_Storage_IApplicationDataContainer_Name" data-uid="XPlat.Storage.IApplicationDataContainer.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the current settings container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IApplicationDataContainer_Values.md&amp;value=---%0Auid%3A%20XPlat.Storage.IApplicationDataContainer.Values%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IApplicationDataContainer.cs/#L15">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IApplicationDataContainer_Values_" data-uid="XPlat.Storage.IApplicationDataContainer.Values*"></a>
+  <h4 id="XPlat_Storage_IApplicationDataContainer_Values" data-uid="XPlat.Storage.IApplicationDataContainer.Values">Values</h4>
+  <div class="markdown level1 summary"><p>Gets an object that represents the settings in this settings container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IPropertySet Values { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Foundation.Collections.IPropertySet.html">IPropertySet</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IApplicationDataContainer_CreateContainer_System_String_XPlat_Storage_ApplicationDataCreateDisposition_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IApplicationDataContainer.CreateContainer(System.String%2CXPlat.Storage.ApplicationDataCreateDisposition)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IApplicationDataContainer.cs/#L21">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IApplicationDataContainer_CreateContainer_" data-uid="XPlat.Storage.IApplicationDataContainer.CreateContainer*"></a>
+  <h4 id="XPlat_Storage_IApplicationDataContainer_CreateContainer_System_String_XPlat_Storage_ApplicationDataCreateDisposition_" data-uid="XPlat.Storage.IApplicationDataContainer.CreateContainer(System.String,XPlat.Storage.ApplicationDataCreateDisposition)">CreateContainer(String, ApplicationDataCreateDisposition)</h4>
+  <div class="markdown level1 summary"><p>Creates or opens the specified settings container in the current settings container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IApplicationDataContainer CreateContainer(string name, ApplicationDataCreateDisposition disposition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the container.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.ApplicationDataCreateDisposition.html">ApplicationDataCreateDisposition</a></td>
+        <td><span class="parametername">disposition</span></td>
+        <td><p>One of the enumeration values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IApplicationDataContainer.html">IApplicationDataContainer</a></td>
+        <td><p>The settings container.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IApplicationDataContainer_DeleteContainer_System_String_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IApplicationDataContainer.DeleteContainer(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IApplicationDataContainer.cs/#L25">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IApplicationDataContainer_DeleteContainer_" data-uid="XPlat.Storage.IApplicationDataContainer.DeleteContainer*"></a>
+  <h4 id="XPlat_Storage_IApplicationDataContainer_DeleteContainer_System_String_" data-uid="XPlat.Storage.IApplicationDataContainer.DeleteContainer(System.String)">DeleteContainer(String)</h4>
+  <div class="markdown level1 summary"><p>Deletes the specified settings container, its subcontainers, and all application settings in the hierarchy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DeleteContainer(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the settings container.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IApplicationDataContainer.md&amp;value=---%0Auid%3A%20XPlat.Storage.IApplicationDataContainer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IApplicationDataContainer.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) XPlat Apps
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2110 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/a/XPlat-Windows-APIs/XPlat-Windows-APIs/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "InYQrR4Imi9GY3C6PS8XhKfb0JfvIbZ6OL9wNDi/VP8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.DataTransfer.IDataPackage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.DataTransfer.IDataPackage.html",
+          "hash": "1h626Ein1XMIHqp0zEZhWavujYXKjUGilysPpNqVaV8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.DataTransfer.IDataPackageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.DataTransfer.IDataPackageView.html",
+          "hash": "Z+JDcrNmweKeZHUxkf7e8N7q19BRAvVnywCuM6QjPcQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.DataTransfer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.DataTransfer.html",
+          "hash": "vh6trI7VeRlj+Mr97my/sJrwivQLrogA9S1W6YjrDXk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.IPackage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.IPackage.html",
+          "hash": "GNjc33aVl9O4r5JhlQ4pzNzE4COkFjmVA7xJYXh/VFQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.IPackage2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.IPackage2.html",
+          "hash": "Af1Da6oQf6knZzLlgxZyVgBwFCn0J5nFCwHaBJJppsg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.IPackage3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.IPackage3.html",
+          "hash": "Wpdarav9E1+K+AkWZvOxD/CqRqSOFV2MexGRiVl4j9I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.IPackageId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.IPackageId.html",
+          "hash": "3AVHpf5lrFahQwbYMZ42gWkNF/fDGEPAJdgz4mnMlIM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.PackageVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.PackageVersion.html",
+          "hash": "JFoXKv88t5Aagc11LnGZk+yGkv2N3c+qd7k9IX3AsA8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.ApplicationModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.ApplicationModel.html",
+          "hash": "Li49y+cQ5/jyXykzqaRThQOgyNXJKcdCfpSdgiH1+x8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Display.IDisplayRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Display.IDisplayRequest.html",
+          "hash": "c2RmrBpeKcNOM+5yy+VqMp3Ba1fXH98JIXlbZdqHL8Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Display.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Display.html",
+          "hash": "uKo4nFrVEwKUFVG+r23wlDomPn/IVYRKy2yuV60+s6Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Extensions.LaunchQuerySupportStatusExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Extensions.LaunchQuerySupportStatusExtensions.html",
+          "hash": "JkORipxcpsL+9bodQV2eaAR3C8iMACvh7fJrU7nEnXo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Extensions.html",
+          "hash": "v2lPLoBk16AUUYOutRLBwsSkHjEvaRgl/TKKnLykC+w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.BasicGeoposition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.BasicGeoposition.html",
+          "hash": "UgfgHQKkNoSaoIu7vwS8gEVgItMd+iPYXhKl824v5sE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.Extensions.GeolocationAccessStatusExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.Extensions.GeolocationAccessStatusExtensions.html",
+          "hash": "CnH6AiNs17Iw86lZAwDtM7bCB6w6SD8+ScasBew+FhE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.Extensions.PositionStatusExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.Extensions.PositionStatusExtensions.html",
+          "hash": "Pn8R4RMuRPX9YOU1adKWsCNLvf241lATL0SGpVd2p5I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.Extensions.html",
+          "hash": "ZvxXxYASvPmXYJmACnmCE9XDqy7ip2b76sXLi8m13uM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.Geocoordinate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.Geocoordinate.html",
+          "hash": "O9JOgbu6r2dtBfwcoB0B/7oV9YKFMC50qBzzIHtUb8w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.GeolocationAccessStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.GeolocationAccessStatus.html",
+          "hash": "AVKfjuRx2xtwCnifbVqvjqI96Utv7+5Uk6JnnOrKsuI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.GeolocatorException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.GeolocatorException.html",
+          "hash": "BI8xfaMW6n4vt8vJY6KPOkrHHVMpFHs6hU/9wNPC1vs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.Geopoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.Geopoint.html",
+          "hash": "4j8hdhiGvQg+I0q5SoehZDnkrm7rj5uDeRZmyTjDksw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.Geoposition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.Geoposition.html",
+          "hash": "X2exhOAQBq/SZnq6K4valtYM6x8GHm/h2cZ/+CkbxsA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.IGeocoordinate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.IGeocoordinate.html",
+          "hash": "nF3aIx0iRZ1NUgXDfzBYIU2udMQHKgIio1zlyEFdJQ0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.IGeolocator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.IGeolocator.html",
+          "hash": "Q4DW67lW+8F2lUpVnQ63fR0MI8BTTgCdv5ck+CtiJ4k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.IGeopoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.IGeopoint.html",
+          "hash": "1imvE/GFLs/g6gi82It0+w7YskSQcXkeWb0GFA3Treo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.IGeoposition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.IGeoposition.html",
+          "hash": "H3J8ykw5x37ypKKkJG1tPexEZ0IFV25bjN4heGyLfPE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.IStatusChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.IStatusChangedEventArgs.html",
+          "hash": "8nRCQVM0XN72umx6xnNtfaNhyBh7y7ijwa/sET815Qg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.PositionAccuracy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.PositionAccuracy.html",
+          "hash": "3TMP7/tz0wVPhvC1XlFKaeAY9A+CIrCVB9dy5qj2EIE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.PositionChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.PositionChangedEventArgs.html",
+          "hash": "Te/WWebph9ozXDOGxYQFMbofNnj2f7Pr1RBIUkB7leI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.PositionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.PositionStatus.html",
+          "hash": "Nuy8bWxvXEOslGASa+X+Ws/p1croa4Wz/6DY+iu03W4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.StatusChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.StatusChangedEventArgs.html",
+          "hash": "j+L+Jequc1uUm4qqqYccU49n6x/1JNGvWDPU8WFHMpc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Geolocation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Geolocation.html",
+          "hash": "b3Gk3qPdWDaWfADVC6xc+9B9h6vT29U0KlMIeNMZJB4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.ILauncher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.ILauncher.html",
+          "hash": "ACySvqLdluGKsKtiSvCBj+C2jyCcmZLYlRAVizFSPS4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.LaunchQuerySupportStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.LaunchQuerySupportStatus.html",
+          "hash": "N3oclznljMJMfL/qf1tXslg+OxN09xo/ovPx4NAKTTg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Power.BatteryStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Power.BatteryStatus.html",
+          "hash": "6FsCoOMXnSGjfHJQ6g36lLKjvfBb8SPfkOtOliqe/4o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Power.BatteryStatusChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Power.BatteryStatusChangedEventArgs.html",
+          "hash": "XfK8zMoY/iWe+wTxkwWKqd1XovR+6dvgpk0WJUcAxUE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Power.BatteryStatusChangedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Power.BatteryStatusChangedEventHandler.html",
+          "hash": "qrqhdqJuX1QbqJqNSXc8RjpXdKtflHQBe6sqjw+LDD8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Power.Extensions.BatteryStatusExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Power.Extensions.BatteryStatusExtensions.html",
+          "hash": "sP7AhIZHcqJOYjJWRXrwFSinZ59PgUhfyWEIQ/yAU/8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Power.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Power.Extensions.html",
+          "hash": "u2LeDzc9VeVcqsNKX2F2XPPVsyxsXO5Yb7rtE5wa50I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Power.IPowerManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Power.IPowerManager.html",
+          "hash": "8EkebkP4pYo9/AeSjUa8eEnugtow/MZSQNFai8EG4AE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Power.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Power.html",
+          "hash": "4PYN93mr0y8HO3vzrSIHC/vtwND3QSXlbLdYQCHxGec="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Profile.IAnalyticsVersionInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Profile.IAnalyticsVersionInfo.html",
+          "hash": "0h17xPSvFPMs1n97lC51om633cg17LOhDDklV0EYB3Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.Profile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.Profile.html",
+          "hash": "ZBwBNdQLcn6c0WarbpGlmBGCwfxElFPkefjKxwlQ9Ss="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Device.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Device.html",
+          "hash": "oByqXLs7OdIysYdZMcXbVszwYJtwr87k46+MhOXoTM4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Exceptions.AppPermissionInvalidException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Exceptions.AppPermissionInvalidException.html",
+          "hash": "giOH/JYYcxLoKqq5oB8mRyxAcDBHXeDunaIuNXPnCMs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Exceptions.html",
+          "hash": "qEu5uNsVVUxFtki/J0y59bB6xOy38q6v9mIjvYsYZUU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Extensions.CollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Extensions.CollectionExtensions.html",
+          "hash": "7ty9PZzggE/K4674LwwUKWcfSFefF8Q1XSQMsflyAkw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Extensions.html",
+          "hash": "eOK69MqrFGEBYwVVYQYmfB+FRnOTxJXh3LbJy07FngY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.Collections.CollectionChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.Collections.CollectionChange.html",
+          "hash": "uExIfYSjGk5lpUZ2AvLPH46CFbo7y2DfaW3Zq/nbiEI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.Collections.IMapChangedEventArgs-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.Collections.IMapChangedEventArgs-1.html",
+          "hash": "IjS1NElqcyXuL1nKFbL8sLnl14Nbbuwlt4zC7IZpcQ4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.Collections.IObservableMap-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.Collections.IObservableMap-2.html",
+          "hash": "kRTlVGsSOPJm4Jrm8rMlKXbO+VJscdzneYaU32dUqWg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.Collections.IPropertySet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.Collections.IPropertySet.html",
+          "hash": "D+/pRVEJER1ZNifgRFJwaZ06rqEBM1poKnTiKxhzgZA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.Collections.MapChangedEventHandler-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.Collections.MapChangedEventHandler-2.html",
+          "hash": "F+DsU3DZ2qiooYlSRInpDU3n3NtGNyeSBkHRSB0TorM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.Collections.StringMapChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.Collections.StringMapChangedEventArgs.html",
+          "hash": "6nzFSvSY/8w9hEBl/MsfriMYwhOsL8IkRIhuOF7vdlo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.Collections.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.Collections.html",
+          "hash": "tCsoMGYkzgbgkURMnHtMAT3rpjTB6Ad+nF1uvLDvr5E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.Size.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.Size.html",
+          "hash": "3SFif73vVzo145lenKAAlTTgCLsK2AggljqT6v0rZjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.TypedEventHandler-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.TypedEventHandler-2.html",
+          "hash": "grjoN+xtY3fgccD0YjU/ncof0220Bo3BbJ8VBJC5Cys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Foundation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Foundation.html",
+          "hash": "COINAhLOjxOf3jm3hwBrizEFF8lHNTzxE1XYsQs/7qA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Helpers.ParseHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Helpers.ParseHelper.html",
+          "hash": "TID+SLCIGHioFWfyDSP6XQlbUCehCcxsEkzD27ASmHw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Helpers.RequestCodeHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Helpers.RequestCodeHelper.html",
+          "hash": "jHIrqXm3Lejfmk8ab/yYE1yRUXr9jxIepspGWIldc24="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Helpers.html",
+          "hash": "vk2AeMXmbaLtMKYMyqN7MgqIgl3zXDKlp2mTfx7q8UA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.CameraCaptureUIMaxPhotoResolution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.CameraCaptureUIMaxPhotoResolution.html",
+          "hash": "yN9cJGTvFI/201NN3WHPe7JXB0hMQMvKO8XL1vnP8OY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.CameraCaptureUIMaxVideoResolution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.CameraCaptureUIMaxVideoResolution.html",
+          "hash": "L53BZjyYq2C4mVtspDhY5ZmXgbEZrHT2x+vKfU/h2Ck="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.CameraCaptureUIMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.CameraCaptureUIMode.html",
+          "hash": "xTdKexJhGZkmZPQRV15o8bUw2RUNnJD9xXsTrZVH8RA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.CameraCaptureUIPhotoCaptureSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.CameraCaptureUIPhotoCaptureSettings.html",
+          "hash": "ybLgzSrB6obm3tfVkHwapogBgUMA7X4Y3vbyKJ9zrjo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.CameraCaptureUIVideoCaptureSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.CameraCaptureUIVideoCaptureSettings.html",
+          "hash": "Vq/q7Pvrqmd1Fk/iyHGUJNfxiCgqeIw/EAmjQ8zrumY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.Extensions.BitmapExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.Extensions.BitmapExtensions.html",
+          "hash": "3/moJpSPmLPTfWeOhTTGZsuP4VfrejLLvn1ljYZ2N68="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.Extensions.CameraCaptureUIMaxPhotoResolutionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.Extensions.CameraCaptureUIMaxPhotoResolutionExtensions.html",
+          "hash": "u7pRoHMiaUwjCJeNiNv6rjWsmy5ineHeNIH13C6+zU8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.Extensions.CameraCaptureUIMaxVideoResolutionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.Extensions.CameraCaptureUIMaxVideoResolutionExtensions.html",
+          "hash": "d0AwxpzI+bozGACun2wvBw2QxcMtdgmj7lSOC1/B6Xw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.Extensions.StorageFileExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.Extensions.StorageFileExtensions.html",
+          "hash": "YkVCvI5CHzdF0PKk1n6Hxl/6VcjDXn8gYTp+dTdInl4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.Extensions.html",
+          "hash": "b+1VAbhqxmX9EpO+ciJtYNK/6Edx6IITI4kZE35jtJU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.ICameraCaptureUI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.ICameraCaptureUI.html",
+          "hash": "kgVKcqvNjSgWiouhMsQ595JpXlKjnH6wjbTd5W0WMW0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.ICameraCaptureUIPhotoCaptureSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.ICameraCaptureUIPhotoCaptureSettings.html",
+          "hash": "ayCzYf2hXExmnKGgYyUgVGtoU45vmUQCgI019PHYgbY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.ICameraCaptureUIVideoCaptureSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.ICameraCaptureUIVideoCaptureSettings.html",
+          "hash": "UJ+zto1OewjLC34kEtxavISkgcx0cn0BlrahoeDZLys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Media.Capture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Media.Capture.html",
+          "hash": "C2bQrOGzKLOYfWUZhsS0uPcVVdiPmCHlgCeJV4qHl6U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.Extensions.MapLocationDesiredAccuracyExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.Extensions.MapLocationDesiredAccuracyExtensions.html",
+          "hash": "Hwdfl5qntnyevODPnbx+J/UeIGO3ChRqMBm69W0BlNA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.Extensions.MapLocationFinderStatusExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.Extensions.MapLocationFinderStatusExtensions.html",
+          "hash": "y7jAtPXf81SK2X25lyM04cU2nBDGNKhMxyOeGPfg5Ag="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.Extensions.html",
+          "hash": "85hdOUEKakki4DTfdPS0/OjAy3uOODxGTgif/bSWZ1Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.IMapAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.IMapAddress.html",
+          "hash": "/O4Gx+bNihzZpkz+OCCe3NoZ5TXgGiHthx8pMnJk8MA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.IMapLocation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.IMapLocation.html",
+          "hash": "R1q2pYY9irzFEiC1MSr//EuvtoK0kj4Y7ozbP1SxwGE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.IMapLocationFinderResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.IMapLocationFinderResult.html",
+          "hash": "kwKzXUemdIjBvCmgMBx0Khwmd38ZVxq4IPyaSkIZuoo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.MapAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.MapAddress.html",
+          "hash": "iYv6khn62RJGks+t9B3OE7aNN3eMnq3G8CFxmEF9B4E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.MapLocation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.MapLocation.html",
+          "hash": "86mtXMU1RbJDAcvnbrd/bY9SHyMbZqQaqlGub5MW0C0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.MapLocationDesiredAccuracy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.MapLocationDesiredAccuracy.html",
+          "hash": "ZT3uD2bQfG3kxTGmLnVsLGRwPoRAuTp0Wz5BFt6cgNU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.MapLocationFinderResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.MapLocationFinderResult.html",
+          "hash": "s1myzBMOoa2uKe6Q/30A6tEBhJMewyPA8E5uHKxgbqw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.MapLocationFinderStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.MapLocationFinderStatus.html",
+          "hash": "F934OxF/VZDM1bWFZIA6tx8EaIu7OOy7tyCBaSbkXhQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Services.Maps.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Services.Maps.html",
+          "hash": "yuz44zroyAFtUKraS9uV3eBJvK2WzMpyS+Ex2eVcCtQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.ApplicationDataCreateDisposition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.ApplicationDataCreateDisposition.html",
+          "hash": "YG8ifY6qP+FNOjw7bo2rmTCfLjbT3LFHLAiiMCgDN44="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.ApplicationDataLocality.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.ApplicationDataLocality.html",
+          "hash": "6aYOhDyyf5YEqNOyVxUg5qm0KWiNSJmaO1v3sNk89Tw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.CreationCollisionOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.CreationCollisionOption.html",
+          "hash": "N1g1PoY+7LBR6XgxkCzf6Djhwe+Z2Fltd0SSJxBIXFQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.ApplicationDataCreateDispositionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.ApplicationDataCreateDispositionExtensions.html",
+          "hash": "naF0X3Z9uoIf0qRUjtlpJH37fLpdHTlnp5njHuNRdds="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.ApplicationDataLocalityExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.ApplicationDataLocalityExtensions.html",
+          "hash": "rbEp4Ac0lyezUyxHm+b6ogusCb01V1vQx9v9LcBxR1c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.CreationCollisionOptionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.CreationCollisionOptionExtensions.html",
+          "hash": "9hL2oWRW+rW2hqpW5QvGE2fCkdwl2oe0YYRUb0h/KzY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.FileAccessModeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.FileAccessModeExtensions.html",
+          "hash": "yJAXNwMAuwhLh37Ov5PREBWLVW3btbslWBAy+IciBPI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.FileAttributesExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.FileAttributesExtensions.html",
+          "hash": "S3oBkF5Vp8eelp12mWgZ/OSfJuaeJSlR1lXIfG8MaBQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.NameCollisionOptionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.NameCollisionOptionExtensions.html",
+          "hash": "NWs50a/aefVTxwUQurX2UG0Re0sUByYDOYxyfrlWMmg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.StorageFileExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.StorageFileExtensions.html",
+          "hash": "I53zmqVHgRm6KG5dcXe4bqijx5lNdUVYIzW+aWvYUfo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.StorageItemContentPropertiesExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.StorageItemContentPropertiesExtensions.html",
+          "hash": "odyvTrZeiWf8t4u12Qi+pYEd+JgYld0He9GqJF+VC1A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Extensions.html",
+          "hash": "X56SoJi5e1Npkmegz5qYHQkpZpfmK4EEy5UXrqUvayo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileAccessMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileAccessMode.html",
+          "hash": "u0MbQAxPLL2jUYJRyMfTictNWW06l2BzYU9DvmZRoPs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileAttributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileAttributes.html",
+          "hash": "Wks4HpPlcUg8dojqJCm7bs/aHYSA/xK7mbNXkFqwKAw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileProperties.IBasicProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileProperties.IBasicProperties.html",
+          "hash": "x3btuxe66iWW0imbi2WNz4yv/+tQmd+Lv7KYrldahrQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileProperties.IImageProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileProperties.IImageProperties.html",
+          "hash": "IaHtizoh6eGnhCptEqhxC7pqtHhee6d6Rq766UUjirk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileProperties.IMusicProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileProperties.IMusicProperties.html",
+          "hash": "N5ZVeNmjLNcL6Qtcybn91zmcprEWpTtnIkeliX7Pe3w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileProperties.IStorageItemContentProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileProperties.IStorageItemContentProperties.html",
+          "hash": "qyaqFDUNwWCEC6DDsdvY7CC2UvPDlRFJBI+4W4eTEJs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileProperties.IVideoProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileProperties.IVideoProperties.html",
+          "hash": "52T5fdBefrX3rnyB7DSnSkD+sxQsV1qN3LFQ1cxNdco="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileProperties.PhotoOrientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileProperties.PhotoOrientation.html",
+          "hash": "Shjrl08biXGTCrf9DFXuFJw0yM3yUBNeoDZeZkNMcAc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileProperties.VideoOrientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileProperties.VideoOrientation.html",
+          "hash": "aY8I54rdxN3SJnLEkaW3ZsLvhJHm6cL22zjS6WRyUz8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.FileProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.FileProperties.html",
+          "hash": "/4Hd1PprCWpaM3opPmhw60gjh3j5J0DmWxC+ZPm7u1g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Helpers.MimeTypeHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Helpers.MimeTypeHelper.html",
+          "hash": "RMmxxuoaVhpEVBnBRZDYI3aPNIU0jtUG5qsj1UVtSD8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Helpers.StorageHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Helpers.StorageHelper.html",
+          "hash": "m2GNQFtAirfhfgMNWgz8DUVOTHb8egIFrTQ8YXVfPtI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Helpers.html",
+          "hash": "OARjq/H3JDLBtCv6S+DW5KGlBTDVxKaUYXJ/naavXhg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IApplicationData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IApplicationData.html",
+          "hash": "xiUhJdj/rQsRUzoZcJqEgtqRNN1uMcC5SpVxxiZEyDc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IApplicationDataContainer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IApplicationDataContainer.html",
+          "hash": "o6IjWGdZ4BuGOoy2HOsmDBGQ5WIYi2JTddIHJ6BIlA0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IApplicationDataExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IApplicationDataExtras.html",
+          "hash": "RK/gGMx8Q1IxLFW87ezv2Ezied2P0y3IlwnoTLBdR/0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IStorageFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IStorageFile.html",
+          "hash": "XtkO0+wwfY02uBIaDP8P3bByN1Eh+Mqs1eyaRhm6Ky8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IStorageFileExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IStorageFileExtras.html",
+          "hash": "qIAdUhn2t2JD3FLYtY10MZp1sSUWPHyw6pPt+4qyY2M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IStorageFolder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IStorageFolder.html",
+          "hash": "YHdKts+YSd8GmhrxAQX4KX4FBRALmCEt6XNAmAE+KQU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IStorageFolder2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IStorageFolder2.html",
+          "hash": "leV5Fgeq3R4SE54t/0TmnVb/lDJGHnwtGQlLZXsQ/NA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IStorageFolderExtras.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IStorageFolderExtras.html",
+          "hash": "rR5xR9o3iQhCkUJK6PUZJH9k5Q+uiuejrkhXqq8cdgM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IStorageItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IStorageItem.html",
+          "hash": "FGRX/SscmTKZ+x4xoddxBBF/gqBdeq8VEpLXZsDV24s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IStorageItem2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IStorageItem2.html",
+          "hash": "5lBcegsgQ/5md5iVqxU/Gkq1Br6nK+j0cbNhLGIgd2E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.IStorageItemProperties.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.IStorageItemProperties.html",
+          "hash": "B4rKQ+5XfvmCSMvVrCUt7v3fXYskZZvR+eWk9NiCKo8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.NameCollisionOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.NameCollisionOption.html",
+          "hash": "+kpZf8Wn8KFswlRp9dGUwRhrAqywMU0K8pRj1N8ejnE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Pickers.IFileOpenPicker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Pickers.IFileOpenPicker.html",
+          "hash": "M0NmnbWgIRfD0iycmuvCqPjizL2PAkP5QYbO3BsjG1Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Pickers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Pickers.html",
+          "hash": "3HLi77HfCAVXyZcE0+6isSTZf84EVBCabitV9Xmdo4Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Search.IStorageFolderQueryOperations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Search.IStorageFolderQueryOperations.html",
+          "hash": "RcGejxBXtq5JPRrKvO4SC584zVdrTfOqyTtUBCOvOFk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.Search.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.Search.html",
+          "hash": "+3tXLLR13U3xRqMaLsNuK+yOsNZOugbIYb66262wH10="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.StorageFileIOException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.StorageFileIOException.html",
+          "hash": "+1Kr6f+ryv0Mpf9yDtE7CNaoFGzF1XpdOtT/u1HZGk8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.StorageItemCreationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.StorageItemCreationException.html",
+          "hash": "y4qvAurnyCYUiP7EJTEJzX69u0PVt4100fSjXMA/BQo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.StorageItemException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.StorageItemException.html",
+          "hash": "K2AKLVbbmJHepo2An+vvTDK4MOIag37jXD7ldqSlUC8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.StorageItemNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.StorageItemNotFoundException.html",
+          "hash": "131eZ/LqyxfoJqZAZVSsvtryHCF5vpRqb/yShW8OUgY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.StorageItemTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.StorageItemTypes.html",
+          "hash": "DwtI/6IXn2CZWqSppZVBSERNZaqD8yvXshw0YbjZYSA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Storage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Storage.html",
+          "hash": "t3SUvdEFKVYYr0V1rR5BtNQaLjjaxIDaXib8VLUYqVM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Threading.Tasks.TaskSchedulerAwaiter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Threading.Tasks.TaskSchedulerAwaiter.html",
+          "hash": "nqhhkpcptzt+bz9C+Czb4/+PbFCUQB1Fhg4jR0ajX74="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Threading.Tasks.TimeoutTask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Threading.Tasks.TimeoutTask.html",
+          "hash": "Fy97EYY5JPApqIpfm8NSExdL4LmgXr6iLuXyUTJcOsY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.Threading.Tasks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.Threading.Tasks.html",
+          "hash": "aItQGiKt9S1zkZsyk/yGk5ereO68e2m5V72D8Zm7oGA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Color.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Color.html",
+          "hash": "aaWJmEj/XcMtQ5imDPAEmZPy4oNmhPPV7N0soB2sWWM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.ColorHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.ColorHelper.html",
+          "hash": "jHl3tSZcIogx9EaZUBZP/vd9cUyRF/14lcvC6pMFqa4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Colors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Colors.html",
+          "hash": "HcmvUC4PP9MGH6mKL2RdAGwT76Q7QjQlYgbveelN97M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Controls.Orientation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Controls.Orientation.html",
+          "hash": "T4Lbc7nZsGLJp4Q2P8Wcr45H+AY4ekL4M+USRVJy0NE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Controls.html",
+          "hash": "fFR6oQ6bCyXk8T3+Y8xvV773ze1IVzK6gQaJG4+xAQ4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Core.CoreDispatcherPriority.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Core.CoreDispatcherPriority.html",
+          "hash": "W0lfSv0TiCmUA63RYjI+B7+g42wYO5sM1c0Df2vJWJc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Core.DispatchedHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Core.DispatchedHandler.html",
+          "hash": "JeFgUI2GM1IWWZz29+hCcim54MNO80la8n3tGxw2IH4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Core.Extensions.CoreDispatcherPriorityExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Core.Extensions.CoreDispatcherPriorityExtensions.html",
+          "hash": "i1f8NMu8kibSrR8vsXs6snwZnBzRsohLbzIVn50U7Qs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Core.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Core.Extensions.html",
+          "hash": "B6/NYsizS5rqRnXw9F5We6EUl6WbafFUQGDyNS5J/7U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Core.ICoreDispatcher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Core.ICoreDispatcher.html",
+          "hash": "StRbp8ZXOE3YsGYyhOqxk2kzDwEVE0wwl8ptdNkdvxo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Core.html",
+          "hash": "Ac+kSanwRcDlanOoNnQtzvOrJmnls3FIc0GGqGl/mho="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.DispatcherTimer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.DispatcherTimer.html",
+          "hash": "5eM0S9ACs+57NtWcgF8uH/lck3Bi068LMuPSQm03GjI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.IDispatcherTimer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.IDispatcherTimer.html",
+          "hash": "IB1Gbv5/9N6YnPHHtoDEvhUkWGGs2j5f/BqoATKHWiw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Popups.Extensions.UICommandExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Popups.Extensions.UICommandExtensions.html",
+          "hash": "qybfMBD3opzHLTBTbpb9Zp5VE755qBSvnL0zjmsxDi4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Popups.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Popups.Extensions.html",
+          "hash": "cKsKwNnGYNqlLWwKZTkpGyNkdrAhLEG1vqzC1aw05Ug="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Popups.IMessageDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Popups.IMessageDialog.html",
+          "hash": "SNb2ThzA3eGGypTZJF5TTD3DoOosXn5NUTzwPTS1scU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Popups.IUICommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Popups.IUICommand.html",
+          "hash": "KvCZBBXy+/kP5H+iAlfcXvuCsDcZBXJ5TAY9qlb2oGA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Popups.UICommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Popups.UICommand.html",
+          "hash": "YjsLr13O8IfPKGzbCU5wbfkn4Ulmice1qNvRMEDZnFw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Popups.UICommandInvokedHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Popups.UICommandInvokedHandler.html",
+          "hash": "iUd3Zd+v3xpW3Ei60dHmZZtscYHNbv7NeCFpZy6QSrQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Popups.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Popups.html",
+          "hash": "T8OQjwqKzb6WaN+a7mzOAPAGTCeUyuuEkAqD7Ktu+cQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.Thickness.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.Thickness.html",
+          "hash": "x3jhwieOrBzygEdxt3o1SLzi0vKtcLsHdDX7LHch9mQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.ThicknessHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.ThicknessHelper.html",
+          "hash": "L+YqlLxvwHRe8+quUrNEZ/2EwWnNCiro+x3N2bBVRyI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/XPlat.UI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/XPlat.UI.html",
+          "hash": "LdM3K3FsEekRFUkhseZYg6LqVnaoI1kD4I0awvwbTWI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "HefDzgVmbZ2y0P94dPFs1exO9i/yL3Se+78UtcAfQo0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "PzffT8owh/SysNb7dZP0UXe5kFsWV2TwWPgqAn/LAbg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/available-packages.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/available-packages.html",
+          "hash": "ebAjeAcniG+Z+afAfWXnqEWoxFbdih6pE5BSIp59vNI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "9BBvfI/INpfUdNdR+UCNFRRescHJI6UFBJm8tjGlLt0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "ZOUzLhIHalRF2to6n7AjVeiuBfSKUroCkAoWr2TGFqc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ProjectBanner.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ProjectBanner.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "VM37r0ZEPNuv8aHGmzvuoWzKOWKL7yCtF9RlIHVOFH4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "TZbmzKsXdidNPhQrssW61XW0rTrlxWSItKGn4PB495Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 5,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 160,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

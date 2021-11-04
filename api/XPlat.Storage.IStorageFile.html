@@ -1,0 +1,749 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IStorageFile
+   | XPlat Windows APIs </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IStorageFile
+   | XPlat Windows APIs ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../images/Logo.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/Logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="XPlat.Storage.IStorageFile">
+  
+  
+  <h1 id="XPlat_Storage_IStorageFile" data-uid="XPlat.Storage.IStorageFile" class="text-break">Interface IStorageFile
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a file. Provides information about the file and its contents, and ways to manipulate them.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItemProperties.html#XPlat_Storage_IStorageItemProperties_DisplayName">IStorageItemProperties.DisplayName</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItemProperties.html#XPlat_Storage_IStorageItemProperties_Properties">IStorageItemProperties.Properties</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem2.html#XPlat_Storage_IStorageItem2_GetParentAsync">IStorageItem2.GetParentAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem2.html#XPlat_Storage_IStorageItem2_IsEqual_XPlat_Storage_IStorageItem_">IStorageItem2.IsEqual(IStorageItem)</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_RenameAsync_System_String_">IStorageItem.RenameAsync(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_RenameAsync_System_String_XPlat_Storage_NameCollisionOption_">IStorageItem.RenameAsync(String, NameCollisionOption)</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_DeleteAsync">IStorageItem.DeleteAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_GetBasicPropertiesAsync">IStorageItem.GetBasicPropertiesAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_IsOfType_XPlat_Storage_StorageItemTypes_">IStorageItem.IsOfType(StorageItemTypes)</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_Attributes">IStorageItem.Attributes</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_DateCreated">IStorageItem.DateCreated</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_Name">IStorageItem.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_Path">IStorageItem.Path</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageItem.html#XPlat_Storage_IStorageItem_Exists">IStorageItem.Exists</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageFileExtras.html#XPlat_Storage_IStorageFileExtras_OpenReadAsync">IStorageFileExtras.OpenReadAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageFileExtras.html#XPlat_Storage_IStorageFileExtras_WriteTextAsync_System_String_">IStorageFileExtras.WriteTextAsync(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageFileExtras.html#XPlat_Storage_IStorageFileExtras_ReadTextAsync">IStorageFileExtras.ReadTextAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageFileExtras.html#XPlat_Storage_IStorageFileExtras_WriteBytesAsync_System_Byte___">IStorageFileExtras.WriteBytesAsync(Byte[])</a>
+    </div>
+    <div>
+      <a class="xref" href="XPlat.Storage.IStorageFileExtras.html#XPlat_Storage_IStorageFileExtras_ReadBytesAsync">IStorageFileExtras.ReadBytesAsync()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="XPlat.Storage.html">XPlat.Storage</a></h6>
+  <h6><strong>Assembly</strong>: XPlat.Storage.dll</h6>
+  <h5 id="XPlat_Storage_IStorageFile_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IStorageFile : IStorageItemProperties, IStorageItem2, IStorageItem, IStorageFileExtras</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_ContentType.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.ContentType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L13">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_ContentType_" data-uid="XPlat.Storage.IStorageFile.ContentType*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_ContentType" data-uid="XPlat.Storage.IStorageFile.ContentType">ContentType</h4>
+  <div class="markdown level1 summary"><p>Gets the MIME type of the contents of the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ContentType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_FileType.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.FileType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L10">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_FileType_" data-uid="XPlat.Storage.IStorageFile.FileType*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_FileType" data-uid="XPlat.Storage.IStorageFile.FileType">FileType</h4>
+  <div class="markdown level1 summary"><p>Gets the type (file name extension) of the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string FileType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_CopyAndReplaceAsync_XPlat_Storage_IStorageFile_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.CopyAndReplaceAsync(XPlat.Storage.IStorageFile)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L44">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_CopyAndReplaceAsync_" data-uid="XPlat.Storage.IStorageFile.CopyAndReplaceAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_CopyAndReplaceAsync_XPlat_Storage_IStorageFile_" data-uid="XPlat.Storage.IStorageFile.CopyAndReplaceAsync(XPlat.Storage.IStorageFile)">CopyAndReplaceAsync(IStorageFile)</h4>
+  <div class="markdown level1 summary"><p>Replaces the specified file with a copy of the current file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task CopyAndReplaceAsync(IStorageFile fileToReplace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IStorageFile.html">IStorageFile</a></td>
+        <td><span class="parametername">fileToReplace</span></td>
+        <td><p>The file to replace.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>No object or value is returned when this method completes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_CopyAsync_XPlat_Storage_IStorageFolder_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.CopyAsync(XPlat.Storage.IStorageFolder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L23">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_CopyAsync_" data-uid="XPlat.Storage.IStorageFile.CopyAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_CopyAsync_XPlat_Storage_IStorageFolder_" data-uid="XPlat.Storage.IStorageFile.CopyAsync(XPlat.Storage.IStorageFolder)">CopyAsync(IStorageFolder)</h4>
+  <div class="markdown level1 summary"><p>Creates a copy of the file in the specified folder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IStorageFile&gt; CopyAsync(IStorageFolder destinationFolder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IStorageFolder.html">IStorageFolder</a></td>
+        <td><span class="parametername">destinationFolder</span></td>
+        <td><p>The destination folder where the copy is created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="XPlat.Storage.IStorageFile.html">IStorageFile</a>&gt;</td>
+        <td><p>When this method completes, it returns a StorageFile that represents the copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_CopyAsync_XPlat_Storage_IStorageFolder_System_String_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.CopyAsync(XPlat.Storage.IStorageFolder%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L29">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_CopyAsync_" data-uid="XPlat.Storage.IStorageFile.CopyAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_CopyAsync_XPlat_Storage_IStorageFolder_System_String_" data-uid="XPlat.Storage.IStorageFile.CopyAsync(XPlat.Storage.IStorageFolder,System.String)">CopyAsync(IStorageFolder, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a copy of the file in the specified folder, using the desired name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IStorageFile&gt; CopyAsync(IStorageFolder destinationFolder, string desiredNewName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IStorageFolder.html">IStorageFolder</a></td>
+        <td><span class="parametername">destinationFolder</span></td>
+        <td><p>The destination folder where the copy is created.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">desiredNewName</span></td>
+        <td><p>The desired name of the copy. If there is an existing file in the destination folder that already has the specified desiredNewName, Windows generates a unique name for the copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="XPlat.Storage.IStorageFile.html">IStorageFile</a>&gt;</td>
+        <td><p>When this method completes, it returns a StorageFile that represents the copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_CopyAsync_XPlat_Storage_IStorageFolder_System_String_XPlat_Storage_NameCollisionOption_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.CopyAsync(XPlat.Storage.IStorageFolder%2CSystem.String%2CXPlat.Storage.NameCollisionOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L36">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_CopyAsync_" data-uid="XPlat.Storage.IStorageFile.CopyAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_CopyAsync_XPlat_Storage_IStorageFolder_System_String_XPlat_Storage_NameCollisionOption_" data-uid="XPlat.Storage.IStorageFile.CopyAsync(XPlat.Storage.IStorageFolder,System.String,XPlat.Storage.NameCollisionOption)">CopyAsync(IStorageFolder, String, NameCollisionOption)</h4>
+  <div class="markdown level1 summary"><p>Creates a copy of the file in the specified folder, using the desired name. This method also specifies what to do if an existing file in the specified folder has the same name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IStorageFile&gt; CopyAsync(IStorageFolder destinationFolder, string desiredNewName, NameCollisionOption option)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IStorageFolder.html">IStorageFolder</a></td>
+        <td><span class="parametername">destinationFolder</span></td>
+        <td><p>The destination folder where the copy is created.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">desiredNewName</span></td>
+        <td><p>The desired name of the copy. If there is an existing file in the destination folder that already has the specified desiredNewName, the specified NameCollisionOption determines how Windows responds to the conflict.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.NameCollisionOption.html">NameCollisionOption</a></td>
+        <td><span class="parametername">option</span></td>
+        <td><p>An enum value that determines how Windows responds if the desiredNewName is the same as the name of an existing file in the destination folder.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="XPlat.Storage.IStorageFile.html">IStorageFile</a>&gt;</td>
+        <td><p>When this method completes, it returns a StorageFile that represents the copy.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_MoveAndReplaceAsync_XPlat_Storage_IStorageFile_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.MoveAndReplaceAsync(XPlat.Storage.IStorageFile)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L67">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_MoveAndReplaceAsync_" data-uid="XPlat.Storage.IStorageFile.MoveAndReplaceAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_MoveAndReplaceAsync_XPlat_Storage_IStorageFile_" data-uid="XPlat.Storage.IStorageFile.MoveAndReplaceAsync(XPlat.Storage.IStorageFile)">MoveAndReplaceAsync(IStorageFile)</h4>
+  <div class="markdown level1 summary"><p>Moves the current file to the location of the specified file and replaces the specified file in that location.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task MoveAndReplaceAsync(IStorageFile fileToReplace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IStorageFile.html">IStorageFile</a></td>
+        <td><span class="parametername">fileToReplace</span></td>
+        <td><p>The file to replace.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>No object or value is returned by this method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_MoveAsync_XPlat_Storage_IStorageFolder_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.MoveAsync(XPlat.Storage.IStorageFolder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L49">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_MoveAsync_" data-uid="XPlat.Storage.IStorageFile.MoveAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_MoveAsync_XPlat_Storage_IStorageFolder_" data-uid="XPlat.Storage.IStorageFile.MoveAsync(XPlat.Storage.IStorageFolder)">MoveAsync(IStorageFolder)</h4>
+  <div class="markdown level1 summary"><p>Moves the current file to the specified folder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task MoveAsync(IStorageFolder destinationFolder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IStorageFolder.html">IStorageFolder</a></td>
+        <td><span class="parametername">destinationFolder</span></td>
+        <td><p>The destination folder where the file is moved. This destination folder must be a physical location. Otherwise, if the destination folder exists only in memory, like a file group, this method fails and throws an exception.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>No object or value is returned by this method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_MoveAsync_XPlat_Storage_IStorageFolder_System_String_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.MoveAsync(XPlat.Storage.IStorageFolder%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L55">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_MoveAsync_" data-uid="XPlat.Storage.IStorageFile.MoveAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_MoveAsync_XPlat_Storage_IStorageFolder_System_String_" data-uid="XPlat.Storage.IStorageFile.MoveAsync(XPlat.Storage.IStorageFolder,System.String)">MoveAsync(IStorageFolder, String)</h4>
+  <div class="markdown level1 summary"><p>Moves the current file to the specified folder and renames the file according to the desired name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task MoveAsync(IStorageFolder destinationFolder, string desiredNewName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IStorageFolder.html">IStorageFolder</a></td>
+        <td><span class="parametername">destinationFolder</span></td>
+        <td><p>The destination folder where the file is moved. This destination folder must be a physical location. Otherwise, if the destination folder exists only in memory, like a file group, this method fails and throws an exception.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">desiredNewName</span></td>
+        <td><p>The desired name of the file after it is moved. If there is an existing file in the destination folder that already has the specified desiredNewName, Windows generates a unique name for the file.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>No object or value is returned by this method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_MoveAsync_XPlat_Storage_IStorageFolder_System_String_XPlat_Storage_NameCollisionOption_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.MoveAsync(XPlat.Storage.IStorageFolder%2CSystem.String%2CXPlat.Storage.NameCollisionOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L62">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_MoveAsync_" data-uid="XPlat.Storage.IStorageFile.MoveAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_MoveAsync_XPlat_Storage_IStorageFolder_System_String_XPlat_Storage_NameCollisionOption_" data-uid="XPlat.Storage.IStorageFile.MoveAsync(XPlat.Storage.IStorageFolder,System.String,XPlat.Storage.NameCollisionOption)">MoveAsync(IStorageFolder, String, NameCollisionOption)</h4>
+  <div class="markdown level1 summary"><p>Moves the current file to the specified folder and renames the file according to the desired name. This method also specifies what to do if a file with the same name already exists in the specified folder.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task MoveAsync(IStorageFolder destinationFolder, string desiredNewName, NameCollisionOption option)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.IStorageFolder.html">IStorageFolder</a></td>
+        <td><span class="parametername">destinationFolder</span></td>
+        <td><p>The destination folder where the file is moved. This destination folder must be a physical location. Otherwise, if the destination folder exists only in memory, like a file group, this method fails and throws an exception.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">desiredNewName</span></td>
+        <td><p>The desired name of the file after it is moved. If there is an existing file in the destination folder that already has the specified desiredNewName, the specified NameCollisionOption determines how Windows responds to the conflict.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.NameCollisionOption.html">NameCollisionOption</a></td>
+        <td><span class="parametername">option</span></td>
+        <td><p>An enum value that determines how Windows responds if the desiredNewName is the same as the name of an existing file in the destination folder.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>No object or value is returned by this method.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile_OpenAsync_XPlat_Storage_FileAccessMode_.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile.OpenAsync(XPlat.Storage.FileAccessMode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L18">View Source</a>
+  </span>
+  <a id="XPlat_Storage_IStorageFile_OpenAsync_" data-uid="XPlat.Storage.IStorageFile.OpenAsync*"></a>
+  <h4 id="XPlat_Storage_IStorageFile_OpenAsync_XPlat_Storage_FileAccessMode_" data-uid="XPlat.Storage.IStorageFile.OpenAsync(XPlat.Storage.FileAccessMode)">OpenAsync(FileAccessMode)</h4>
+  <div class="markdown level1 summary"><p>Opens a stream over the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Stream&gt; OpenAsync(FileAccessMode accessMode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="XPlat.Storage.FileAccessMode.html">FileAccessMode</a></td>
+        <td><span class="parametername">accessMode</span></td>
+        <td><p>The type of access to allow.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">Stream</span>&gt;</td>
+        <td><p>When this method completes, it returns the stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/new/main/apiSpec/new?filename=XPlat_Storage_IStorageFile.md&amp;value=---%0Auid%3A%20XPlat.Storage.IStorageFile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/XPlat-Apps/XPlat-Windows-APIs/blob/main/src/XPlat.Storage/IStorageFile.cs/#L7" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) XPlat Apps
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
