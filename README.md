@@ -1,5 +1,8 @@
 <img src="assets/ProjectBanner.png" alt="XPlat Windows APIs project banner" />
 
+> [!IMPORTANT]
+> This project is no longer maintained. It was created for Xamarin-era cross-platform development and has not been actively maintained for several years. The repository remains available for historical/reference purposes.
+
 # XPlat Windows APIs
 
 XPlat Windows APIs are designed to make it easier for developers adjusted to developing with the Windows Runtime APIs (UWP) to take those skills cross-platform with their applications in .NET.
